@@ -1,0 +1,15 @@
+<section class="todolist">
+  <header class="todolist__header">todo list</header>
+  <input class="todolist__input" placeholder="input your todo here..." />
+  <ul id="todolist_containter">
+    <app-todoitem
+      *ngFor="let todo of todolist$ | async"
+      [todo]="todo"
+      (deleteTodoId)="deleteTodo($event)"
+    ></app-todoitem>
+  </ul>
+</section>
+
+<!-- <h1 (click)="setDisable()">{{ title }}</h1>
+
+<button [disabled]="isdisabled">Submit</button> -->
