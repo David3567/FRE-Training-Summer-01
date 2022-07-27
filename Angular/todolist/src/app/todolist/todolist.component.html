@@ -1,6 +1,12 @@
 <section class="todolist">
   <header class="todolist__header">todo list</header>
-  <input class="todolist__input" placeholder="input your todo here..." />
+  <input
+    class="todolist__input"
+    placeholder="input your todo here..."
+    [(ngModel)]="todo.title"
+    #inputbox
+    (keyup.enter)="addTodo()"
+  />
   <ul id="todolist_containter">
     <app-todoitem
       *ngFor="let todo of todolist$ | async"
@@ -9,6 +15,7 @@
     ></app-todoitem>
   </ul>
 </section>
+<!-- <button (click)="printtodo(inputbox.value)">print todo</button> -->
 
 <!-- <h1 (click)="setDisable()">{{ title }}</h1>
 

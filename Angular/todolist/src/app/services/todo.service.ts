@@ -23,6 +23,15 @@ export class TodoService {
     );
   }
 
+  addTodo(todo: Todo) {
+    return this.http.post([this.baseUrl, this.todoPath].join('/'), todo).pipe(
+      tap((todofromBackend: any) => {
+        this.todolist = [todofromBackend, ...this.todolist];
+        this.todolist$.next(this.todolist);
+      })
+    );
+  }
+
   deleteTodo(id: string) {
     this.todolist = this.todolist.filter((todo: any) => +todo.id !== +id);
     this.todolist$.next(this.todolist);

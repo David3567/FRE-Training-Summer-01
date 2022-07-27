@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Todo } from '../interfaces/todo.interface';
 import { TodoitemComponent } from '../todoitem/todoitem.component';
 import { TodoService } from '../services/todo.service';
@@ -10,13 +10,14 @@ import { Observable } from 'rxjs';
   styleUrls: ['./todolist.component.scss'],
 })
 export class TodolistComponent implements OnInit {
-  // @ViewChild(TodoitemComponent) todoitemComponent!: TodoitemComponent;
-  //* interplation: {{}}
-  title: string = 'hello';
-  //* property binding: []
-  isdisabled = true;
+  // @ViewChild('inputbox') inputbox!: ElementRef;
 
-  // todolist!: Todo[];
+  todo: Todo = {
+    title: '',
+    userId: 2,
+    completed: false,
+  };
+
   todolist$!: Observable<Todo[]>;
 
   constructor(private todoService: TodoService) {}
@@ -27,33 +28,11 @@ export class TodolistComponent implements OnInit {
     this.todolist$ = this.todoService.todolist$;
   }
 
-  //* event binding: ()
-  setDisable() {
-    this.isdisabled = !this.isdisabled;
+  deleteTodo(id: string) {
+    this.todoService.deleteTodo(id).subscribe();
   }
 
-  deleteTodo(id: string) {
-    this.todoService.deleteTodo(id);
+  addTodo() {
+    this.todoService.addTodo(this.todo).subscribe();
   }
 }
-
-// news = [
-//   {
-//     id:12,
-//     header: 'header',
-//     content: 'string',
-//     btncolor: 'red'
-//   },
-//   {
-//     id:12,
-//     header: 'header',
-//     content: 'string',
-//     btncolor: 'red'
-//   },
-//   {
-//     id:12,
-//     header: 'header',
-//     content: 'string',
-//     btncolor: 'red'
-//   },
-// ]

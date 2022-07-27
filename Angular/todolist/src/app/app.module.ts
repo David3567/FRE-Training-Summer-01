@@ -7,10 +7,12 @@ import { TodolistComponent } from './todolist/todolist.component';
 import { TodoitemComponent } from './todoitem/todoitem.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TodoService } from './services/todo.service';
+import { FormsModule } from '@angular/forms';
+import { DemoComponent } from './demo/demo.component';
 
 @NgModule({
-  declarations: [AppComponent, TodolistComponent, TodoitemComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  declarations: [AppComponent, TodolistComponent, TodoitemComponent, DemoComponent],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [TodoService],
   bootstrap: [AppComponent],
 })
