@@ -149,3 +149,33 @@
 // 	return res;
 // };
 // console.log(helloworld());
+
+function component(obj: { name: string; age: number }) {
+	return function (target: Function) {
+		target.prototype.bind(obj);
+	};
+}
+
+@component({
+  name: 'Dio', 
+  age: 200,
+})
+function foo() {
+  console.log(this.name);
+}
+
+// @component({
+// 	name: "Jojo",
+// 	age: 20,
+// })
+// class AAAA {
+// 	id: number;
+// 	obj: { name: string; age: number };
+// 	constructor() {}
+// 	printId() {
+// 		console.log(this.obj);
+// 	}
+// }
+
+// const aaaa = new AAAA();
+// aaaa.printId();

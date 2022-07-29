@@ -5,9 +5,10 @@
 		"removeComments": true,
 		"preserveConstEnums": true,
 		"outFile": "./JS/index.js",
+		"experimentalDecorators": true,
 		"sourceMap": true,
 		"target": "es2015"
 	},
-	"include": ["ts/index.ts"],
+	"include": ["TS/index.ts"],
 	"exclude": ["node_modules", "**/*.spec.ts"]
 }
