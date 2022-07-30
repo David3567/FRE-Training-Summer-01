@@ -1,0 +1,22 @@
+.section3_left{
+  width:50%;
+  float: left;
+  padding: 55px;
+}
+.section3_left h1{
+  color:#fff;
+}
+.section3_left h3{
+  color:#fff;
+}
+
+.section3_right{
+  width:40%;
+  float: right;
+}
+
+.section3_right img{
+  width:40%;
+  float: left;
+  margin-top: 33px;
+}

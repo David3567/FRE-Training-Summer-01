@@ -1,0 +1,52 @@
+.section1_left{
+  width:50%;
+  float: left;
+  padding: 55px;
+}
+.section1_left h1{
+  color:#fff;
+}
+.section1_left h3{
+  color:#fff;
+}
+
+.section1_right{
+  width:40%;
+  float: right;
+}
+
+.section1_right img{
+  width:40%;
+  float: left;
+  margin-top: 12px;
+}
+
+@media screen and (max-width:768px){
+  .section1_left{
+    width:30%;
+    float: left;
+    padding: 75px;
+  }
+  .section1_left h1{
+    color:#fff;
+  }
+  .section1_left h3{
+    color:#fff;
+  }
+
+  .section1_right{
+    width:40%;
+    float: right;
+  }
+
+  .section1_right img{
+    width:70%;
+    float: left;
+    margin-top: 12px;
+  }
+  .section1_right img{
+    width:100%;
+    float: left;
+  }
+
+}
