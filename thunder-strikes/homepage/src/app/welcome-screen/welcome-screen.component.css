@@ -1,0 +1,29 @@
+
+:host{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    gap: 4vh;
+    overflow-y: scroll;
+
+}
+header{
+    text-align: center;
+    font-weight: bolder;
+    font-size: 3em;
+    margin-bottom: 2vh;
+    color: white;
+}
+ul{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 94vw;
+    height: 100%;
+    gap: 1.5vw;
+}

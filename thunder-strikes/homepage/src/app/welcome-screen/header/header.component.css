@@ -1,0 +1,33 @@
+header {
+    position: fixed;
+    display: flex;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    gap: 2vw;
+    width: 100vw;
+    height: 8vh;
+    background-color: black;
+    z-index: 100;
+}
+
+button {
+    font-size: 1.25em;
+    font-weight: bolder;
+    color: var(--color-font-button);
+    height: 60%;
+    padding-left: 4vw;
+    padding-right: 4vw;
+    border: none;
+    border-radius: 0.5em;
+}
+
+button.register {
+    background-color: var(--theme-color-accent);
+}
+
+button.login {
+    background-color: black;
+    border: 1px solid white;
+}

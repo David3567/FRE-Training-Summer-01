@@ -1,0 +1,21 @@
+*{
+    color: white;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+}
+img{
+    width: 98%;
+}
+
+div.shadow-fade{
+    position: relative;
+    width: 100vw;
+    height: 6vh;
+    box-shadow: 0 -4vh 24px black;
+    
+}
