@@ -27,3 +27,8 @@ ul{
     height: 100%;
     gap: 1.5vw;
 }
+
+section{
+    position: relative;
+    top: -10vh;
+}

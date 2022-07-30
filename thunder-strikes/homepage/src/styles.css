@@ -3,9 +3,19 @@
     --theme-color-accent: blue;
     --color-font-button: white;
 }
+@font-face {
+    font-family: Rajdhani-Bold;
+    src: url(assets/Rajdhani/Rajdhani-Bold.ttf);
+}
 *{
     padding: 0;
     margin: 0;
+    font-family: Rajdhani-Bold;
+    scroll-behavior: smooth;
+}
+
+button:hover{
+    cursor: pointer;
 }
 
 body{

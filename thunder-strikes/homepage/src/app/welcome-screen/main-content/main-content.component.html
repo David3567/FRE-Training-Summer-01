@@ -1,5 +1,5 @@
-<div class="container">
-    <!-- <div class="content-image" [ngStyle]="{backgroundImage: 'url(' + movie.backdrop_path + ')'}"></div> -->
+<div class="container" #mainContent>
     <img [src]=movie.backdrop_path>
-    <div class="shadow-fade"></div>
+    <!-- <div class="shadow-fade"></div> -->
+    <button (click)="scrollDown()">Click Me</button>
 </div>
