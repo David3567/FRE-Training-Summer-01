@@ -1,0 +1,71 @@
+.container {
+  background-color: rgba(0, 0, 0, 0.75);
+  width: 18rem;
+  border-radius: 5px;
+  padding: 2rem 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.header {
+  color: white;
+  font-size: 2rem;
+}
+
+.form-group {
+  margin-bottom: 0.75rem;
+}
+
+.errorMessage {
+  color: #e87c03;
+}
+
+.input {
+  background-color: #333;
+  width: 100%;
+  border: none;
+  height: 3rem;
+  border-radius: 3px;
+}
+
+.signInOptionContainer {
+  margin: 1.25rem 0;
+}
+
+.btn-signIn {
+  width: 100%;
+  border: none;
+  height: 3rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: #e50914;
+  color: white;
+  margin: 0.75rem 0 0.25rem 0;
+}
+
+.flexOptions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.flexOptionsLabel {
+  display: flex;
+  align-items: center;
+  margin: 0.2rem 0;
+  gap: 0.25rem;
+}
+.inputCheckBox {
+  width: 1.1rem;
+  height: 2rem;
+}
+
+.signUpOption {
+  margin: 1rem 0;
+}
+
+.loginCaptcha {
+  font-size: 0.875rem;
+}
