@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
@@ -12,6 +11,7 @@ export class SignInComponent {
   showPassword(): void {
     this.show = !this.show;
   }
+
   onLogin() {
     this.showErrorMess = !this.showErrorMess;
     setTimeout(() => {
