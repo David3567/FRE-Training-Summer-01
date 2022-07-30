@@ -1,1 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
+*:root {
+  --secondary-bg: rgba(0, 0, 0, 0.75);
+}
