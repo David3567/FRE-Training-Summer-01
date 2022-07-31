@@ -1,0 +1,102 @@
+<div [className]="'register-component'">
+  <div 
+    [className]="'modal'"
+    [ngClass] = "counter === 0 ? 'visible' : ''"
+  >
+    <header>STEP <span>1</span> OF <span>3</span></header>
+    <h2>Create a password to start your membership</h2>
+    <p>Just a few more steps and you're done!</p>
+    <p>We hate paperwork, too.</p>
+    <div
+      [className]="'form'"
+    >
+      <input 
+        name="email" 
+        type="email" 
+        placeholder="Add an email"
+        (keyup)="setEmail($event)"
+      />
+      <input 
+        name="password" 
+        type="password" 
+        placeholder="Add a password"
+        (keyup)="setPassword($event)"
+        />
+      <button (click)="incrementCount()">Next</button>
+    </div>
+  </div>
+
+  <div
+  [className]="'modal'"
+  [ngClass] = "counter === 1 ? 'visible' : ''"
+  >
+    <header>STEP <span>2</span> OF <span>3</span></header>
+    <h2>Choose your plan.</h2>
+    <p>No commitments, cancel anytime.</p>
+    <p>Everything on movie app for one low price.</p>
+    <p>Unlimited viewing on all of your devices.</p>
+    <button 
+    
+    (click)="incrementCount()">Next</button>
+  </div>
+
+  <div
+  [className]="'modal'"
+  [ngClass] = "counter === 2 ? 'visible' : ''"
+  >
+    <header>STEP <span>2</span> OF <span>3</span></header>
+    <h2>Choose the plan that's right for you.</h2>
+    <p>Watch all you want. Ad-free.</p>
+    <p>Recommendations just for you.</p>
+    <p>Change or cancel your plan anytime.</p>
+    <table>
+      <tr>
+        <td></td>
+        <td>Basic</td>
+        <td>Standard</td>
+        <td>Premium</td>
+      </tr>
+      <tr>
+        <td>Monthly Price</td>
+        <td>$9.99</td>
+        <td>$15.99</td>
+        <td>$19.99</td>
+      </tr>
+      <tr>
+        <td>Video Quality</td>
+        <td>Good</td>
+        <td>Better</td>
+        <td>Best</td>
+      </tr>
+      <tr>
+        <td>Resolution</td>
+        <td>480p</td>
+        <td>1080p</td>
+        <td>4K+HDR</td>
+      </tr>
+      <tr>
+        <td>Watch on your TV, computer, mobile phone and table</td>
+        <td>^</td>
+        <td>^</td>
+        <td>^</td>
+      </tr>
+    </table>
+    <div [className]="'form'">
+      <button (click)="incrementCount()">Next</button>
+    </div>
+  </div>
+
+  <div
+  [className]="'modal'"
+  [ngClass] = "counter === 3 ? 'visible' : ''"
+  >
+    <header>STEP <span>3</span> OF <span>3</span></header>
+    <h2>Set up your payment</h2>
+    <p>Your membership starts as soon as you set up payment.</p>
+    <p><span>No commitments.</span></p>
+    <p><span>Cancel online anytime.</span></p>
+    <button>Credit or Debit Card <span>></span></button>
+    <button>Paypal <span>></span></button>
+    <button>Gift Code <span>></span></button>
+  </div>
+</div>
