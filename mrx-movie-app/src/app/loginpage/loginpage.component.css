@@ -133,14 +133,10 @@
   .container {
     display: flex;
     justify-content: flex-start;
-    background-color: red;
     background-image: none;
-    /* background-color: black; */
+    background-color: black;
   }
   .subContainer {
-    display: flex;
-    align-items: center;
-
     width: 95%;
     margin: auto;
   }
@@ -150,6 +146,6 @@
   }
 
   .formContainer {
-    width: 42rem;
+    width: 100%;
   }
 }

@@ -1,17 +1,31 @@
 <div class="container">
   <div class="subContainer">
     <h2 class="header">Sign In</h2>
-    <form action="" class="formContainer">
+    <form action="" class="formContainer" (ngSubmit)="submitForm()">
       <div class="form-group">
-        <input type="text" placeholder="Email" class="input" />
+        <input
+          type="text"
+          placeholder="Email"
+          class="input"
+          name="email"
+          [(ngModel)]="email"
+        />
         <span class="errorMessage">{{ emailErrorMessage }}</span>
       </div>
       <div class="form-group">
-        <input type="password" placeholder="Password" class="input" />
+        <input
+          type="password"
+          placeholder="Password"
+          class="input"
+          name="password"
+          [(ngModel)]="password"
+        />
         <span class="errorMessage">{{ passwordErrorMessage }}</span>
       </div>
       <div class="form-group signInOptionContainer">
-        <button class="btn-signIn">Sign In</button>
+        <button (click)="submitForm()" class="btn-signIn" type="button">
+          Sign In
+        </button>
         <div class="flexOptions">
           <label for="" class="flexOptionsLabel">
             <input
@@ -19,6 +33,7 @@
               type="checkbox"
               name="checkBox"
               id=""
+              [(ngModel)]="isChecked"
             />Remember me
           </label>
           <a class="needHelp" href="#">Need help?</a>
