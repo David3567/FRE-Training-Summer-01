@@ -3,7 +3,7 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
   position: relative;
   display: flex;
   justify-content: center;
@@ -56,6 +56,19 @@
   border: none;
   height: 3rem;
   border-radius: 3px;
+}
+input[type="text"] {
+  padding-left: 1rem;
+  color: white;
+  font-size: 1rem;
+}
+input[type="password"] {
+  padding-left: 1rem;
+  font-size: 1rem;
+  color: white;
+}
+input[type="checkbox"] {
+  accent-color: #333;
 }
 
 .signInOptionContainer {
@@ -128,6 +141,7 @@
 .loginCaptcha > a:hover {
   text-decoration: underline;
 }
+
 
 @media screen and (max-width: 740px) {
   .container {
