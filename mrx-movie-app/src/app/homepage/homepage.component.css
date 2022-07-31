@@ -1,8 +1,7 @@
 .welcomeBanner {
     color: white;
     font-size: 1.5rem;
-    background-color: #333;
-    background-image: radial-gradient(circle, rgba(0,0,0,0.008) 0%, rgba(51,51,51,1) 100%), url(../../assets/images/homepage-image.jpg);
+    background-image: radial-gradient(circle, rgba(0,0,0,0.5) 0%, rgba(51,51,51,0.9) 100%), url(../../assets/images/homepage-image.jpg);
     position: relative;
     width: 100%;
     height: 45rem;
@@ -39,25 +38,22 @@ p{
 }
 
 nav{
-    display: flex;
+    position: relative;
 }
 .logo{
     margin: 1rem;
     width: 8rem;
-    flex: none;
-}
-
-
-.btnBox{
-    display: flex;
-    justify-content: flex-end;
+    position: absolute;
+    left: 2rem;
 }
 
 .loginBtn{
     height: 2.5rem;
     margin: 1rem;
     width: 5rem;
-    justify-content: space-between;
+    position: absolute;
+    right: 2rem;
+    font-size: 1rem;
 }
 h1{
     width: 60vw;
@@ -87,11 +83,6 @@ input{
         opacity: 0;
         transform: translateX(-10rem);
     }
-
-    /* 80%{
-        transform: translateX(10px);
-    } */
-
     100% {
         opacity: 1;
         transform: translate(0);
@@ -103,9 +94,6 @@ input{
         opacity: 0;
         transform: translateX(10rem);
     }
-
-
-
     100% {
         opacity: 1;
         transform: translate(0);
