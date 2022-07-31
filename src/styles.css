@@ -1,0 +1,45 @@
+/* Add application styles & imports to this file! */
+
+body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+header {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  opacity: 1;
+  background-image: url('./assets/header_background.jpg');
+  border-bottom: 22px solid #8a8787;
+}
+main {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  background-color: #f8f8f8;
+  opacity: 1;
+  border-bottom: 22px solid #8a8787;
+}
+
+.section{
+  background-color: rgb(29, 16, 16);
+  width: 100%;
+  border-bottom: 1px solid #f8f8f8;
+  text-align: center;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+
+
+.shadow {
+  -moz-box-shadow:    inset 30 20 30px #000000;
+  -webkit-box-shadow: inset 30 20 30px #861a1a;
+  box-shadow:         inset 30 20 30px #000000;
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
