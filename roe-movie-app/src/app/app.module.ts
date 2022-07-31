@@ -13,10 +13,13 @@ import { MainComponent } from '../home/main/main.component';
 import { SigninComponent } from '../signin/signin.component';
 import { RegisterComponent } from '../register/register.component';
 
+import {MatExpansionModule} from '@angular/material/expansion';
+
 import { Router } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule, AppRoutingModule ],
+  imports:      [ BrowserModule, FormsModule, AppRoutingModule, BrowserAnimationsModule, MatExpansionModule ],
   declarations: [ AppComponent,
                   HeaderComponent, HeaderTopComponent,
                   HeaderBannerComponent, HeaderBannerContentComponent, FooterComponent, MainComponent, SigninComponent, HomeComponent, RegisterComponent ],
