@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { WelBannerComponent } from './components/home-page/wel-banner/wel-banner.component';
 import { NavHeaderHPComponent } from './components/home-page/nav-header-hp/nav-header-hp.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import { SignInComponent } from './sign-in/sign-in.component';
+
 
 @NgModule({
   declarations: [
@@ -12,6 +14,10 @@ import { HomePageComponent } from './components/home-page/home-page.component';
     WelBannerComponent,
     NavHeaderHPComponent,
     HomePageComponent,
+    SignInComponent
+  ],
+  imports: [
+    BrowserModule
   ],
   imports: [BrowserModule],
   providers: [],
