@@ -1,14 +1,2 @@
-<app-header [showHeader]="showingHeader"></app-header>
-    <main>
-        <app-main-content [movie]="selected"></app-main-content>
-    </main>
-    <section>
-        <header>Now Playing</header>
-        <ul>
-            <app-now-playing 
-                *ngFor="let movie of moviesPlaying$ | async" [movie]="movie"
-                (click)="getData(movie)"
-            >
-            </app-now-playing>
-        </ul>
-    </section>
+<header>Now Playing</header>
+<app-now-playing [movies$]="moviesPlaying$"></app-now-playing>

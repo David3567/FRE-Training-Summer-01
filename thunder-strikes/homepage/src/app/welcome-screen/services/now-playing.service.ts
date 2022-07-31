@@ -12,15 +12,15 @@ export class NowPlayingService {
   private apiKey = '64f44f1d52f9493b67df43ad61941d4b';
   private endUrl = '&language=en-US&page=1';
   private movieCount = 6;
-  private imageUrlPath = 'https://image.tmdb.org/t/p/original';
+  private imageUrlPath = 'https://image.tmdb.org/t/p/';
   constructor(private httpClient: HttpClient) {}
   get(): Observable<MovieDetails[]>{
     return this.httpClient.get(this.startUrl + this.middleUrl + this.apiKey + this.endUrl).pipe(
       <any>map( (data: MovieResults) => {
         const results = data.results.slice(0, this.movieCount) as MovieDetails[];
         for(let result of results){
-          result.poster_path = this.imageUrlPath + result.poster_path;
-          result.backdrop_path = this.imageUrlPath + result.backdrop_path;
+          result.poster_path = this.imageUrlPath + "w500" + result.poster_path;
+          result.backdrop_path = this.imageUrlPath + "w1280" + result.backdrop_path;
         }
         return results;
       })

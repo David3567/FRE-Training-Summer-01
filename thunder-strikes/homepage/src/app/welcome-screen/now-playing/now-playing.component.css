@@ -1,11 +1,22 @@
 
 
+ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    list-style: none;
+    width: 90vw;
+    overflow: auto;
+    gap: 2vw;
+}
 
 li{
-    width: 30vw;
-    
+    width: 30%;
 }
+
 img{
     width: 100%;
+    height: auto;
     border-radius: .5em;
 }

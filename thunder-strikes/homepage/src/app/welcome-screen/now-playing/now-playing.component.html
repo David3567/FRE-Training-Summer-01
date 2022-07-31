@@ -1,3 +1,6 @@
-<li>
-    <img [src]="movie.backdrop_path">
-</li>
+<ul>
+    <li 
+        *ngFor="let movie of movies$ | async">
+        <img loading="lazy" [width]="1280" [height]="720" [src]=movie.backdrop_path>
+    </li>
+</ul>

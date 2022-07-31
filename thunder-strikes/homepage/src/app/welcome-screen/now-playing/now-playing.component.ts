@@ -1,7 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { MovieDetails } from '../interfaces/movie-details';
-import { NowPlayingService } from '../services/now-playing.service';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-now-playing',
@@ -11,5 +8,6 @@ import { NowPlayingService } from '../services/now-playing.service';
 export class NowPlayingComponent implements OnInit {
   ngOnInit(): void {
   }
-  @Input() movie!: MovieDetails;
+  @Input() movies$: any;
+
 }
