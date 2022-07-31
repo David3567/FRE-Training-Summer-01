@@ -1,10 +1,12 @@
+
+
 .welcomeBanner {
     color: white;
     font-size: 1.5rem;
     background-image: radial-gradient(circle, rgba(0,0,0,0.5) 0%, rgba(51,51,51,0.9) 100%), url(../../assets/images/homepage-image.jpg);
     position: relative;
     width: 100%;
-    height: 45rem;
+    height: 65rem;
 }
 
 input {
@@ -34,14 +36,13 @@ button {
 p{
     width: 55vw;
     margin: 1rem auto;
-    animation: leftMove 3s;
 }
 
 nav{
     position: relative;
 }
 .logo{
-    margin: 1rem;
+    margin: 2.5rem;
     width: 8rem;
     position: absolute;
     left: 2rem;
@@ -49,15 +50,11 @@ nav{
 
 .loginBtn{
     height: 2.5rem;
-    margin: 1rem;
+    margin: 2.5rem;
     width: 5rem;
     position: absolute;
     right: 2rem;
     font-size: 1rem;
-}
-h1{
-    width: 60vw;
-    animation: leftMove 3s;
 }
 
 input{
@@ -68,13 +65,21 @@ input{
     margin: 2rem;
     padding: 1rem;
     font-size: 1.5rem;
-    animation: rightMove 3s;
+    
 }
 
 .get_started_btn{
     height: 3rem;
     width: 20vw;
     font-size: 1.5rem;
+}
+
+.welcome-message{
+    width: 60vw;
+    animation: leftMove 3s;
+}
+
+.register-area{
     animation: rightMove 3s;
 }
 
@@ -99,4 +104,35 @@ input{
         transform: translate(0);
     }
 
+}
+
+.content-card{
+    background-color: black;
+    color: white;
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+    border-top: 8px solid #333;
+}
+
+.content-card img{
+    width: 512px;
+    height: 384px;
+}
+
+.card-message{
+    margin: 1rem auto;
+}
+
+footer{
+    display: flex;
+    background-color: #222;
+    color: gray;
+    align-items: center;
+    justify-content: center;
+    border-top: 8px solid #333;
+    height: 10vh;
 }
