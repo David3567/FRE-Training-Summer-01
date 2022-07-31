@@ -1,4 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
-*:root {
-  --secondary-bg: rgba(0, 0, 0, 0.75);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
