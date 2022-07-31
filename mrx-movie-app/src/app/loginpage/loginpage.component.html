@@ -1,41 +1,54 @@
 <div class="container">
-  <h2 class="header">Sign In</h2>
-  <form action="" class="formContainer">
-    <div class="form-group">
-      <input type="text" placeholder="Email" class="input" />
-      <span class="errorMessage">error message test</span>
-    </div>
-    <!-- <mat-form-field appearance="fill">
-      <mat-label>Input</mat-label>
-      <input matInput />
-    </mat-form-field> -->
-    <div class="form-group">
-      <input type="password" placeholder="Password" class="input" />
-      <span class="errorMessage">error message test</span>
-    </div>
-    <div class="form-group signInOptionContainer">
-      <button class="btn-signIn">Sign In</button>
-      <div class="flexOptions">
-        <label for="" class="flexOptionsLabel">
-          <input
-            class="inputCheckBox"
-            type="checkbox"
-            name="checkBox"
-            id=""
-          />Remember me
-        </label>
-        <a href="#">Need help?</a>
+  <div class="subContainer">
+    <h2 class="header">Sign In</h2>
+    <form action="" class="formContainer" (ngSubmit)="submitForm()">
+      <div class="form-group">
+        <input
+          type="text"
+          placeholder="Email"
+          class="input"
+          name="email"
+          [(ngModel)]="email"
+        />
+        <span class="errorMessage">{{ emailErrorMessage }}</span>
       </div>
-    </div>
+      <div class="form-group">
+        <input
+          type="password"
+          placeholder="Password"
+          class="input"
+          name="password"
+          [(ngModel)]="password"
+        />
+        <span class="errorMessage">{{ passwordErrorMessage }}</span>
+      </div>
+      <div class="form-group signInOptionContainer">
+        <button (click)="submitForm()" class="btn-signIn" type="button">
+          Sign In
+        </button>
+        <div class="flexOptions">
+          <label for="" class="flexOptionsLabel">
+            <input
+              class="inputCheckBox"
+              type="checkbox"
+              name="checkBox"
+              id=""
+              [(ngModel)]="isChecked"
+            />Remember me
+          </label>
+          <a class="needHelp" href="#">Need help?</a>
+        </div>
+      </div>
 
-    <div class="signUpOption">
-      <span>New to Newflix</span><a>Sign up Now</a>
-    </div>
-    <div class="captchatMessage">
-      <span class="loginCaptcha"
-        >This page is protected by Google reCAPTCHAT to ensure you're not a bot.
-        <a href="#">Learn More</a></span
-      >
-    </div>
-  </form>
+      <div class="signUpOption">
+        <span>New to Newflix? </span><a>Sign up Now</a>
+      </div>
+      <div class="captchatMessage">
+        <span class="loginCaptcha"
+          >This page is protected by Google reCAPTCHAT to ensure you're not a
+          bot. <a href="#">Learn More</a></span
+        >
+      </div>
+    </form>
+  </div>
 </div>

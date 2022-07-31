@@ -1,4 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
-*:root {
-  --secondary-bg: rgba(0, 0, 0, 0.75);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
 }
