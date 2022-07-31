@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RegisterPageComponent } from './register-page.component';
+import { NavHeaderHPComponent } from './nav-header-hp.component';
 
-describe('RegisterPageComponent', () => {
-  let component: RegisterPageComponent;
-  let fixture: ComponentFixture<RegisterPageComponent>;
+describe('NavHeaderHPComponent', () => {
+  let component: NavHeaderHPComponent;
+  let fixture: ComponentFixture<NavHeaderHPComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RegisterPageComponent ]
+      declarations: [ NavHeaderHPComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(RegisterPageComponent);
+    fixture = TestBed.createComponent(NavHeaderHPComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
