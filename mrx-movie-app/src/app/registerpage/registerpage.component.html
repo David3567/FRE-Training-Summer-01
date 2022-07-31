@@ -1,1 +1,93 @@
-<p>registerpage works!</p>
+<div class="basicLayout">
+
+    <div class="register-header">
+        <div class="nfLogo">
+            <!-- NETFLIX -->
+            <img src="http://mrx-movie-app.s3-website-us-east-1.amazonaws.com/assets/images/logo.png" alt="">
+        </div>
+        <div class="authLinks">
+            Sign In
+        </div>
+    </div>
+
+    <div class="form-container">
+        <div class="center-container">
+            
+
+            <form method="POST">
+                <div class="regFormContainer" data-uia="form-registration">
+                    <div class="">
+                        <div class="stepHeader-container" data-uia="header">
+                            <div class="stepHeader" data-a11y-focus="true">
+                                <span id="" class="stepIndicator" data-uia="">STEP <b>1</b> OF <b>3</b></span>
+                                <h1 class="stepTitle" data-uia="stepTitle">Create a password to start your membership</h1>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="contextRow" data-uia="contextRowDone">Just a few more steps and you're done!</div>
+                            <div class="contextRow" data-uia="contextRowPaperWork">We hate paperwork, too.</div>
+                            <ul class="simpleForm structural ui-grid">
+                                <li data-uia="field-email+wrapper" class="nfFormSpace">
+                                    <div data-uia="field-email+container" class="nfInput nfInputOversize">
+                                        <div class="nfInputPlacement"><label class="input_id" placeholder="email">
+                                            <input type="email" data-uia="field-email" name="email" class="nfTextField" id="id_email" value="" tabindex="0" autocomplete="off" maxlength="50" minlength="5" dir="">
+                                            <label for="id_email" class="placeLabel">Email</label>
+                                        </label>
+                                    </div>
+                                </div>
+                            </li>
+                            <li data-uia="field-password+wrapper" class="nfFormSpace">
+                                <div data-uia="field-password+container" class="nfInput nfInputOversize">
+                                    <div class="nfInputPlacement">
+                                        <label class="input_id" placeholder="password">
+                                            <input type="password" data-uia="field-password" name="password" class="nfTextField" id="id_password" value="" tabindex="0" autocomplete="new-password" maxlength="61" minlength="6" dir="">
+                                            <label for="id_password" class="placeLabel">Add a password</label>
+                                        </label>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="submitBtnContainer">
+                    <button  autocomplete="off" tabindex="0" class="nf-btn nf-btn-primary nf-btn-solid nf-btn-oversize" >Next</button>
+                </div>
+            </div>
+        </form>
+            
+
+        </div>
+    </div>
+
+    <div class="site-footer-wrapper centered">
+        <div class="footer-divider"></div>
+
+        <div class="site-footer">
+            <p class="footer-top">Questions? Call <a class="footer-top-a" href="tel:1-888-888-8888">1-888-888-8888</a></p>
+
+            <ul class="footer-links structural">
+                <li class="footer-link-item" placeholder="footer_responsive_link_faq_item">
+                    <a class="footer-link" data-uia="footer-link" href="https://help.netflix.com/support/412" placeholder="footer_responsive_link_faq">
+                        <span id="" data-uia="data-uia-footer-label">FAQ</span>
+                    </a>
+                </li>
+                <li class="footer-link-item" placeholder="footer_responsive_link_help_item">
+                    <a class="footer-link" data-uia="footer-link" href="https://help.netflix.com" placeholder="footer_responsive_link_help">
+                        <span id="" data-uia="data-uia-footer-label">Help Center</span>
+                    </a>
+                </li>
+                <li class="footer-link-item" placeholder="footer_responsive_link_terms_item">
+                    <a class="footer-link" data-uia="footer-link" href="https://help.netflix.com/legal/termsofuse" placeholder="footer_responsive_link_terms">
+                        <span id="" data-uia="data-uia-footer-label">Terms of Use</span>
+                    </a>
+                </li>
+                <li class="footer-link-item" placeholder="footer_responsive_link_privacy_separate_link_item">
+                    <a class="footer-link" data-uia="footer-link" href="https://help.netflix.com/legal/privacy" placeholder="footer_responsive_link_privacy_separate_link">
+                        <span id="" data-uia="data-uia-footer-label">Privacy</span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>
