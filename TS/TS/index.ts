@@ -151,8 +151,12 @@
 // console.log(helloworld());
 
 function component(obj: { name: string; age: number }) {
-	return function (target: Function) {
-		target.prototype.bind(obj);
+	return function (target: Function, name: any, descriptor: {value: Function}) {
+    let fn = descriptor.value = function(...args: any) {
+      const result = fn.apply(this, args);
+      return result;
+    }
+    return descriptor;
 	};
 }
 
