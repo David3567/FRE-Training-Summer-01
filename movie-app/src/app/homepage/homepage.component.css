@@ -7,7 +7,8 @@ body {
   border-bottom: 8px solid #222;
   background: black;
   overflow: hidden;
-  height: 1000px;
+  max-height: 1000px;
+  width: 100vw;
 }
 
 img {
@@ -25,35 +26,36 @@ img {
   color: white;
 }
 
-.narbar-wrapper {
+/* .narbar-wrapper {
   background-color: transparent;
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
   margin: 0 auto;
-  /* position: relative; */
-  /* max-width: 1920px; */
+  position: relative;
+  max-width: 1920px;
   width: 100%;
-}
+} */
 
 .hero-navbar {
   margin: 0 50px;
   display: flex;
-  flex-flow: row nowrap;
+  flex-direction: row;
   align-items: center;
-  /* justify-content: flex-start; */
+  justify-content: space-between;
   padding-top: 0.5rem;
   height: auto;
   position: absolute;
   top: 3%;
-  left: 10%;
+  left: 50%;
   transform: translate(-50%, -50%);
+  width: 90%;
 }
 
 .nav-logo-wrapper {
   height: 60px;
-  width: 90%;
+  width: 70%;
   margin-right: auto;
 }
 
