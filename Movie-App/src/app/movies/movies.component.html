@@ -1,33 +1,17 @@
 <p>movies works!</p>
-<!-- <h1> Latest Movies</h1>
-<div class="main">
-  <div id="slider"></div>
-  <div id="slide"></div>
-</div> -->
-<!-- Control buttons -->
-<!-- <div class="carousel-buttons">
-  <button class="btn btn-next">></button>
-  <button class="btn btn-prev"><</button>
-  </div> -->
-  <div class="container">
-    <div class="search-box">
-      <input type="text" class="search-input" placeholder="Search..">
 
-      <button class="search-button">
-        <i class="fas fa-search"></i>
-      </button>
-    </div>
-  </div>
+  <app-sidebar></app-sidebar>
   <div class="movie">
-    <!-- <div class="input-group">
-      <mdb-form-control>
-        <input mdbInput type="search" id="form1" class="form-control" />
-        <label mdbLabel class="form-label" for="form1">Search</label>
-      </mdb-form-control>
-      <button type="button" class="btn btn-primary">
-        <i class="fas fa-search"></i>
-      </button>
-    </div> -->
+    <div class="container">
+      <div class="search-box">
+        <input type="text" class="search-input" placeholder="Search..">
+
+        <button class="search-button">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </div>
+
     <ngb-carousel *ngIf="images">
       <ng-template ngbSlide>
         <div class="picsum-img-wrapper">
@@ -59,4 +43,3 @@
     </ngb-carousel>
   </div>
 
-  <!-- <app-sidebar></app-sidebar> -->
