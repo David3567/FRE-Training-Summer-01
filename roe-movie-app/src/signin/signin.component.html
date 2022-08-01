@@ -1,11 +1,28 @@
-<header class="shadow">
-  <app-header></app-header>
-</header>
-<main>
-<p>signin works!</p>
-</main>
-<footer>
-  <app-footer>
+<app-header-top></app-header-top>
+<div class="signin-component">
+  <div class="signin-content">
+    <h2>Sign In</h2>
+    <div class="form">
+      <input class="username" placeholder="Email or Phone Number" />
+      <div>
+        <input class="pwd" [type]="show ? 'text' : 'password'" placeholder="Enter Your Password" />
+        <button (click)="password()"> {{show ? 'Hide' : 'Show'}}</button>
+      </div>
+    </div>
+    <button class="signin" routerLink="/home"> Sign In </button>
+    <div class="help">
+      <input type="checkbox"> Remember Me
+      <a href="">Need help?</a>
+    </div>
 
-  </app-footer>
+    <div class="paragraph">
+      <p>New to NoFlix? <a href="/register">Sign up now</a>.</p>
+      <p>This page is protected by ALALALALALA to ensure you are not a bot.
+        <a href=""> Learn more </a>
+      </p>
+    </div>
+  </div>
+</div>
+<footer>
+  <app-footer></app-footer>
 </footer>
