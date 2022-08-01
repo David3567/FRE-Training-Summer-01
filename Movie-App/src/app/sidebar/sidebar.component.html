@@ -1,0 +1,29 @@
+<p>sidebar works!</p>
+<!-- <p>
+  You should use <code>class="nav-pills"</code> if you need pills and the <code>[orientation]</code> input
+  to change nav orientation
+</p> -->
+
+<div class="d-flex">
+  <ul ngbNav #nav="ngbNav"  class="nav-pills" orientation="vertical">
+    <li ngbNavItem="top" >
+      <a  ngbNavLink>Top</a>
+      <ng-template ngbNavContent>
+      </ng-template>
+    </li>
+    <li ngbNavItem="middle">
+      <a ngbNavLink>Middle</a>
+      <ng-template ngbNavContent>
+      </ng-template>
+    </li>
+    <li ngbNavItem="bottom">
+      <a ngbNavLink>Bottom</a>
+      <ng-template ngbNavContent>
+      </ng-template>
+    </li>
+  </ul>
+
+  <div [ngbNavOutlet]="nav" class="ms-4"></div>
+</div>
+
+<!-- <pre>Active: {{ active }}</pre> -->
