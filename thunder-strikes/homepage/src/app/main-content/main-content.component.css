@@ -1,0 +1,22 @@
+:host{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 75vh;
+    /* background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/a342dce3-67ca-41ab-80f9-c530cc52259c/d2f0pw0-66229167-546e-4db3-b06d-72e021ad36ca.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2EzNDJkY2UzLTY3Y2EtNDFhYi04MGY5LWM1MzBjYzUyMjU5Y1wvZDJmMHB3MC02NjIyOTE2Ny01NDZlLTRkYjMtYjA2ZC03MmUwMjFhZDM2Y2EuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.cN-fbk-Fn61x_JHlhB5ijkKnU1PRnCLWipWb6LZxLUQ"); */
+    background-image: url("../../assets/Depositphotos_198064308_L.avif");
+    background-size: cover;
+    -moz-box-shadow:    inset  0 -6vh 4vh -1vh black;
+    -webkit-box-shadow: inset  0 -6vh 4vh -1vh black;
+     box-shadow:        inset  0 -6vh 4vh -1vh black;
+}
+header{
+    color: white;
+    font-size: 4em;
+    font-weight: bolder;
+}
+img{
+    width: 100%;
+    height: auto;
+}

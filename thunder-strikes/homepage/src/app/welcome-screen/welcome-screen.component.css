@@ -1,0 +1,22 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+}
+
+header {
+    text-align: center;
+    font-weight: bolder;
+    font-size: 3em;
+    margin-bottom: 2vh;
+    color: white;
+}
+
+button {
+    color: white;
+    background: black;
+}
