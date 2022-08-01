@@ -6,6 +6,7 @@ import { WelBannerComponent } from './components/home-page/wel-banner/wel-banner
 import { NavHeaderHPComponent } from './components/home-page/nav-header-hp/nav-header-hp.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { SignInComponent } from './sign-in/sign-in.component';
+import { RegisterPageComponent } from './register-page/register-page.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { SignInComponent } from './sign-in/sign-in.component';
     WelBannerComponent,
     NavHeaderHPComponent,
     HomePageComponent,
-    SignInComponent
+    SignInComponent,
+    RegisterPageComponent
   ],
   imports: [
     BrowserModule
