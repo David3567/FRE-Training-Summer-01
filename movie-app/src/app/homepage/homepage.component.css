@@ -7,15 +7,16 @@ body {
   border-bottom: 8px solid #222;
   background: black;
   overflow: hidden;
-  max-height: 1000px;
+  height: 1000px;
 }
 
 img {
   object-fit: cover;
   opacity: 0.35;
+  position: relative;
 }
 
-.hero-header-text {
+.hero-text {
   text-align: center;
   position: absolute;
   top: 50%;
@@ -36,19 +37,24 @@ img {
   width: 100%;
 }
 
-.navbar {
+.hero-navbar {
   margin: 0 50px;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  justify-content: flex-start;
+  /* justify-content: flex-start; */
   padding-top: 0.5rem;
   height: auto;
+  position: absolute;
+  top: 3%;
+  left: 10%;
+  transform: translate(-50%, -50%);
 }
 
 .nav-logo-wrapper {
   height: 60px;
   width: 90%;
+  margin-right: auto;
 }
 
 .font-effect-3d-float {
@@ -56,21 +62,30 @@ img {
     0px 0.25em 0.021em rgba(0, 0, 0, 0.1), 0px 0.32em 0.32em rgba(0, 0, 0, 0.1);
   color: #e11221;
   font-size: xx-large;
-  text-align: left;
+  /* text-align: left; */
 }
 
 .nav-btn-signIn {
+  margin: 0 0 0 0.75rem;
+  padding: 7px 17px;
+  font-weight: 400;
+}
+
+.nav-btn-signIn,
+.btn-signUp {
   background-color: #e11221;
   font-size: 1rem;
-  font-weight: 400;
   line-height: normal;
-  padding: 7px 17px;
   border-radius: 4px;
   color: #fff;
-  margin: 0 0 0 0.75rem;
   white-space: nowrap;
-  /* text-align: right; */
-  /* justify-content: flex-end; */
+  border: none;
+}
+
+.btn-signUp {
+  padding: 10px 20px;
+  font-weight: 800;
+  cursor: pointer;
 }
 
 .font-effect-3d-float,
@@ -125,4 +140,9 @@ img {
 
 .card-title {
   color: white;
+  font-size: 4rem;
+}
+
+.card-sub-title {
+  font-size: x-large;
 }
