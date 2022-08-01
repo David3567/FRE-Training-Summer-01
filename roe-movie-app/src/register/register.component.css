@@ -3,8 +3,9 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%;
   letter-spacing: .5px;
+  position: relative;
+  padding: 0 0 0 20px;
 }
 
 .modal {
@@ -12,6 +13,7 @@
   visibility: hidden;
   width: 33%;
   height: 100%;
+  margin: 50px 0 100px 0;
 }
 
 .modal p {
@@ -20,11 +22,21 @@
   line-height: 35px;
 }
 
+.modal:nth-child(1) {
+  margin-top: 50px;
+}
+
 .modal:nth-child(2) {
-  display: flex;
-  flex-direction: column;
   align-items: center;
   line-height: 30px;
+}
+
+.checkmark {
+  background: url('../assets/Checkmark.png') no-repeat 50% 50%;
+  background-size: 50px;
+  height: 50px;
+  width: 50px;
+  margin:0 0 20px;
 }
 
 .modal:nth-child(2) header {
@@ -36,7 +48,7 @@
 }
 
 .modal:nth-child(2) button {
-  width: 80%;
+  width: 70%;
 }
 
 .modal:nth-child(2) p {
@@ -46,6 +58,25 @@
   font-weight: 400;
   line-height: normal;
   margin: 10px 0;
+}
+
+.modal:nth-child(2) div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+}
+
+.modal:nth-child(3) div div {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.modal:nth-child(2) div svg, .modal:nth-child(3) div svg {
+  color: red;
+  width: 40px;
+  height: 30px;
 }
 
 .modal header {
@@ -60,10 +91,12 @@ span {
 }
 
 .visible {
-  display: block;
-  height:fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   visibility: visible;
   position: relative;
+  height: 100%;
 }
 
 .form {
@@ -98,35 +131,58 @@ button {
 }
 
 .modal:nth-child(3) {
-  width: 80%;
-  padding: 200px 0;
+  width: 950px;
   margin-top: 50px;
+  margin-bottom: 100px;
+  position: relative;
+  height: 100%;
+}
+
+.modal-3 {
+  height: 70%;
 }
 
 table {
   width: 100%;
 }
 
-tr:nth-child(1) td:nth-child(n+2) {
+tr:nth-child(1) th:nth-child(n+2) div {
   height: 120px;
-  width: 136px;
-  background-color: red;
-  background-clip:content-box;
-  text-align: center;
+  width: 120px;
+  background-color: #E50915;
+  background-clip:border-box;
+  justify-content: center;
   color: #fff;
+  margin: auto;
   padding: 0 35px;
+  opacity: .6;
+  border-radius: 2px;
 }
 
 tr:nth-child(1) td:nth-child(1) {
   width: 40%;
 }
 
-td {
+td, th {
   padding: 25px;
+  color: gray;
+}
+
+tr:nth-child(2), tr:nth-child(3), tr:nth-child(4) {
+  border-bottom: 1px solid lightgray;
 }
 
 tr:nth-child(n+2) td:nth-child(n+2) {
+  font-weight: bold;
   text-align: center;
+}
+
+tr:nth-child(5) svg {
+  padding-left: 7px;
+}
+
+tr:nth-child(5) svg path {
+  color: lightgray;
 }
 
 .modal:nth-child(3) button {
@@ -177,4 +233,72 @@ tr:nth-child(n+2) td:nth-child(n+2) {
 
 .modal:nth-child(4) p:first-of-type {
   margin: 15px;
+}
+
+app-footer >>> .footer, app-footer >>> footer {
+  background-color: #F3F3F3 !important;
+  border-bottom: none;
+}
+
+app-footer >>> .text-white, app-footer >>> .text-center {
+  color: gray !important;
+  font-weight: normal;
+  background-color: #F3F3F3 !important;
+}
+
+app-header-top >>> .header-top {
+  background-color: transparent;
+  border-bottom: .5px solid lightgray;
+  padding-bottom: 80px;
+}
+
+.select {
+  opacity: 1 !important;
+  color: #E50915;
+}
+
+.select-1 {
+  color: #E50915 !important;
+  border-color: rgba(255, 255, 255, 0);
+  border-bottom-color: #ffffff;
+  border-width: 19px;
+  left: 50%;
+  margin-left: -19px;
+}
+
+.select-2 {
+  border: 1px solid #E50915;
+  box-shadow: .2px .2px 2.5px #E50915;
+}
+
+.arrow-box {
+	position: relative;
+	background: #E50915;
+	border: 4px solid #E50915;
+}
+
+.arrow-box:after {
+	top: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: "";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.arrow-box:after {
+	border-color: rgba(229, 9, 21, 0);
+	border-top-color: #E50915;
+	border-width: 15px;
+	margin-left: -13%;
+}
+
+@media only screen and (max-width: 900px) {
+  tr:nth-child(1) th:nth-child(n+2) div {
+    height: 90px;
+    width: 90px;
+    margin: auto;
+  }
 }

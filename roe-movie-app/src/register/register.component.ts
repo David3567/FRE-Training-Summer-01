@@ -9,6 +9,7 @@ export class RegisterComponent implements OnInit {
   counter : number = 0;
   email : string = '';
   password : string = '';
+  selected : string = '';
 
   constructor() { }
 
@@ -26,6 +27,10 @@ export class RegisterComponent implements OnInit {
 
   setPassword(event : any) {
     this.password = event.target.value;
+  }
+
+  toggleSelect(e: any) {
+    this.selected = e.target.innerText.toLowerCase();
   }
 
 }

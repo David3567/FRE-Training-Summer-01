@@ -31,11 +31,31 @@
   [className]="'modal'"
   [ngClass] = "counter === 1 ? 'visible' : ''"
   >
-    <header>STEP <span>2</span> OF <span>3</span></header>
+  <div>
+    <span [className]="'checkmark'"></span>
+  </div>
+  <header>
+      STEP <span>2</span> OF <span>3</span>
+    </header>
     <h2>Choose your plan.</h2>
-    <p>No commitments, cancel anytime.</p>
-    <p>Everything on movie app for one low price.</p>
-    <p>Unlimited viewing on all of your devices.</p>
+    <div>
+      <svg>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z" fill="currentColor"></path>
+      </svg>
+      <p>No commitments, cancel anytime.</p>
+    </div>
+    <div>
+      <svg>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z" fill="currentColor"></path>
+      </svg>
+      <p>Everything on movie app for one low price.</p>
+    </div>
+    <div>
+      <svg>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z" fill="currentColor"></path>
+      </svg>
+      <p>Unlimited viewing on all of your devices.</p>
+    </div>
     <button 
     
     (click)="incrementCount()">Next</button>
@@ -45,46 +65,76 @@
   [className]="'modal'"
   [ngClass] = "counter === 2 ? 'visible' : ''"
   >
+  <div [className]="'modal-3'">
     <header>STEP <span>2</span> OF <span>3</span></header>
     <h2>Choose the plan that's right for you.</h2>
-    <p>Watch all you want. Ad-free.</p>
-    <p>Recommendations just for you.</p>
-    <p>Change or cancel your plan anytime.</p>
+    <div>
+      <svg>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z" fill="currentColor"></path>
+      </svg>
+      <p>Watch all you want. Ad-free.</p>
+    </div>
+    <div>
+      <svg>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z" fill="currentColor"></path>
+      </svg>
+      <p>Recommendations just for you.</p>
+    </div>
+    <div>
+      <svg>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z" fill="currentColor"></path>
+      </svg>
+      <p>Change or cancel your plan anytime.</p>
+    </div>
     <table>
       <tr>
         <td></td>
-        <td>Basic</td>
-        <td>Standard</td>
-        <td>Premium</td>
+        <th (click)="toggleSelect($event)"><div [ngClass]="selected === 'basic' ? 'select select-2 arrow-box' : ''">Basic</div></th>
+        <th (click)="toggleSelect($event)"><div [ngClass]="selected === 'standard' ? 'select select-2 arrow-box' : ''">Standard</div></th>
+        <th (click)="toggleSelect($event)"><div [ngClass]="selected === 'premium' ? 'select select-2 arrow-box' : ''">Premium</div></th>
       </tr>
       <tr>
         <td>Monthly Price</td>
-        <td>$9.99</td>
-        <td>$15.99</td>
-        <td>$19.99</td>
+        <td [ngClass]="selected === 'basic' ? 'select' : ''">$9.99</td>
+        <td [ngClass]="selected === 'standard' ? 'select' : ''">$15.99</td>
+        <td [ngClass]="selected === 'premium' ? 'select' : ''">$19.99</td>
       </tr>
       <tr>
         <td>Video Quality</td>
-        <td>Good</td>
-        <td>Better</td>
-        <td>Best</td>
+        <td [ngClass]="selected === 'basic' ? 'select' : ''">Good</td>
+        <td [ngClass]="selected === 'standard' ? 'select' : ''">Better</td>
+        <td [ngClass]="selected === 'premium' ? 'select' : ''">Best</td>
       </tr>
       <tr>
         <td>Resolution</td>
-        <td>480p</td>
-        <td>1080p</td>
-        <td>4K+HDR</td>
+        <td [ngClass]="selected === 'basic' ? 'select' : ''">480p</td>
+        <td [ngClass]="selected === 'standard' ? 'select' : ''">1080p</td>
+        <td [ngClass]="selected === 'premium' ? 'select' : ''">4K+HDR</td>
       </tr>
       <tr>
         <td>Watch on your TV, computer, mobile phone and table</td>
-        <td>^</td>
-        <td>^</td>
-        <td>^</td>
+        <td [ngClass]="selected === 'basic' ? 'select' : ''">
+          <svg>
+            <path [ngClass]="selected === 'basic' ? 'select select-1' : ''" fill-rule="evenodd" clip-rule="evenodd" d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z" fill="currentColor"></path>
+          </svg>
+        </td>
+        <td [ngClass]="selected === 'standard' ? 'select' : ''">
+          <svg>
+            <path [ngClass]="selected === 'standard' ? 'select select-1' : ''" fill-rule="evenodd" clip-rule="evenodd" d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z" fill="currentColor"></path>
+          </svg>
+        </td>
+        <td [ngClass]="selected === 'premium' ? 'select' : ''">
+          <svg>
+            <path [ngClass]="selected === 'premium' ? 'select select-1' : ''" fill-rule="evenodd" clip-rule="evenodd" d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z" fill="currentColor"></path>
+          </svg>
+        </td>
       </tr>
     </table>
     <div [className]="'form'">
       <button (click)="incrementCount()">Next</button>
     </div>
+  </div>
+    
   </div>
 
   <div
@@ -105,7 +155,7 @@
   <app-footer>
 
   </app-footer>
-</footer> -->
+</footer>
 <!-- <header class="shadow">
   <app-header></app-header>
 </header>
