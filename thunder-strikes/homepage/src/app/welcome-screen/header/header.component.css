@@ -9,7 +9,7 @@ header {
     width: 100vw;
     height: 8vh;
     z-index: 5;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0.95);
 }
 
 h1{
@@ -51,7 +51,7 @@ button.logo{
     font-size: 1.75em;
     margin-left: 1vw;
     color: white;
-    background-color: black;
+    background-color: rgba(0,0,0,0);
     border: none;
     height: 60%;
 }

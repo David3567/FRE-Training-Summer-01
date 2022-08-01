@@ -6,10 +6,12 @@
 @font-face {
     font-family: Rajdhani-Bold;
     src: url(assets/Rajdhani/Rajdhani-Bold.ttf);
+    font-display: swap;
 }
 @font-face {
     font-family: Rajdhani-Medium;
     src: url(assets/Rajdhani/Rajdhani-Medium.ttf);
+    font-display: swap;
 }
 *{
     padding: 0;

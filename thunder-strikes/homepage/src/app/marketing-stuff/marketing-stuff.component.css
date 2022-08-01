@@ -1,7 +1,12 @@
+:root{
+    --hey: 650px;
+}
 
-:host{
+:host {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100vw;
     color: white;
     /* background-color: rgb(20, 17, 17); */
@@ -9,32 +14,83 @@
     border-top: 1vh solid rgb(28, 28, 28);
 }
 
-main{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4vw;
-    width: 100%;
-    height: 50vh;
-    border-bottom: 1vh solid rgb(28, 28, 28);
-}
-img{
-    height: 80%;
-    width: auto;
-}
-section.description{
+main {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 99vw;
+    height: auto;
+    gap: 6vh;
+    padding: 4vh;
+    border-bottom: 1vh solid rgb(28, 28, 28);
 }
 
-header{
-    width: 30vw;
-    font-size: 3em;
-    font-weight: bolder;
-}
-
-p{
-    width: 30vw;
+header {
     font-size: 1.75em;
+}
+
+p {
+    font-size: 1.25em;
     font-family: Rajdhani-Medium;
 }
+
+img {
+    height: 25vh;
+    width: auto;
+}
+
+section.description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    gap: 1vh;
+}
+
+@media (min-width: 650px){
+    main:nth-child(even){
+        flex-direction: row-reverse;
+    }
+    main:nth-child(odd){
+        flex-direction: row;
+    }
+    main{
+        display: flex;
+        align-items: center;
+        gap: 4vw;
+        width: 100vw;
+        height: 50vh;
+    }
+
+    header, p{
+        width: 100%;
+    }
+    header{
+        font-size: 2.5em;
+    }
+    p{
+        font-size: 1.5em;
+    }
+    section.description{
+        width: 40%;
+    }
+}
+
+@media (min-width: 1024px){
+    header, p{
+        width: 30vw;
+    }
+    header{
+        font-size: 3em;
+    }
+    p{
+        font-size: 1.75em;
+    }
+    img{
+        height: 75%;
+        width: auto;
+    }
+}
+
