@@ -1,8 +1,0 @@
-<main *ngFor="let marketing of marketingData">
-    <section class="description">
-        <header>{{marketing.header}}</header>
-        <p>{{marketing.description}}</p>
-    </section>
-    <img loading="lazy" [src]="marketing.image" [width]="marketing.imageWidth" [height]="marketing.imageHeight"
-        [alt]="marketing.header">
-</main>
