@@ -10,7 +10,25 @@
   <button class="btn btn-prev"><</button>
   </div> -->
 
+  <div class="container">
+    <div class="search-box">
+       <input type="text" class="search-input" placeholder="Search..">
+
+       <button class="search-button">
+         <i class="fas fa-search"></i>
+       </button>
+    </div>
+ </div>
 <div class="movie">
+  <!-- <div class="input-group">
+    <mdb-form-control>
+      <input mdbInput type="search" id="form1" class="form-control" />
+      <label mdbLabel class="form-label" for="form1">Search</label>
+    </mdb-form-control>
+    <button type="button" class="btn btn-primary">
+      <i class="fas fa-search"></i>
+    </button>
+  </div> -->
   <ngb-carousel *ngIf="images">
     <ng-template ngbSlide>
       <div class="picsum-img-wrapper">
