@@ -1,0 +1,33 @@
+<div class="login-container">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="form-title">
+      <h3>Login to your account</h3>
+    </div>
+    <app-login-input
+      label="email"
+      [control]="loginForm.controls.email"
+    ></app-login-input>
+    <app-login-input
+      label="password"
+      [control]="loginForm.controls.password"
+    ></app-login-input>
+    <app-login-input
+      label="rememberMe"
+      [control]="loginForm.controls.rememberMe"
+    ></app-login-input>
+    <button
+      [disabled]="loginForm.invalid"
+      [ngClass]="{ 'btn-disabled': loginForm.invalid }"
+      class="btn btn-form btn-block"
+    >
+      Submit
+    </button>
+    <div class="form-link-container">
+      <a class="form-link" href="#">Forgot your password?</a>
+    </div>
+  </form>
+</div>
+<!-- <hr/>
+<div>form contents : {{ loginForm.value | json }}</div>
+<div>form is valid: {{ loginForm.valid }}</div>
+<div>errors around email: {{ loginForm.controls.email.errors | json }}</div> -->
