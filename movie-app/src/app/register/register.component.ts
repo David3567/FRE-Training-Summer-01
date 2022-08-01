@@ -9,7 +9,7 @@ import {
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css'],
+  styleUrls: ['../../styles.css','./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
   @Output() registerEvent = new EventEmitter();

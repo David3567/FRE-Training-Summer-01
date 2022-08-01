@@ -8,6 +8,7 @@
 
 form {
   text-align: center;
+  color: white;
 }
 
 form .container {
@@ -27,6 +28,9 @@ form .container div {
   font-weight: bolder;
   padding: 0.1rem .25rem;
 }
+input::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
 
 input {
   padding: 0 .75rem;
@@ -37,12 +41,13 @@ input {
   border: none;
   outline: none;
   border-radius: .3rem;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
 }
 
 input:focus {
   border-bottom-width: 4px;
 }
-
 
 
 button {
@@ -52,4 +57,16 @@ button {
   margin: 1rem auto;
   border-radius: 10rem;
   cursor: pointer;
+  background: rgba(255, 0, 0, 0.65);
+  color: white;
+  border: none;
+}
+
+button:hover {
+  background: rgba(255, 0, 0, 0.55);
+}
+
+button[disabled] {
+  background: rgba(255, 0, 0, 0.25);
+  cursor: auto;
 }
