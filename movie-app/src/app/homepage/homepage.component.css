@@ -15,6 +15,10 @@ img {
   object-fit: cover;
   opacity: 0.35;
   position: relative;
+  max-width: 150%;
+  max-height: 150%;
+  min-width: 400px;
+  min-height: 900px;
 }
 
 .hero-text {
@@ -50,7 +54,7 @@ img {
   top: 3%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 90%;
+  width: 85%;
 }
 
 .nav-logo-wrapper {
@@ -60,7 +64,7 @@ img {
 }
 
 .font-effect-3d-float {
-  text-shadow: 0 0.032em 0 #b0b0b0, 0px 0.15em 0.11em rgba(0, 0, 0, 0.15),
+  text-shadow: 0 0.06em 0 #b0b0b0, 0px 0.15em 0.11em rgba(0, 0, 0, 0.2),
     0px 0.25em 0.021em rgba(0, 0, 0, 0.1), 0px 0.32em 0.32em rgba(0, 0, 0, 0.1);
   color: #e11221;
   font-size: xx-large;
@@ -93,10 +97,6 @@ img {
 .font-effect-3d-float,
 .nav-btn-signIn {
   font-weight: 800;
-}
-
-.content {
-  margin: 0 auto;
 }
 
 .content-card-wrapper {
