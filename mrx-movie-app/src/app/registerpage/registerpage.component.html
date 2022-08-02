@@ -1,1 +1,58 @@
 <p>registerpage works!</p>
+<div class="register-container">
+    <div class="register-header">
+        <!-- <h2>Netflix</h2> -->
+        <img src="../../assets/images/logo.png" alt="logo" class="logo" />
+        <h2>Signin</h2>
+    </div>
+    <div class="register-left"></div>
+    <div class="register-form-container">
+        <div class="reg-form-description">
+            <div class="reg-steps">STEP <strong>1</strong> OF <strong>3</strong></div>
+            <div class="reg-desc-head">
+                <h3>Create a password to start your membership</h3>
+            </div>
+            <div class="reg-desc-para">
+                <h4>Just a few more steps and you're done!
+                    We hate paperwork, too.</h4>
+            </div>
+        </div>
+        <div class="register-form" #regFormDiv>
+            <container-element [ngSwitch]="switch_expression">
+                <!-- the same view can be shown in more than one case -->
+                <ng-container *ngSwitchCase="1">
+                    <form class="" action="">
+                        <!-- <label for="regEmail">Email:</label><br> -->
+                        <input placeholder="Email" class="regInput" type="text" id="regEmail" name="regEmail"><br>
+                        <!-- <label for="regPassword">Password:</label><br> -->
+                        <input placeholder="Add a password" class="regInput" type="password" id="regPassword" name="regPassword"><br><br>
+                    </form>
+                </ng-container>
+                <ng-container *ngSwitchCase="2">
+                    green
+                </ng-container>
+                <ng-container *ngSwitchCase="3">
+                    red
+                </ng-container>
+                <!--default case when there are no matches -->
+                <ng-container *ngSwitchDefault>
+                    <form class="" action="">
+                        <!-- <label for="regEmail">Email:</label><br> -->
+                        <input placeholder="Email" class="regInput" type="text" id="regEmail" name="regEmail"><br>
+                        <!-- <label for="regPassword">Password:</label><br> -->
+                        <input placeholder="Add a password" class="regInput" type="password" id="regPassword" name="regPassword"><br><br>
+                    </form>
+                </ng-container>
+              </container-element>
+        </div>
+        <div class="register-button-container">
+            <button (click)="regNextClick()" class="regButton">Next</button>
+        </div>
+    </div>
+    <div class="register-right"></div>
+    <div class="register-footer">
+        <footer>
+            <h2>Footer</h2>
+        </footer>
+    </div>
+</div>

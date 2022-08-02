@@ -1,0 +1,79 @@
+.register-container {
+    height: 100vh;
+    background-color: white;
+    display: grid;
+    grid-template: auto 1fr auto / auto 1fr auto;
+}
+
+.register-container .register-header {
+    padding: 2rem;
+    grid-column: 1 / 4;
+}
+
+.register-container .register-left {
+    grid-column: 1 / 2;
+}
+
+.register-container .register-form-container {
+    grid-column: 2 / 3;
+}
+
+.register-container .register-right {
+    grid-column: 3 / 4;
+}
+
+.register-container .register-footer {
+    grid-column: 1 / 4;
+    padding: 2rem;
+}
+
+.register-form-container {
+    display: grid;
+    place-items: center;
+    padding: 2rem;
+    align-content: center;
+}
+
+
+.register-footer {
+    background-color: #f3f3f3;
+    color: #737373;
+}
+
+.register-form,  .reg-form-description, .register-button-container{
+    width: 400px;
+}
+
+.register-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid #ccc;
+}
+
+.register-header h2:nth-child(2) {
+    text-align: end;
+}
+
+input.regInput {
+    width: 100%;
+    padding: 20px 20px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-bottom: 12px;
+}
+
+button.regButton {
+    width: 100%;
+    background-color: red;
+    color: white;
+    padding: 14px 20px;
+    /* margin: 8px 0; */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+button.regButton:hover {
+    background-color: rgb(235, 57, 57);
+    transition: 0.2s;
+}
