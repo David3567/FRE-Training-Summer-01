@@ -49,3 +49,6 @@ button
   word-spacing: .1em;
   margin-top: -6px;
 }
+
+.validEmail{border-color: #f6f6f6;}
+.nonvalidEmail{border-color: red;}
