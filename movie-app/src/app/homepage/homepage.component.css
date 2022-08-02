@@ -8,7 +8,9 @@ body {
   background: black;
   overflow: hidden;
   max-height: 1000px;
-  width: 100vw;
+  width: 100%;
+  min-height: 100vh;
+  object-fit: cover;
 }
 
 img {
@@ -19,6 +21,7 @@ img {
   max-height: 150%;
   min-width: 400px;
   min-height: 900px;
+  overflow-x: hidden;
 }
 
 .hero-text {

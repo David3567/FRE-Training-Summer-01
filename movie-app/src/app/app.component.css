@@ -8,6 +8,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+app-homepage {
+  height: 100vw;
+  width: 100vw;
+}
+
 h1,
 h2,
 h3,
