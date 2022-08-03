@@ -7,8 +7,26 @@ import { NavHeaderHPComponent } from './components/home-page/nav-header-hp/nav-h
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { Route, RouterModule } from '@angular/router';
 
-
+const routes: Route[] = [
+  {
+    path: "", redirectTo:"homepage",  pathMatch:"full"
+  },
+  {
+    path: "/sign-in", component: SignInComponent
+  },
+  {
+    path: "/register", component: RegisterPageComponent
+  },
+  {
+    path: "/homepage", component: HomePageComponent
+  },
+  {
+    path:"**", component: PageNotFoundComponent
+  }
+]
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,12 +34,13 @@ import { RegisterPageComponent } from './register-page/register-page.component';
     NavHeaderHPComponent,
     HomePageComponent,
     SignInComponent,
-    RegisterPageComponent
+    RegisterPageComponent,
+    PageNotFoundComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(routes)
   ],
-  imports: [BrowserModule],
   providers: [],
   bootstrap: [AppComponent],
 })
