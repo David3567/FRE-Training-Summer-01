@@ -9,6 +9,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { LoginInputComponent } from './login-input/login-input.component';
 import { RegisterComponent } from './register/register.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     LoginInputComponent,
     RegisterComponent,
     NavbarComponent,
+    FooterComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
