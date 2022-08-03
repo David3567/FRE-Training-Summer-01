@@ -5,11 +5,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent {
-  show = false;
+  isHidden = true;
   showErrorMess = false;
 
   showPassword(): void {
-    this.show = !this.show;
+    this.isHidden = !this.isHidden;
   }
 
   onLogin() {

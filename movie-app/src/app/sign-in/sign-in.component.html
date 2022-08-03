@@ -14,9 +14,9 @@
             </em>
           </label>
             <label for="password" class="space__between">
-              <input [type]="show ? 'password':'text'" name="password" id="password" placeholder="Password">
+              <input [type]="isHidden ? 'password':'text'" name="password" id="password" placeholder="Password">
               <span (click)="showPassword()" class="show__password">
-                <ng-container *ngIf="show; else hidePassword">
+                <ng-container *ngIf="isHidden; else hidePassword">
                  Show
                 </ng-container>
                 <ng-template #hidePassword>
@@ -41,7 +41,7 @@
           <div>
             <p>
               <span>New to Netflix?</span>
-              <a href="sign__up" routerLink="sign__up">
+              <a href="sign__up" routerLink="/register">
                 Sign Up Now
               </a>
             </p>

@@ -9,19 +9,20 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { Route, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 const routes: Route[] = [
   {
-    path: "", redirectTo:"homepage",  pathMatch:"full"
+    path: "", redirectTo:"/homepage",  pathMatch:"full"
   },
   {
-    path: "/sign-in", component: SignInComponent
+    path: "sign-in", component: SignInComponent
   },
   {
-    path: "/register", component: RegisterPageComponent
+    path: "register", component: RegisterPageComponent
   },
   {
-    path: "/homepage", component: HomePageComponent
+    path: "homepage", component: HomePageComponent
   },
   {
     path:"**", component: PageNotFoundComponent
@@ -39,8 +40,9 @@ const routes: Route[] = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
   ],
+  exports: [RouterModule],
   providers: [],
   bootstrap: [AppComponent],
 })

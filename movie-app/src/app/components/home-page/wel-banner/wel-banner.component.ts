@@ -6,6 +6,7 @@ import {
   ViewChild,
   ElementRef,
 } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-wel-banner',
@@ -14,11 +15,12 @@ import {
 })
 export class WelBannerComponent implements OnInit {
   @Output() regisBtn = new EventEmitter();
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
 
   regisClick() {
     this.regisBtn.emit('Click on regis');
+    this.router.navigate(["/register", {}])
   }
 }
