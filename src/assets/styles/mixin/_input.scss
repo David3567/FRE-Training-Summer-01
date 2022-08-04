@@ -1,0 +1,35 @@
+@import "../base/base";
+
+@mixin input-base {
+  padding: 0.25rem 2rem;
+  margin: 0.65rem auto;
+  width: 100%;
+  max-width: 60rem;
+  min-width: 10rem;
+  min-height: 5rem;
+  border-radius: 1rem;
+  background-color: $bg-layer-darker;
+
+  &:focus {
+    outline: none;
+    border: 0.1rem solid $border-color-danger;
+    background: rgba($color: $bg-danger, $alpha: 0.05);
+  }
+
+  &.error {
+    border: 0.1rem solid $border-color-danger;
+    background: rgba($color: $bg-danger, $alpha: 0.05);
+  }
+
+  &::placeholder {
+    color: $text-color-low;
+  }
+}
+
+@mixin label-msg-error {
+  border-left: 0.5rem solid $border-color-danger;
+  color: $text-color-danger;
+  font-size: 0.75em;
+  font-weight: lighter;
+  padding: 0.1rem 1.5rem;
+}
