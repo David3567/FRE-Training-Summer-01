@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { SearchComponent } from './components/search/search.component';
 import { BooklistComponent } from './components/booklist/booklist.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { BookService } from './services/book.service';
 
@@ -19,7 +19,13 @@ import { BookService } from './services/book.service';
     WishlistComponent,
     HomeComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [BookService],
   bootstrap: [AppComponent],
 })
