@@ -1,0 +1,12 @@
+@mixin form-container {
+  max-width: 40rem;
+}
+
+@mixin form-title {
+  width: 100%;
+  margin: 1rem auto;
+  font-size: 2.75rem;
+  font-weight: bolder;
+  text-transform: capitalize;
+  text-align: center;
+}

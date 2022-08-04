@@ -1,0 +1,26 @@
+//  base colors ⤵
+$white: #fff;
+$red: #E11222;
+
+$gray-dark: #171a1f;
+$gray-medium: #1f212a;
+$gray-light: #383842;
+
+
+
+//  Semantic Colors ⤵ 
+$bg-main: $gray-dark;
+$bg-layer-darker: $gray-medium;
+$bg-layer-lighter: $gray-light;
+$bg-danger: $red;
+
+$border-color-danger: $red;
+$border-color-normal: $gray-light;
+
+$text-color-danger: $red;
+$text-color-normal: $white;
+$text-color-dimmed: rgba($color: $text-color-normal, $alpha: .75);
+$text-color-low: rgba($color: $text-color-normal, $alpha: .5);
+
+//  Effects ⤵
+$transition: 0.3s ease-in-out all
