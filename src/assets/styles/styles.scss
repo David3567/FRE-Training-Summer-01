@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css?family=DM+Sans:400");
+@import "base/base";
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-family: "DM Sans", sans-serif;
+  color: $text-color-normal;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  background: $bg-main;
+  color: white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-transform: capitalize;
+}
+
+a, button {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+ul, li {
+  list-style-type: none;
+  padding: 0;
+}
+
+img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
