@@ -1,0 +1,43 @@
+@import "../base/base";
+
+@mixin btn-base {
+  padding: 0.25rem 5rem;
+  margin: 2rem auto;
+  width: 100%;
+  max-width: 60rem;
+  min-width: 10rem;
+  min-height: 4rem;
+  border-radius: 3rem;
+  font-size: 0.85em;
+  font-weight: bold;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: $transition;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+@mixin btn-pri {
+  @include btn-base;
+  background: $bg-danger;
+  &:hover {
+    background: rgba($color: $bg-danger, $alpha: 0.75);
+  }
+}
+
+@mixin btn-sec {
+  background: $bg-layer-lighter;
+  &:hover {
+    background: rgba($color: $bg-danger, $alpha: 0.75);
+  }
+}
+
+@mixin btn-ter {
+  @include btn-base;
+  border: 1px solid $border-color-danger;
+  color: $text-color-danger;
+}
