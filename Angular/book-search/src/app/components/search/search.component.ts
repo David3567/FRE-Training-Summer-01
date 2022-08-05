@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { fromEvent } from 'rxjs';
 import { debounceTime, mergeMap, switchMap } from 'rxjs/operators';
 import { BookService } from 'src/app/services/book.service';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-search',
@@ -9,17 +10,24 @@ import { BookService } from 'src/app/services/book.service';
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
-  bookName: string = '';
-  @ViewChild('inputbox', { static: true }) inputbox!: ElementRef;
+  form!: FormGroup;
 
-  constructor(private readonly bookService: BookService) {}
+  constructor(
+    private readonly bookService: BookService,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
-    fromEvent(this.inputbox.nativeElement, 'keyup')
-      .pipe(
+    this.form = this.fb.group({
+      inputbox: [''],
+    });
+
+    this.form
+      .get('inputbox')
+      ?.valueChanges.pipe(
         debounceTime(500),
-        switchMap((_) => {
-          return this.bookService.getBooks(this.bookName);
+        switchMap((val) => {
+          return this.bookService.getBooks(val);
         })
       )
       .subscribe();
