@@ -1,68 +1,64 @@
 <div class="wrapper">
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <h1>Register</h1>
+    <h1 class="form-title">Register</h1>
     <span class="error-msg" *ngIf="serverErrorMsg">{{ serverErrorMsg }}</span>
-    <div class="container">
-      <div>
-        <input
-          formControlName="username"
-          placeholder="username"
-          type="text"
-          id="username"
-        />
-        <label
-          class="error-msg"
-          *ngIf="hasError('username', 'required') && hasUserEvent('username')"
-          >username missing</label
-        >
-      </div>
-      <div>
-        <input
-          formControlName="email"
-          placeholder="email"
-          type="email"
-          id="email"
-        />
-        <label
-          class="error-msg"
-          *ngIf="hasError('email', 'required') && hasUserEvent('email')"
-          >email address missing</label
-        >
-        <label
-          class="error-msg"
-          *ngIf="hasError('email', 'email') && hasUserEvent('email')"
-          >provide a valid email address</label
-        >
-      </div>
+    <div>
+      <input
+        formControlName="username"
+        placeholder="username"
+        type="text"
+        id="username"
+      />
+      <label
+        class="error-msg"
+        *ngIf="hasError('username', 'required') && hasUserEvent('username')"
+        >username missing</label
+      >
     </div>
-    <div class="container">
-      <div>
-        <input
-          formControlName="password"
-          placeholder="password"
-          type="password"
-        />
-        <label
-          class="error-msg"
-          *ngIf="hasError('password', 'required') && hasUserEvent('password')"
-          >password missing</label
-        >
-      </div>
-      <div>
-        <input
-          formControlName="confirmPassword"
-          placeholder="confirm password"
-          type="password"
-        />
-        <label
-          class="error-msg"
-          *ngIf="
-            hasError('confirmPassword', 'required') &&
-            hasUserEvent('confirmPassword')
-          "
-          >confirm your password</label
-        >
-      </div>
+    <div>
+      <input
+        formControlName="email"
+        placeholder="email"
+        type="email"
+        id="email"
+      />
+      <label
+        class="error-msg"
+        *ngIf="hasError('email', 'required') && hasUserEvent('email')"
+        >email address missing</label
+      >
+      <label
+        class="error-msg"
+        *ngIf="hasError('email', 'email') && hasUserEvent('email')"
+        >provide a valid email address</label
+      >
+    </div>
+    <div>
+      <input
+        formControlName="password"
+        placeholder="password"
+        type="password"
+      />
+      <label
+        class="error-msg"
+        *ngIf="hasError('password', 'required') && hasUserEvent('password')"
+        >password missing</label
+      >
+    </div>
+    <div>
+      <input
+        formControlName="confirmPassword"
+        placeholder="confirm password"
+        type="password"
+      />
+      <label
+        class="error-msg"
+        *ngIf="
+          hasError('confirmPassword', 'required') &&
+          hasUserEvent('confirmPassword')
+        "
+        >confirm your password</label
+      >
     </div>
     <button [disabled]="!registerForm.valid">Register</button>
   </form>
