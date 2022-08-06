@@ -1,0 +1,20 @@
+<main>
+  <div class="input_container">
+    <form [formGroup]="SearchForm">
+      <label for="query">Select Your Movie To search:</label>
+      <input #search type="text" formControlName="search" (keyup)="changeOtherControls()">
+      <br>
+      <label for="upcoming">Upcoming</label><input type="checkbox" name="upcoming" formControlName="upcoming" (change)="selectUpcoming()">
+      <label for="nowplaying">Now Playing</label><input type="checkbox" name="nowplaying" formControlName="nowplaying" (change)="selectNowPlaying()">
+    </form>
+  </div>
+  <div *ngFor="let Movie of Movies['results']" class="container" [ngClass]="Movie.vote_average>=8?class1:class2">
+    <img *ngIf="Movie.backdrop_path" src="https://image.tmdb.org/t/p/w500{{Movie.backdrop_path}}">
+    <h2 [ngStyle]="Movie.vote_average>=8?VotingAverageHeader1:(Movie.vote_average>5 && Movie.vote_average<8)?VotingAverageHeader2:VotingAverageHeader3">Voting:{{Movie.title}} </h2>
+    <h4>Overview:{{Movie.overview}}</h4>
+    <h5>Release Date:{{Movie.release_date}}</h5>
+    <h6 [ngStyle]="Movie.vote_average>=8?VotingAveragecolor1:(Movie.vote_average>5 && Movie.vote_average<8)?VotingAveragecolor2:VotingAveragecolor3">Voting:{{Movie.vote_average}}</h6>
+    <h6>Vote Count:{{Movie.vote_count}}</h6>
+    <hr>
+  </div>
+</main>

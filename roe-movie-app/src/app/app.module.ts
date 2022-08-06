@@ -18,12 +18,14 @@ import { MatExpansionModule } from '@angular/material/expansion';
 
 import { Router } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { MovielistComponent } from '../movielist/movielist.component';
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, AppRoutingModule, BrowserAnimationsModule, MatExpansionModule, ReactiveFormsModule],
+  imports: [BrowserModule, FormsModule, AppRoutingModule, BrowserAnimationsModule, MatExpansionModule, ReactiveFormsModule,HttpClientModule],
   declarations: [AppComponent,
     HeaderComponent, HeaderTopComponent,
-    HeaderBannerComponent, HeaderBannerContentComponent, FooterComponent, MainComponent, SigninComponent, HomeComponent, RegisterComponent],
+    HeaderBannerComponent, HeaderBannerContentComponent, FooterComponent, MainComponent, SigninComponent, HomeComponent, RegisterComponent, MovielistComponent],
   bootstrap: [AppComponent],
   exports: []
 })
