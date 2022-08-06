@@ -10,6 +10,7 @@ import { RegisterPageComponent } from './register-page/register-page.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { Route, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { MovieCardComponent } from './movie-card/movie-card.component';
 
 const routes: Route[] = [
   {
@@ -36,7 +37,8 @@ const routes: Route[] = [
     HomePageComponent,
     SignInComponent,
     RegisterPageComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    MovieCardComponent
   ],
   imports: [
     BrowserModule,
