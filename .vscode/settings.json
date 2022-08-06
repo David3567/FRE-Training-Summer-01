@@ -20,5 +20,8 @@
 
   "prettier.tabWidth": 2,
   "prettier.arrowParens": "avoid",
-  "prettier.singleQuote": true
+  "prettier.singleQuote": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  }
 }

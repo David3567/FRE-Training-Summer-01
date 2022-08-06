@@ -1,44 +1,50 @@
 .hero-navbar {
-    background: transparent;
-    position: absolute;
-    margin: 0 80px;
-    display: flex;
-    flex-direction: row;
-    top: 2%;
-    width: 85%;
-    flex-wrap: wrap;
-  }
+  background: transparent;
+  position: absolute;
+  margin: 0 80px;
+  display: flex;
+  flex-direction: row;
+  top: 2%;
+  width: 85%;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+}
 
-  .nav-logo-wrapper {
-    height: inherit;
-    width: 80%;
-    margin-right: auto;
-  }
+.nav-logo-wrapper {
+  height: inherit;
+  width: 80%;
+  margin-right: auto;
+}
 
-  .font-effect-3d-float {
-    text-shadow: 0 0.06em 0 #b0b0b0, 0px 0.15em 0.11em rgba(0, 0, 0, 0.2),
-      0px 0.25em 0.021em rgba(0, 0, 0, 0.1), 0px 0.32em 0.32em rgba(0, 0, 0, 0.1);
-    color: #e11221;
-    font-size: xx-large;
-  }
-  
-  .font-effect-3d-float,
-  .nav-btn-signIn {
-    font-weight: 800;
-  }
+.font-effect-3d-float {
+  text-shadow: 0 0.06em 0 #b0b0b0, 0px 0.15em 0.11em rgba(0, 0, 0, 0.2),
+    0px 0.25em 0.021em rgba(0, 0, 0, 0.1), 0px 0.32em 0.32em rgba(0, 0, 0, 0.1);
+  color: #e11221;
+  font-size: xx-large;
+}
 
-  .nav-btn-signIn {
-    margin: 10px 0 10px 0.75rem;
-    padding: 7px 17px;
-  }
-  
-  .nav-btn-signIn,
-  .btn-signUp {
-    background-color: #e11221;
-    font-size: 1rem;
-    line-height: normal;
-    border-radius: 4px;
-    color: #fff;
-    white-space: nowrap;
-    border: none;
-  }
+.font-effect-3d-float:hover {
+  cursor: pointer;
+}
+
+.font-effect-3d-float,
+.nav-btn-signIn {
+  font-weight: 600;
+}
+
+.nav-btn-signIn {
+  margin: 10px 0 10px 0.75rem;
+  padding: 4px 13px;
+}
+
+.nav-btn-signIn,
+.btn-signUp {
+  background-color: #e11221;
+  font-size: 15px;
+  line-height: normal;
+  border-radius: 4px;
+  color: #fff;
+  white-space: nowrap;
+  border: none;
+}

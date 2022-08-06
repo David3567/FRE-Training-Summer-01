@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css?family=DM+Sans:400");
+// @import url("https://fonts.googleapis.com/css?family=DM+Sans:400");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap");
 @import "base/base";
 
 *,
@@ -8,7 +9,7 @@
   margin: 0;
   padding: 0;
   border: none;
-  font-family: "DM Sans", sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: $text-color-normal;
 }
 
@@ -31,12 +32,14 @@ h6 {
   text-transform: capitalize;
 }
 
-a, button {
+a,
+button {
   text-decoration: none;
   cursor: pointer;
 }
 
-ul, li {
+ul,
+li {
   list-style-type: none;
   padding: 0;
 }
