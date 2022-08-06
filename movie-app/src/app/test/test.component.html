@@ -1,0 +1,4 @@
+<button (click)="getData()">Button</button>
+<div *ngFor="let movie of movie$ | async">
+  {{ movie.title }}
+</div>
