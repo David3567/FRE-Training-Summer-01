@@ -1,6 +1,6 @@
 <header>Now Playing</header>
 <ul>
-    <li *ngFor="let movie of movies$ | async">
+    <li *ngFor="let movie of moviesPlaying$ | async">
         <img loading="lazy" [width]="1280" [height]="720" [src]="movie.backdrop_path" [alt]="movie.title">
     </li>
 </ul>

@@ -6,6 +6,7 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { NowPlayingMoviesComponent } from './components/now-playing-movies/now-playing-movies.component';
 import { HttpClientModule } from '@angular/common/http';
 import { WelcomeHeaderComponent } from './components/welcome-header/welcome-header.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -19,7 +20,8 @@ import { WelcomeHeaderComponent } from './components/welcome-header/welcome-head
   ],
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ]
 })
 export class HomePageModule { }

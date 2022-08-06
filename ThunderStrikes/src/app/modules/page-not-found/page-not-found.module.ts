@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RegistrationComponent } from './components/registration/registration.component';
+import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 
 
 
 @NgModule({
   declarations: [
-    RegistrationComponent
+    NotFoundPageComponent
   ],
   imports: [
     CommonModule
   ]
 })
-export class RegistrationPageModule { }
+export class PageNotFoundModule { }
