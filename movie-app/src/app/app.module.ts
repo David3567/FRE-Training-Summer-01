@@ -13,6 +13,7 @@ import { Route, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MovieService } from './services/movie.service';
 import { TestComponent } from './test/test.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Route[] = [
   {
@@ -48,7 +49,13 @@ const routes: Route[] = [
     PageNotFoundComponent,
     TestComponent,
   ],
-  imports: [BrowserModule, RouterModule.forRoot(routes), HttpClientModule],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(routes),
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   exports: [RouterModule],
   providers: [MovieService],
   bootstrap: [AppComponent],

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { RootObject } from '../interfaces/movie.interface';
 import { MovieService } from '../services/movie.service';
-
+import { debounceTime, mergeMap, switchMap } from 'rxjs/operators';
 @Component({
   selector: 'app-test',
   templateUrl: './test.component.html',
@@ -10,17 +11,28 @@ import { MovieService } from '../services/movie.service';
 })
 export class TestComponent implements OnInit {
   movie$!: Observable<any>;
+  form!: FormGroup;
 
-  constructor(private movieService: MovieService) {}
+  constructor(private movieService: MovieService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.movie$ = this.movieService.movies$;
+
+    this.form = this.fb.group({
+      inputbox: [''],
+    });
+    this.form
+      .get('inputbox')
+      ?.valueChanges.pipe(
+        debounceTime(500),
+        switchMap((val) => {
+          return this.movieService.searchMovies(val);
+        })
+      )
+      .subscribe(console.log);
   }
 
   getData() {
-    for (let i = 0; i < 20; i++) {
-      this.movieService.getMovies().subscribe(console.log);
-    }
-    console.log('This is from initialize: ', this.movie$);
+    this.movieService.getMovieList().subscribe(console.log);
   }
 }

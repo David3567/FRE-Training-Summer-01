@@ -2,3 +2,6 @@
 <div *ngFor="let movie of movie$ | async">
   {{ movie.title }}
 </div>
+<form [formGroup]="form">
+  <input formControlName="inputbox" />
+</form>
