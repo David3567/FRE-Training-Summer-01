@@ -1,0 +1,23 @@
+.movies__list__container{
+  color:#fff;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100vw;
+  min-height: max-content;
+}
+.movies__list__container > *{
+  width: 100%;
+}
+.movies-list{
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.movies-list > li{
+  display: flex;
+  flex-wrap: wrap;
+  width: 300px;
+  margin: 2%;
+  box-shadow: 0 0 2px rgb(66, 65, 65);
+}

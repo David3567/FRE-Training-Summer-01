@@ -1,0 +1,32 @@
+<section class="movies__list__container">
+  <header>
+    <h2>
+      Random Movies List <span *ngIf="movies">{{movies!.length}}</span>
+    </h2>
+  </header>
+  <ng-container *ngIf="movies && movies.length > 0; else emptyList">
+    <ul class="movies-list flex__wrapper">
+      <li *ngFor="let movie of movies">
+        <img [src]="movie.poster_path.substring(1)" alt="">
+        <section class="flex__wrap">
+          <h3>
+            <strong>Title:</strong> {{movie.original_title}}
+          </h3>
+          <section class="overview">
+            <h4>
+              Overview
+            </h4>
+            <p>
+              {{movie.overview}}
+            </p>
+          </section>
+        </section>
+      </li>
+    </ul>
+  </ng-container>
+  <ng-template #emptyList>
+    <p>
+      <em>Empty list. Refresh</em>
+    </p>
+  </ng-template>
+</section>
