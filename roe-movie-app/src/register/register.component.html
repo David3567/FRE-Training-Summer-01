@@ -1,6 +1,6 @@
-<app-header-top></app-header-top>
+<app-header-top [displayButton]="false"></app-header-top>
 <div [className]="'register-component'">
-  <div 
+  <div
     [className]="'modal'"
     [ngClass] = "counter === 0 ? 'visible' : ''"
   >
@@ -11,15 +11,15 @@
     <div
       [className]="'form'"
     >
-      <input 
-        name="email" 
-        type="email" 
+      <input
+        name="email"
+        type="email"
         placeholder="Add an email"
         (keyup)="setEmail($event)"
       />
-      <input 
-        name="password" 
-        type="password" 
+      <input
+        name="password"
+        type="password"
         placeholder="Add a password"
         (keyup)="setPassword($event)"
         />
@@ -56,8 +56,8 @@
       </svg>
       <p>Unlimited viewing on all of your devices.</p>
     </div>
-    <button 
-    
+    <button
+
     (click)="incrementCount()">Next</button>
   </div>
 
@@ -134,7 +134,7 @@
       <button (click)="incrementCount()">Next</button>
     </div>
   </div>
-    
+
   </div>
 
   <div

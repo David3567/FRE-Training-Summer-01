@@ -1,12 +1,12 @@
-<div class="footer">
+<div class="footer" [ngClass]="isHome?'homeclass':''">
   <!-- Remove the container if you want to extend the Footer to full width. -->
-<div class="container my-5">
+<div class="container my-5" [ngClass]="isHome?'homeclass':''">
   <!-- Footer -->
   <footer class="text-center text-white" style="background-color: #000000">
     <!-- Grid container -->
-    <div class="container">
+    <div class="container" [ngClass]="isHome?'homeclass':''">
       <!-- Section: Links -->
-      <section class="mt-5">
+      <section class="mt-5" [ngClass]="isHome?'homeclass':''">
         <!-- Grid row-->
         <div class="row text-center d-flex justify-content-center pt-5">
           <!-- Grid column -->
@@ -42,7 +42,7 @@
           <!-- Grid column -->
 
           <!-- Grid column -->
-          <div class="col-md-2">
+          <div class="col-md-2" >
             <h6 class="text-uppercase font-weight-bold">
               <a href="#!" class="text-white">Contact</a>
             </h6>
@@ -56,9 +56,9 @@
       <hr class="my-5" />
 
       <!-- Section: Text -->
-      <section class="mb-5">
-        <div class="row d-flex justify-content-center">
-          <div class="col-lg-8">
+      <section class="mb-5" [ngClass]="isHome?'homeclass':''">
+        <div class="row d-flex justify-content-center" [ngClass]="isHome?'homeclass':''">
+          <div class="col-lg-8" [ngClass]="isHome?'homeclass':''">
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
               distinctio earum repellat quaerat voluptatibus placeat nam,
@@ -71,7 +71,7 @@
       <!-- Section: Text -->
 
       <!-- Section: Social -->
-      <section class="text-center mb-5">
+      <section class="text-center mb-5" [ngClass]="isHome?'homeclass':''">
         <a href="" class="text-white me-4">
           <i class="fab fa-facebook-f"></i>
         </a>
