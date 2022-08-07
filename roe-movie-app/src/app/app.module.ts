@@ -15,6 +15,9 @@ import { SigninComponent } from '../signin/signin.component';
 import { RegisterComponent } from '../register/register.component';
 
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { Router } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -22,7 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MovielistComponent } from '../movielist/movielist.component';
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, AppRoutingModule, BrowserAnimationsModule, MatExpansionModule, ReactiveFormsModule,HttpClientModule],
+  imports: [BrowserModule, FormsModule, AppRoutingModule, BrowserAnimationsModule, MatExpansionModule, ReactiveFormsModule, HttpClientModule, MatButtonModule, MatInputModule, MatFormFieldModule],
   declarations: [AppComponent,
     HeaderComponent, HeaderTopComponent,
     HeaderBannerComponent, HeaderBannerContentComponent, FooterComponent, MainComponent, SigninComponent, HomeComponent, RegisterComponent, MovielistComponent],

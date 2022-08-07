@@ -1,75 +1,80 @@
-.signin-component {
+.login-component {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100%;
     letter-spacing: .5px;
+    background: url('../assets/device-pile.jpg');
     color: white;
 }
 
-.signin-content {
+.login-container {
     background-color: black;
     padding: 50px;
-    background: rgba(0, 0, 0, 0.9);
     box-sizing: border-box;
     width: 400px;
 }
 
-.form {
-    display: flex;
-    flex-direction: column;
-    margin-top: 10px;
-}
-
-.form input {
-    height: 45px;
-    margin: 15px 0;
-    padding: 0 10px;
-}
-
-.signin {
+.mat-form-field {
     width: 100%;
+    margin-top: 25px;
+}
+
+.mat-form-field input {
+    width: 200px;
     height: 55px;
-    margin-top: 10%;
-    margin-bottom: 2%;
-    background-color:  rgb(161, 20, 20);
-    color:white;
+}
+
+.mat-error {
+    font-size: 15px;
+}
+
+.input-container {
+    height: 50%;
+    width: 100%;
+    text-align: left;
+}
+
+.loginPwd,
+.pwdBtn {
+    display: inline-block;
+}
+
+.pwdBtn {
     font-weight: bold;
+    color: white;
+    background-color: transparent;
+    margin-bottom: 5px;
 }
 
-.pwd {
-    width: 70%;
+app-footer>>>.text-white, app-footer>>>.text-center {
+    color: gray !important;
+    font-weight: normal;
+    background-color: #F3F3F3 !important;
 }
 
-.form div button {
-    width: 30%;
-    height: 45px;
-    border-width: 1px;
-    background-color: #FFFFFF;
+app-header-top>>>.header-top {
+    background-color: transparent;
+    border-bottom: .5px solid lightgray;
+    padding-bottom: 80px;
 }
 
-.help a {
-    float: right;
+app-footer>>>.footer, app-footer>>>footer {
+    background-color: #F3F3F3 !important;
+    border-bottom: none;
 }
 
-.paragraph {
-    margin: 20% 0;
+.mt-top {
+    margin-top: 30px;
 }
 
-app-footer >>> .text-white, app-footer >>> .text-center {
-  color: gray !important;
-  font-weight: normal;
-  background-color: #F3F3F3 !important;
+.mt-top button {
+    width: 100%;
+    background-color: rgb(161, 20, 20);
 }
 
-app-header-top >>> .header-top {
-  background-color: transparent;
-  border-bottom: .5px solid lightgray;
-  padding-bottom: 80px;
-}
-
-app-footer >>> .footer, app-footer >>> footer {
-  background-color: #F3F3F3 !important;
-  border-bottom: none;
+.mt-top button:disabled{
+    background-color: #cccccc;;
+    color:#666666;
 }
