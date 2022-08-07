@@ -2,7 +2,11 @@
     [ngStyle]="showHeader ? {display: 'flex'} : {display: 'none'}">
     <button class="logo" (click)="logoClick()">⚡Strikes</button>
     <div class="button-container">
-        <button class="register">Register</button>
-        <button class="login">Login</button>
+        <a routerLink="/register">
+            <button class="register">Register</button>
+        </a>
+        <a routerLink="/login">
+            <button class="login">Login</button>
+        </a>
     </div>
 </header>

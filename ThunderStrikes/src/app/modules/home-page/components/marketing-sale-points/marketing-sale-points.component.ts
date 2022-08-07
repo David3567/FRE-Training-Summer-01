@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Marketing } from '../homepage/interfaces/marketing';
-import { MarketingService } from '../homepage/services/marketing.service';
+import { MarketingService } from '../../services/marketing.service';
 
 @Component({
   selector: 'app-marketing-sale-points',
