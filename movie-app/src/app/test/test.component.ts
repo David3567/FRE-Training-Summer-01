@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RootObject } from '../interfaces/movie.interface';
 import { MovieService } from '../services/movie.service';
+import {MovieCardComponent} from '../movie-card/movie-card.component'
 
 @Component({
   selector: 'app-test',
@@ -21,6 +22,6 @@ export class TestComponent implements OnInit {
     for (let i = 0; i < 20; i++) {
       this.movieService.getMovies().subscribe(console.log);
     }
-    console.log('This is from initialize: ', this.movie$);
+   
   }
 }

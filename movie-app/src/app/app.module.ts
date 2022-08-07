@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppComponent } from './app.component';
 import { WelBannerComponent } from './components/home-page/wel-banner/wel-banner.component';
 import { NavHeaderHPComponent } from './components/home-page/nav-header-hp/nav-header-hp.component';
@@ -11,8 +10,11 @@ import { RegisterPageComponent } from './register-page/register-page.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { Route, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { MovieCardComponent } from './movie-card/movie-card.component';
 import { MovieService } from './services/movie.service';
 import { TestComponent } from './test/test.component';
+import { ShortPipe ,ShortHeaderPipe} from './pipes/short.pipe';
+
 
 const routes: Route[] = [
   {
@@ -46,8 +48,12 @@ const routes: Route[] = [
     SignInComponent,
     RegisterPageComponent,
     PageNotFoundComponent,
+    MovieCardComponent,
     TestComponent,
+    ShortPipe,
+    ShortHeaderPipe
   ],
+
   imports: [BrowserModule, RouterModule.forRoot(routes), HttpClientModule],
   exports: [RouterModule],
   providers: [MovieService],

@@ -2,6 +2,8 @@ export interface Movie {
   release_date?: string;
   title?: string;
   poster_path?: any;
+  vote_average?:number;
+
 }
 
 export interface RootObject {

@@ -27,8 +27,8 @@ export class MovieService {
         ].join('')
       )
       .pipe(
-        <any>tap(({ poster_path, title, release_date }: RootObject) => {
-          this.movies = [{ poster_path, title, release_date }, ...this.movies];
+        <any>tap(({ poster_path, title, release_date, vote_average }: RootObject) => {
+          this.movies = [{ poster_path, title, release_date, vote_average}, ...this.movies];
           this.moviesSubject$.next(this.movies);
         })
       );
