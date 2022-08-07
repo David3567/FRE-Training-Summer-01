@@ -10,6 +10,8 @@ import { LoginInputComponent } from './login-input/login-input.component';
 import { RegisterComponent } from './register/register.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
+import { MovieService } from './services/movie.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,8 +23,8 @@ import { FooterComponent } from './footer/footer.component';
     NavbarComponent,
     FooterComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
-  providers: [],
+  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, HttpClientModule],
+  providers: [MovieService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
