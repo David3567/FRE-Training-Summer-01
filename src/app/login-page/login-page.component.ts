@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
@@ -12,13 +13,20 @@ export class LoginPageComponent implements OnInit {
       Validators.required,
       Validators.minLength(6),
     ]),
-    rememberMe: new FormControl(false)
+    rememberMe: new FormControl(false),
   });
+
+  // eslint-disable-next-line no-empty-function
   constructor() {}
+
   get email() {
     return this.loginForm.get('email');
   }
+
+  // eslint-disable-next-line class-methods-use-this
   ngOnInit(): void {}
+
+  // eslint-disable-next-line class-methods-use-this
   onSubmit() {
     console.log('form was submitted');
   }
