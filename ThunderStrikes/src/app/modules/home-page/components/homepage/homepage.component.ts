@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { MovieDetails } from './interfaces/movie-details';
 
 @Component({
   selector: 'app-homepage',

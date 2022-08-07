@@ -1,0 +1,36 @@
+import { HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { MovieDetails } from '../interfaces/tmdb.interface';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class SharedApiDataService {
+  readonly baseUrl: string = "https://api.themoviedb.org/3/movie";
+  readonly apiToken: string = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NGY0NGYxZDUyZjk0OTNiNjdkZjQzYWQ2MTk0MWQ0YiIsInN1YiI6IjYyY2ZjNzQ0MGI1ZmQ2MDA1Mzg3OTllMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.fslcsTZH_p1LHoiIFiOwqUYgkev98ZoFxOg3Epf9mlc";
+  readonly imageUrlPath: string = "https://image.tmdb.org/t/p";
+  readonly posterWidth: number = 500;
+  readonly backdropWidth: number = 1280;
+  readonly httpHeaders: HttpHeaders = new HttpHeaders({
+    'Authorization': 'Bearer ' + this.apiToken,
+    'Content-Type': 'application/json;charset=utf-8'
+  });
+  constructor() { }
+  getActorImageUrl(imagePath: string) {
+    return [this.imageUrlPath, "w500", imagePath].join("/");
+  }
+
+  // option for original quality because the images
+  // look bad on the movie page. we don't want
+  // the original quality on all of them to save bandwidth
+  // when displayed on a movie list.
+  setMovieImageUrl(movie: MovieDetails, original?: boolean): void {
+    if (original) {
+      movie.poster_path = [this.imageUrlPath, "original", movie.poster_path].join("/");
+      movie.backdrop_path = [this.imageUrlPath, "original" + movie.backdrop_path].join("/");
+    } else {
+      movie.poster_path = [this.imageUrlPath, "w" + this.posterWidth, movie.poster_path].join("/");
+      movie.backdrop_path = [this.imageUrlPath, "w" + this.backdropWidth + movie.backdrop_path].join("/");
+    }
+  }
+}

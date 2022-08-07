@@ -1,0 +1,12 @@
+
+<main class="container" *ngIf="movie">
+    <div class="movie-image-container">
+        <img src="{{movie.poster_path}}" alt="{{movie.title}} poster image.">
+    </div>
+    <div class="movie-content">
+        <app-movie-tags [movie]="movie"></app-movie-tags>
+        <p class="overview">{{movie.overview}}</p>
+        <app-genres [movie]="movie"></app-genres>
+        <app-cast-and-crew [movie]="movie"></app-cast-and-crew>
+    </div>
+</main>

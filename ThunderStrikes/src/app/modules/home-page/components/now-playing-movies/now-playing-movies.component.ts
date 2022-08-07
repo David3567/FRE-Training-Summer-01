@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { MovieOptions } from 'src/app/shared/interfaces/tmdb.interface';
+import { MovieOptions } from 'src/app/shared/interfaces/movie-options.interface';
+import { MovieDetails } from 'src/app/shared/interfaces/tmdb.interface';
 import { TmdbApiService } from 'src/app/shared/services/tmdb-api.service';
-import { MovieDetails } from '../homepage/interfaces/movie-details';
 
 @Component({
   selector: 'app-now-playing-movies',

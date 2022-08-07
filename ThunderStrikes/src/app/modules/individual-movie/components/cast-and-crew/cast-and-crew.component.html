@@ -1,0 +1,13 @@
+<h3>Cast</h3>
+<ul>
+    <li *ngFor="let actor of cast$ | async">
+        <img 
+            src="{{actor.profile_path}}"
+            alt="Portrait of {{actor.name}}"
+            loading="lazy" 
+            width="500" 
+            height="750"
+        >
+        <p>{{actor.name}}</p>
+    </li>
+</ul>

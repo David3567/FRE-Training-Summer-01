@@ -3,25 +3,41 @@
     --theme-color-accent: blue;
     --color-font-button: white;
 }
+body{
+    background-color: black;
+}
 @font-face {
-    font-family: Rajdhani-Bold;
-    src: url(assets/Rajdhani/Rajdhani-Bold.ttf);
+    font-family: Rajdhani-Regular;
+    src: url(assets/Rajdhani/Rajdhani-Regular.ttf);
     font-display: swap;
 }
+
 @font-face {
     font-family: Rajdhani-Medium;
     src: url(assets/Rajdhani/Rajdhani-Medium.ttf);
     font-display: swap;
 }
 
+@font-face {
+    font-family: Rajdhani-Bold;
+    src: url(assets/Rajdhani/Rajdhani-Bold.ttf);
+    font-display: swap;
+}
 *{
     padding: 0;
     margin: 0;
     font-family: Rajdhani-Bold;
     scroll-behavior: smooth;
     user-select: none;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
 }
+
 
 button:hover{
     cursor: pointer;
+}
+
+ul::-webkit-scrollbar{
+    display: none;
 }

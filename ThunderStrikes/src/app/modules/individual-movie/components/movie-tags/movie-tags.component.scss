@@ -1,0 +1,12 @@
+ul{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1vw;
+}
+li{
+    color: white;
+    background-color: rgb(71, 71, 71);
+    padding: 0.5vw;
+    border-radius: 0.75vw;
+}
