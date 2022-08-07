@@ -1,0 +1,20 @@
+:host{
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+}
+h3{
+    color: white;
+}
+ul{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1vw;
+}
+li{
+    color: white;
+    background-color: rgb(71, 71, 71);
+    padding: 1.75vw;
+    border-radius: 0.75vw;
+}

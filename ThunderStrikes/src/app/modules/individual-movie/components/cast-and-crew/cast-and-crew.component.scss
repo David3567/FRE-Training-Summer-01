@@ -1,0 +1,27 @@
+:host{
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+    width: 100vw;
+}
+p, h3{
+    color: white;
+}
+ul{
+    display: flex;
+    gap: 2vw;
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 95%;
+    height: 22vh;
+}
+li{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5vh;
+}
+
+img{
+    height: 80%;
+    max-width: 25vw;
+}
