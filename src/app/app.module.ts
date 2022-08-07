@@ -14,6 +14,10 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { LoginInputComponent } from './login-page/login-input/login-input.component';
 // eslint-disable-next-line import/no-unresolved
 import { RegisterComponent } from './register/register.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { FooterComponent } from './footer/footer.component';
+import { MovieService } from './services/movie.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,9 +26,11 @@ import { RegisterComponent } from './register/register.component';
     LoginPageComponent,
     LoginInputComponent,
     RegisterComponent,
+    NavbarComponent,
+    FooterComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
-  providers: [],
+  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, HttpClientModule],
+  providers: [MovieService],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

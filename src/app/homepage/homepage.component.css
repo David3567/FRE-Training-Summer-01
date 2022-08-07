@@ -1,150 +1,63 @@
 body {
   -moz-osx-font-smoothing: grayscale;
   color: #333;
+  padding: 0;
+  margin: 0;
+}
+
+.btn-signUp {
+  padding: 10px 20px;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 .card-container {
-  border-bottom: 8px solid #222;
-  background: black;
-  overflow: hidden;
-  max-height: 1000px;
-  width: 100vw;
-}
-
-img {
-  object-fit: cover;
-  opacity: 0.35;
+  padding: 0;
+  min-height: 85vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
+    url(../../assets/image/homepage_background_img.jpg) center/cover no-repeat;
   position: relative;
-  max-width: 150%;
-  max-height: 150%;
-  min-width: 400px;
-  min-height: 900px;
+  overflow-x: hidden;
+  border-bottom: 8px solid #222;
 }
 
-.hero-text {
+.card-title {
+  color: white;
+  font-size: 5rem;
+}
+
+.card-sub-title {
+  font-size: x-large;
+  margin-bottom: 10px;
+}
+
+.font-effect-3d-float {
+  text-shadow: 0 0.06em 0 #b0b0b0, 0px 0.15em 0.11em rgba(0, 0, 0, 0.2),
+    0px 0.25em 0.021em rgba(0, 0, 0, 0.1), 0px 0.32em 0.32em rgba(0, 0, 0, 0.1);
+}
+
+.font-effect-3d-float,
+.nav-btn-signIn,
+.btn-signUp {
+  font-weight: 600;
+}
+
+.hero-text-wrapper {
   text-align: center;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
+  max-block-size: 50%;
 }
 
-/* .narbar-wrapper {
-  background-color: transparent;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  margin: 0 auto;
-  position: relative;
-  max-width: 1920px;
-  width: 100%;
-} */
-
-.hero-navbar {
-  margin: 0 50px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 0.5rem;
-  height: auto;
-  position: absolute;
-  top: 3%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 85%;
-}
-
-.nav-logo-wrapper {
-  height: 60px;
-  width: 70%;
-  margin-right: auto;
-}
-
-.font-effect-3d-float {
-  text-shadow: 0 0.06em 0 #b0b0b0, 0px 0.15em 0.11em rgba(0, 0, 0, 0.2),
-    0px 0.25em 0.021em rgba(0, 0, 0, 0.1), 0px 0.32em 0.32em rgba(0, 0, 0, 0.1);
-  color: #e11221;
-  font-size: xx-large;
-  /* text-align: left; */
-}
-
+.btn-signUp,
 .nav-btn-signIn {
-  margin: 0 0 0 0.75rem;
-  padding: 7px 17px;
-  font-weight: 400;
-}
-
-.nav-btn-signIn,
-.btn-signUp {
   background-color: #e11221;
-  font-size: 1rem;
   line-height: normal;
   border-radius: 4px;
   color: #fff;
   white-space: nowrap;
   border: none;
-}
-
-.btn-signUp {
-  padding: 10px 20px;
-  font-weight: 800;
-  cursor: pointer;
-}
-
-.font-effect-3d-float,
-.nav-btn-signIn {
-  font-weight: 800;
-}
-
-.content-card-wrapper {
-  font-family: Netflix Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
-  padding: 70px 45px;
-  background: transparent;
-
-  color: #fff;
-  margin-bottom: 0;
-  padding: 50px 5%;
-  position: relative;
-}
-
-.card-text {
-  height: 600px;
-  width: auto;
-  /* position: relative; */
-  /* z-index: 2; */
-}
-
-/* .card-background {
-  top: -90px;
-  bottom: 0;
-  z-index: -1;
-  overflow: hidden;
-} */
-
-/* .bg-img {
-  height: 100%;
-  object-fit: cover;
-  width: auto;
-  transform: none;
-} */
-
-/*
-.gradient {
-  height: 100px;
-  position: absolute;
-  background-color: transparent;
-  background-image: radial-gradient(rgb(203, 202, 202), #434343);
-  z-index: 1;
-}*/
-
-.card-title {
-  color: white;
-  font-size: 4rem;
-}
-
-.card-sub-title {
-  font-size: x-large;
 }

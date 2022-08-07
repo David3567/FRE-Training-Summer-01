@@ -1,0 +1,28 @@
+.footer-container {
+  background: var(--grey-900);
+  min-height: 15vh;
+  display: flex;
+  flex-direction: column;
+  color: var(--grey-300);
+}
+
+.footer-wrapper {
+  margin: 1% 10% 0 10%;
+}
+
+.footer-contact {
+  font-size: small;
+  margin-bottom: 8px;
+}
+
+.footer-contact::before {
+  content: "Question? ";
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.footer-selection {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
