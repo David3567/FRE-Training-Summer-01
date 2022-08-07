@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { MovieService } from './services/movie.service';
 import { TestComponent } from './test/test.component';
-import { ShortPipe } from './pipes/short.pipe';
+import { ShortPipe ,ShortHeaderPipe} from './pipes/short.pipe';
 
 
 const routes: Route[] = [
@@ -50,7 +50,8 @@ const routes: Route[] = [
     PageNotFoundComponent,
     MovieCardComponent,
     TestComponent,
-    ShortPipe
+    ShortPipe,
+    ShortHeaderPipe
   ],
 
   imports: [BrowserModule, RouterModule.forRoot(routes), HttpClientModule],

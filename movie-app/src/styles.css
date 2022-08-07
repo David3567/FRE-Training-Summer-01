@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 /* You can add global styles to this file, and also import other style files */
 *::after,
 *::before {
@@ -132,7 +133,15 @@ table {
   border-spacing: 0;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
+:root {
+  --main-bg-color: black;
+  --main-text-color:white;
+  --main-font-size:1rem;
+  --main-header-size:3rem;
+}
+
 
 *{
   font-family: 'Roboto', sans-serif;

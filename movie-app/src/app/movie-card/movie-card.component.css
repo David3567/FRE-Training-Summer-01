@@ -1,6 +1,6 @@
-img{
-  
-}
+.back_img{
+  opacity: 0.5;
+ }
 .front_year{
   position: absolute;
   z-index: 20;
@@ -11,37 +11,12 @@ img{
   padding: 0.1rem;
   border-radius:1rem;
 }
-.img-container{
-  
-background-color: Black;
 
-}
-.back_img{
- opacity: 0.5;
-}
+
 .front_img, .back_img{
   width:11rem;
   height:16.5rem;
 }
-.play_icon{
-  position: absolute;
-  top: 10rem;
-}
-.title_back{
-  position: absolute;
-  z-index: 20;
-  top:1.5rem;
-  font-size: 1.5rem;
-  color: aliceblue;
-  
-}
-.year_back{
-  position: absolute;
-  z-index: 20;
-  top:8rem;
- 
-}
-
 
 .flip-card {
   background-color: transparent;
@@ -94,3 +69,29 @@ background-color: Black;
   align-items: center;
 
 }
+.img-container{
+  
+  background-color: Black;
+  
+  }
+
+  .play_icon{
+    position: absolute;
+    top: 10rem;
+  }
+  .title_back{
+    position: absolute;
+    z-index: 20;
+    top:1.5rem;
+    font-size: 1.5rem;
+    color: aliceblue;
+    
+  }
+  .year_back{
+    position: absolute;
+    z-index: 20;
+    top:8rem;
+   
+  }
+  
+  
