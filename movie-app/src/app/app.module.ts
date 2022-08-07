@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { WelBannerComponent } from './components/home-page/wel-banner/wel-banner.component';
 import { NavHeaderHPComponent } from './components/home-page/nav-header-hp/nav-header-hp.component';
@@ -11,24 +11,34 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { Route, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MovieCardComponent } from './movie-card/movie-card.component';
+import { MovieService } from './services/movie.service';
+import { TestComponent } from './test/test.component';
+import { ShortPipe } from './pipes/short.pipe';
+
 
 const routes: Route[] = [
   {
-    path: "", redirectTo:"/homepage",  pathMatch:"full"
+    path: '',
+    redirectTo: '/homepage',
+    pathMatch: 'full',
   },
   {
-    path: "sign-in", component: SignInComponent
+    path: 'sign-in',
+    component: SignInComponent,
   },
   {
-    path: "register", component: RegisterPageComponent
+    path: 'register',
+    component: RegisterPageComponent,
   },
   {
-    path: "homepage", component: HomePageComponent
+    path: 'homepage',
+    component: HomePageComponent,
   },
   {
-    path:"**", component: PageNotFoundComponent
-  }
-]
+    path: '**',
+    component: PageNotFoundComponent,
+  },
+];
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,14 +48,14 @@ const routes: Route[] = [
     SignInComponent,
     RegisterPageComponent,
     PageNotFoundComponent,
-    MovieCardComponent
+    MovieCardComponent,
+    TestComponent,
+    ShortPipe
   ],
-  imports: [
-    BrowserModule,
-    RouterModule.forRoot(routes),
-  ],
+
+  imports: [BrowserModule, RouterModule.forRoot(routes), HttpClientModule],
   exports: [RouterModule],
-  providers: [],
+  providers: [MovieService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
