@@ -1,0 +1,87 @@
+section {
+  background: #18181e;
+  width: 100%;
+  padding: 0 24px;
+}
+.container {
+  width: 90vw;
+  max-width: 1170px;
+  margin: 0 auto;
+  position: sticky;
+  top: -1px;
+  transform: translateZ(0px);
+  transition: 0.2s ease-out;
+  z-index: 5;
+  left: 0px;
+  right: 0px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  padding-bottom: 10px;
+}
+.filter-btns-container {
+  max-width: 1200px;
+  margin: auto;
+  
+}
+header {
+  transition: opacity 0.2s ease 0s, height 0.2s ease 0s,
+    -ms-transform 0.3s ease 0s, -webkit-transform 0.3s ease 0s,
+    transform 0.3s ease 0s;
+  height: 48px;
+  background: transparent;
+  margin-bottom: 6px;
+  
+}
+
+.filter-tabs {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  overflow: scroll hidden;
+  white-space: nowrap;
+}
+
+ul {
+  flex: 1 1 0%;
+  overflow-y: hidden;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+ul::-webkit-scrollbar {
+  display: none;
+}
+li {
+  display: inline-block;
+  padding-right: 0.5rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+.filter-btn {
+  cursor: pointer;
+  text-align: center;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  transition-property: -ms-transform, -webkit-transform, transform,
+    background-color, border-color;
+  transition-duration: 0.15s;
+  transition-timing-function: ease-in-out;
+  padding: 10px 16px;
+  border-radius: 24px;
+  line-height: 16px;
+  width: 100%;
+  background: #e11221;
+     border: 1px solid transparent;
+     color: #fff;
+}
+.filter-btn span {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 18px;
+  text-transform: capitalize;
+}

@@ -1,7 +1,7 @@
 <div class="card">
-  <img [src]="movie.poster_path" alt="{{ movie.title + 'poster' }}" />
+  <img [src]="movie.posterUrl" alt="{{ movie.title + 'poster' }}" />
   <div class="rating">
-    <p>{{ movie.vote_average | number: "1.0-1" }}</p>
+    <p>{{ movie.score | number: "1.0-1" }}</p>
   </div>
   <div class="details">
     <p class="title">{{ movie.title }}</p>

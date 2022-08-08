@@ -18,7 +18,11 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { MovieService } from './services/movie.service';
 import { HttpClientModule } from '@angular/common/http';
-import { MovieCardComponent } from './movie-card/movie-card.component';
+// <<<<<<< Updated upstream
+
+// =======
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+// >>>>>>> Stashed changes
 
 @NgModule({
   declarations: [
@@ -29,10 +33,16 @@ import { MovieCardComponent } from './movie-card/movie-card.component';
     RegisterComponent,
     NavbarComponent,
     FooterComponent,
-    MovieCardComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    FontAwesomeModule,
+  ],
   providers: [MovieService],
   bootstrap: [AppComponent],
+
 })
-export class AppModule { }
+export class AppModule {}

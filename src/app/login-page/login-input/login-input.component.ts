@@ -4,7 +4,7 @@ import { FormControl } from '@angular/forms';
 @Component({
   selector: 'app-login-input',
   templateUrl: './login-input.component.html',
-  styleUrls: ['./login-input.component.css'],
+  styleUrls: ['./login-input.component.scss'],
 })
 export class LoginInputComponent implements OnInit {
   @Input()
