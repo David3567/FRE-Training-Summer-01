@@ -1,0 +1,12 @@
+<div class="card">
+  <img [src]="movie.poster_path" alt="{{ movie.title + 'poster' }}" />
+  <div class="rating">
+    <p>{{ movie.vote_average | number: "1.0-1" }}</p>
+  </div>
+  <div class="details">
+    <p class="title">{{ movie.title }}</p>
+    <p class="date">{{ movie.release_date }}</p>
+    <p class="overview">{{ movie.overview }}</p>
+  </div>
+  <button [value]="movie.id">More</button>
+</div>

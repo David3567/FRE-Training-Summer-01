@@ -1,0 +1,96 @@
+@import "../../assets/styles/base/base";
+
+.wrapper {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  position: relative;
+  width: 20rem;
+  border-radius: 2rem;
+  background-color: $bg-layer-darker;
+  overflow: hidden;
+
+  transition: all 0.4s ease-in-out;
+
+  img {
+    width: 100%;
+  }
+
+  .rating {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.25rem;
+    z-index: 1;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    background: $bg-danger;
+    font-size: 1.2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .details {
+    position: absolute;
+    z-index: 2;
+    bottom: -100%;
+    padding: 1.25rem 1rem;
+    width: 100%;
+    background-color: rgba($color: $bg-layer-darker, $alpha: 0.9);
+
+    .title {
+      font-weight: bolder;
+      font-size: 2rem;
+    }
+
+    .date {
+      font-size: 0.9em;
+      margin-bottom: 1rem;
+      margin-top: 0.25rem;
+    }
+
+    .overview {
+      font-size: 0.9em;
+      letter-spacing: 0.01em;
+    }
+  }
+
+  button {
+    margin-top: 1rem;
+    width: 90%;
+    min-height: 3rem;
+    background-color: $bg-danger;
+    border-radius: 0.5rem;
+
+    position: absolute;
+    z-index: 3;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+
+    display: none;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+
+    .details {
+      top: 0;
+    }
+
+    button {
+      display: block;
+    }
+
+    .rating {
+      display: none;
+    }
+  }
+}
