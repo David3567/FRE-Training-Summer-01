@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './modules/app-routing/app-routing.module';
+import { MovieDashboardModule } from './modules/movie-dashboard/movie-dashboard.module';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { AppRoutingModule } from './modules/app-routing/app-routing.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MovieDashboardModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the application is stable
