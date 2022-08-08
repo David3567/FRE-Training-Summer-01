@@ -295,6 +295,10 @@ app-header-top >>> .header-top {
 	margin-left: -13%;
 }
 
+button[disabled] {
+  opacity: .6;
+}
+
 @media only screen and (max-width: 900px) {
   tr:nth-child(1) th:nth-child(n+2) div {
     height: 90px;

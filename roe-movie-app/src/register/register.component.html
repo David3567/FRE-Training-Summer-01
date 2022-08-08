@@ -1,38 +1,69 @@
-<app-header-top [displayButton]="false"></app-header-top>
-<div [className]="'register-component'">
-  <div
-    [className]="'modal'"
+<app-header-top></app-header-top>
+<div class="register-component">
+  <div 
+    class="modal"
     [ngClass] = "counter === 0 ? 'visible' : ''"
   >
     <header>STEP <span>1</span> OF <span>3</span></header>
     <h2>Create a password to start your membership</h2>
     <p>Just a few more steps and you're done!</p>
     <p>We hate paperwork, too.</p>
-    <div
-      [className]="'form'"
-    >
-      <input
-        name="email"
-        type="email"
+    <form class="form" [formGroup]="registerForm" (ngSubmit)="submit()">
+      <input 
+        name="username" 
+        type="text" 
+        placeholder="Create a username"
+        formControlName="username"
+        (blur)="setUserName()"
+      />
+      <input 
+        name="email" 
+        type="email" 
         placeholder="Add an email"
-        (keyup)="setEmail($event)"
+        formControlName="email"
+        (blur)="setEmail()"
       />
       <input
         name="password"
         type="password"
         placeholder="Add a password"
-        (keyup)="setPassword($event)"
+        formControlName="password"
+        (blur)="setPassword()"
         />
-      <button (click)="incrementCount()">Next</button>
-    </div>
+      <input 
+        name="confirm-password" 
+        type="password" 
+        placeholder="Confirm password"
+        formControlName="confirmPassword"
+        (blur)="setPasswordConfirm()"
+        />
+        <button 
+          type="submit"
+        >Next</button>
+          <p class="field-message" *ngIf="error?.password?.passwordStrength || error.password?.required">
+            Your password must have lower case, upper case and numeric characters and be at least 8 characters long.
+          </p>
+          <p class="field-message" *ngIf="error?.confirmPassword?.passwordMatch || error?.confirmPassword?.required">
+            Passwords must match.
+          </p>
+          <p class="field-message" *ngIf="error.email?.email ||error.email?.pattern || error.email?.required">
+            Please add a valid email.
+          </p>
+          <p class="field-message" *ngIf="error.username?.required">
+            Please type in a username.
+          </p>
+          <p class="field-message" *ngIf="error.empty">
+            Please fill out fields.
+          </p>
+      </form>
   </div>
 
   <div
-  [className]="'modal'"
+  class="modal"
   [ngClass] = "counter === 1 ? 'visible' : ''"
   >
   <div>
-    <span [className]="'checkmark'"></span>
+    <span class="'checkmark'"></span>
   </div>
   <header>
       STEP <span>2</span> OF <span>3</span>
@@ -40,19 +71,35 @@
     <h2>Choose your plan.</h2>
     <div>
       <svg>
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z" fill="currentColor"></path>
+        <path 
+          fill-rule="evenodd" 
+          clip-rule="evenodd" 
+          d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z" 
+          fill="currentColor"
+        >
+        </path>
       </svg>
       <p>No commitments, cancel anytime.</p>
     </div>
     <div>
       <svg>
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z" fill="currentColor"></path>
+        <path 
+          fill-rule="evenodd" 
+          clip-rule="evenodd" 
+          d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z" 
+          fill="currentColor"
+        ></path>
       </svg>
       <p>Everything on movie app for one low price.</p>
     </div>
     <div>
       <svg>
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z" fill="currentColor"></path>
+        <path 
+          fill-rule="evenodd" 
+          clip-rule="evenodd" 
+          d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z" 
+          fill="currentColor"
+        ></path>
       </svg>
       <p>Unlimited viewing on all of your devices.</p>
     </div>
@@ -62,27 +109,42 @@
   </div>
 
   <div
-  [className]="'modal'"
+  class="modal"
   [ngClass] = "counter === 2 ? 'visible' : ''"
   >
-  <div [className]="'modal-3'">
+  <div class="'modal-3'">
     <header>STEP <span>2</span> OF <span>3</span></header>
     <h2>Choose the plan that's right for you.</h2>
     <div>
       <svg>
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z" fill="currentColor"></path>
+        <path 
+          fill-rule="evenodd" 
+          clip-rule="evenodd" 
+          d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z" 
+          fill="currentColor"
+        ></path>
       </svg>
       <p>Watch all you want. Ad-free.</p>
     </div>
     <div>
       <svg>
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z" fill="currentColor"></path>
+        <path 
+          fill-rule="evenodd" 
+          clip-rule="evenodd" 
+          d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z" 
+          fill="currentColor"
+        ></path>
       </svg>
       <p>Recommendations just for you.</p>
     </div>
     <div>
       <svg>
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z" fill="currentColor"></path>
+        <path 
+          fill-rule="evenodd" 
+          clip-rule="evenodd" 
+          d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z" 
+          fill="currentColor"
+        ></path>
       </svg>
       <p>Change or cancel your plan anytime.</p>
     </div>
@@ -115,22 +177,39 @@
         <td>Watch on your TV, computer, mobile phone and table</td>
         <td [ngClass]="selected === 'basic' ? 'select' : ''">
           <svg>
-            <path [ngClass]="selected === 'basic' ? 'select select-1' : ''" fill-rule="evenodd" clip-rule="evenodd" d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z" fill="currentColor"></path>
+            <path 
+              [ngClass]="selected === 'basic' ? 'select select-1' : ''" 
+              fill-rule="evenodd" 
+              clip-rule="evenodd" 
+              d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z" 
+              fill="currentColor"
+            ></path>
           </svg>
         </td>
         <td [ngClass]="selected === 'standard' ? 'select' : ''">
           <svg>
-            <path [ngClass]="selected === 'standard' ? 'select select-1' : ''" fill-rule="evenodd" clip-rule="evenodd" d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z" fill="currentColor"></path>
+            <path [ngClass]="selected === 'standard' ? 'select select-1' : ''" 
+              fill-rule="evenodd" 
+              clip-rule="evenodd" 
+              d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z" 
+              fill="currentColor"
+            ></path>
           </svg>
         </td>
         <td [ngClass]="selected === 'premium' ? 'select' : ''">
           <svg>
-            <path [ngClass]="selected === 'premium' ? 'select select-1' : ''" fill-rule="evenodd" clip-rule="evenodd" d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z" fill="currentColor"></path>
+            <path 
+              [ngClass]="selected === 'premium' ? 'select select-1' : ''" 
+              fill-rule="evenodd" 
+              clip-rule="evenodd" 
+              d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z" 
+              fill="currentColor"
+            ></path>
           </svg>
         </td>
       </tr>
     </table>
-    <div [className]="'form'">
+    <div class="form">
       <button (click)="incrementCount()">Next</button>
     </div>
   </div>
@@ -138,7 +217,7 @@
   </div>
 
   <div
-  [className]="'modal'"
+  class="modal"
   [ngClass] = "counter === 3 ? 'visible' : ''"
   >
     <header>STEP <span>3</span> OF <span>3</span></header>
