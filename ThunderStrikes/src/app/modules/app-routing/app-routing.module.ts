@@ -5,6 +5,7 @@ import { HomePageModule } from '../home-page/home-page.module';
 import { IndividualMovieComponent } from '../individual-movie/components/individual-movie/individual-movie.component';
 import { IndividualMovieModule } from '../individual-movie/individual-movie.module';
 import { LoginComponent } from '../login-page/components/login/login.component';
+import { LoginPageModule } from '../login-page/login-page.module';
 import { NotFoundPageComponent } from '../page-not-found/not-found-page/not-found-page.component';
 import { RegistrationComponent } from '../registration-page/components/registration/registration.component';
 
@@ -25,6 +26,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     HomePageModule,
     IndividualMovieModule,
+    LoginPageModule
   ],
   exports: [RouterModule],
 })

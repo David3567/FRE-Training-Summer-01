@@ -1,1 +1,25 @@
-<p>login works!</p>
+<div class="login-body">
+  <div class="login-wrapper">
+    <div class="login-form-main">
+      <h4>Sign In</h4>
+      <form class="login-form" action="">
+        <input type="text" name="loginId" [(ngModel)]="userId" />
+        <input type="text" name="password" [(ngModel)]="psw" />
+        <button>Sign In</button>
+        <div class="login-form-help">
+          <div class="login-remember-me">
+            <input type="checkbox" id="rememberMe" />
+            <label for="rememberMe">Remember Me</label>
+          </div>
+          <a href="/forgot-password">Forgot password?</a>
+        </div>
+      </form>
+    </div>
+
+    <div class="login-form-others">
+      <div class="login-form-sign-up">
+        <a class="link-sign-up" href="/sign-up">Sign up now</a>.
+      </div>
+    </div>
+  </div>
+</div>
