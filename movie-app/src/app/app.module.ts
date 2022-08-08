@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { MovieService } from './services/movie.service';
 import { TestComponent } from './test/test.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MoviesListComponent } from './movies-list/movies-list.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -20,28 +21,10 @@ import { UserService } from './services/user.service';
 import { InMemoryDataService } from './services/in-memory-data.service';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { MoviesListModule } from './movies-list/movies-list/movies-list.module';
-import { ShortPipe ,ShortHeaderPipe} from './pipes/short.pipe';
+import { ShortPipe} from './pipes/short.pipe';
+import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faSquare, faHome, faSearch, faCalendar, faFilm, faClapperboard, faEye } from '@fortawesome/free-solid-svg-icons';
 
-const routes: Route[] = [
-  {
-    path: "", redirectTo:"/homepage",  pathMatch:"full"
-  },
-  {
-    path: "sign-in", component: SignInComponent
-  },
-  {
-    path: "register", component: RegisterPageComponent
-  },
-  {
-    path: "homepage", component: HomePageComponent
-  },
-  {
-    path: "movies-list", component: MoviesListComponent
-  },
-  {
-    path:"**", component: PageNotFoundComponent
-  }
-]
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,23 +35,38 @@ const routes: Route[] = [
     RegisterPageComponent,
     PageNotFoundComponent,
     MovieCardComponent,
-    TestComponent,
     MoviesListComponent,
-    ShortPipe ,ShortHeaderPipe
+    TestComponent,
+    ShortPipe
   ],
   imports: [
     CommonModule,
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(routes),
-    // MoviesListModule,
-    // AppRoutingModule,
+    AppRoutingModule,
+    FontAwesomeModule,
+    FormsModule,
+    ReactiveFormsModule
     // HttpClientInMemoryWebApiModule.forRoot(
     //   InMemoryDataService, { dataEncapsulation: false }
     // )
   ],
+
   exports: [RouterModule, HttpClientModule],
   providers: [MovieService, UserService],
+
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(library: FaIconLibrary) {
+    library.addIcons(
+      faFilm,
+      faSquare,
+      faCalendar,
+      faHome,
+      faSearch,
+      faClapperboard,
+      faEye
+    );
+  }
+}
