@@ -2,26 +2,34 @@
     display: flex;
     flex-direction: column;
     gap: 1vh;
-    width: 100vw;
 }
 p, h3{
     color: white;
 }
+
 ul{
     display: flex;
-    gap: 2vw;
+    gap: 4vw;
     overflow-x: auto;
     overflow-y: hidden;
-    width: 95%;
-    height: 22vh;
+    width: 100%;
+    height: 25vh;
 }
 li{
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 0.5vh;
+    height: 25vh;
 }
 
 img{
-    height: 80%;
-    max-width: 25vw;
+    height: 90%;
+    width: auto;
+}
+
+@media screen and(min-width: 650px){
+    ul{
+        gap: 1vw;
+    }
 }
