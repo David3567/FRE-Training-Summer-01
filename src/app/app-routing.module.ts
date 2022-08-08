@@ -5,9 +5,16 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
-  {path: 'login', component: LoginPageComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: '', component:HomepageComponent}
+  {
+    path: 'movies',
+    loadChildren: () =>
+      import('./movies-list/movies-list.module').then(
+        (m) => m.MoviesListModule
+      ),
+  },
+  { path: 'login', component: LoginPageComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: '', component: HomepageComponent },
 ];
 
 @NgModule({

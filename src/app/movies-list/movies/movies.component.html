@@ -1,0 +1,16 @@
+<main>
+  <!-- <app-filter-botton-list [movieList]="movieList"></app-filter-botton-list> -->
+  <div class="section-center">
+    <app-featured-movie [movieList]="movieList"></app-featured-movie>
+    <section>
+      <h1 class="section-title">Recently added</h1>
+    </section>
+    <section class="section-container">
+      <app-movie-card
+        *ngFor="let movie of movieList; let i = index"
+        [movie]="movie"
+      >
+      </app-movie-card>
+    </section>
+  </div>
+</main>

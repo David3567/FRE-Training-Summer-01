@@ -1,0 +1,39 @@
+<header>
+  <nav class="search-nav">
+    <div class="nav-center">
+      <a routerLink="/" class="nav-logo-wrapper">
+        <span class="font-effect-3d-float">NETPLIX</span>
+      </a>
+      <div class="container">
+        <form (submit)="onFormSubmit($event)">
+          <div class="form-content">
+            <label for="search-movies">
+              <div class="search-container">
+                <div class="search-icon icon">
+                  <fa-icon [icon]="faSearch"></fa-icon>
+                </div>
+                <input
+                  (input)="term = $event.target.value"
+                  class="search-input"
+                  type="text"
+                  placeholder="Search movies"
+                  id="search-movies"
+                  autocomplete="off"
+                  autocorrect="off"
+                  aria-autocomplete="none"
+                  spellcheck="false"
+                />
+              </div>
+              <div class="filter-btn">
+                <fa-icon [icon]="faSliders"></fa-icon>
+              </div>
+            </label>
+          </div>
+        </form>
+      </div>
+      <button type="button" class="nav-end-btn">
+        <div class="user-name">Logout</div>
+      </button>
+    </div>
+  </nav>
+</header>
