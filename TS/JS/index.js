@@ -6,4 +6,5 @@ function component(obj) {
 function foo() {
     console.log(this.name);
 }
+
 //# sourceMappingURL=index.js.map
