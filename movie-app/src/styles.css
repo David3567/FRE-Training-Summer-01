@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 /* You can add global styles to this file, and also import other style files */
 *,
 *::after,
@@ -112,8 +113,7 @@ section {
 }
 body {
   line-height: 1;
-  /* color: aliceblue; */
-  /* background-image:url("./assets/netflix.jpg") */
+ 
 }
 ol,
 ul {
@@ -134,6 +134,7 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+<<<<<<< HEAD
 
 
 
@@ -146,3 +147,20 @@ img{
   width: 100%;
 }
 
+||||||| 5d4c11c
+=======
+
+
+
+:root {
+  --main-bg-color: black;
+  --main-text-color:white;
+  --main-font-size:1rem;
+  --main-header-size:3rem;
+}
+
+
+*{
+  font-family: 'Roboto', sans-serif;
+}
+>>>>>>> 9d612c7b7e8c20554275cac548491fb516ce3cd6
