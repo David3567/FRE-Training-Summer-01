@@ -1,0 +1,101 @@
+.btn-go {
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+  background-color: #4158d0;
+  background-image: linear-gradient(
+    43deg,
+    #4158d0 0%,
+    #c850c0 46%,
+    #ffcc70 100%
+  );
+}
+
+.btn-go:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #eee;
+  text-decoration: none;
+}
+
+.movie-card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border-radius: 10px;
+}
+
+.movie-card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.movie-card-container {
+  position: relative;
+  font-weight: 900;
+}
+
+.movie-card-container > img {
+  border-radius: 5px 5px 0px 5px;
+  height: 250px;
+}
+
+.movie-card-HD {
+  position: absolute;
+  color: black;
+  background-color: rgb(243, 237, 152);
+  border-radius: 5px 0 5px 0;
+  padding: 1px;
+}
+
+.movie-card-score {
+  position: absolute;
+  color: black;
+  background-color: rgb(184, 132, 245);
+  border-radius: 5px 0 0 0;
+  padding: 1px;
+  bottom: 0px;
+  right: 0px;
+}
+
+.movie-card-likes {
+  position: absolute;
+  color: black;
+  background-color: rgb(136, 183, 245);
+  border-radius: 0 5px 0 5px;
+  padding: 1px;
+  top: 0px;
+  right: 0px;
+}
+
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  list-style-type: none;
+  gap: 2rem;
+}
+
+.sidenav {
+  margin: 10px;
+  padding: 10px 10px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+  /* background-image: linear-gradient(to right, #E55D87 0%, #5FC3E4  51%, #E55D87  100%) */
+  background-color: #8ec5fc;
+  background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
+}
+
+.sidenav:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #eee;
+  text-decoration: none;
+}

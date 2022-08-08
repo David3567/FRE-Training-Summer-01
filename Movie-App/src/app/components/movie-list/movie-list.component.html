@@ -1,0 +1,34 @@
+<ul class="nav nav-pills nav-stacked col-xs-6 col-md-2">
+  <li role="presentation" class="sidenav"><a href="#">Home</a></li>
+  <li role="presentation" class="sidenav"><a href="#">Popular</a></li>
+  <li role="presentation" class="sidenav"><a href="#">Movies</a></li>
+  <li role="presentation" class="sidenav"><a href="#">Profile</a></li>
+  <li role="presentation" class="sidenav"><a href="#">Setting</a></li>
+</ul>
+
+<div class="row">
+  <div class="col-xs-6 col-md-2">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Search for..." />
+      <span class="input-group-btn">
+        <button class="btn btn-default btn-go" type="button">Go!</button>
+      </span>
+    </div>
+
+    <ul class="movie-list">
+      <li *ngFor="let movie of movieData" class="movie-card">
+        <div class="movie-card-container">
+          <div class="movie-card-HD">HD</div>
+          <div class="movie-card-score">{{ movie.vote_average }}</div>
+          <div class="movie-card-likes">{{ movie.vote_count }}</div>
+          <img
+            src="{{ getPosterPath(movie.backdrop_path) }}"
+            alt=""
+            class="card-image"
+          />
+        </div>
+        <p>{{ movie.title }}</p>
+      </li>
+    </ul>
+  </div>
+</div>
