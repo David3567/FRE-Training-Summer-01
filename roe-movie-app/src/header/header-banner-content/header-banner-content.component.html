@@ -2,5 +2,8 @@
   <h1>Unlimited movies, TV shows, and more.</h1>
   <h3>Watch anywhere. Cancel anytime.</h3>
   <h6>Ready to watch? Enter your email to create or restart your membership.</h6>
-  <input type="email" placeholder="Enter Email Here"><button (click)="register()">Get Started ></button>
+  <form>
+    <input [formControl]="email" type="email" placeholder="Enter Email Here" [ngClass]="Emailvalidation==true? 'validEmail':'nonvalidEmail'">
+    <button (click)="register()">Get Started ></button>
+  </form>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 })
 export class HeaderTopComponent implements OnInit {
 
+  @Input() displayButton:Boolean=false;
+  @Input() displaySelect=false;
   constructor(private router:Router) { }
 
   ngOnInit() {
