@@ -1,5 +1,4 @@
 <section class="movies__list__container">
-
   <ng-container *ngIf="movies && movies.length > 0; else emptyList">
     <div class="movies__list__container">
       <div class="sidebar">
@@ -26,7 +25,9 @@
           class="flex__wrapper"
           [style.backgroundImage]="'url(https://image.tmdb.org/t/p/original/'+bannerMovie.poster_path+')'"
         >
-          <aside class="movie__info">
+          <aside
+            [attr.aria-label]="bannerMovie.original_title+' basics info'"
+            class="movie__info">
             <div class="flex__wrapper">
               <span class="movie__item__category">Series</span>
               <h2 class="movie__title">
@@ -37,7 +38,7 @@
                   97% Match
                 </strong>
                 <span class="movie__year__produced">
-                  2018
+                  {{bannerMovie.release_date | date: 'yyyy'}}
                 </span>
                 <span class="movie__streaming__tv">
                   TV-MA
@@ -48,21 +49,20 @@
                 <span class="movie__quality">
                   HD
                 </span>
-                <span class="movie__rating">
-                  4.5
+                <span class="movie__rating" [title]="bannerMovie.popularity">
+                 {{bannerMovie.popularity}} <fa-icon [icon]="['fas', 'eye']"></fa-icon>
                 </span>
               </div>
-              <div class="movie__availability">
-                Season 3 Coming Soon
+              <div class="movie__average__vote">
+                Average: {{bannerMovie.vote_average}} vote(s)
               </div>
               <div class="movie__overview">
                 <p>
-                  {{bannerMovie.overview}}
+                  {{bannerMovie.overview | makeShort: 180}}
                 </p>
               </div>
             </div>
           </aside>
-
         </header>
         <main>
             <h3>

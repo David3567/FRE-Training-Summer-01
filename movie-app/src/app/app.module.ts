@@ -20,30 +20,10 @@ import { UserService } from './services/user.service';
 import { InMemoryDataService } from './services/in-memory-data.service';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { MoviesListModule } from './movies-list/movies-list/movies-list.module';
-import { ShortPipe ,ShortHeaderPipe} from './pipes/short.pipe';
+import { ShortPipe} from './pipes/short.pipe';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faSquare, faCheckSquare, faHome, faSearch, faCalendar, faFilm, faClapperboard } from '@fortawesome/free-solid-svg-icons';
+import { faSquare, faHome, faSearch, faCalendar, faFilm, faClapperboard, faEye } from '@fortawesome/free-solid-svg-icons';
 
-const routes: Route[] = [
-  {
-    path: "", redirectTo:"/homepage",  pathMatch:"full"
-  },
-  {
-    path: "sign-in", component: SignInComponent
-  },
-  {
-    path: "register", component: RegisterPageComponent
-  },
-  {
-    path: "homepage", component: HomePageComponent
-  },
-  {
-    path: "movies-list", component: MoviesListComponent
-  },
-  {
-    path:"**", component: PageNotFoundComponent
-  }
-]
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,21 +34,19 @@ const routes: Route[] = [
     RegisterPageComponent,
     PageNotFoundComponent,
     MovieCardComponent,
-    TestComponent,
     MoviesListComponent,
-    ShortPipe ,ShortHeaderPipe
+    TestComponent,
+    ShortPipe
   ],
   imports: [
     CommonModule,
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(routes),
-    // MoviesListModule,
-    // AppRoutingModule,
+    AppRoutingModule,
+    FontAwesomeModule
     // HttpClientInMemoryWebApiModule.forRoot(
     //   InMemoryDataService, { dataEncapsulation: false }
     // )
-    FontAwesomeModule
   ],
   exports: [RouterModule, HttpClientModule],
   providers: [MovieService, UserService],
@@ -82,7 +60,8 @@ export class AppModule {
       faCalendar,
       faHome,
       faSearch,
-      faClapperboard
+      faClapperboard,
+      faEye
     );
   }
 }

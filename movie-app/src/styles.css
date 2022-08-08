@@ -7,6 +7,14 @@
   margin: 0;
   box-sizing: border-box;
   border: none;
+  font-family: 'Roboto', sans-serif;
+}
+
+:root {
+  --main-bg-color: black;
+  --main-text-color:white;
+  --main-font-size:1rem;
+  --main-header-size:3rem;
 }
 html,body{
   background: #000;
@@ -142,16 +150,4 @@ table {
 
 img{
   width: 100%;
-}
-
-:root {
-  --main-bg-color: black;
-  --main-text-color:white;
-  --main-font-size:1rem;
-  --main-header-size:3rem;
-}
-
-
-*{
-  font-family: 'Roboto', sans-serif;
 }

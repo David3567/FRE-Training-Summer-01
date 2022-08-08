@@ -12,6 +12,7 @@ export class MovieService {
   private movies: Movie[] = [];
   private moviesSubject$ = new BehaviorSubject(this.movies);
   movies$ = this.moviesSubject$.asObservable();
+  private defaultId: number = 0;
 
   private baseUrl: string = 'https://api.themoviedb.org/3/movie/';
   private apiKey: string = '?api_key=7979b0e432796fe7fa957d6fbbeb0835';
@@ -37,16 +38,14 @@ export class MovieService {
       );
   }
 
-  defaultId: number = 0;
   getMoviesList(): Observable<any> {
     let id = this.defaultId > 0 ? this.defaultId : Math.floor(Math.random() * 500);
-
     let url = `https://api.themoviedb.org/3/list/${id}?api_key=7979b0e432796fe7fa957d6fbbeb0835`
 
-    return this.http.get<any>(url, this.helper.httpOptions)
+    return this.http.get<RootObject>(url, this.helper.httpOptions)
       .pipe(
         debounceTime(100),
-        map(({items}) => {
+        map(({items}:any) => {
           console.log("Successfully retrieved movies here\n", items);
           if (items.length === 0) {
             this.defaultId = 5

@@ -33,7 +33,7 @@ p{
 }
 
 .sidebar__control--btn > *:hover{
-  border-top: 1px solid red;
+  border-top: 6px solid red;
 }
 
 .movies__list__container > .content{
@@ -55,7 +55,7 @@ p{
 }
 
 header > aside.movie__info{
-  background-image: linear-gradient(10deg, rgba(28, 28, 28, 0.853), rgba(0, 0, 0, 0.904), 90%, rgba(255, 0, 0, 0));
+  background-image: linear-gradient(60deg, rgba(28, 28, 28, 0.853), rgb(0, 0, 0), 35%, rgba(255, 255, 255, 0));
   width: 100%;
   padding: 4% 2%;
   height: 100%;
@@ -108,6 +108,12 @@ li.movie .movie__overview{
 
 .movie__overview{
   color: rgb(122, 122, 122);
+}
+
+.movie__basic__stat__info{
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
 }
 
 .movie__match{

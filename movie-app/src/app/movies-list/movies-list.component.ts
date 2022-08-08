@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RootObject } from '../interfaces/movie.interface';
 import { MovieService } from '../services/movie.service';
 @Component({
   selector: 'app-movies-list',
@@ -6,8 +7,8 @@ import { MovieService } from '../services/movie.service';
   styleUrls: ['./movies-list.component.css']
 })
 export class MoviesListComponent implements OnInit {
-  movies: any[] = [];
-  bannerMovie!: any;
+  movies: RootObject[] = [];
+  bannerMovie!: RootObject;
 
   constructor(private movieService: MovieService) { }
 
