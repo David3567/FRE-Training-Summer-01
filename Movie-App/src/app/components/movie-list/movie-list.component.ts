@@ -12,9 +12,21 @@ export class MovieListComponent implements OnInit {
   constructor(private movieService: MovieService) {}
 
   ngOnInit(): void {
-    this.movieService.getDiscoverMovies().subscribe((data) => {
-      this.movieData = data.results;
-      console.log(this.movieData);
-    });
+    this.movieService.getDiscoverMovies().subscribe(
+      (data) => {
+        console.log(data);
+        this.movieData = data.results;
+      },
+      (error) => {
+        console.error('Request failed with error');
+      },
+      () => {
+        console.log('Request completed');
+      }
+    );
+  }
+
+  getPosterPath(api_path: string) {
+    return `https://www.themoviedb.org/t/p/w220_and_h330_face${api_path}`;
   }
 }
