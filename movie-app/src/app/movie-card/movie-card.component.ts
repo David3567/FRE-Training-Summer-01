@@ -1,5 +1,5 @@
 import { Component, OnInit ,Input} from '@angular/core';
-import { RootObject } from '../interfaces/movie.interface';
+import { Movie, RootObject } from '../interfaces/movie.interface';
 import { MovieService } from '../services/movie.service';
 import { Observable, of } from 'rxjs';
 @Component({
@@ -8,7 +8,7 @@ import { Observable, of } from 'rxjs';
   styleUrls: ['./movie-card.component.css']
 })
 export class MovieCardComponent implements OnInit {
-  @Input()movie!: Observable<RootObject>;
+  @Input()movie!: Observable<Movie>;
   constructor(private movieService: MovieService) {
 }
 
