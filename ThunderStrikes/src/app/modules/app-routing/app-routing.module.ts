@@ -23,8 +23,6 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes),
-    HomePageModule,
-    IndividualMovieModule,
   ],
   exports: [RouterModule],
 })
