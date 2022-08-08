@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 import { MovieCardComponent } from './movie-card/movie-card.component';
 import { MovieService } from './services/movie.service';
 import { TestComponent } from './test/test.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MoviesListComponent } from './movies-list/movies-list.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -67,8 +68,10 @@ const routes: Route[] = [
     //   InMemoryDataService, { dataEncapsulation: false }
     // )
   ],
+
   exports: [RouterModule, HttpClientModule],
   providers: [MovieService, UserService],
+
   bootstrap: [AppComponent],
 })
 export class AppModule {}
