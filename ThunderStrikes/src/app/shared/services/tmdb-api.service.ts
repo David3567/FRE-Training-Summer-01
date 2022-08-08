@@ -14,10 +14,10 @@ export class TmdbApiService {
     private readonly sharedApiService: SharedApiDataService,
   ) {}
 
-  getMovie(id: number): Observable<MovieDetails> {
-    return this.httpClient.get([this.sharedApiService.baseUrl, id].join('/'), { headers: this.sharedApiService.httpHeaders }).pipe(
+  getMovie(id: number | string): Observable<MovieDetails> {
+    return this.httpClient.get([this.sharedApiService.baseUrl, Number(id)].join('/'), { headers: this.sharedApiService.httpHeaders }).pipe(
       <any>map((movie: MovieDetails) => {
-        this.sharedApiService.setMovieImageUrl(movie, true);
+        this.sharedApiService.setMovieImageUrl(movie);
         return movie;
       })
     ) as Observable<MovieDetails>;

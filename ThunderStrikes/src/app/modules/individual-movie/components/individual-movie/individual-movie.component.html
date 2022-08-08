@@ -1,7 +1,12 @@
 
 <main class="container" *ngIf="movie">
     <div class="movie-image-container">
-        <img src="{{movie.poster_path}}" alt="{{movie.title}} poster image.">
+        <img
+            [src]="properImage" 
+            alt="{{movie.title}} poster image."
+            width="{{posterSize.width}}"
+            height="{{posterSize.height}}"
+            >
     </div>
     <div class="movie-content">
         <app-movie-tags [movie]="movie"></app-movie-tags>
