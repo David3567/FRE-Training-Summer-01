@@ -1,10 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 /* You can add global styles to this file, and also import other style files */
+*,
 *::after,
 *::before {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   border: none;
+}
+html,body{
+  background: #000;
+  color:#fff
 }
 html,
 body,
@@ -87,9 +93,6 @@ time,
 mark,
 audio,
 video {
-  margin: 0;
-  padding: 0;
-  border: 0;
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
@@ -110,8 +113,7 @@ section {
 }
 body {
   line-height: 1;
-  /* color: aliceblue; */
-  /* background-image:url("./assets/netflix.jpg") */
+
 }
 ol,
 ul {
@@ -131,4 +133,25 @@ q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+.flex__wrapper{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+img{
+  width: 100%;
+}
+
+:root {
+  --main-bg-color: black;
+  --main-text-color:white;
+  --main-font-size:1rem;
+  --main-header-size:3rem;
+}
+
+
+*{
+  font-family: 'Roboto', sans-serif;
 }

@@ -3,7 +3,11 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { RootObject } from '../interfaces/movie.interface';
 import { MovieService } from '../services/movie.service';
+
 import { debounceTime, mergeMap, switchMap } from 'rxjs/operators';
+
+import {MovieCardComponent} from '../movie-card/movie-card.component'
+
 @Component({
   selector: 'app-test',
   templateUrl: './test.component.html',
@@ -33,6 +37,8 @@ export class TestComponent implements OnInit {
   }
 
   getData() {
+
     this.movieService.getMovieList().subscribe(console.log);
+
   }
 }

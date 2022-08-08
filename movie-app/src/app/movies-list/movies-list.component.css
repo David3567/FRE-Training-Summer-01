@@ -1,0 +1,102 @@
+p{
+  overflow: hidden;
+}
+.movies__list__container{
+  width: 100vw;
+  min-height: max-content;
+  position: relative;
+
+  background-clip: border-box;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.movies__list__container > .sidebar{
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 60px;
+  background: #080808;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+/**
+ * Sidebar content
+ */
+.sidebar__control--btn{
+  flex-direction: column;
+  height: 200px;
+  justify-content: space-evenly;
+}
+.sidebar__control--btn > *{
+  text-align: center;
+}
+
+.movies__list__container > .content{
+  position: relative;
+  margin-left: 60px;
+}
+
+.movies__list__container > .content > *{
+  width: 100%;
+}
+.movies__list__container > .content > header {
+  background: blue;
+  height: 55vh;
+  background-clip: border-box;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+
+header > aside.movie__info{
+  background-image: linear-gradient(20deg, rgba(28, 28, 28, 0.853), rgba(0, 0, 0, 0.904), 80%, rgba(255, 0, 0, 0));
+  width: 100%;
+  padding: 10% 2%;
+  height: 100%;
+}
+header > aside.movie__info > *{
+ width: 270px;
+ margin: 2%;
+}
+.movies__list__container > .content > main {
+  overflow: hidden;
+  position: relative;
+}
+
+ul.movies__list{
+  padding:20px;
+  border:dotted 1px;
+  white-space:nowrap;
+  overflow-x:auto;
+  cursor: pointer;
+}
+
+li.movie{
+  position: relative;
+  height:300px;
+  display:inline-block;
+  margin: 2%;
+  width: 200px;
+  box-shadow: 0 0 12px rgb(24, 24, 24);
+}
+
+li.movie:hover{
+  box-shadow: 0 0 42px rgb(40, 40, 40);
+  width: 202px;
+}
+
+li.movie img{
+  height: 80%;
+}
+
+li.movie .movie__overview{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20%;
+  padding: 2%;
+}

@@ -8,13 +8,24 @@
         </h2>
         <form class="sign__in--form">
           <label for="email_or_phone_number">
-            <input type="text" id="email_or_phone_number" name="email_or_phone_number" placeholder="Email or phone" required>
+            <input
+              #email
+              type="text"
+              id="email_or_phone_number"
+              name="email_or_phone_number"
+              placeholder="Email or phone"
+              required>
             <em *ngIf="showErrorMess" class="error">
                 Something went wrong with the email
             </em>
           </label>
             <label for="password" class="space__between">
-              <input [type]="isHidden ? 'password':'text'" name="password" id="password" placeholder="Password">
+              <input
+                [type]="isHidden ? 'password':'text'"
+                name="password"
+                id="password"
+                placeholder="Password"
+                #password>
               <span (click)="showPassword()" class="show__password">
                 <ng-container *ngIf="isHidden; else hidePassword">
                  Show
@@ -28,7 +39,12 @@
               </em>
             </label>
 
-          <input (click)="onLogin()" type="button" value="Sign In" name="sign__in--btn" id="sign__in">
+          <input
+            (click)="onLogin(email.value, password.value, $event)"
+            type="button"
+            value="Sign In"
+            name="sign__in--btn"
+            id="sign__in">
 
           <label for="remember_me" class="space__between">
             <input type="checkbox" name="remember_me" id="remember_me">

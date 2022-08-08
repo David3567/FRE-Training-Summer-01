@@ -3,7 +3,7 @@ export interface Movie {
   title?: string;
   poster_path?: any;
   vote_average?: number;
-}
+
 
 // export interface RootObject {
 //   adult: boolean;

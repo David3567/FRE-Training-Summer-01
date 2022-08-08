@@ -1,0 +1,94 @@
+<section class="movies__list__container">
+
+  <ng-container *ngIf="movies && movies.length > 0; else emptyList">
+    <div class="movies__list__container">
+      <div class="sidebar">
+        <div class="sidebar__control--btn flex__wrapper">
+          <span>
+            Search
+          </span>
+          <span>
+            Home
+          </span>
+          <span>
+            Calender
+          </span>
+          <span>
+            Record
+          </span>
+          <span>
+            +
+          </span>
+        </div>
+      </div>
+      <section class="content flex__wrapper">
+        <header
+          class="flex__wrapper"
+          [style.backgroundImage]="'url(https://image.tmdb.org/t/p/original/'+bannerMovie.poster_path+')'"
+        >
+          <aside class="movie__info">
+            <div class="">
+              <div class="movie__item__category">
+                <span>N</span>Series
+              </div>
+              <h2>
+                {{bannerMovie.original_title}}
+              </h2>
+              <div class="movie__basic__stat__info">
+                <strong>
+                  97% Complete
+                </strong>
+                <span class="movie__year__produced">
+                  2018
+                </span>
+                <span class="movie__streaming__tv">
+                  TV-MA
+                </span>
+                <span class="movie__quality">
+                  HD
+                </span>
+                <span class="movie__rating">
+                  4.5
+                </span>
+              </div>
+              <div class="movie__availability">
+                Season 3 Coming Soon
+              </div>
+              <div class="description">
+                <p>
+                  {{bannerMovie.overview}}
+                </p>
+              </div>
+            </div>
+          </aside>
+          <!-- Image thumbnail will be used as either a background using binding,
+          or with z-index -->
+        </header>
+        <main>
+            <h3>
+              New Trending <strong *ngIf="movies!.length > 0">{{movies.length}}</strong>
+            </h3>
+             <ul class="movies__list">
+              <li
+                [title]="movie.original_title"
+                class="movie flex__wrapper" *ngFor="let movie of movies">
+
+                  <img [src]="'https://image.tmdb.org/t/p/original/'+movie.poster_path" alt="">
+
+                  <div class="movie__overview">
+                      <p>
+                        {{movie.overview}}
+                      </p>
+                  </div>
+              </li>
+            </ul>
+          </main>
+      </section>
+    </div>
+  </ng-container>
+  <ng-template #emptyList>
+    <p>
+      <em>Empty list. Refresh</em>
+    </p>
+  </ng-template>
+</section>
