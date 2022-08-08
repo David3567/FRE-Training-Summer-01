@@ -18,6 +18,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { MovieService } from './services/movie.service';
 import { HttpClientModule } from '@angular/common/http';
+import { MovieCardComponent } from './movie-card/movie-card.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
     RegisterComponent,
     NavbarComponent,
     FooterComponent,
+    MovieCardComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, HttpClientModule],
   providers: [MovieService],
