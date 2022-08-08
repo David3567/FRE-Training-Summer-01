@@ -8,13 +8,13 @@ import { Observable } from 'rxjs';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
-  //movies$!: Observable<any>;
+  movies$!: Observable<any>;
   constructor(private readonly movieService: MovieService) { }
 
   ngOnInit(): void {
-    // this.movieService.getMovies().subscribe()
-    // this.movies$ = this.movieService.movies$;
-    // console.log(this.movies$ = this.movieService.movies$);
+    this.movieService.getMovies().subscribe()
+    this.movies$ = this.movieService.movies$;
+    console.log(this.movies$ = this.movieService.movies$);
         
   }
 

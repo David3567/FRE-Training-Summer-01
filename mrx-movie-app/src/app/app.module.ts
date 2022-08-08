@@ -8,6 +8,7 @@ import { RegisterpageComponent } from './registerpage/registerpage.component';
 import { LoginpageComponent } from './loginpage/loginpage.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
     HomepageComponent,
     RegisterpageComponent,
     LoginpageComponent,
+    NavbarComponent,
   ],
   imports: [BrowserModule,HttpClientModule, AppRoutingModule, FormsModule],
   providers: [],

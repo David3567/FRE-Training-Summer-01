@@ -33,7 +33,5 @@ export class MovieService {
         this.moviesSubject$.next(this.movies)
       })
     )
-    
-    
   }
 }
