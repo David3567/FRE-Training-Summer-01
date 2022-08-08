@@ -1,5 +1,5 @@
 <app-header-top></app-header-top>
-<div [className]="'register-component'">
+<div class="register-component">
   <div 
     [className]="'modal'"
     [ngClass] = "counter === 0 ? 'visible' : ''"
@@ -8,23 +8,54 @@
     <h2>Create a password to start your membership</h2>
     <p>Just a few more steps and you're done!</p>
     <p>We hate paperwork, too.</p>
-    <div
-      [className]="'form'"
-    >
+    <form class="form" [formGroup]="registerForm" (ngSubmit)="submit()">
+      <input 
+        name="username" 
+        type="text" 
+        placeholder="Create a username"
+        formControlName="username"
+        (blur)="setUserName()"
+      />
       <input 
         name="email" 
         type="email" 
         placeholder="Add an email"
-        (keyup)="setEmail($event)"
+        formControlName="email"
+        (blur)="setEmail()"
       />
       <input 
         name="password" 
         type="password" 
         placeholder="Add a password"
-        (keyup)="setPassword($event)"
+        formControlName="password"
+        (blur)="setPassword()"
         />
-      <button (click)="incrementCount()">Next</button>
-    </div>
+      <input 
+        name="confirm-password" 
+        type="password" 
+        placeholder="Confirm password"
+        formControlName="confirmPassword"
+        (blur)="setPasswordConfirm()"
+        />
+        <button 
+          type="submit"
+        >Next</button>
+          <p class="field-message" *ngIf="error?.password?.passwordStrength || error.password?.required">
+            Your password must have lower case, upper case and numeric characters and be at least 8 characters long.
+          </p>
+          <p class="field-message" *ngIf="error?.confirmPassword?.passwordMatch || error?.confirmPassword?.required">
+            Passwords must match.
+          </p>
+          <p class="field-message" *ngIf="error.email?.email ||error.email?.pattern || error.email?.required">
+            Please add a valid email.
+          </p>
+          <p class="field-message" *ngIf="error.username?.required">
+            Please type in a username.
+          </p>
+          <p class="field-message" *ngIf="error.empty">
+            Please fill out fields.
+          </p>
+      </form>
   </div>
 
   <div
