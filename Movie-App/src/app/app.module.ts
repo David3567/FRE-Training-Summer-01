@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MovieListComponent } from './components/movie-list/movie-list.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { MovieListComponent } from './components/movie-list/movie-list.component
     HomepageComponent,
     NavbarComponent,
     MovieListComponent,
+    LoginComponent,
     
   ],
   imports: [
