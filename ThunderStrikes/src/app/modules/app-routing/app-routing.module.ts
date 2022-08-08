@@ -17,6 +17,7 @@ const routes: Routes = [
   {path: "login", component: LoginComponent},
   {path: "movie/:id", component: IndividualMovieComponent},
   {path: "movie-dashboard", component: MovieDashboardComponent},
+  {path: "nav", component: NavigationBarComponent}, // for testing navigation-bar
   // Uncomment this when the movie list is created.
   // {path: "movie/:id", component: IndividualMovieComponent},
   {path: "**", component: NotFoundPageComponent, pathMatch: "full"},
