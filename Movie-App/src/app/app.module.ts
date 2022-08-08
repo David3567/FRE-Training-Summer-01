@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MovieListComponent } from './components/movie-list/movie-list.component';
+import { LoginComponent } from './components/login/login.component';
 
 import { MovieService } from './services/movie.service';
 @NgModule({
@@ -14,6 +15,7 @@ import { MovieService } from './services/movie.service';
     HomepageComponent,
     NavbarComponent,
     MovieListComponent,
+    LoginComponent, 
   ],
   imports: [BrowserModule, HttpClientModule],
   providers: [MovieService],
