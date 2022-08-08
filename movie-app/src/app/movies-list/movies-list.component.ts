@@ -7,14 +7,14 @@ import { MovieService } from '../services/movie.service';
 })
 export class MoviesListComponent implements OnInit {
   movies: any[] = [];
+  bannerMovie!: any;
 
   constructor(private movieService: MovieService) { }
 
   ngOnInit(): void {
     this.movieService.getMoviesList().subscribe((movies:any) => {
-      console.log("Movies")
-      console.log(movies)
-      this.movies = movies;
+      this.bannerMovie = movies[0]
+      this.movies = movies.filter((m:any, i:number) => i > 0);
     });
   }
 }

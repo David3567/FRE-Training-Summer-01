@@ -8,7 +8,6 @@ import { HelperService } from './helper.service';
   providedIn: 'root'
 })
 export class UserService {
-
   baseUrl: string = "api/users";
 
   constructor(
@@ -27,10 +26,10 @@ export class UserService {
     )
   }
 
-  currentUser$: any;
-
   signIn(email: string, password: string): any{
-    return this.http.get<User[]>(`${this.baseUrl}/?email=${email}&password=${password}` ,this.helper.httpOptions)
+    let url = `${this.baseUrl}/?email=${email}&password=${password}`;
+
+    return this.http.get<User[]>(url ,this.helper.httpOptions)
       .pipe(
         tap(_ => {
           console.log(`Successfully logged in ${email}`)

@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+*,
 *::after,
 *::before {
   padding: 0;
@@ -91,9 +92,6 @@ time,
 mark,
 audio,
 video {
-  margin: 0;
-  padding: 0;
-  border: 0;
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
@@ -147,3 +145,4 @@ table {
 img{
   width: 100%;
 }
+

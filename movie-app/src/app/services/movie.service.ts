@@ -37,8 +37,10 @@ export class MovieService {
       );
   }
 
+  defaultId: number = 0;
   getMoviesList(): Observable<any> {
-    let id = Math.floor(Math.random() * 500);
+    let id = this.defaultId > 0 ? this.defaultId : Math.floor(Math.random() * 500);
+
     let url = `https://api.themoviedb.org/3/list/${id}?api_key=7979b0e432796fe7fa957d6fbbeb0835`
 
     return this.http.get<any>(url, this.helper.httpOptions)
@@ -46,9 +48,14 @@ export class MovieService {
         debounceTime(100),
         map(({items}) => {
           console.log("Successfully retrieved movies here\n", items);
+          if (items.length === 0) {
+            this.defaultId = 5
+            this.getMoviesList();
+          }
           return items;
         }),
         catchError(this.helper.errorHandler<any>("getMoviesList"))
     )
   }
 }
+
