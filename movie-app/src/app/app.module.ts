@@ -22,6 +22,8 @@ import { InMemoryDataService } from './services/in-memory-data.service';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { MoviesListModule } from './movies-list/movies-list/movies-list.module';
 import { ShortPipe ,ShortHeaderPipe} from './pipes/short.pipe';
+import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faSquare, faCheckSquare, faHome, faSearch, faCalendar, faFilm, faClapperboard } from '@fortawesome/free-solid-svg-icons';
 
 const routes: Route[] = [
   {
@@ -67,6 +69,7 @@ const routes: Route[] = [
     // HttpClientInMemoryWebApiModule.forRoot(
     //   InMemoryDataService, { dataEncapsulation: false }
     // )
+    FontAwesomeModule
   ],
 
   exports: [RouterModule, HttpClientModule],
@@ -74,4 +77,15 @@ const routes: Route[] = [
 
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(library: FaIconLibrary) {
+    library.addIcons(
+      faFilm,
+      faSquare,
+      faCalendar,
+      faHome,
+      faSearch,
+      faClapperboard
+    );
+  }
+}

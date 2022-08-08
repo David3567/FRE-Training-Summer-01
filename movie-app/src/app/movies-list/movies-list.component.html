@@ -5,16 +5,16 @@
       <div class="sidebar">
         <div class="sidebar__control--btn flex__wrapper">
           <span>
-            Search
+            <fa-icon [icon]="['fas','search']"></fa-icon>
           </span>
           <span>
-            Home
+            <fa-icon [icon]="['fas','home']"></fa-icon>
           </span>
           <span>
-            Calender
+            <fa-icon [icon]="['fas','calendar']"></fa-icon>
           </span>
           <span>
-            Record
+              <fa-icon [icon]="['fas','clapperboard']"></fa-icon>
           </span>
           <span>
             +
@@ -27,22 +27,23 @@
           [style.backgroundImage]="'url(https://image.tmdb.org/t/p/original/'+bannerMovie.poster_path+')'"
         >
           <aside class="movie__info">
-            <div class="">
-              <div class="movie__item__category">
-                <span>N</span>Series
-              </div>
-              <h2>
+            <div class="flex__wrapper">
+              <span class="movie__item__category">Series</span>
+              <h2 class="movie__title">
                 {{bannerMovie.original_title}}
               </h2>
               <div class="movie__basic__stat__info">
-                <strong>
-                  97% Complete
+                <strong class="movie__match">
+                  97% Match
                 </strong>
                 <span class="movie__year__produced">
                   2018
                 </span>
                 <span class="movie__streaming__tv">
                   TV-MA
+                </span>
+                <span class="movie__quantity">
+                  2 Seasons
                 </span>
                 <span class="movie__quality">
                   HD
@@ -54,15 +55,14 @@
               <div class="movie__availability">
                 Season 3 Coming Soon
               </div>
-              <div class="description">
+              <div class="movie__overview">
                 <p>
                   {{bannerMovie.overview}}
                 </p>
               </div>
             </div>
           </aside>
-          <!-- Image thumbnail will be used as either a background using binding,
-          or with z-index -->
+
         </header>
         <main>
             <h3>
@@ -72,9 +72,7 @@
               <li
                 [title]="movie.original_title"
                 class="movie flex__wrapper" *ngFor="let movie of movies">
-
                   <img [src]="'https://image.tmdb.org/t/p/original/'+movie.poster_path" alt="">
-
                   <div class="movie__overview">
                       <p>
                         {{movie.overview}}
@@ -84,11 +82,15 @@
             </ul>
           </main>
       </section>
+      <aside class="project__title">
+        <strong>KCBFLEX</strong>
+      </aside>
     </div>
   </ng-container>
   <ng-template #emptyList>
-    <p>
-      <em>Empty list. Refresh</em>
+    <p class="empty_list">
+      <em>Loading....</em>
+      <em>Please, try to reload the page</em>
     </p>
   </ng-template>
 </section>
