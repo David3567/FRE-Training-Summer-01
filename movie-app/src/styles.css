@@ -113,7 +113,7 @@ section {
 }
 body {
   line-height: 1;
- 
+
 }
 ol,
 ul {
@@ -134,9 +134,6 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-<<<<<<< HEAD
-
-
 
 .flex__wrapper{
   display: flex;
@@ -146,11 +143,6 @@ table {
 img{
   width: 100%;
 }
-
-||||||| 5d4c11c
-=======
-
-
 
 :root {
   --main-bg-color: black;
@@ -163,4 +155,3 @@ img{
 *{
   font-family: 'Roboto', sans-serif;
 }
->>>>>>> 9d612c7b7e8c20554275cac548491fb516ce3cd6
