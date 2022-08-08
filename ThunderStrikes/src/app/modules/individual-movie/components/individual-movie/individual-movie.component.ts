@@ -34,6 +34,7 @@ export class IndividualMovieComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.tmdbService.getLatest().subscribe(console.log);
   }
 
 }

@@ -36,4 +36,7 @@ export class SharedApiDataService {
     }
   }
 
+  setPosterPath(imagePath: string){
+    return this.imageUrlPath + "/w" + this.posterSize.width + imagePath;
+  }
 }

@@ -13,7 +13,15 @@ export class TmdbApiService {
     private readonly httpClient: HttpClient,
     private readonly sharedApiService: SharedApiDataService,
   ) {}
-
+  
+  getLatest(){
+    return this.httpClient.get([this.sharedApiService.baseUrl, "latest"].join("/"), { headers: this.sharedApiService.httpHeaders }).pipe(
+      <any>map( (data: MovieDetails) => {
+        data.poster_path = this.sharedApiService.setPosterPath(data.poster_path);
+        return data;
+      })
+    );
+  }
   getMovie(id: number | string): Observable<MovieDetails> {
     return this.httpClient.get([this.sharedApiService.baseUrl, Number(id)].join('/'), { headers: this.sharedApiService.httpHeaders }).pipe(
       <any>map((movie: MovieDetails) => {
