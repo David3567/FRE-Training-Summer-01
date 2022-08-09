@@ -1,0 +1,17 @@
+<li [ngStyle]="{
+  background: 'url(' + movie.poster_path + ')', 
+  'background-size': 'cover',
+  width: '10rem', 
+  height: '10rem'}">
+  <header class="movie-card-header">
+    <p class="movie-vote">{{movie.vote_average | number:'1.1-1'}}</p>
+  </header>
+  <main class="movie-card-main">
+    <h4>{{movie.title | shortTitle}}</h4>
+    <p>{{movie.release_date}}</p>
+  </main>
+  <footer>
+    <button class="watch-now" [routerLink]="['../', 'movie', movie.id]">Watch now</button>
+    <button class="collect">+</button>
+  </footer>
+</li>

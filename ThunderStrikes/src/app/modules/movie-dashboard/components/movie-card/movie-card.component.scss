@@ -1,0 +1,44 @@
+li{
+  border-radius: 20px;
+  margin: 8px;
+  padding: 15px;
+}
+
+h4{
+  font-size: x-large;
+}
+
+button{
+  color: white;
+}
+
+.movie-vote{
+  background-color: #000;
+  border-radius: 5px;
+  display: inline-block;
+  padding: 0 2px;
+}
+
+.watch-now{
+  background-color: rgba(255,0,0,0.4);
+  border: none;
+  padding: 8px;
+  border-radius: 25%;
+}
+
+.watch-now:hover{
+  background-color: rgba(255,0,0,0.7);
+}
+
+.collect{
+  background-color: rgba(0,0,0,0.5);
+  width: 30px;
+  height: 30px;
+  border: none;
+  padding: 8px;
+  border-radius: 50%;
+}
+
+.collect:hover{
+  background-color: rgba(0,0,0,0.7);
+}

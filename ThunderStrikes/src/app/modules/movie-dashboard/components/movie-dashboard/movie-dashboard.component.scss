@@ -1,0 +1,18 @@
+*{
+  color: white;
+}
+
+h4{
+  font-size: x-large;
+}
+
+.movie-section{
+  margin: 1rem;
+}
+
+.movie-cards{
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  list-style: none;
+}

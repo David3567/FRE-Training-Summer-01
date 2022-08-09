@@ -6,6 +6,7 @@ import { IndividualMovieComponent } from '../individual-movie/components/individ
 import { IndividualMovieModule } from '../individual-movie/individual-movie.module';
 import { LoginComponent } from '../login-page/components/login/login.component';
 import { LoginPageModule } from '../login-page/login-page.module';
+import { MovieDashboardComponent } from '../movie-dashboard/components/movie-dashboard/movie-dashboard.component';
 import { NotFoundPageComponent } from '../page-not-found/not-found-page/not-found-page.component';
 import { RegistrationComponent } from '../registration-page/components/registration/registration.component';
 
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: "register", component: RegistrationComponent},
   {path: "login", component: LoginComponent},
   {path: "movie/:id", component: IndividualMovieComponent},
+  {path: "movie-dashboard", component: MovieDashboardComponent},
   // Uncomment this when the movie list is created.
   // {path: "movie/:id", component: IndividualMovieComponent},
   {path: "**", component: NotFoundPageComponent, pathMatch: "full"},

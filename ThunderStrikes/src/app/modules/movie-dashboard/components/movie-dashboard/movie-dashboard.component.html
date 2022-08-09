@@ -1,0 +1,39 @@
+<section class="movie-section">
+  <h4>Now playing</h4>
+  <ul class="movie-cards">
+    <app-movie-card 
+    *ngFor="let movie of movieNowPlaying" 
+    [movie]="movie">
+    </app-movie-card>
+  </ul>
+</section>
+
+<section class="movie-section">
+  <h4>popular</h4>
+  <ul class="movie-cards">
+    <app-movie-card 
+    *ngFor="let movie of moviePopular" 
+    [movie]="movie">
+    </app-movie-card>
+  </ul>
+</section>
+
+<section class="movie-section">
+  <h4>Top Rated</h4>
+  <ul class="movie-cards">
+    <app-movie-card 
+    *ngFor="let movie of movieTopRated" 
+    [movie]="movie">
+    </app-movie-card>
+  </ul>
+</section>
+
+<section class="movie-section">
+  <h4>Upcoming</h4>
+  <ul class="movie-cards">
+    <app-movie-card 
+    *ngFor="let movie of movieUpcoming" 
+    [movie]="movie">
+    </app-movie-card>
+  </ul>
+</section>
