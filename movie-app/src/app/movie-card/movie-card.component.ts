@@ -8,13 +8,12 @@ import { Observable, of } from 'rxjs';
   styleUrls: ['./movie-card.component.css']
 })
 export class MovieCardComponent implements OnInit {
-  @Input()movie!: Observable<Movie>;
-  constructor(private movieService: MovieService) {
+  @Input()movie!: Movie;
+  constructor() {
+   
 }
 
   ngOnInit(): void {
-    this.movieService.getMovies().subscribe((movie: any) => {
-      this.movie = of(movie);
-    })
+    console.log(this.movie)
   }
 }
