@@ -12,7 +12,7 @@ export class MovieService {
   private baseUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${this.apiKey}`
   
   private movies: Movie[] = [];
-  private moviesSubject$ = new Subject();
+  private moviesSubject$ = new BehaviorSubject(this.movies);
   movies$ = this.moviesSubject$.asObservable();
   
   constructor(private http: HttpClient) { }

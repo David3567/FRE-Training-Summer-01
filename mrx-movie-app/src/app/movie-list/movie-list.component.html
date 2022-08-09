@@ -1,0 +1,68 @@
+<div class="outer">
+
+    <div class="container">
+        <div class="columns is-multiline p-0 pt-6 last" #imgcontain>
+            <!-- <div class="column is-full">
+                <p class="has-text-white">Popular Movies Collection</p>
+            </div> -->
+            <div *ngFor="let movie of movies" class="column is-one-quarter" >
+                <div class="image" >
+                    <img class="img image__img" src="https://image.tmdb.org/t/p/w500{{movie.image}}" alt="">
+                    <!-- <div [ngStyle]="{'background-image':'url(https://image.tmdb.org/t/p/w500'+ movie.image +')'}" class="image__overlay"> -->
+                    <div class="image__overlay image__overlay--blur">
+                        <div class="image__title">{{movie.title}}</div>
+                        <p class="image__description">
+                            {{movie.description | trimString}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="columns last">
+            <div *ngFor="let movie of movies2" class="column is-one-quarter" >
+                <div class="image" >
+                    <img class="img image__img" src="https://image.tmdb.org/t/p/w500{{movie.image}}" alt="">
+                    <div class="image__overlay image__overlay--blur">
+                        <div class="image__title">{{movie.title}}</div>
+                        <p class="image__description">
+                            {{movie.description | trimString}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="columns last">
+            <div *ngFor="let movie of movies3" class="column is-one-quarter" >
+                <div class="image" >
+                    <img class="img image__img" src="https://image.tmdb.org/t/p/w500{{movie.image}}" alt="">
+                    <div class="image__overlay image__overlay--blur">
+                        <div class="image__title">{{movie.title}}</div>
+                        <p class="image__description">
+                            {{movie.description | trimString}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="columns last">
+            <div *ngFor="let movie of movies4" class="column is-one-quarter" >
+                <div class="image" >
+                    <img class="img image__img" src="https://image.tmdb.org/t/p/w500{{movie.image}}" alt="">
+                    <div class="image__overlay image__overlay--blur">
+                        <div class="image__title">{{movie.title}}</div>
+                        <p class="image__description">
+                            {{movie.description | trimString}}
+                        </p>
+                        <!-- <div class="card">
+                            <img src="https://image.tmdb.org/t/p/w500{{movie.image}}" alt="Avatar" style="width:100%">
+                            <div class="card-container">
+                              <h4><b>{{movie.title}}</b></h4> 
+                              <p>{{movie.description | trimString}}</p> 
+                            </div>
+                          </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
