@@ -17,6 +17,7 @@ body {
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
     url(../../assets/image/homepage_background_img.jpg) center/cover no-repeat;
   position: relative;
+  z-index: 0;
   overflow-x: hidden;
   border-bottom: 8px solid #222;
 }

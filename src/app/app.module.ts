@@ -43,6 +43,5 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   ],
   providers: [MovieService],
   bootstrap: [AppComponent],
-
 })
 export class AppModule {}

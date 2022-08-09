@@ -1,32 +1,40 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent implements OnInit {
-  public currPage: string = "Sign In";
+export class NavbarComponent {
+  renderBtn: boolean = true;
+  currBtnOn: string = 'Sign In';
+  navigateTo: string = 'login';
 
-  // eslint-disable-next-line no-empty-function
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
-  // eslint-disable-next-line class-methods-use-this
-  ngOnInit() {
-    if (this.router.url === "/" || this.router.url === "/register") {
-      this.currPage = "Sign In";
+  onButtonClick() {
+    if (this.router.url === '/' || this.router.url === '/register') {
+      this.router.navigateByUrl(this.navigateTo);
+      this.currBtnOn = 'Sign Up';
+      this.navigateTo = 'register';
+      this.renderBtn = true;
     } else {
-      this.currPage = "Sign Up";
+      if (this.router.url === '/login') {
+        this.router.navigateByUrl(this.navigateTo);
+        this.currBtnOn = 'Sign In';
+        this.navigateTo = 'login';
+        this.renderBtn = true;
+      } else {
+        if (this.router.url === '/movies') {
+          this.renderBtn = false;
+        }
+      }
     }
-    return this.currPage;
-  }
-
-  onSignInClick() {
-    this.router.navigateByUrl('/login');
   }
 
   onLogoClick() {
     this.router.navigateByUrl('/');
+    this.currBtnOn = 'Sign In';
   }
 }
