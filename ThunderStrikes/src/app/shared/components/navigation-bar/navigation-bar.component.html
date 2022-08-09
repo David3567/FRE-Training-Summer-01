@@ -1,0 +1,17 @@
+<div class="navbar">
+    <div class="navLeft"><a (click)="toPage(routingPages.Home)">⚡ Strikes</a></div>
+    <ul class="navMain">
+        <li><button (click)="toPage(routingPages.MovieDashboard)">🎞️Browse</button></li>
+        <li><button (click)="toSearch()">🔍Search</button></li>
+        <li><button (click)="toBookmarks()">🔖Bookmarks</button></li>
+    </ul>
+    <div class="navRight">
+        <ul>
+            <li><button (click)="toAccountPage()">My Account</button></li>
+            <li><button (click)="toSettingsPage()">⚙️</button></li>
+        </ul>
+    </div>
+</div>
+
+<!-- Routing Links to be implmented as more pages are made, currently only can go to home page by clicking icon-->
+<!-- Will add routing to movie-list page after merge -->
