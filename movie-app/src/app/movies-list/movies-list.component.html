@@ -70,20 +70,17 @@
             </h3>
              <ul class="movies__list">
               <li
-                [title]="movie.original_title"
+                
                 class="movie flex__wrapper" *ngFor="let movie of movies">
-                  <img [src]="'https://image.tmdb.org/t/p/original/'+movie.poster_path" alt="">
-                  <div class="movie__overview">
-                      <p>
-                        {{movie.overview}}
-                      </p>
-                  </div>
+                
+                <app-movie-card [movie]="movie"> working</app-movie-card>
               </li>
             </ul>
           </main>
       </section>
       <aside class="project__title">
         <strong>KCBFLEX</strong>
+        {{trending}}
       </aside>
     </div>
   </ng-container>

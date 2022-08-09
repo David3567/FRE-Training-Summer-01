@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../services/movie.service';
+
 @Component({
   selector: 'app-movies-list',
   templateUrl: './movies-list.component.html',
@@ -8,6 +9,7 @@ import { MovieService } from '../services/movie.service';
 export class MoviesListComponent implements OnInit {
   movies: any[] = [];
   bannerMovie!: any;
+  trending:any[]=[]
 
   constructor(private movieService: MovieService) { }
 
@@ -16,5 +18,6 @@ export class MoviesListComponent implements OnInit {
       this.bannerMovie = movies[0]
       this.movies = movies.filter((m:any, i:number) => i > 0);
     });
+    
   }
 }

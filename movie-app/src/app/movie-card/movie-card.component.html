@@ -1,4 +1,4 @@
-<ng-container *ngIf="movie | async as movie; else movieNotAvailable">
+<ng-container *ngIf="movie ; else movieNotAvailable">
      <div class="flip-card">
       <div class="flip-card-inner">
         <div class="flip-card-front">
@@ -36,7 +36,7 @@
               alt="play_icon" >
             </a>
           <p class="rate">
-            Rated:<span>{{movie?.vote_average |number :'1.0-1'}}</span> /10
+            Rated:<span>{{movie.vote_average |number :'1.0-1'}}</span> /10
           </p>
         </div>
       </div>
