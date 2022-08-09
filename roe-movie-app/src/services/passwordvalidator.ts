@@ -1,7 +1,7 @@
-import {AbstractControl, ValidationErrors, ValidatorFn} from '@angular/forms';
+import {AbstractControl, ValidationErrors, ValidatorFn, FormGroup, FormControl} from '@angular/forms';
 
-export function createPasswordStrengthValidator(): ValidatorFn {
-    return (control:AbstractControl) : ValidationErrors | null => {
+export function pswduppercase(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
 
         const value = control.value;
         
@@ -11,25 +11,56 @@ export function createPasswordStrengthValidator(): ValidatorFn {
 
         const hasUpperCase = /[A-Z]+/.test(value);
 
-        const hasLowerCase = /[a-z]+/.test(value);
+        const passwordValid = hasUpperCase;
+        return !passwordValid ? { pswduppercase: true } : null;
 
-        const hasNumeric = /[0-9]+/.test(value);
-
-        const passwordValid = hasUpperCase && hasLowerCase && hasNumeric;
-
-        return !passwordValid ? {passwordStrength:true}: null;
     }
 }
 
-export function createPasswordMatchValidator(fg: any): ValidatorFn {
+export function pswdnumeric(): ValidatorFn {
     return (control:AbstractControl) : ValidationErrors | null => {
 
         const value = control.value;
-
+        
         if (!value) {
             return null;
         }
 
-        return value === fg.person.password ? null : {passwordMatch: true}
+        const hasNumeric = /[0-9]+/.test(value);
+
+        const passwordValid = hasNumeric;
+
+        return !passwordValid ? {pswdnumeric:true}: null;
+    }
+}
+
+export function pswdlowercase(): ValidatorFn {
+    return (control:AbstractControl) : ValidationErrors | null => {
+
+        const value = control.value;
+        
+        if (!value) {
+            return null;
+        }
+
+        const hasLowerCase = /[a-z]+/.test(value);
+
+        const passwordValid = hasLowerCase;
+
+        return !passwordValid ? {pswdlowercase:true}: null;
+    }
+}
+
+export function passwordMatch(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+        
+        const pwd = control.root.get('password')?.value;
+        const confirmpwd = control.value;
+
+        if (!confirmpwd) {
+            return null;
+        }
+
+        return confirmpwd === pwd ? null : {passwordMatch: true}
     }
 }
