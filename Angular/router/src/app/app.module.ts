@@ -3,16 +3,25 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { HomeComponent } from './components/home/home.component';
+import { NotfoundComponent } from './components/notfound/notfound.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { ProductComponent } from './components/product/product.component';
+import { PassparamComponent } from './passparam/passparam.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PassparamComponent,
+    ContactComponent,
+    HomeComponent,
+    NotfoundComponent,
+    ProductComponent,
+    ProductDetailComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
