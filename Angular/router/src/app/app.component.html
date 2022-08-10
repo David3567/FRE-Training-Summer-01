@@ -2,6 +2,10 @@
   <button [routerLink]="['home']">home</button>
   <button [routerLink]="['contact']">contact</button>
   <button [routerLink]="['product']">product</button>
+
+  <button [routerLink]="['product']" [queryParams]="{ pageNum, name }">
+    Product
+  </button>
 </div>
 <!-- <div
   class="container"

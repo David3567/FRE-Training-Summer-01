@@ -9,6 +9,7 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { ProductComponent } from './components/product/product.component';
 import { PassparamComponent } from './passparam/passparam.component';
+import { ProductParamComponent } from './components/product-param/product-param.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { PassparamComponent } from './passparam/passparam.component';
     NotfoundComponent,
     ProductComponent,
     ProductDetailComponent,
+    ProductParamComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
