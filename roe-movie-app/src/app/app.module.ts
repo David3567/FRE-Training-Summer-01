@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from '../home/home.component'
 import { HeaderComponent } from '../header/header.component';
 import { HeaderTopComponent } from '../header/header-top/header-top.component';
-import { HeaderBannerComponent } from '../header/header-banner/header-banner.component'
 import { HeaderBannerContentComponent } from '../header/header-banner-content/header-banner-content.component';
 import { FooterComponent } from '../home/footer/footer.component';
 import { MainComponent } from '../home/main/main.component';
@@ -27,8 +26,7 @@ import { MovielistComponent } from '../movielist/movielist.component';
 @NgModule({
   imports: [BrowserModule, FormsModule, AppRoutingModule, BrowserAnimationsModule, MatExpansionModule, ReactiveFormsModule, HttpClientModule, MatButtonModule, MatInputModule, MatFormFieldModule],
   declarations: [AppComponent,
-    HeaderComponent, HeaderTopComponent,
-    HeaderBannerComponent, HeaderBannerContentComponent, FooterComponent, MainComponent, SigninComponent, HomeComponent, RegisterComponent, MovielistComponent],
+    HeaderComponent, HeaderTopComponent, HeaderBannerContentComponent, FooterComponent, MainComponent, SigninComponent, HomeComponent, RegisterComponent, MovielistComponent],
   bootstrap: [AppComponent],
   exports: []
 })
