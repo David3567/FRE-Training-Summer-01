@@ -1,0 +1,37 @@
+<picture>
+    <source media="(min-width: 92px)  and (max-width: 153px)" [srcset]="getPosterSize(posterSizes[0])">
+    <source media="(min-width: 154px) and (max-width: 184px)" [srcset]="getPosterSize(posterSizes[1])">
+    <source media="(min-width: 185px) and (max-width: 341px)" [srcset]="getPosterSize(posterSizes[2])">
+    <source media="(min-width: 342px) and (max-width: 480px)" [srcset]="getPosterSize(posterSizes[3])">
+    <source media="(min-width: 481px) and (max-width: 649px)" [srcset]="getPosterSize(posterSizes[4])">
+    <source media="(min-width: 650px) and (max-width: 1000px)" [srcset]="getBackdropSize(backdropSizes[1])">
+    <!-- <source media="(min-width: 851px) and (max-width: 1200px)"[srcset]="getBackdropSize(backdropSizes[1])"> -->
+    <source media="(min-width: 1001px)" [srcset]="getOriginalBackdrop()">
+    <img
+        [src]="getPosterSize(posterSizes[0])"
+        [width]="posterSizes[0]"
+        height="231"
+        alt="{{movie.title}} poster image."
+    >
+</picture>
+
+
+<!-- <img 
+    srcset="
+        https://image.tmdb.org/t/p/w92/k3W1XXddDOH2zibPkNotIh5amHo.jpg   92w,
+        https://image.tmdb.org/t/p/w154/k3W1XXddDOH2zibPkNotIh5amHo.jpg 154w,
+        https://image.tmdb.org/t/p/w185/k3W1XXddDOH2zibPkNotIh5amHo.jpg 185w,
+        https://image.tmdb.org/t/p/w342/k3W1XXddDOH2zibPkNotIh5amHo.jpg 342w,
+        https://image.tmdb.org/t/p/w500/k3W1XXddDOH2zibPkNotIh5amHo.jpg 500w,
+        https://image.tmdb.org/t/p/w780/k3W1XXddDOH2zibPkNotIh5amHo.jpg  780w" 
+        
+    sizes="
+        (min-width: 92px) and (max-width: 153px)   92px, 
+        (min-width: 154px) and (max-width: 184px) 154px, 
+        (min-width: 185px) and (max-width: 341px) 185px, 
+        (min-width: 342px) and (max-width: 499px) 342px, 
+        (min-width: 500px) and (max-width: 779px) 500px,
+        (min-width: 780px) 780px, 
+        92px" 
+    src="https://image.tmdb.org/t/p/w92/vzWqkXbqs3EEMi3jgFpiRPgFGlG.jpg"
+    alt=" {{movie.title}} poster image." /> -->

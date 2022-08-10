@@ -15,9 +15,6 @@ export class NavigationBarComponent implements OnInit {
         this.pageRouter.changeTo(page);
     }
     // will add routing to all below after merge, also need to pass account ID: number as each page will differ based on ID
-    toMovieList(): void {
-
-    }
     toSearch(): void {
 
     }

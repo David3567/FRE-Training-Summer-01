@@ -7,29 +7,31 @@ p, h3{
     color: white;
 }
 
+p{
+    height: 100%;
+}
+
 ul{
     display: flex;
     gap: 4vw;
     overflow-x: auto;
     overflow-y: hidden;
     width: 100%;
-    height: 25vh;
 }
 li{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5vh;
-    height: 25vh;
-}
-
-img{
-    height: 90%;
-    width: auto;
+    gap: 0.5vw;
+    // height: 25vh;
+    width: 25vw;
 }
 
 @media screen and(min-width: 650px){
     ul{
         gap: 1vw;
+    }
+    li{
+        width: 20vw;
     }
 }

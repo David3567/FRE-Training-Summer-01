@@ -1,0 +1,27 @@
+<!-- <img
+    [src]="getPosterSize(posterSizes[0])"
+    alt=" {{actor.name}} portrait photo." 
+    loading="lazy"
+    srcset="{{getPosterSize(posterSizes[0])}} {{posterSizes[0]}}w,
+            {{getPosterSize(posterSizes[1])}} {{posterSizes[1]}}w,
+            {{getPosterSize(posterSizes[2])}} {{posterSizes[2]}}w,
+            {{getPosterSize(posterSizes[3])}} {{posterSizes[3]}}w"
+    sizes="(max-width: 462px) {{posterSizes[0]}}px, 
+    (max-width: 700px) {{posterSizes[1]}}px, 
+    (max-width: 1199px) {{posterSizes[2]}}px, 
+    (min-width: 1200px) {{posterSizes[3]}}px"
+/> -->
+
+
+<picture>
+    <source media="(max-width: 342px)" [srcset]="getPosterSize(posterSizes[0])">
+    <source media="(min-width: 343px) and (max-width: 649px)" [srcset]="getPosterSize(posterSizes[1])">
+    <source media="(min-width: 650px) and (max-width: 1000px)" [srcset]="getPosterSize(posterSizes[2])">
+    <source media="(min-width: 1000px)" [srcset]="getPosterSize(posterSizes[3])">
+    <img
+        loading="lazy"
+        alt="{{actor.name}} portrait photo."
+        [src]="getPosterSize(posterSizes[0])"
+        width="20vw"
+    >
+</picture>

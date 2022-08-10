@@ -25,10 +25,10 @@ export class MovieCreditsService {
         // We only want to display cast members
         // that include a profile photo.
         cast = cast.filter(withPicture => withPicture.profile_path);
-        cast.map(data => {
-          data.profile_path = this.sharedApiService.getActorImageUrl(data.profile_path);
-          return data;
-        });
+        // cast.map(data => {
+        //   data.profile_path = this.sharedApiService.getActorImageUrl(data.profile_path);
+        //   return data;
+        // });
 
         return cast;
       })

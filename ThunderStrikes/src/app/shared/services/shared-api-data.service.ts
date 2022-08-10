@@ -18,10 +18,12 @@ export class SharedApiDataService {
     'Content-Type': 'application/json;charset=utf-8'
   });
   constructor() { }
-  getActorImageUrl(imagePath: string) {
-    return this.imageUrlPath + "/w" + this.actorImageSize.width + imagePath;
+  getImageSizeUrl(imagePath: string, width: number){
+    return this.imageUrlPath + "/w" + width + imagePath;
   }
-
+  getOriginalImage(imagePath: string){
+    return this.imageUrlPath + "/original" + imagePath;
+  }
   // option for original quality because the images
   // look bad on the movie page. we don't want
   // the original quality on all of them to save bandwidth
