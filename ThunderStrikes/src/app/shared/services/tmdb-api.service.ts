@@ -13,7 +13,6 @@ export class TmdbApiService implements OnInit{
   constructor(
     private readonly httpClient: HttpClient,
     private readonly sharedApiService: SharedApiDataService,
-    private readonly activatedRoute: ActivatedRoute
   ) {}
   ngOnInit(): void {
   }
