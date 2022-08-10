@@ -1,0 +1,21 @@
+// img{
+//     height: 21vh;
+//     width: auto;
+// }
+
+img{
+    width: 25vw;
+    height: auto;
+}
+
+@media screen and(min-width: 650px){
+    img{
+        width: 20vw;
+    }
+}
+
+@media screen and(min-width: 1280px){
+    img{
+        width: 15vw;
+    }
+}
