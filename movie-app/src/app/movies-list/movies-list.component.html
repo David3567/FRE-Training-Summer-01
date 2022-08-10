@@ -21,6 +21,16 @@
         </div>
       </div>
       <section class="content flex__wrapper">
+        <div *ngIf="selectedMovieVideo && showMovie" class="movie__video__trailer">
+          <iframe
+            [title]="selectedMovieVideo.name"
+            [src]="sanitize.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/'+selectedMovieVideo.key)"
+            allowfullscreen allow="true">
+          </iframe>
+          <span class="close__video" (click)="showMovie=false">
+            X
+          </span>
+        </div>
         <header
           class="flex__wrapper"
           [style.backgroundImage]="'url(https://image.tmdb.org/t/p/original/'+bannerMovie.poster_path+')'"
@@ -70,6 +80,7 @@
             </h3>
              <ul class="movies__list">
               <li
+                (click)="onWatchTrailer(movie.id)"
                 [title]="movie.original_title"
                 class="movie flex__wrapper" *ngFor="let movie of movies">
                   <img [src]="'https://image.tmdb.org/t/p/original/'+movie.poster_path" alt="">
