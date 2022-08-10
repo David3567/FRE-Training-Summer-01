@@ -10,5 +10,5 @@ import { slideInAnimation } from './animation/router.animation';
 export class AppComponent {
   title = 'router';
   pageNum = 0;
-  name = '';
+  name = 'Tom';
 }

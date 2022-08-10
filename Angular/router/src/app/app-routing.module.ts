@@ -6,6 +6,8 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { ProductParamComponent } from './components/product-param/product-param.component';
 import { ProductComponent } from './components/product/product.component';
+import { SuperuserComponent } from './components/superuser/superuser.component';
+import { UserComponent } from './components/user/user.component';
 import { ProductGuard } from './services/product.guard';
 
 const routes: Routes = [
@@ -15,7 +17,7 @@ const routes: Routes = [
   { path: 'product/:id', component: ProductDetailComponent },
   // {
   //   path: 'product',
-  //   component: ProductComponent,
+  //   component: ContactComponent,
   //   children: [
   //     // child route
   //     // { path: '', component: ProductComponent },
@@ -25,8 +27,21 @@ const routes: Routes = [
   {
     path: 'product-param',
     component: ProductParamComponent,
-    canActivate: [ProductGuard],
+    // canActivate: [ProductGuard],
+    // canLoad: [ProductLoadGuard]
   },
+
+  {
+    path: 'user',
+    component: UserComponent,
+    outlet: 'secondary',
+  },
+  {
+    path: 'superuser',
+    component: SuperuserComponent,
+    outlet: 'secondary',
+  },
+
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', component: NotfoundComponent },
 ];

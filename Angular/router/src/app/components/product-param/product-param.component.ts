@@ -11,16 +11,16 @@ export class ProductParamComponent implements OnInit {
   snapshotPageNo = '';
   name = '';
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(private activatedRoute: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
     this.snapshotPageNo =
-      this.route.snapshot.queryParamMap.get('pageNum') || '0';
+      this.activatedRoute.snapshot.queryParamMap.get('pageNum') || '0';
 
-    const name = this.route.snapshot.queryParamMap.get('name');
+    const name = this.activatedRoute.snapshot.queryParamMap.get('name');
     console.log('snapshotPageNo: ', this.snapshotPageNo);
 
-    this.route.queryParamMap.subscribe((params) => {
+    this.activatedRoute.queryParamMap.subscribe((params) => {
       this.pageNo = params.get('pageNum') || '0';
       this.name = params.get('name') || '';
       console.log('Query params ', this.pageNo, name);

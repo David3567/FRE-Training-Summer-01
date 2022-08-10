@@ -11,14 +11,14 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ProductGuard implements CanActivate {
+  // constructor(private authService: AuthService) {}
+
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ):
-    | Observable<boolean | UrlTree>
-    | Promise<boolean | UrlTree>
-    | boolean
-    | UrlTree {
+  ): boolean {
+    // if (this.authService.user.role === 'Admin') return true;
+
     return true;
   }
 }
