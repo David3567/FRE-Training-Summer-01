@@ -83,9 +83,7 @@ ul.movies__list{
 li.movie{
   position: relative;
   display:inline-block;
-  width: 250px;
-  height:180px;
-  margin: 1%;
+ margin: 1%;
   box-shadow: 0 0 12px rgb(24, 24, 24);
 }
 
