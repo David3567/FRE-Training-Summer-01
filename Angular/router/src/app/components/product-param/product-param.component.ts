@@ -28,7 +28,7 @@ export class ProductParamComponent implements OnInit {
   }
 
   nextPage() {
-    this.router.navigate(['product'], {
+    this.router.navigate(['product-param'], {
       queryParams: { pageNum: +this.pageNo + 1 },
     });
   }
