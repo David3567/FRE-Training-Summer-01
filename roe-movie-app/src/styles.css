@@ -1,9 +1,12 @@
 /* Add application styles & imports to this file! */
 
-body {
+body, * {
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
+  box-sizing:content-box;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
 }
 
 header {
@@ -11,8 +14,9 @@ header {
   padding: 0;
   width: 100vw;
   opacity: 1;
-  background-image: url('./assets/header_background.jpg');
-  border-bottom: 22px solid #8a8787;
+  background-image: url('./assets/red_curtain.png');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 main {
   margin: 0;
