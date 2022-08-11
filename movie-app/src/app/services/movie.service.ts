@@ -49,7 +49,6 @@ export class MovieService {
           this.moviesSubject$.next(this.movies);
         })
       );
-    return of('err');
   }
 
   getData() {
@@ -91,13 +90,13 @@ export class MovieService {
         catchError(this.helper.errorHandler<any>("getMoviesList"))
     )
   }
-// <<<<<<< HEAD
 
   getTrendingMovies(){
     let url = `https://api.themoviedb.org/3/trending/all/day?api_key=7979b0e432796fe7fa957d6fbbeb0835`
 
     return this.http.get<RootObject>(url)
       .pipe(
+        debounceTime(50),
         map(({results}:any) => {
           console.log("Successfully retrieved trending movies here\n", results);
           return results;
@@ -106,7 +105,7 @@ export class MovieService {
     )
   }
 
-  getVideo(id: number): Observable<any> {
+  getVideoById(id: number): Observable<any> {
     let url = `https://api.themoviedb.org/3/movie/${id}/videos${this.apiKey}&language=en-US`
 
     return this.http.get(url, this.helper.httpOptions).pipe(

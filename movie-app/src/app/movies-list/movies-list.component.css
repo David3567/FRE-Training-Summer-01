@@ -12,11 +12,11 @@ p{
   top: 0;
   height: 100%;
   width: 60px;
-  background: #080808;
+  box-shadow: 0 0 5px gray;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1;
+  z-index: 2;
 }
 
 /**

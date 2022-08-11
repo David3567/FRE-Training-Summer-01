@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { MovieService } from '../services/movie.service';
-import { Movie, RootObject } from './../interfaces/movie.interface';
-
-import { debounceTime, mergeMap, switchMap } from 'rxjs/operators';
-
+import { debounceTime, switchMap } from 'rxjs/operators';
 import {MovieCardComponent} from '../movie-card/movie-card.component'
 
 @Component({

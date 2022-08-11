@@ -11,20 +11,13 @@ import { MovieService } from '../services/movie.service';
 export class MoviesListComponent implements OnInit {
   movies: any[] = [];
   bannerMovie!: any;
-// <<<<<<< HEAD
   selectedMovieVideo!: Video
   showMovie: boolean = false;
   constructor(
     public sanitize: DomSanitizer,
     private movieService: MovieService) { }
-// ||||||| a1582c4
-
-  // constructor(private movieService: MovieService) { }
-// =======
   trending:any[]=[]
 
-//   constructor(private movieService: MovieService) { }
-// >>>>>>> 26c97cdfb038a7cfea72910605391e9d8887129f
 
   ngOnInit(): void {
     this.movieService.getMoviesList().subscribe((movies: any) => {
@@ -33,11 +26,14 @@ export class MoviesListComponent implements OnInit {
       this.movies = movies.filter((m:any, i:number) => i > 0);
     });
 
+    this.movieService.getTrendingMovies().subscribe((movies: any) => {
+      this.trending = movies
+    });
   }
 
   onWatchTrailer(id: number): void{
     this.showMovie = true;
-    this.movieService.getVideo(id)
+    this.movieService.getVideoById(id)
       .subscribe((trailer: Video[]) => {
       console.log("Watching trailer now...")
         console.dir(trailer);

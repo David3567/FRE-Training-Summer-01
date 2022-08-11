@@ -23,7 +23,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { MoviesListModule } from './movies-list/movies-list/movies-list.module';
 import { ShortPipe} from './pipes/short.pipe';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faSquare, faHome, faSearch, faCalendar, faFilm, faClapperboard, faEye } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faSearch, faCalendar, faClapperboard, faEye } from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
   declarations: [
@@ -60,8 +60,6 @@ import { faSquare, faHome, faSearch, faCalendar, faFilm, faClapperboard, faEye }
 export class AppModule {
   constructor(library: FaIconLibrary) {
     library.addIcons(
-      faFilm,
-      faSquare,
       faCalendar,
       faHome,
       faSearch,
