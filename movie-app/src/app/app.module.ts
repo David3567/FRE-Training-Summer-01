@@ -21,9 +21,21 @@ import { UserService } from './services/user.service';
 import { InMemoryDataService } from './services/in-memory-data.service';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { MoviesListModule } from './movies-list/movies-list/movies-list.module';
-import { ShortPipe} from './pipes/short.pipe';
-import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faSquare, faHome, faSearch, faCalendar, faFilm, faClapperboard, faEye } from '@fortawesome/free-solid-svg-icons';
+import { ShortPipe } from './pipes/short.pipe';
+import {
+  FaIconLibrary,
+  FontAwesomeModule,
+} from '@fortawesome/angular-fontawesome';
+import {
+  faSquare,
+  faHome,
+  faSearch,
+  faCalendar,
+  faFilm,
+  faClapperboard,
+  faEye,
+} from '@fortawesome/free-solid-svg-icons';
+import { SearchService } from './services/search.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +49,7 @@ import { faSquare, faHome, faSearch, faCalendar, faFilm, faClapperboard, faEye }
     MovieCardComponent,
     MoviesListComponent,
     TestComponent,
-    ShortPipe
+    ShortPipe,
   ],
   imports: [
     CommonModule,
@@ -46,14 +58,14 @@ import { faSquare, faHome, faSearch, faCalendar, faFilm, faClapperboard, faEye }
     AppRoutingModule,
     FontAwesomeModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
     // HttpClientInMemoryWebApiModule.forRoot(
     //   InMemoryDataService, { dataEncapsulation: false }
     // )
   ],
 
   exports: [RouterModule, HttpClientModule],
-  providers: [MovieService, UserService],
+  providers: [MovieService, UserService, SearchService],
 
   bootstrap: [AppComponent],
 })

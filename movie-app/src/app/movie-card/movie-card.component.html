@@ -1,52 +1,48 @@
-<ng-container *ngIf="movie | async as movie; else movieNotAvailable">
-     <div class="flip-card">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <!-- getting img from Api - need to make another request -->
+<ng-container *ngIf="movie; else movieNotAvailable">
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front">
+        <img
+          *ngIf="movie?.poster_path"
+          src="https://image.tmdb.org/t/p/original/{{ movie.poster_path }}"
+          [alt]="movie.title"
+          class="front_img"
+        />
+
+        <h1 class="front-title">{{ movie.title | makeShort: 15 }}</h1>
+        <p class="year front_year">
+          <span>{{ movie.release_date | date: "yyyy" }}</span>
+        </p>
+      </div>
+
+      <div class="flip-card-back">
+        <div class="img-container">
           <img
             *ngIf="movie?.poster_path"
-            src="https://image.tmdb.org/t/p/original/{{movie.poster_path}}"
+            src="https://image.tmdb.org/t/p/original/{{ movie.poster_path }}"
             [alt]="movie.title"
-             class="front_img">
-
-             <h1 class="front-title">{{ movie.title |makeShort: 15}}</h1>
-             <p class="year front_year"><span>{{movie.release_date | date: 'yyyy'}}</span>
+            class="back_img"
+          />
         </div>
-        <div class="flip-card-back">
-          <div class="img-container">
-              <!-- getting img from Api - need to make another request -->
-              <img
-                *ngIf="movie?.poster_path"
-                src="https://image.tmdb.org/t/p/original/{{ movie.poster_path}}"
-                [alt]="movie.title"
-                class="back_img">
-          </div>
 
-          <h1
-            class="title_back">{{ movie.title  |makeShort: 15}}
-          </h1>
-          <p class="year year_back">
-            <span>
-              {{movie.release_date | date: 'yyyy'}}
-            </span>
-          </p>
-          <a href="#"
-            class="play_icon">
-              <img src="../../assets/playIcon.png"
-              alt="play_icon" >
-            </a>
-          <p class="rate">
-            Rated:<span>{{movie?.vote_average |number :'1.0-1'}}</span> /10
-          </p>
-        </div>
+        <h1 class="title_back">{{ movie.title | makeShort: 15 }}</h1>
+        <p class="year year_back">
+          <span>
+            {{ movie.release_date | date: "yyyy" }}
+          </span>
+        </p>
+        <a href="#" class="play_icon">
+          <img src="../../assets/playIcon.png" alt="play_icon" />
+        </a>
+        <p class="rate">
+          Rated:<span>{{ movie.vote_average | number: "1.0-1" }}</span> /10
+        </p>
       </div>
     </div>
+  </div>
 </ng-container>
 <ng-template #movieNotAvailable>
   <div>
-    <h1>
-      Movie Not Available
-    </h1>
+    <h1>Movie Not Available</h1>
   </div>
 </ng-template>
-

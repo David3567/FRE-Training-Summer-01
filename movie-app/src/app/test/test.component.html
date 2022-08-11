@@ -1,8 +1,16 @@
-<button (click)="getData()">Button</button>
-<div *ngFor="let movie of movie$ | async">
-  
-  <app-movie-card [movie]="movie"></app-movie-card>
-</div>
-<form [formGroup]="form">
+<form [formGroup]="form" class="form__adjust">
   <input formControlName="inputbox" />
 </form>
+<div class="movie__container">
+  <app-movie-card
+    *ngFor="let movie of movie$ | async"
+    [movie]="movie"
+  ></app-movie-card>
+</div>
+
+<div class="movie__container">
+  <app-movie-card
+    *ngFor="let search of searchList$ | async"
+    [movie]="search"
+  ></app-movie-card>
+</div>

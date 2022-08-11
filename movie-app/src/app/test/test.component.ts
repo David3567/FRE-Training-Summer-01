@@ -6,7 +6,8 @@ import { Movie, RootObject } from './../interfaces/movie.interface';
 
 import { debounceTime, mergeMap, switchMap } from 'rxjs/operators';
 
-import {MovieCardComponent} from '../movie-card/movie-card.component'
+import { MovieCardComponent } from '../movie-card/movie-card.component';
+import { SearchService } from '../services/search.service';
 
 @Component({
   selector: 'app-test',
@@ -17,10 +18,21 @@ export class TestComponent implements OnInit {
   movie$!: Observable<any>;
   form!: FormGroup;
 
-  constructor(private movieService: MovieService, private fb: FormBuilder) {}
+  searchList$!: Observable<any>;
+
+  constructor(
+    private movieService: MovieService,
+    private searchService: SearchService,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
-    this.movie$ = this.movieService.movies$;
+    // this.getData();
+    // this.movie$ = this.movieService.movies$;
+
+    this.searchList$ = this.searchService.searchList$;
+
+    console.log(this.searchList$);
 
     this.form = this.fb.group({
       inputbox: [''],
@@ -30,17 +42,13 @@ export class TestComponent implements OnInit {
       ?.valueChanges.pipe(
         debounceTime(500),
         switchMap((val) => {
-          return this.movieService.searchMovies(val);
+          return this.searchService.searchMovies(val);
         })
       )
       .subscribe(console.log);
   }
 
   getData(): void {
-    for (let i = 0; i < 20; i++) {
-      this.movieService.getMovies().subscribe(console.log);
-      this.movieService.getMovieList().subscribe(console.log);
-
-    }
+    this.movieService.getMovieList().subscribe();
   }
 }

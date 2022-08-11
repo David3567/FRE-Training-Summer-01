@@ -1,0 +1,9 @@
+.movie__container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.form__adjust input {
+  border: 1px solid black;
+  padding: 1rem 2rem;
+}
