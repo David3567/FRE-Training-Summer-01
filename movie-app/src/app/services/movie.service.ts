@@ -125,24 +125,6 @@ export class MovieService {
       catchError(this.helper.errorHandler<any>("GetMovie"))
     )
    }
-// ||||||| a1582c4
-// =======
-
-//   getTrendingMovies(){
-
-//     let url = `https://api.themoviedb.org/3/trending/all/day?api_key=7979b0e432796fe7fa957d6fbbeb0835`
-
-//     return this.http.get<RootObject>(url)
-//       .pipe(
-
-//         map(({results}:any) => {
-//           console.log("Successfully retrieved trending movies here\n", results);
-//           return results;
-//         }),
-//         catchError(this.helper.errorHandler<any>("getTrendingMovies"))
-//     )
-//   }
-// >>>>>>> 26c97cdfb038a7cfea72910605391e9d8887129f
 }
 
 
