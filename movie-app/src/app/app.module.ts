@@ -31,13 +31,9 @@ import { faHome, faSearch, faCalendar, faClapperboard, faEye } from '@fortawesom
     WelBannerComponent,
     NavHeaderHPComponent,
     HomePageComponent,
-    SignInComponent,
-    RegisterPageComponent,
     PageNotFoundComponent,
-    MovieCardComponent,
-    MoviesListComponent,
     TestComponent,
-    ShortPipe
+    // ShortPipe
   ],
   imports: [
     CommonModule,
@@ -47,22 +43,17 @@ import { faHome, faSearch, faCalendar, faClapperboard, faEye } from '@fortawesom
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule
-    // HttpClientInMemoryWebApiModule.forRoot(
-    //   InMemoryDataService, { dataEncapsulation: false }
-    // )
   ],
 
   exports: [RouterModule, HttpClientModule],
-  providers: [MovieService, UserService],
+  providers: [MovieService, UserService, ShortPipe],
 
   bootstrap: [AppComponent],
 })
 export class AppModule {
   constructor(library: FaIconLibrary) {
     library.addIcons(
-      faCalendar,
-      faHome,
-      faSearch,
+      faCalendar, faHome, faSearch,
       faClapperboard,
       faEye
     );

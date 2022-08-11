@@ -1,10 +1,6 @@
-import { NgIfContext } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
-
 import { BehaviorSubject, catchError, debounceTime, map, Observable, of, tap } from 'rxjs';
-
 import { Movie, RootObject } from '../interfaces/movie.interface';
 import { HelperService } from './helper.service';
 
