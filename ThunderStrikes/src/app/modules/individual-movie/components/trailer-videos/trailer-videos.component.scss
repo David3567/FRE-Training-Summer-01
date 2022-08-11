@@ -1,0 +1,42 @@
+:host{
+    width: 100%;
+    height: 100%;
+}
+h3{
+    color: white;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+    justify-content: center;
+    width: 100%;
+}
+
+.videoButtons{
+    display: flex;
+    gap: 1vw;
+}
+
+button{
+    padding: 1.5vw;
+    background-color: rgb(71, 71, 71);
+    color: white;
+    border: none;
+    border-radius: 0.75vw;
+}
+
+button:disabled{
+    background-color: rgb(22, 21, 21);
+}
+
+.video-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

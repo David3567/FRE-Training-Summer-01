@@ -8,6 +8,8 @@ import { CastAndCrewComponent } from './components/cast-and-crew/cast-and-crew.c
 import { PosterImageComponent } from 'src/app/shared/components/poster-image/poster-image.component';
 import { ActorImageComponent } from 'src/app/shared/components/actor-image/actor-image.component';
 import { RouterModule, Routes } from '@angular/router';
+import { TrailerVideosComponent } from './components/trailer-videos/trailer-videos.component';
+import { YouTubePlayerModule } from '@angular/youtube-player';
 
 const routes: Routes = [
   { path: "", component: IndividualMovieComponent },
@@ -21,12 +23,14 @@ const routes: Routes = [
     MovieTagsComponent,
     CastAndCrewComponent,
     PosterImageComponent,
-    ActorImageComponent
+    ActorImageComponent,
+    TrailerVideosComponent,
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+    YouTubePlayerModule
   ],
-  
+
 })
 export class IndividualMovieModule { }
