@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-header-banner-content',
@@ -22,6 +22,8 @@ export class HeaderBannerContentComponent implements OnInit {
       this.Emailvalidation=false
       return
     }
-    this.router.navigate(['register',this.email.value])
+    else{
+      this.router.navigate(['register',this.email.value])
+    }
   }
 }

@@ -1,4 +1,6 @@
-<app-header-top></app-header-top>
+<header class="shadow" style="height:80vh">
+  <app-header></app-header>
+</header>
 <main>
   <div class="input_container">
     <form [formGroup]="SearchForm">
@@ -9,19 +11,30 @@
       <label for="nowplaying">Now Playing</label><input type="checkbox" name="nowplaying" formControlName="nowplaying" (change)="selectNowPlaying()">
     </form>
   </div>
-  <div *ngFor="let Movie of Movies['results']" class="container" [ngClass]="Movie.vote_average>=8?class1:class2">
+  <div
+  infinite-scroll
+  [infiniteScrollDistance]="6"
+  [infiniteScrollThrottle]="1750"
+  (scrolled)="onScroll()"
+>
+  <mat-card *ngFor="let Movie of Movies['results']" class="container">
+    <mat-card-header>
+      <div>
+        <mat-card-title>{{Movie.title}}</mat-card-title>
+        <mat-card-subtitle>Release Date:{{Movie.release_date}}</mat-card-subtitle>
+      </div>
+    </mat-card-header>
+    <mat-card-content>
     <img *ngIf="Movie.backdrop_path" src="https://image.tmdb.org/t/p/w500{{Movie.backdrop_path}}">
-    <h2 [ngStyle]="Movie.vote_average>=8?VotingAverageHeader1:(Movie.vote_average>5 && Movie.vote_average<8)?VotingAverageHeader2:VotingAverageHeader3">Voting:{{Movie.title}} </h2>
     <h4>Overview:{{Movie.overview}}</h4>
-    <h5>Release Date:{{Movie.release_date}}</h5>
-    <h6 [ngStyle]="Movie.vote_average>=8?VotingAveragecolor1:(Movie.vote_average>5 && Movie.vote_average<8)?VotingAveragecolor2:VotingAveragecolor3">Voting:{{Movie.vote_average}}</h6>
+    <h6>{{Movie.vote_average}}</h6>
     <h6>Vote Count:{{Movie.vote_count}}</h6>
     <hr>
-  </div>
+</mat-card-content>
+</mat-card>
+</div>
 </main>
-
 <footer>
-  <app-footer>
-
-  </app-footer>
+  <app-footer></app-footer>
 </footer>
+

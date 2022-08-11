@@ -32,7 +32,7 @@
 }
 
 .checkmark {
-  background: url('../assets/Checkmark.png') no-repeat 50% 50%;
+  background: url('../../../../assets/Checkmark.png') no-repeat 50% 50%;
   background-size: 50px;
   height: 50px;
   width: 50px;

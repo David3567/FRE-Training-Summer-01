@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit,  OnDestroy} from '@angular/core';
-import { MoviesService } from '../services/movies.service';
+import { MoviesService } from '../../../services/movies.service';
 import { Router } from '@angular/router';
 import { fromEvent, debounceTime, distinctUntilChanged, map, switchMap, mergeMap, filter, isEmpty } from 'rxjs';
 import { FormControl, FormGroup } from '@angular/forms';
@@ -17,42 +17,12 @@ export class MovielistComponent implements OnInit {
     nowplaying: new FormControl('')
   })
   @ViewChild('search', { static: true }) name: ElementRef = new ElementRef('');
-  public VotingAveragecolor1:object ={
-    color:"green",
-    fontSize:18
-  }
 
-  public VotingAveragecolor2:object ={
-    color:"orange",
-    fontSize:16
-  }
-
-  public VotingAveragecolor3:object ={
-    color:"red",
-    fontSize:14
-  }
-
-  public VotingAverageHeader1:object ={
-    color:"green",
-    fontSize:32
-  }
-
-  public VotingAverageHeader2:object ={
-    color:"orange",
-    fontSize:28
-  }
-
-  public VotingAverageHeader3:object ={
-    color:"red",
-    fontSize:24
-  }
-
-  public class1:string="class1"
-  public class2:string="class2"
+  page:number=1
   constructor(public router:Router, private service:MoviesService){}
 
   ngOnInit(): void {
-    this.service.getMovies().subscribe((result: any)=>{this.Movies=result; console.log(this.Movies)})
+    this.service.getMovies(this.page).subscribe((result: any)=>{this.Movies=result; console.log(this.Movies)})
     this.SearchForm.controls.nowplaying.setValue('true')
   }
   ngAfterViewInit() {
@@ -61,7 +31,7 @@ export class MovielistComponent implements OnInit {
 selectNowPlaying(){
   if(this.SearchForm.controls.upcoming.enabled){this.SearchForm.controls.upcoming.reset()}
   this.SearchForm.controls.search.setValue('')
-  this.service.getMovies().subscribe((result: any)=>{this.Movies=result; console.log(this.Movies)})
+  this.service.getMovies(1).subscribe((result: any)=>{this.Movies=result; console.log(this.Movies)})
 }
 
 SearchTitle(){
@@ -88,6 +58,10 @@ selectUpcoming(){
   this.SearchForm.controls.search.setValue('')
   this.service.getUpcoming(date).subscribe((result: any)=>{this.Movies=result; console.log(this.Movies)})
 }
-
+onScroll(): void {
+  this.page++
+  if(this.page==1000){this.page=1}
+  this.service.getMovies(this.page).subscribe((result: any)=>{this.Movies=result})
+}
 }
 

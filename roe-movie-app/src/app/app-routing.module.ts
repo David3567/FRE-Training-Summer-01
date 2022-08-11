@@ -1,18 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from 'src/home/home.component';
-import { SigninComponent } from 'src/signin/signin.component';
-import { RegisterComponent } from 'src/register/register.component';
-import { MovielistComponent } from '../movielist/movielist.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
-  {path: 'signin', component: SigninComponent},
-  {path: 'register/:email', component: RegisterComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'movielist', component: MovielistComponent},
-  {path: '**', component: RegisterComponent},
+  { path: 'home', loadChildren: () => import('./components/core/home/home.module').then(m => m.HomeModule) },
+  { path: '', loadChildren: () => import('./components/core/home/home.module').then(m => m.HomeModule) },
+  { path: 'register', loadChildren: () => import('./components/core/register/register.module').then(m => m.RegisterModule) },
+  { path: 'register/:email', loadChildren: () => import('./components/core/register/register.module').then(m => m.RegisterModule) },
+  { path: 'signin', loadChildren: () => import('./components/core/signin/signin.module').then(m => m.SigninModule) },
+  { path: 'movielist', loadChildren: () => import('./components/core/movielist/movielist.module').then(m => m.MovielistModule) },
+  {path: '**', loadChildren:() => import('./components/core/home/home.module').then(m => m.HomeModule)  },
 
 ];
 

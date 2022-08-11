@@ -4,6 +4,6 @@
   <h6>Ready to watch? Enter your email to create or restart your membership.</h6>
   <form>
     <input [formControl]="email" type="email" placeholder="Enter Email Here" [ngClass]="Emailvalidation==true? 'validEmail':'nonvalidEmail'">
-    <button (click)="register()">Get Started ></button>
+    <button (click)="register()" type="button">Get Started ></button>
   </form>
 </div>

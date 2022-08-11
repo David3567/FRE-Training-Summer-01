@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders} from '@angular/common/http'
-import { Root, Result } from '../app/root';
+import { Root, Result } from '../interfaces/root';
 import {map} from 'rxjs/operators'
 import { query } from '@angular/animations';
 import { BehaviorSubject } from 'rxjs';
@@ -12,13 +12,15 @@ export class MoviesService {
   private readonly upcominURL="https://api.themoviedb.org/3/movie/upcoming"
   private readonly SearchByTitleURL='https://api.themoviedb.org/3/search/movie/'
   private readonly api_key:string = '6e7a30a6be99643eb9de647bea8a65b1'
+  page:number=1
   public moveiList$:BehaviorSubject<Object> = new BehaviorSubject({})
   constructor(private http:HttpClient) {
     //this.moveiList$=new BehaviorSubject([''])
    }
 
-  getMovies(){
-    return this.http.get(`${this.baseURL}?api_key=${this.api_key}`).pipe(
+  getMovies(page:number){
+    this.page=page
+    return this.http.get(`${this.baseURL}?page=${this.page}&api_key=${this.api_key}`).pipe(
       map(result=>{this.moveiList$?.next(result); return this.moveiList$.value})
     )
   }

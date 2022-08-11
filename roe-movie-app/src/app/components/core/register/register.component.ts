@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder, NgForm } from '@angular/forms';
-import { createPasswordStrengthValidator, createPasswordMatchValidator } from 'src/services/passwordvalidator';
+import { createPasswordStrengthValidator, createPasswordMatchValidator } from '../../../services/passwordvalidator';
 
 
 @Component({
@@ -41,7 +41,7 @@ export class RegisterComponent implements OnInit {
       }],
       password: ['', {
         validators: [
-          Validators. required, 
+          Validators. required,
           Validators.minLength(8),
           createPasswordStrengthValidator()
         ],
@@ -66,7 +66,7 @@ export class RegisterComponent implements OnInit {
   }
 
   submit() {
-    Object.values(this.person).every(val => val === null || val === '' ? 
+    Object.values(this.person).every(val => val === null || val === '' ?
       this.error.empty = 'empty' :
     Object.values(this.registerForm.controls).every(val => val.errors === null ? true : false) ? this.counter++ : Object.keys(this.person).forEach(key => this.person[key] === null ? this.error[key] = this.registerForm.controls[key].errors : null) )
   }
@@ -79,7 +79,7 @@ export class RegisterComponent implements OnInit {
     this.error.email = this.registerForm.controls['email'].errors;
     this.person.email = this.registerForm.controls['email'].value;
   }
-  
+
   setPassword() {
     this.error.password = this.registerForm.controls['password'].errors;
     this.person.password = this.registerForm.controls['password'].value;
