@@ -1,4 +1,4 @@
-<!-- <div>
+<div>
   <button [routerLink]="['home']">home</button>
   <button [routerLink]="['contact']">contact</button>
   <button [routerLink]="['product']">product</button>
@@ -6,14 +6,13 @@
   <button [routerLink]="['product-param']" [queryParams]="{ pageNum, name }">
     product-param
   </button>
-</div> -->
-<!-- <div
+</div>
+<div
   class="container"
   [@slideInAnimation]="o.isActivated ? o.activatedRoute : ''"
-> -->
-<div class="container">
-  <!-- <router-outlet #o="outlet"></router-outlet> -->
-  <router-outlet></router-outlet>
+>
+  <!-- <div class="container"> -->
+  <router-outlet #o="outlet"></router-outlet>
 </div>
 
 <!-- <hr />

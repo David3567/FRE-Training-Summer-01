@@ -3,9 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { ContactComponent } from './components/contact/contact.component';
 import { HomeComponent } from './components/home/home.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
-import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { ProductDetailComponent } from './pages/product/product-detail/product-detail.component';
 import { ProductParamComponent } from './components/product-param/product-param.component';
-import { ProductComponent } from './components/product/product.component';
+import { ProductComponent } from './pages/product/product/product.component';
 import { SuperuserComponent } from './components/superuser/superuser.component';
 import { UserComponent } from './components/user/user.component';
 import { ProductGuard } from './services/product.guard';
@@ -13,8 +13,15 @@ import { ProductGuard } from './services/product.guard';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'product', component: ProductComponent },
-  { path: 'product/:id', component: ProductDetailComponent },
+  {
+    path: 'product',
+    loadChildren: () =>
+      import('./pages/product/product.module').then((m) => m.ProductModule),
+
+    canLoad: [],
+  },
+  // { path: 'product', component: ProductComponent },
+  // { path: 'product/:id', component: ProductDetailComponent },
   // {
   //   path: 'product',
   //   component: ContactComponent,

@@ -7,12 +7,13 @@ import { AppComponent } from './app.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { HomeComponent } from './components/home/home.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
-import { ProductDetailComponent } from './components/product-detail/product-detail.component';
-import { ProductComponent } from './components/product/product.component';
+import { ProductDetailComponent } from './pages/product/product-detail/product-detail.component';
+import { ProductComponent } from './pages/product/product/product.component';
 import { ProductParamComponent } from './components/product-param/product-param.component';
 import { UserComponent } from './components/user/user.component';
 import { SuperuserComponent } from './components/superuser/superuser.component';
 import { RouterModule } from '@angular/router';
+import { ProductModule } from './pages/product/product.module';
 
 @NgModule({
   declarations: [
@@ -20,14 +21,11 @@ import { RouterModule } from '@angular/router';
     ContactComponent,
     HomeComponent,
     NotfoundComponent,
-    ProductComponent,
-    ProductDetailComponent,
-    ProductParamComponent,
     ProductParamComponent,
     UserComponent,
     SuperuserComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
