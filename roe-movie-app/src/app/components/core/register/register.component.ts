@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder, NgForm } from '@angular/forms';
-import { createPasswordStrengthValidator, createPasswordMatchValidator } from '../../../services/passwordvalidator';
+import { pswduppercase, pswdnumeric, pswdlowercase, passwordMatch } from '../../../services/passwordvalidator';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 
 @Component({
@@ -12,18 +12,21 @@ export class RegisterComponent implements OnInit {
   registerForm!: FormGroup
   counter : number = 0;
   selected : string = '';
-  error: any = {
-    password: null,
-    confirmPassword: null,
-    email: null,
-    username: null,
-    empty: null
+
+  get email(): FormControl {
+    return this.registerForm.get('email') as FormControl;
   }
-  person: any = {
-    email: null,
-    password : null,
-    confirmPassword: null,
-    username : null
+
+  get username(): FormControl {
+    return this.registerForm.get('username') as FormControl;
+  }
+
+  get password(): FormControl {
+    return this.registerForm.get('password') as FormControl;
+  }
+
+  get confirmPassword(): FormControl {
+    return this.registerForm.get('confirmPassword') as FormControl;
   }
 
   constructor(private fb: FormBuilder) {
@@ -43,7 +46,9 @@ export class RegisterComponent implements OnInit {
         validators: [
           Validators. required,
           Validators.minLength(8),
-          createPasswordStrengthValidator()
+          pswduppercase(),
+          pswdnumeric(),
+          pswdlowercase()
         ],
         updateOn: 'blur',
       }
@@ -58,17 +63,22 @@ export class RegisterComponent implements OnInit {
         validators: [
           Validators.required,
           Validators.minLength(8),
-          createPasswordMatchValidator(this)
+          passwordMatch()
         ],
         updateOn: 'blur',
       }]
     });
   }
 
+
   submit() {
     Object.values(this.person).every(val => val === null || val === '' ?
       this.error.empty = 'empty' :
     Object.values(this.registerForm.controls).every(val => val.errors === null ? true : false) ? this.counter++ : Object.keys(this.person).forEach(key => this.person[key] === null ? this.error[key] = this.registerForm.controls[key].errors : null) )
+
+  onSubmit() {
+    console.log(this.registerForm)
+    this.registerForm.valid ? this.counter++ : null;
   }
 
   incrementCount(): void{
