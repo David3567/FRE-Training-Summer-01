@@ -1,0 +1,45 @@
+<app-header-top></app-header-top>
+<div class="login-component">
+  <div class="login-container">
+    <h2>Sign In</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="input-container">
+        <mat-form-field appearance="outline">
+          <input matInput placeholder="Username" formControlName="email" autocomplete="off">
+          <mat-error *ngIf="!loginForm.get('email')?.errors?.required && (loginForm.get('email')?.errors?.pattern)">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error
+            *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched) && loginForm.get('email')?.errors?.required">
+            Username is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <input matInput class="loginPwd" [type]="show ? 'text' : 'password'" placeholder="Password" formControlName="password" autocomplete="off">
+          <button mat-button class="pwdBtn" (click)="showPassword()"> {{show ? 'Hide' : 'Show'}}</button>
+          <mat-error *ngIf="!loginForm.get('password')?.errors?.required">
+            Incorrect Password.
+            <!-- Password length must be greater than or equal to 8 and password must contain one or more uppercase ,
+            lowercase , numeric and special characters -->
+          </mat-error>
+          <mat-error
+            *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched) && loginForm.get('password')?.errors?.required">
+            Password is required
+          </mat-error>
+        </mat-form-field>
+        <div class="mt-top">
+          <button [disabled]="!loginForm.valid" mat-raised-button color="primary" mat-button>Sign In</button>
+        </div>
+      </div>
+    </form>
+    <div class="paragraph-container">
+      <p>New to Noflex? <a routerLink="register">Register Here</a></p>
+    </div>
+  </div>
+</div>
+<footer>
+  <app-footer></app-footer>
+</footer>
+
+<!-- <input class="pwd" [type]="show ? 'text' : 'password'" placeholder="Enter Your Password" />
+         -->
