@@ -1,10 +1,9 @@
 .header-top {
-  width: 100vw;
   height: 70px;
   background-color: transparent;
   padding: 14px;
-  padding-left: 42px;
-  padding-right: 42px;
+  padding-left: 52px;
+  padding-right: 52px;
   -webkit-transition: background-color 400ms linear;
   -ms-transition: background-color 400ms linear;
   transition: background-color 400ms linear;
@@ -15,7 +14,6 @@
   font-size: 48px;
   font-weight: 800;
   float: left;
-  margin-top: 12px;
 }
 
 .top_right {
@@ -49,7 +47,7 @@
 
 @media screen and (max-width: 767px) {
   .header-top h1 {
-    color: #E50915);
+    color: #E50915;
     font-size: 32px;
     font-weight: 800;
     float: left;
@@ -62,13 +60,13 @@
   }
 
   .top_right button {
-    background-color: #E50915);
+    background-color: #E50915;
     -webkit-transition: background-color 1000ms linear;
     -ms-transition: background-color 1000ms linear;
     transition: background-color 1000ms linear;
     width: 60px;
     color: #fff;
-    height: 44px;
+    height: 34px;
     font-size: 14px;
   }
 
