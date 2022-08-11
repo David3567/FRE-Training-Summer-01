@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -10,12 +12,13 @@ export class ProductService {
     new Product(3, 'Power Bank', 100),
   ];
 
-  public getProducts() {
-    return this.products;
+  public getProducts(): Observable<Product[]> {
+    return of(this.products).pipe(delay(2500));
   }
 
-  public getProduct(id: number) {
-    return this.products.find((p) => p.productID == id);
+  public getProduct(id: number): Observable<any> {
+    const Product = this.products.find((i) => i.productID == id);
+    return of(Product).pipe(delay(2500));
   }
 }
 

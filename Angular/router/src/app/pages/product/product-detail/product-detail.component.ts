@@ -20,14 +20,12 @@ export class ProductDetailComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const { id } = this.activatedRoute.snapshot.params;
-    let products = this.productService.getProducts();
-    this.product = products.find((p) => +p.productID === +id) as Product;
-
+    // const { id } = this.activatedRoute.snapshot.params;
+    // let products = this.productService.getProducts();
+    // this.product = products.find((p) => +p.productID === +id) as Product;
     // this.sub = this.activatedRoute.paramMap.subscribe((params: any) => {
     //   console.log(params);
     //   this.id = params.get('id');
-
     //   let products = this.productService.getProducts();
     //   this.product = products.find((p) => +p.productID === +this.id) as Product;
     // });

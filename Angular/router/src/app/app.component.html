@@ -1,4 +1,43 @@
-<div>
+<div class="container">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" [routerLink]="['/']"
+          ><strong> {{ title }} </strong></a
+        >
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a [routerLink]="['home']" routerLinkActive="active">Home</a></li>
+        <li>
+          <a [routerLink]="['product1']" routerLinkActive="active">Product1</a>
+        </li>
+        <li>
+          <a
+            [routerLink]="['product2']"
+            (click)="loadProduct2()"
+            routerLinkActive="active"
+          >
+            Product2
+          </a>
+          <app-spinner></app-spinner>
+        </li>
+
+        <li>
+          <a [routerLink]="['contact']" routerLinkActive="active">Contact us</a>
+        </li>
+        <li>
+          <a [routerLink]="['static']" routerLinkActive="active">static</a>
+        </li>
+        <li>
+          <a [routerLink]="['dynamic']" routerLinkActive="active">dynamic</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <router-outlet></router-outlet>
+</div>
+
+<!-- <div>
   <button [routerLink]="['home']">home</button>
   <button [routerLink]="['contact']">contact</button>
   <button [routerLink]="['product']">product</button>
@@ -11,9 +50,8 @@
   class="container"
   [@slideInAnimation]="o.isActivated ? o.activatedRoute : ''"
 >
-  <!-- <div class="container"> -->
   <router-outlet #o="outlet"></router-outlet>
-</div>
+</div> -->
 
 <!-- <hr />
 <div class="secondary nav">
