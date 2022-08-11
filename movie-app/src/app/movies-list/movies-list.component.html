@@ -21,6 +21,18 @@
         </div>
       </div>
       <section class="content flex__wrapper">
+        <div *ngIf="selectedMovieVideo && showMovie" class="movie__video__trailer">
+          <iframe
+            [title]="selectedMovieVideo.name"
+            [src]="sanitize.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/'+selectedMovieVideo.key)"
+            allowfullscreen allow="true">
+          </iframe>
+          <span
+            class="close__video"
+            (click)="showMovie=false">
+            X
+          </span>
+        </div>
         <header
           class="flex__wrapper"
           [style.backgroundImage]="'url(https://image.tmdb.org/t/p/original/'+bannerMovie.poster_path+')'"
@@ -65,24 +77,38 @@
           </aside>
         </header>
         <main>
+          <section class="all_movies">
             <h3>
-              New Trending <strong *ngIf="movies!.length > 0">{{movies.length}}</strong>
+              Hottest movies <strong *ngIf="movies!.length > 0">{{movies.length}}</strong>
             </h3>
              <ul class="movies__list">
               <li
+                (click)="onWatchTrailer(movie.id)"
                 [title]="movie.original_title"
-                class="movie flex__wrapper" *ngFor="let movie of movies">
-                  <img [src]="'https://image.tmdb.org/t/p/original/'+movie.poster_path" alt="">
-                  <div class="movie__overview">
-                      <p>
-                        {{movie.overview}}
-                      </p>
-                  </div>
+                class="movie flex__wrapper"
+                *ngFor="let movie of movies">
+                <app-movie-card [movie]="movie"> working</app-movie-card>
               </li>
             </ul>
+          </section>
+
+          <section class="trending__movies">
+            <h3>
+              Trending Now <strong *ngIf="trending!.length > 0">{{trending.length}}</strong>
+            </h3>
+             <ul class="movies__list">
+              <li
+                (click)="onWatchTrailer(movie.id)"
+                [title]="movie.original_title"
+                class="movie flex__wrapper"
+                 *ngFor="let movie of trending">
+                <app-movie-card [movie]="movie"> working</app-movie-card>
+              </li>
+            </ul>
+          </section>
           </main>
       </section>
-      <aside class="project__title">
+      <aside aria-label="Application title"  class="project__title">
         <strong>KCBFLEX</strong>
       </aside>
     </div>

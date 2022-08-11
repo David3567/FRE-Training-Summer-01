@@ -1,9 +1,6 @@
-import { NgIfContext } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
 import { BehaviorSubject, catchError, debounceTime, map, Observable, of, tap } from 'rxjs';
-
 import { Movie, RootObject } from '../interfaces/movie.interface';
 import { HelperService } from './helper.service';
 
@@ -16,28 +13,21 @@ export class MovieService {
   private moviesSubject$ = new BehaviorSubject(this.movies);
   movies$ = this.moviesSubject$.asObservable();
   private defaultId: number = 0;
-
   private baseUrl: string = 'https://api.themoviedb.org/3';
   private apiKey: string = '?api_key=7979b0e432796fe7fa957d6fbbeb0835';
-
   private testUrl: string =
     'https://api.themoviedb.org/3/list/5?api_key=7979b0e432796fe7fa957d6fbbeb0835';
   private listId = '5';
   constructor(
     private readonly http: HttpClient,
-    private helper: HelperService) { }
+    private helper: HelperService,
+  ) { }
 
 
   // Not gonna work due to interface collisons
   getMovies() {
     return this.http
       .get(
-        // Will give path error have to fix
-        // [
-        //   this.baseUrl + '/movie/',
-        //   Math.floor(Math.random() * 500).toString(),
-        //   this.apiKey,
-        // ].join('')
         'https://api.themoviedb.org/3/movie/50?api_key=7979b0e432796fe7fa957d6fbbeb0835'
       )
       .pipe(
@@ -55,7 +45,6 @@ export class MovieService {
           this.moviesSubject$.next(this.movies);
         })
       );
-    return of('err');
   }
 
   getData() {
@@ -89,7 +78,7 @@ export class MovieService {
         map(({items}:any) => {
           console.log("Successfully retrieved movies here\n", items);
           if (items.length === 0) {
-            this.defaultId = 5
+            this.defaultId = 5;
             this.getMoviesList();
           }
           return items;
@@ -97,5 +86,40 @@ export class MovieService {
         catchError(this.helper.errorHandler<any>("getMoviesList"))
     )
   }
+
+  getTrendingMovies(){
+    let url = `https://api.themoviedb.org/3/trending/all/day?api_key=7979b0e432796fe7fa957d6fbbeb0835`
+
+    return this.http.get<RootObject>(url)
+      .pipe(
+        debounceTime(50),
+        map(({results}:any) => {
+          console.log("Successfully retrieved trending movies here\n", results);
+          return results;
+        }),
+        catchError(this.helper.errorHandler<any>("getTrendingMovies"))
+    )
+  }
+
+  getVideoById(id: number): Observable<any> {
+    let url = `https://api.themoviedb.org/3/movie/${id}/videos${this.apiKey}&language=en-US`
+
+    return this.http.get(url, this.helper.httpOptions).pipe(
+      map(({results}:any) => {
+        console.log("movie video successfully retrieved")
+        console.log(results)
+        return results.map((result: any) => {
+          return {
+            id: result.id,
+            name: result.name,
+            key: result.key,
+            type: result.type
+          }
+        })
+      }),
+      catchError(this.helper.errorHandler<any>("GetMovie"))
+    )
+   }
 }
+
 

@@ -23,7 +23,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { MoviesListModule } from './movies-list/movies-list/movies-list.module';
 import { ShortPipe} from './pipes/short.pipe';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faSquare, faHome, faSearch, faCalendar, faFilm, faClapperboard, faEye } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faSearch, faCalendar, faClapperboard, faEye } from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
   declarations: [
@@ -31,13 +31,9 @@ import { faSquare, faHome, faSearch, faCalendar, faFilm, faClapperboard, faEye }
     WelBannerComponent,
     NavHeaderHPComponent,
     HomePageComponent,
-    SignInComponent,
-    RegisterPageComponent,
     PageNotFoundComponent,
-    MovieCardComponent,
-    MoviesListComponent,
     TestComponent,
-    ShortPipe
+    // ShortPipe
   ],
   imports: [
     CommonModule,
@@ -47,24 +43,17 @@ import { faSquare, faHome, faSearch, faCalendar, faFilm, faClapperboard, faEye }
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule
-    // HttpClientInMemoryWebApiModule.forRoot(
-    //   InMemoryDataService, { dataEncapsulation: false }
-    // )
   ],
 
   exports: [RouterModule, HttpClientModule],
-  providers: [MovieService, UserService],
+  providers: [MovieService, UserService, ShortPipe],
 
   bootstrap: [AppComponent],
 })
 export class AppModule {
   constructor(library: FaIconLibrary) {
     library.addIcons(
-      faFilm,
-      faSquare,
-      faCalendar,
-      faHome,
-      faSearch,
+      faCalendar, faHome, faSearch,
       faClapperboard,
       faEye
     );
