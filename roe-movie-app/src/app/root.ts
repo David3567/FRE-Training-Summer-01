@@ -26,3 +26,5 @@ export interface Result {
   vote_average: number
   vote_count: number
 }
+
+
