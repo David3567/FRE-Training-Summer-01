@@ -24,6 +24,7 @@ import { MoviesListModule } from './movies-list/movies-list/movies-list.module';
 import { ShortPipe} from './pipes/short.pipe';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faHome, faSearch, faCalendar, faClapperboard, faEye } from '@fortawesome/free-solid-svg-icons';
+import { SingleMovieComponent } from './single-movie/single-movie.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { faHome, faSearch, faCalendar, faClapperboard, faEye } from '@fortawesom
     HomePageComponent,
     PageNotFoundComponent,
     TestComponent,
+    SingleMovieComponent,
     // ShortPipe
   ],
   imports: [

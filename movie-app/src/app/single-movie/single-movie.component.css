@@ -1,0 +1,95 @@
+:host{
+    background-color: black;
+
+}
+.single_movie_page{
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+    display: flex;
+    flex-direction: column;
+   
+}
+.single_movie_page-top{
+    display:flex;
+    align-items: center;
+    width: 100vw;
+    justify-content: center;
+    gap: 2rem;
+    height: 40rem;
+    
+}
+.movie-title{
+    font-size: var(--main-header-size)
+    
+}
+.movie-image-container{
+    height: 30rem;
+    width: 50rem;
+    
+}
+.movie-image{
+     max-height: 40rem;
+     width: 70vw;
+    z-index: 2;
+     position: absolute;
+     left: 30vw;
+
+     
+    
+}
+.movie-image-shadow{
+    height: 30rem;
+    width: 70vw;
+    box-shadow: inset 5rem 5rem 5rem 0rem rgba(0,0,0,1);
+    left: 30vw;
+    position: absolute;
+    z-index: 20;
+}
+
+.movie-information{
+    padding: 3rem;
+    display:flex;
+    flex-direction: column;
+    gap: 2rem;
+    z-index: 30;
+}
+.movie-properities{
+    display: flex;
+    gap: 2rem;
+}
+.movie-explanation{
+    max-width:70%;
+}
+.movie-info-navbar{
+    margin-top:1rem;
+    display: flex;
+    gap: 2rem;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+}
+.movie-info-navbar-element{
+    font-size:2rem
+}
+.movie-info{
+    margin-top:2rem;
+    display: flex;
+    padding:2rem;
+}
+.movie-poster{
+    width: 15rem;
+  height: 26rem;
+}
+.movie-info-list{
+    margin: 2rem;
+}
+.movie-info-list li{
+    margin: 1rem;
+}
+.movie-info-storyline{
+    padding-left:3rem;
+}
+.movie-info-storyline h2{
+    font-size:1.5rem;
+    margin-bottom:0.5rem
+}

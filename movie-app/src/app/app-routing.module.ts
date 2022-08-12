@@ -6,10 +6,13 @@ import { MoviesLisRoutingModule } from './movies-list/movies-list/movies-routing
 import { RegisterPageRoutingModule } from "./register-page/register/register-page-routing.module";
 import { SignInRoutingModule } from './sign-in/sign-in/sign-in-routing.module';
 import { HomepageRoutingModule } from './components/home-page/homepage/homepage-routing.module';
-
+import { SingleMovieComponent } from "./single-movie/single-movie.component";
 const routes: Route[] = [
   {
     path: "", redirectTo:"/homepage",  pathMatch:"full"
+  },
+  {
+    path:"single-movie",  component: SingleMovieComponent
   },
   // {
   //   path: "homepage", component: HomePageComponent
