@@ -1,6 +1,6 @@
 <app-header-top></app-header-top>
 <div class="register-component">
-  <div 
+  <div
     class="modal"
     [ngClass] = "counter === 0 ? 'visible' : ''"
   >
@@ -9,18 +9,18 @@
     <p>Just a few more steps and you're done!</p>
     <p>We hate paperwork, too.</p>
     <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-      <input 
-        name="username" 
-        type="text" 
+      <input
+        name="username"
+        type="text"
         placeholder="Create a username"
         formControlName="username"
       />
       <p class="field-message" *ngIf="!username.valid && (username.touched || username.dirty)">
         Please type in a username.
       </p>
-      <input 
-        name="email" 
-        type="email" 
+      <input
+        name="email"
+        type="email"
         placeholder="Add an email"
         formControlName="email"
       />
@@ -52,9 +52,9 @@
           Please add a password.
         </p>
       </div>
-      <input 
-        name="confirm-password" 
-        type="password" 
+      <input
+        name="confirm-password"
+        type="password"
         placeholder="Confirm password"
         formControlName="confirmPassword"
         />
@@ -66,8 +66,8 @@
               Please confirm your password.
             </p>
         </div>
-        <button 
-          type="submit" 
+        <button
+          type="submit"
           [disabled]="!registerForm.valid"
           >Next
         </button>
@@ -87,10 +87,10 @@
     <h2>Choose your plan.</h2>
     <div>
       <svg>
-        <path 
-          fill-rule="evenodd" 
-          clip-rule="evenodd" 
-          d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z" 
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z"
           fill="currentColor"
         >
         </path>
@@ -99,10 +99,10 @@
     </div>
     <div>
       <svg>
-        <path 
-          fill-rule="evenodd" 
-          clip-rule="evenodd" 
-          d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z" 
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z"
           fill="currentColor"
         ></path>
       </svg>
@@ -110,10 +110,10 @@
     </div>
     <div>
       <svg>
-        <path 
-          fill-rule="evenodd" 
-          clip-rule="evenodd" 
-          d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z" 
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z"
           fill="currentColor"
         ></path>
       </svg>
@@ -133,10 +133,10 @@
     <h2>Choose the plan that's right for you.</h2>
     <div>
       <svg>
-        <path 
-          fill-rule="evenodd" 
-          clip-rule="evenodd" 
-          d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z" 
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z"
           fill="currentColor"
         ></path>
       </svg>
@@ -144,10 +144,10 @@
     </div>
     <div>
       <svg>
-        <path 
-          fill-rule="evenodd" 
-          clip-rule="evenodd" 
-          d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z" 
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z"
           fill="currentColor"
         ></path>
       </svg>
@@ -155,10 +155,10 @@
     </div>
     <div>
       <svg>
-        <path 
-          fill-rule="evenodd" 
-          clip-rule="evenodd" 
-          d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z" 
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z"
           fill="currentColor"
         ></path>
       </svg>
@@ -193,32 +193,32 @@
         <td>Watch on your TV, computer, mobile phone and table</td>
         <td [ngClass]="selected === 'basic' ? 'select' : ''">
           <svg>
-            <path 
-              [ngClass]="selected === 'basic' ? 'select select-1' : ''" 
-              fill-rule="evenodd" 
-              clip-rule="evenodd" 
-              d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z" 
+            <path
+              [ngClass]="selected === 'basic' ? 'select select-1' : ''"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z"
               fill="currentColor"
             ></path>
           </svg>
         </td>
         <td [ngClass]="selected === 'standard' ? 'select' : ''">
           <svg>
-            <path [ngClass]="selected === 'standard' ? 'select select-1' : ''" 
-              fill-rule="evenodd" 
-              clip-rule="evenodd" 
-              d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z" 
+            <path [ngClass]="selected === 'standard' ? 'select select-1' : ''"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z"
               fill="currentColor"
             ></path>
           </svg>
         </td>
         <td [ngClass]="selected === 'premium' ? 'select' : ''">
           <svg>
-            <path 
-              [ngClass]="selected === 'premium' ? 'select select-1' : ''" 
-              fill-rule="evenodd" 
-              clip-rule="evenodd" 
-              d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z" 
+            <path
+              [ngClass]="selected === 'premium' ? 'select select-1' : ''"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z"
               fill="currentColor"
             ></path>
           </svg>

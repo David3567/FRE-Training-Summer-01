@@ -10,7 +10,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class MovielistComponent implements OnInit {
 
-  public Movies?:any = {}
+  public Movies?:any = []
   SearchForm = new FormGroup({
     search: new FormControl(''),
     upcoming: new FormControl(''),
@@ -19,10 +19,17 @@ export class MovielistComponent implements OnInit {
   @ViewChild('search', { static: true }) name: ElementRef = new ElementRef('');
 
   page:number=1
+  searchPage:number=1
+  upcomingPage:number=1
+
+  /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Start MOVI INFO variables */
+  videos:any= []
+  casts:any =[]
+  /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ End MOVI INFO variables */
   constructor(public router:Router, private service:MoviesService){}
 
   ngOnInit(): void {
-    this.service.getMovies(this.page).subscribe((result: any)=>{this.Movies=result; console.log(this.Movies)})
+    this.service.getMovies(this.page).subscribe((result: any)=>{this.Movies=result.results; console.log(this.Movies)})
     this.SearchForm.controls.nowplaying.setValue('true')
   }
   ngAfterViewInit() {
@@ -31,7 +38,7 @@ export class MovielistComponent implements OnInit {
 selectNowPlaying(){
   if(this.SearchForm.controls.upcoming.enabled){this.SearchForm.controls.upcoming.reset()}
   this.SearchForm.controls.search.setValue('')
-  this.service.getMovies(1).subscribe((result: any)=>{this.Movies=result; console.log(this.Movies)})
+  this.service.getMovies(1).subscribe((result: any)=>{this.Movies=result.results; console.log(this.Movies)})
 }
 
 SearchTitle(){
@@ -40,10 +47,11 @@ SearchTitle(){
     debounceTime(500),
     distinctUntilChanged(),
     mergeMap(ev =>
-    this.service.getByTitle(this.name.nativeElement.value).
+    this.service.getByTitle(this.name.nativeElement.value,this.searchPage).
     pipe(map(result=>{return result}))
     )).subscribe(result=>{
-      this.Movies=result})
+      console.log(result)
+      this.Movies=result.results})
 }
 
 changeOtherControls(){
@@ -56,12 +64,18 @@ selectUpcoming(){
   console.log(date)
   if(this.SearchForm.controls.nowplaying.enabled){this.SearchForm.controls.nowplaying.reset()}
   this.SearchForm.controls.search.setValue('')
-  this.service.getUpcoming(date).subscribe((result: any)=>{this.Movies=result; console.log(this.Movies)})
+  this.service.getUpcoming(date,this.upcomingPage).subscribe((result: any)=>{this.Movies=result.results;})
 }
 onScroll(): void {
   this.page++
-  if(this.page==1000){this.page=1}
-  this.service.getMovies(this.page).subscribe((result: any)=>{this.Movies=result})
+  if(this.page==350){this.page=1}
+  if(this.SearchForm.controls.nowplaying.enabled){
+  this.service.getMovies(this.page).subscribe((result:any)=>{for(let i of result.results){this.Movies.push(i)}})
+  }
+}
+
+getInfo(id:number){
+  this.service.getMovieInfo(id).subscribe((result:any)=>{this.videos=result.videos; this.casts=result.credits.cast; console.log(this.casts,this.videos)})
 }
 }
 

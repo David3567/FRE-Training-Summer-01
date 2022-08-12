@@ -17,7 +17,7 @@
   [infiniteScrollThrottle]="1750"
   (scrolled)="onScroll()"
 >
-  <mat-card *ngFor="let Movie of Movies['results']" class="container">
+  <mat-card *ngFor="let Movie of Movies let i=index" class="container" (click)="getInfo(Movie.id)">
     <mat-card-header>
       <div>
         <mat-card-title>{{Movie.title}}</mat-card-title>
