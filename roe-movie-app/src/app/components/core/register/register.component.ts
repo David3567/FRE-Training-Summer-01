@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { pswduppercase, pswdnumeric, pswdlowercase, passwordMatch } from 'src/services/passwordvalidator';
+import { pswduppercase, pswdnumeric, pswdlowercase, passwordMatch } from '../../../services/passwordvalidator';
 
 
 @Component({
