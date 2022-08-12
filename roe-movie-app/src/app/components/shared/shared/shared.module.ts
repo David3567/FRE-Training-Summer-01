@@ -5,7 +5,6 @@ import { ReactiveFormsModule } from '@angular/forms'
 import { FooterComponent } from '../footer/footer.component'
 import { HeaderComponent } from '../header/header.component'
 import { HeaderTopComponent } from '../header/header-top/header-top.component'
-import { HeaderBannerComponent } from '../header/header-banner/header-banner.component'
 import { HeaderBannerContentComponent } from '../header/header-banner-content/header-banner-content.component'
 
 
@@ -15,7 +14,6 @@ import { HeaderBannerContentComponent } from '../header/header-banner-content/he
     FooterComponent,
     HeaderComponent,
     HeaderTopComponent,
-    HeaderBannerComponent,
     HeaderBannerContentComponent
   ],
   imports: [
@@ -23,6 +21,6 @@ import { HeaderBannerContentComponent } from '../header/header-banner-content/he
     ReactiveFormsModule,
   ],
   bootstrap:[],
-  exports:[FooterComponent, HeaderComponent, HeaderTopComponent, HeaderBannerComponent, HeaderBannerContentComponent]
+  exports:[FooterComponent, HeaderComponent, HeaderTopComponent, HeaderBannerContentComponent]
 })
 export class SharedModule { }
