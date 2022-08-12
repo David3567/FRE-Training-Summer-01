@@ -1,4 +1,4 @@
-export interface RootObject {
+export interface RawMovie {
   page: number;
   results: MovieList[];
   total_pages: number;
