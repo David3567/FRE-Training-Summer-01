@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { RootObject } from '../interfaces/movie.interface';
+import { MovieList, RawMovie } from '../interfaces/movie.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -10,14 +10,14 @@ import { RootObject } from '../interfaces/movie.interface';
 export class MovieService {
   // ?api_key=a3aca7803e3483b603d87731babf7690
   private baseUrl = 'https://api.themoviedb.org/3';
-  // private movieObservable$?: Observable<RootObject>;
+  page: number = 1;
 
   constructor(private readonly http: HttpClient) {}
 
   getMovie() {
     return this.http
-      .get<RootObject>(this.baseUrl + '/trending/movie/week', {
-        params: { api_key: 'a3aca7803e3483b603d87731babf7690' },
+      .get<RawMovie>(`${this.baseUrl}/trending/movie/week`, {
+        params: { api_key: 'a3aca7803e3483b603d87731babf7690', [this.page]: 1 },
       })
       .pipe(
         map((data) => {
@@ -46,7 +46,9 @@ export class MovieService {
       );
   }
 
-  searchMovie(input: string) {
-    this.http.get<any>(this.baseUrl + '');
-  }
+  // searchMovie(movieId: string) {
+  //   this.http.get<any>(`${this.baseUrl}/movie/${movieId}`, {
+  //     params: { api_key: 'a3aca7803e3483b603d87731babf7690' },
+  //   });
+  // }
 }

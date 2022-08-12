@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MovieList, RootObject } from '../interfaces/movie.interface';
+import { MovieList } from '../interfaces/movie.interface';
 import { MovieService } from '../services/movie.service';
 
 @Component({
