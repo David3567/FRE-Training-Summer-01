@@ -36,7 +36,7 @@
   background-size: 50px;
   height: 50px;
   width: 50px;
-  margin:0 0 20px;
+  margin: 0 0 20px;
 }
 
 .modal:nth-child(2) header {
@@ -73,7 +73,8 @@
   justify-content: flex-start;
 }
 
-.modal:nth-child(2) div svg, .modal:nth-child(3) div svg {
+.modal:nth-child(2) div svg,
+.modal:nth-child(3) div svg {
   color: red;
   width: 40px;
   height: 30px;
@@ -150,7 +151,7 @@ tr:nth-child(1) th:nth-child(n+2) div {
   height: 120px;
   width: 120px;
   background-color: #E50915;
-  background-clip:border-box;
+  background-clip: border-box;
   justify-content: center;
   color: #fff;
   margin: auto;
@@ -163,12 +164,15 @@ tr:nth-child(1) td:nth-child(1) {
   width: 40%;
 }
 
-td, th {
+td,
+th {
   padding: 25px;
   color: gray;
 }
 
-tr:nth-child(2), tr:nth-child(3), tr:nth-child(4) {
+tr:nth-child(2),
+tr:nth-child(3),
+tr:nth-child(4) {
   border-bottom: 1px solid lightgray;
 }
 
@@ -235,12 +239,14 @@ tr:nth-child(5) svg path {
   margin: 15px;
 }
 
-app-footer >>> .footer, app-footer >>> footer {
+app-footer >>> .footer,
+app-footer >>> footer {
   background-color: #F3F3F3 !important;
   border-bottom: none;
 }
 
-app-footer >>> .text-white, app-footer >>> .text-center {
+app-footer >>> .text-white,
+app-footer >>> .text-center {
   color: gray !important;
   font-weight: normal;
   background-color: #F3F3F3 !important;
@@ -271,27 +277,27 @@ app-header-top >>> .header-top {
 }
 
 .arrow-box {
-	position: relative;
-	background: #E50915;
-	border: 4px solid #E50915;
+  position: relative;
+  background: #E50915;
+  border: 4px solid #E50915;
 }
 
 .arrow-box:after {
-	top: 100%;
-	left: 50%;
-	border: solid transparent;
-	content: "";
-	height: 0;
-	width: 0;
-	position: absolute;
-	pointer-events: none;
+  top: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: "";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
 }
 
 .arrow-box:after {
-	border-color: rgba(229, 9, 21, 0);
-	border-top-color: #E50915;
-	border-width: 15px;
-	margin-left: -13%;
+  border-color: rgba(229, 9, 21, 0);
+  border-top-color: #E50915;
+  border-width: 15px;
+  margin-left: -13%;
 }
 
 button[disabled] {
