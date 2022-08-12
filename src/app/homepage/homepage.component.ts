@@ -21,6 +21,5 @@ export class HomepageComponent implements OnInit {
 
   getMovieList() {
     console.log(this.movieList);
-    // console.log(this.movieService.getMovie());
   }
 }
