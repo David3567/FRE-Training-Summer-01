@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
@@ -18,7 +19,12 @@ import { MovieService } from './services/movie.service';
     LoginComponent,
     RegisterComponent,
   ],
-  imports: [BrowserModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    RouterModule.forRoot([
+      { path:'login', component: LoginComponent },
+    ]),],
   providers: [MovieService],
   bootstrap: [AppComponent],
 })
