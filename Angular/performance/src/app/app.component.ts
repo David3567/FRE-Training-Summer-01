@@ -16,17 +16,23 @@ export class AppComponent implements OnInit {
   randomLazy = 'Lazy : Not defined';
 
   constructor(
-    private productService: ProductService,
-    @Optional() private appService: AppService,
-    @Optional() private eagerService: EagerService,
-    @Optional() private laztyService: LazyService
+    private readonly productService: ProductService,
+    @Optional() private readonly appService: AppService,
+    @Optional() private readonly eagerService: EagerService,
+    @Optional() private readonly laztyService: LazyService
   ) {}
 
   ngOnInit(): void {
     console.log(this.productService.getProducts());
 
-    if (this.appService) this.randomApp = this.appService.RandomNo;
-    if (this.eagerService) this.randomEager = this.eagerService.RandomNo;
-    if (this.laztyService) this.randomLazy = this.laztyService.RandomNo;
+    if (this.appService) {
+      this.randomApp = this.appService.RandomNo;
+    }
+    if (this.eagerService) {
+      this.randomEager = this.eagerService.RandomNo;
+    }
+    if (this.laztyService) {
+      this.randomLazy = this.laztyService.RandomNo;
+    }
   }
 }
