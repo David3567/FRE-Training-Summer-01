@@ -7,7 +7,11 @@ import { MovieTagsComponent } from './components/movie-tags/movie-tags.component
 import { CastAndCrewComponent } from './components/cast-and-crew/cast-and-crew.component';
 import { PosterImageComponent } from 'src/app/shared/components/poster-image/poster-image.component';
 import { ActorImageComponent } from 'src/app/shared/components/actor-image/actor-image.component';
+import { RouterModule, Routes } from '@angular/router';
 
+const routes: Routes = [
+  { path: "", component: IndividualMovieComponent },
+];
 
 @NgModule({
   declarations: [
@@ -20,7 +24,9 @@ import { ActorImageComponent } from 'src/app/shared/components/actor-image/actor
     ActorImageComponent
   ],
   imports: [
-    CommonModule
-  ]
+    CommonModule,
+    RouterModule.forChild(routes),
+  ],
+  
 })
 export class IndividualMovieModule { }

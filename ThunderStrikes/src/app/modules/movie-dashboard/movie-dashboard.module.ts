@@ -3,8 +3,11 @@ import { CommonModule } from '@angular/common';
 import { MovieDashboardComponent } from './components/movie-dashboard/movie-dashboard.component';
 import { MovieCardComponent } from './components/movie-card/movie-card.component';
 import { ShortTitlePipe } from './pipes/short-title.pipe';
-import { AppRoutingModule } from '../app-routing/app-routing.module';
+import { RouterModule, Routes } from '@angular/router';
 
+const routes: Routes = [
+  { path: "", component: MovieDashboardComponent },
+];
 @NgModule({
   declarations: [
     MovieDashboardComponent,
@@ -13,7 +16,9 @@ import { AppRoutingModule } from '../app-routing/app-routing.module';
   ],
   imports: [
     CommonModule,
-    AppRoutingModule
-  ]
+    RouterModule.forChild(routes),
+  ],
+  exports: [RouterModule]
+
 })
 export class MovieDashboardModule { }
