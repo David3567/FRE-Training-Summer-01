@@ -6,6 +6,7 @@
         <app-movie-tags [movie]="movie"></app-movie-tags>
         <p class="overview">{{movie.overview}}</p>
         <app-genres [movie]="movie"></app-genres>
+        <app-trailer-videos [movieId]="movie.id"></app-trailer-videos>
         <app-cast-and-crew [movie]="movie"></app-cast-and-crew>
     </div>
 </main>
