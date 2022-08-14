@@ -62,3 +62,17 @@ body {
   white-space: nowrap;
   border: none;
 }
+
+@media screen and (max-width: 768px) {
+  .card-container {
+    min-height: 70vh;
+  }
+
+  .card-title {
+    font-size: 3rem;
+  }
+
+  .card-sub-title {
+    font-size: small;
+  }
+}

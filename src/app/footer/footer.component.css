@@ -26,3 +26,9 @@
   justify-content: space-between;
   flex-wrap: wrap;
 }
+
+@media screen and (min-width: 390px) {
+  .footer-container {
+    margin-top: 15px;
+  }
+}
