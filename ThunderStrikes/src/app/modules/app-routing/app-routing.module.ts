@@ -15,6 +15,11 @@ const routes: Routes = [
   {path: "login", component: LoginComponent},
   {path: "movie/:id", component: IndividualMovieComponent},
   {path: "movie-dashboard", component: MovieDashboardComponent},
+  {
+    path: "movie-browse", 
+    loadChildren: () => 
+      import('../movie-browse/movie-browse.module').then(m => m.MovieBrowseModule)
+  },
   {path: "**", component: NotFoundPageComponent, pathMatch: "full"},
 ];
 
