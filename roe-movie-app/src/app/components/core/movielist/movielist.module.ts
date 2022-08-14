@@ -7,11 +7,15 @@ import { SharedModule} from '../../shared/shared/shared.module'
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MovieDialogComponent } from '../movie-dialog/movie-dialog.component';
 
 
 @NgModule({
   declarations: [
     MovielistComponent,
+    SidebarComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +24,11 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     SharedModule,
     HttpClientModule,
     MatCardModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    MatDialogModule
+  ],
+  entryComponents: [
+    MovieDialogComponent
   ]
 })
 export class MovielistModule { }

@@ -1,40 +1,27 @@
-<header class="shadow" style="height:80vh">
-  <app-header></app-header>
-</header>
-<main>
-  <div class="input_container">
-    <form [formGroup]="SearchForm">
-      <label for="query">Select Your Movie To search:</label>
-      <input #search type="text" formControlName="search" (keyup)="changeOtherControls()">
-      <br>
-      <label for="upcoming">Upcoming</label><input type="checkbox" name="upcoming" formControlName="upcoming" (change)="selectUpcoming()">
-      <label for="nowplaying">Now Playing</label><input type="checkbox" name="nowplaying" formControlName="nowplaying" (change)="selectNowPlaying()">
-    </form>
-  </div>
-  <div
-  infinite-scroll
-  [infiniteScrollDistance]="6"
-  [infiniteScrollThrottle]="1750"
-  (scrolled)="onScroll()"
->
-  <mat-card *ngFor="let Movie of Movies let i=index" class="container" (click)="getInfo(Movie.id)">
-    <mat-card-header>
-      <div>
-        <mat-card-title>{{Movie.title}}</mat-card-title>
-        <mat-card-subtitle>Release Date:{{Movie.release_date}}</mat-card-subtitle>
+<app-sidebar [ngClass]="{'disabled':isDisabled}" (selectUpcoming)="selectUpcoming()"
+  (selectNowPlaying)="selectNowPlaying()">
+</app-sidebar>
+<main [ngClass]="{'disabled':isDisabled}">
+  <form [formGroup]="SearchForm">
+    <i class="material-icons material-icons-search">search</i><input matInput #search type="text" class="search-bar"
+      formControlName="search" (keyup)="changeOtherControls()" autocomplete="off" placeholder="Search by Title">
+  </form>
+  <div class="movie-container" infinite-scroll [infiniteScrollDistance]="6" [infiniteScrollThrottle]="1750"
+    (scrolled)="onScroll()">
+    <div *ngFor="let Movie of Movies let i=index" class="movie-list" (click)="openDialog(Movie)">
+      <div class="image-section">
+        <div class="movie-rating">
+          <i class="material-icons material-icons-stars">star</i> {{ Movie.vote_average }}
+        </div>
+        <div class="image-section">
+          <img *ngIf="Movie.poster_path" src="https://image.tmdb.org/t/p/w500{{Movie.poster_path}}">
+        </div>
       </div>
-    </mat-card-header>
-    <mat-card-content>
-    <img *ngIf="Movie.backdrop_path" src="https://image.tmdb.org/t/p/w500{{Movie.backdrop_path}}">
-    <h4>Overview:{{Movie.overview}}</h4>
-    <h6>{{Movie.vote_average}}</h6>
-    <h6>Vote Count:{{Movie.vote_count}}</h6>
-    <hr>
-</mat-card-content>
-</mat-card>
-</div>
+      <section class="text-section">
+        <div class="movie-title"> {{ Movie.title }}</div>
+        <div class="movie-date">{{Movie.release_date}}</div>
+      </section>
+    </div>
+  </div>
 </main>
-<footer>
-  <app-footer></app-footer>
-</footer>
 
