@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
@@ -10,6 +10,12 @@ import { MovieListComponent } from './components/movie-list/movie-list.component
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { MovieService } from './services/movie.service';
+
+const appRoutes: Routes = [
+  {path: 'home', component: HomepageComponent},
+  { path:'login', component: LoginComponent },
+  { path:'register', component: RegisterComponent },
+]
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,9 +28,8 @@ import { MovieService } from './services/movie.service';
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot([
-      { path:'login', component: LoginComponent },
-    ]),],
+    RouterModule.forRoot(appRoutes)
+  ],
   providers: [MovieService],
   bootstrap: [AppComponent],
 })

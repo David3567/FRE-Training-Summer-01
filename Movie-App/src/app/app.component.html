@@ -1,11 +1,33 @@
 <div class="container">
   <div class="row">
     <div class="col-2">
-      <router-outlet></router-outlet>
       <app-navbar></app-navbar>
       <h2>Akira Movies</h2>
-      <app-homepage></app-homepage>
+      <!-- <router-outlet></router-outlet> -->
+      <app-homepage><router-outlet></router-outlet></app-homepage>
       <!-- <app-login></app-login> -->
+      <!-- <div class="col-2">
+        <router-outlet></router-outlet>
+      </div> -->
     </div>
   </div>
 </div>
+
+      <!-- <div class="col-2 ">
+        <router-outlet></router-outlet>
+      </div> -->
+
+
+
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div> -->
+
+
+<!-- <div class="container">
+  <router-outlet></router-outlet>
+</div> -->

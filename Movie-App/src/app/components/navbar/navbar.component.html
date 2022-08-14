@@ -4,23 +4,40 @@
       <button type="button" class="navbar-toggle" (click)="collapsed = !collapsed">
       <span class="icon-bar" *ngFor="let iconBar of [1, 2, 3]"></span>
       </button>
-      <a routerLink="/" class="navbar-brand">Akira Movies</a>
+      <a [routerLink]="['/']" class="navbar-brand">Akira Movies</a>
     </div>
     <div class="navbar-collapse" [class.collapse]="collapsed" (window:resize)="collapsed = true">
 
     <div class="navbar-default">
       <ul class="nav navbar-nav">
-        <li><a [routerLink]="['/login']">Login in!</a></li>
+        <li><a routerLink='/login'>Login in</a></li>
+        <li><a routerLink='/register'>Register</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
+        <!-- <li class="dropdown">
           <a href="#" class="dropdown-toggle" role="button">Setting <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">Save Data</a></li>
             <li><a href="#">Fetch Data</a></li>
           </ul>
         </li>
+      </ul> -->
       </ul>
+
     </div>
   </div>
 </nav>
+
+<!-- <div class="container">
+<div class="col-2">
+    <router-outlet></router-outlet>
+</div>
+</div> -->
+<!-- 
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div> -->
