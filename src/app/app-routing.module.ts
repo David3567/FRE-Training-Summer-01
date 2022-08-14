@@ -12,6 +12,11 @@ const routes: Routes = [
         (m) => m.MoviesListModule
       ),
   },
+  {
+    path: 'movie-item',
+    loadChildren: () =>
+      import('./movie-item/movie-item.module').then((m) => m.MovieItemModule),
+  },
   { path: 'login', component: LoginPageComponent },
   { path: 'register', component: RegisterComponent },
   { path: '', component: HomepageComponent },
@@ -19,6 +24,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
