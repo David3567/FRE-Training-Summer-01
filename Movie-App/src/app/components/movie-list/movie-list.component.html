@@ -10,7 +10,11 @@
 
 
 
-<div class="row">
+<div class="row"
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="1000"
+  (scrolled)="onScroll()">
   <div class="col-xs-6 col-md-2">
     <div class="input-group">
       <input type="text" class="form-control" placeholder="Search for..." />
@@ -19,29 +23,75 @@
       </span>
     </div>
 
+
+
+    <div class="col-sm-6 col-md-4">
     <ul class="movie-list">
-      <li *ngFor="let movie of movieData" class="movie-card">
+      <li *ngFor="let movie of movieData" class="movie-card"
+      infiniteScroll
+      [infiniteScrollDistance]="2"
+      [infiniteScrollThrottle]="1000"
+      (scrolled)="onScroll()">
         <div class="movie-card-container">
           <div class="movie-card-HD">HD</div>
           <div class="movie-card-score">{{ movie.vote_average }}</div>
           <div class="movie-card-likes">{{ movie.vote_count }}</div>
           <img
-            src="{{ getPosterPath(movie.backdrop_path) }}"
+            src="{{ getPosterPath(movie.poster_path) }}"
             alt=""
+            class="img-responsive"
+            class="img-rounded"
             class="card-image"
           />
         </div>
-        <p>{{ movie.title }}</p>
+        <div class="caption">
+          <h3>{{ movie.title }}</h3>
+          <!-- <p>{{ movie.overview }}</p> -->
+        </div>
       </li>
     </ul>
   </div>
 </div>
+</div>
 
-<div>
-  infiniteScroll
+<div class="row"
+*ngFor="let movie of movieData" class="movie-card"
+      infiniteScroll
+      [infiniteScrollDistance]="2"
+      [infiniteScrollThrottle]="1000"
+      (scrolled)="onScroll()">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="{{ getPosterPath(movie.backdrop_path) }}" alt="..." class="img-responsive" class="img-rounded" style="max-height: 300px;">
+      <div class="caption">
+        <h3>{{ movie.title }}</h3>
+        <!-- <p>{{ movie.overview }}</p> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--
+<div class="item" infiniteScroll
   [infiniteScrollDistance]="2"
   [infiniteScrollThrottle]="1000"
-  (scrolled)="onScroll()"
-</div>
+  (scrolled)="onScroll()">
+  <li *ngFor="let movie of movieData" class="movie-card" >
+  <img
+            src="{{ getPosterPath(movie.backdrop_path) }}"
+            alt=""
+            class="card-image"
+          />
+  <div class="carousel-caption">
+    <h3>...</h3>
+    <p>...</p>
+  </div>
+  </li>
+</div> -->
+
+
+
+
 
 

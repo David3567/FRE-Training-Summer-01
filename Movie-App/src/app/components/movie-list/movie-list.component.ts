@@ -16,6 +16,7 @@ export class MovieListComponent implements OnInit {
       (data) => {
         console.log(data);
         this.movieData = data.results;
+        console.log(this.movieData);
       },
       (error) => {
         console.error('Request failed with error');
@@ -33,8 +34,12 @@ export class MovieListComponent implements OnInit {
 // onScroll(): void {
 //     this.movieService
 //       .getDiscoverMovies()
-//       .subscribe((movieData: MovieDiscover[]) => {
-//         this.movieData.push(...movieData);
+//       .subscribe((getPosterPath: movieData[]) => {
+//         this.movieData.push(...getPosterPath);
 //       });
 //   }
+
+  onScroll() {
+    this.movieData;
+  }
 }
