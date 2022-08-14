@@ -29,4 +29,12 @@ export class MovieListComponent implements OnInit {
   getPosterPath(api_path: string) {
     return `https://www.themoviedb.org/t/p/w220_and_h330_face${api_path}`;
   }
+
+// onScroll(): void {
+//     this.movieService
+//       .getDiscoverMovies()
+//       .subscribe((movieData: MovieDiscover[]) => {
+//         this.movieData.push(...movieData);
+//       });
+//   }
 }
