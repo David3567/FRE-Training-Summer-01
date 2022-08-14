@@ -1,46 +1,61 @@
 import { Component, OnInit } from '@angular/core';
-
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from "../services/auth.service";
 @Component({
   selector: 'app-loginpage',
   templateUrl: './loginpage.component.html',
   styleUrls: ['./loginpage.component.css'],
 })
 export class LoginpageComponent implements OnInit {
-  emailErrorMessage: string = '';
-  passwordErrorMessage: string = '';
-  email: string = '';
-  password: string = '';
-  isChecked: boolean = false;
-  constructor() {}
+  myForm!: FormGroup;
 
-  ngOnInit(): void {}
-
-  validateEmail() {
-    const email = this.email;
-    if (email === '') {
-      this.emailErrorMessage = 'Please enter a valid email or phone number.';
-    }
+  get email() {
+    return this.myForm.get('email');
+  }
+  get password() {
+    return this.myForm.get('password');
   }
 
-  validatePassword() {
-    const password = this.password;
-    if (password === '') {
-      this.passwordErrorMessage =
-        'Your password must contain between 4 and 60 characters.';
-    }
-  }
+  constructor(private fb: FormBuilder, private authService: AuthService) {}
 
-  onChange() {
-    if (this.isChecked) {
-      console.log('remember!');
-    } else {
-      console.log('nothing');
-    }
+  ngOnInit() {
+    this.myForm = this.fb.group({
+      email: ['', [Validators.required]],
+      password: ['', [Validators.required]],
+    });
   }
 
   submitForm() {
-    this.validateEmail();
-    this.validatePassword();
-    this.onChange();
+    this.authService.signin(this.myForm.value).subscribe(console.log);
   }
 }
+
+// emailErrorMessage: string = '';
+//   passwordErrorMessage: string = '';
+//   email: string = '';
+//   password: string = '';
+//   isChecked: boolean = false;
+
+//   validateEmail() {
+//     const email = this.email;
+//     if (email === '') {
+//       this.emailErrorMessage = 'Please enter a valid email or phone number.';
+//     }
+//   }
+
+//   validatePassword() {
+//     const password = this.password;
+//     if (password === '') {
+//       this.passwordErrorMessage =
+//         'Your password must contain between 4 and 60 characters.';
+//     }
+//   }
+
+//   onChange() {
+//     if (this.isChecked) {
+//       console.log('remember!');
+//     } else {
+//       console.log('nothing');
+//     }
+//   }
+
