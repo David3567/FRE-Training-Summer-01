@@ -44,8 +44,9 @@ export class MovieService {
             ...this.movies,
           ];
 
-          this.moviesSubject$.next(this.movies);
-        })
+
+        this.moviesSubject$.next(this.movies);
+      })
       );
   }
 
@@ -92,8 +93,8 @@ export class MovieService {
 
     return this.http.get(url, this.helper.httpOptions).pipe(
       map(({ results }: any) => {
-        console.log('movie video successfully retrieved');
-        console.log(results);
+        console.log("movie video successfully retrieved")
+        console.log(results)
         return results.map((result: any) => {
           return {
             id: result.id,
@@ -105,5 +106,9 @@ export class MovieService {
       }),
       catchError(this.helper.errorHandler<any>('GetMovie'))
     );
+  }
+  getSingleMovie(id: number): Observable<any> {
+    let url = `https://api.themoviedb.org/3/movie/${id+this.apiKey}&language=en-US`
+    return this.http.get(url, this.helper.httpOptions)
   }
 }

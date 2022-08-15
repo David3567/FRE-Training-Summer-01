@@ -1,0 +1,68 @@
+ <div class="single_movie_page">
+  <div *ngIf="showMovie" class="movie__video__trailer">
+    <iframe
+      [title]="selectedMovieVideo.name"
+      [src]="sanitize.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/'+selectedMovieVideo.key)"
+      allowfullscreen allow="true">
+    </iframe>
+    <span
+      class="close__video"
+      (click)="showMovie=false">
+      X
+    </span>
+  </div>
+    <section class="single_movie_page-top">
+  <div class="movie-information">
+    <h1 class="movie-title">{{movie.title}}</h1>
+    <div class="movie-properities">
+      <div class="movie-rate">{{movie.vote_average|number:'1.0-1'}}</div>
+      <div>|</div>
+      <div class="movie-release_date">{{movie.release_date|date:'mediumDate'}}</div>
+      <div>|</div>
+      <div class="movie-long">{{movie.runtime}}</div>
+    </div>
+    <p class="movie-explanation">
+      {{movie.tagline}}
+    </p>
+    <button (click)="onWatchTrailer(movie.id)" class="watch-trailer"> Watch Trailer</button>
+   
+  </div>
+  <div class="movie-image-container">
+    <img src="https://image.tmdb.org/t/p/original/{{movie.backdrop_path}}" alt="{{movie.title}}" class="movie-image" />
+    <div class="movie-image-shadow"></div>
+  </div>
+</section>
+  <section class="single_movie_page-middle">
+    <nav class="movie-info-navbar">
+        <div class="movie-info-navbar-element" routerLink ="/overview">OVERVIEW</div>
+        <div class="movie-info-navbar-element" routerLink ="/videos">VIDEOS</div>
+        <div class="movie-info-navbar-element" routerLink ="/photos">PHOTOS</div>
+        <!-- <router-outlet></router-outlet> -->
+    </nav>
+    <div class="movie-info">
+    <img src="https://image.tmdb.org/t/p/original/{{movie.poster_path}}" alt="{{movie.title}}" class="movie-poster"/>
+    <div class="movie-information-second">
+        <div class="movie-info-storyline">
+          <h2>Storyline</h2>
+         <p>{{movie.overview}}</p>
+        </div>
+         
+        <ul class="movie-info-list">
+            <li>Vote Average: <span> {{movie.vote_average|number:'1.0-1'}}</span></li>
+            <li>Released: <span> {{movie.release_date|date:'mediumDate'}}</span></li>
+            <li>Runtime: <span>{{movie.runtime}}</span> minutes</li>
+            <li>Popularity: <span> {{movie.popularity}}</span></li>
+            <li>Revenue: <span> {{movie.revenue| currency:'$':true:'.3'}}</span></li>
+            <li>Genres:<span *ngFor="let genre of movie.genres"> {{genre.name}}, </span></li>
+        </ul>
+    </div>
+    </div>
+    
+  </section>
+  <section classes="recomended-movies">
+
+  </section>
+
+</div>
+
+ 

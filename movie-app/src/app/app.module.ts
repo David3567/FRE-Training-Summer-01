@@ -14,7 +14,6 @@ import { MovieService } from './services/movie.service';
 import { TestComponent } from './test/test.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-
 import { MoviesListComponent } from './movies-list/movies-list.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -22,20 +21,15 @@ import { UserService } from './services/user.service';
 import { InMemoryDataService } from './services/in-memory-data.service';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { MoviesListModule } from './movies-list/movies-list/movies-list.module';
-import { ShortPipe } from './pipes/short.pipe';
-import {
-  FaIconLibrary,
-  FontAwesomeModule,
-} from '@fortawesome/angular-fontawesome';
-import {
-  faHome,
-  faSearch,
-  faCalendar,
-  faClapperboard,
-  faEye,
-} from '@fortawesome/free-solid-svg-icons';
+
+
 import { DiscoverService } from './services/discover.service';
 import { DiscoverListComponent } from './discover-list/discover-list.component';
+import { ShortPipe} from './pipes/short.pipe';
+import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faHome, faSearch, faCalendar, faClapperboard, faEye } from '@fortawesome/free-solid-svg-icons';
+import { SingleMovieComponent } from './single-movie/single-movie.component';
+
 
 @NgModule({
   declarations: [
@@ -45,7 +39,7 @@ import { DiscoverListComponent } from './discover-list/discover-list.component';
     HomePageComponent,
     PageNotFoundComponent,
     TestComponent,
-    // DiscoverListComponent,
+    SingleMovieComponent,
     // ShortPipe
   ],
   imports: [
@@ -53,10 +47,10 @@ import { DiscoverListComponent } from './discover-list/discover-list.component';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
     InfiniteScrollModule,
+    FontAwesomeModule,
   ],
 
   exports: [RouterModule, HttpClientModule],
