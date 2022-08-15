@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 /* You can add global styles to this file, and also import other style files */
 *,
 *::after,
@@ -7,21 +7,22 @@
   margin: 0;
   box-sizing: border-box;
   border: none;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
-*::-webkit-scrollbar{
+*::-webkit-scrollbar {
   display: none;
 }
 :root {
   --main-bg-color: black;
-  --main-text-color:white;
-  --main-font-size:1rem;
-  --main-header-size:3rem;
+  --main-text-color: white;
+  --main-font-size: 1rem;
+  --main-header-size: 3rem;
 }
-html,body{
+html,
+body {
   background: #000;
-  color:#fff
+  color: #fff;
 }
 html,
 body,
@@ -124,7 +125,6 @@ section {
 }
 body {
   line-height: 1;
-
 }
 ol,
 ul {
@@ -146,11 +146,11 @@ table {
   border-spacing: 0;
 }
 
-.flex__wrapper{
+.flex__wrapper {
   display: flex;
   flex-wrap: wrap;
 }
 
-img{
+img {
   width: 100%;
 }

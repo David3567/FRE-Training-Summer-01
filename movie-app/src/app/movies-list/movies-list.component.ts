@@ -6,38 +6,47 @@ import { MovieService } from '../services/movie.service';
 @Component({
   selector: 'app-movies-list',
   templateUrl: './movies-list.component.html',
-  styleUrls: ['./movies-list.component.css']
+  styleUrls: ['./movies-list.component.css'],
 })
 export class MoviesListComponent implements OnInit {
   movies: any[] = [];
   bannerMovie!: any;
-  selectedMovieVideo!: Video
+  selectedMovieVideo!: Video;
   showMovie: boolean = false;
   constructor(
     public sanitize: DomSanitizer,
-    private movieService: MovieService) { }
-  trending:any[]=[]
-
+    private movieService: MovieService
+  ) {}
+  trending: any[] = [];
+  searchHidden: boolean = true;
 
   ngOnInit(): void {
     this.movieService.getMoviesList().subscribe((movies: any) => {
-      console.log(movies)
-      this.bannerMovie = movies[0]
-      this.movies = movies.filter((m:any, i:number) => i > 0);
+      console.log(movies);
+      this.bannerMovie = movies[0];
+      this.movies = movies.filter((m: any, i: number) => i > 0);
     });
 
     this.movieService.getTrendingMovies().subscribe((movies: any) => {
-      this.trending = movies
+      this.trending = movies;
     });
   }
 
-  onWatchTrailer(id: number): void{
+  onWatchTrailer(id: number): void {
     this.showMovie = true;
-    this.movieService.getVideoById(id)
-      .subscribe((trailer: Video[]) => {
-      console.log("Watching trailer now...")
-        console.dir(trailer);
-        this.selectedMovieVideo = trailer[0];
-    })
+    this.movieService.getVideoById(id).subscribe((trailer: Video[]) => {
+      console.log('Watching trailer now...');
+      console.dir(trailer);
+      this.selectedMovieVideo = trailer[0];
+    });
+  }
+
+  searchTab() {
+    console.log('click');
+    if (!this.searchHidden) {
+      this.searchHidden = !this.searchHidden;
+    } else {
+      this.searchHidden = !this.searchHidden;
+    }
   }
 }

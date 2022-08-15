@@ -1,0 +1,32 @@
+export interface Info {
+  title?: string;
+  vote_average?: number;
+  poster_path?: string;
+  popularity?: number;
+  release_date?: string;
+}
+
+export interface Movie {
+  page: number;
+  results: Item[];
+  total_pages: number;
+  total_results: number;
+}
+
+export interface Item {
+  adult: boolean;
+  backdrop_path: string;
+  genre_ids: number[];
+  id: number;
+  media_type: string;
+  original_language: string;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  release_date: string;
+  title: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
+}
