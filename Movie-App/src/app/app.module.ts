@@ -13,7 +13,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { MovieService } from './services/movie.service';
 
 const appRoutes: Routes = [
-  {path: 'home', component: HomepageComponent},
+  {path: '', component: HomepageComponent},
   { path:'login', component: LoginComponent },
   { path:'register', component: RegisterComponent },
 ]
