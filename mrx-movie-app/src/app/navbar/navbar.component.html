@@ -1,4 +1,5 @@
 <nav>
-    <img src="../../assets/images/logo.png" alt="logo" class="logo" />
-    <button routerLink="/login" class="loginBtn">Sign In</button>
+    <img src="../../assets/images/logo.png" routerLink="/" alt="logo" class="logo" />
+    <button *ngIf="!isLoggedIn" routerLink="/login" class="loginBtn">Sign In</button>
+    <button *ngIf="isLoggedIn" routerLink="/login" class="loginBtn">Sign Out</button>  
   </nav>

@@ -11,5 +11,5 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  isLoggedIn = sessionStorage.getItem('token');
 }
