@@ -3,13 +3,14 @@ import { UserInfo } from '../userinfo';
 import { ApiService } from './api.service';
 import jwt_decode from 'jwt-decode';
 import { BehaviorSubject, catchError, shareReplay, tap } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private userAuthInfo: UserInfo = {};
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private router: Router) {}
 
   //login function to decode incoming accessToken and store it in userAuth statem then store to local storage.
   login(loginInfo: UserInfo) {
@@ -62,5 +63,6 @@ export class AuthService {
   logout() {
     this.removeSession();
     console.log('Logged out');
+    this.router.navigate(['']);
   }
 }

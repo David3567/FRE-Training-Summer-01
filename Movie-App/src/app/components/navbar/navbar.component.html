@@ -1,26 +1,28 @@
 <nav class="navbar navbar-default">
-
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" (click)="collapsed = !collapsed">
+  <div class="navbar-header">
+    <button
+      type="button"
+      class="navbar-toggle"
+      (click)="collapsed = !collapsed"
+    >
       <span class="icon-bar" *ngFor="let iconBar of [1, 2, 3]"></span>
-      </button>
-      <a routerLink="/" class="navbar-brand">Akira Movies</a>
-    </div>
-    <div class="navbar-collapse" [class.collapse]="collapsed" (window:resize)="collapsed = true">
-
+    </button>
+    <a [routerLink]="['/']" class="navbar-brand">Akira Movies</a>
+  </div>
+  <div
+    class="navbar-collapse"
+    [class.collapse]="collapsed"
+    (window:resize)="collapsed = true"
+  >
     <div class="navbar-default">
       <ul class="nav navbar-nav">
-        <li><a href="#">Profile</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" role="button">Setting <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Save Data</a></li>
-            <li><a href="#">Fetch Data</a></li>
-          </ul>
+        <li *ngIf="isLoggedOff()"><a routerLink="/login">Login</a></li>
+        <li *ngIf="isLoggedOff()"><a routerLink="/register">Register</a></li>
+        <li *ngIf="!isLoggedOff()">
+          <a [routerLink]="['/']" (click)="logout()">Logout</a>
         </li>
       </ul>
+      <ul class="nav navbar-nav navbar-right"></ul>
     </div>
   </div>
 </nav>
