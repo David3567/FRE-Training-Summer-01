@@ -3,7 +3,7 @@
     <div class="login-form-main">
       <h4>Sign In</h4>
       <form class="login-form" [formGroup]="signinForm" (ngSubmit)="loginUser()">
-        <input type="text" name="loginId" formControlName="username" />
+        <input type="text" name="email" formControlName="email" />
         <input type="text" name="password" formControlName="password" />
         <button type="submit">Sign In</button>
         </form>
