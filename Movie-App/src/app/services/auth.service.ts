@@ -40,6 +40,10 @@ export class AuthService {
     );
   }
 
+  register(registerInfo: any) {
+    return this.api.register(registerInfo).subscribe((res) => console.log(res));
+  }
+
   private setSession(userObj: any) {
     localStorage.setItem('user-id', userObj.id);
     localStorage.setItem('username', userObj.username);

@@ -32,16 +32,6 @@
             Min Password Length is 4
           </div>
         </div>
-        <div
-          *ngIf="
-            !confirmPassword?.valid &&
-            (confirmPassword?.dirty || email?.touched)
-          "
-        >
-          <div [hidden]="confirmPassword?.errors?.['required']">
-            Confirming Password is required
-          </div>
-        </div>
 
         <!--  -->
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
@@ -78,18 +68,6 @@
               placeholder="Password..."
               maxlength="10"
               formControlName="password"
-            />
-          </div>
-
-          <div class="field">
-            <span class="fa fa-user"></span>
-            <input
-              type="password"
-              name="confirmPassword"
-              id="confirmPassword"
-              placeholder="Confirm Password..."
-              maxlength="10"
-              formControlName="confirmPassword"
             />
           </div>
 
