@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { HttpClient, HttpResponse } from '@angular/common/http';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { map, tap, catchError } from 'rxjs/operators';
 import jwt_decode from 'jwt-decode';
 
 import { User } from '../interfaces/user';
@@ -30,6 +30,14 @@ export class AuthenticationService {
     return this.http.post<{ accessToken: string }>(
       url,
       registerInfo
+    ).pipe(
+      tap(({ accessToken }) => {
+        console.log('access', jwt_decode(accessToken))
+      }),
+      catchError(err => {
+        console.log(err);
+        throw err;
+    })
     )
   }
 
@@ -52,6 +60,10 @@ export class AuthenticationService {
           jwt_token: accessToken
         };
         this.userAuth$.next(this.userAuthInfo);
+      }),
+      catchError(err => {
+        console.log(err);
+        throw err;
       })
     )
   }
