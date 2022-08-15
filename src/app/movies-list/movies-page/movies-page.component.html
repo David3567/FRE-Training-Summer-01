@@ -1,2 +1,20 @@
-<app-search-bar></app-search-bar>
-<app-movies [movieList]="movieList"></app-movies>
+<div class="section-center">
+  <header>
+    <app-featured-movie [featured]="movieList[0]"></app-featured-movie>
+  </header>
+  <main
+    infinite-scroll
+    [infiniteScrollDistance]="2"
+    [infiniteScrollThrottle]="100"
+    (scrolled)="onScroll()"
+  >
+    <h2 class="section-title">Recently added</h2>
+    <div class="section-container">
+      <app-movie-card
+        *ngFor="let movie of movieList; let i = index"
+        [movie]="movie"
+      >
+      </app-movie-card>
+    </div>
+  </main>
+</div>

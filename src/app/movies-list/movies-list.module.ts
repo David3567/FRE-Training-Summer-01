@@ -10,6 +10,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FeaturedMovieComponent } from './featured-movie/featured-movie.component';
 
 import { MovieCardComponent } from './movie-card/movie-card.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,11 @@ import { MovieCardComponent } from './movie-card/movie-card.component';
     FeaturedMovieComponent,
     MovieCardComponent,
   ],
-  imports: [CommonModule, MoviesListRoutingModule, FontAwesomeModule],
+  imports: [
+    CommonModule,
+    MoviesListRoutingModule,
+    FontAwesomeModule,
+    InfiniteScrollModule,
+  ],
 })
 export class MoviesListModule {}

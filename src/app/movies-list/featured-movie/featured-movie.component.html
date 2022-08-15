@@ -4,14 +4,14 @@
     background:
       'linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(
             ' +
-      movieList[1]?.posterUrl +
+      featured?.backdrop_path +
       ') center/cover no-repeat'
   }"
 >
   <div class="container">
     <header class="container-header">
       <div class="title">Movie of the week</div>
-      <div class="title-text">{{ movieList[1]?.title }}</div>
+      <div class="title-text">{{ featured?.title }}</div>
     </header>
     <button class="play-btn">
       <div>Play now</div>
