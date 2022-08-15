@@ -13,6 +13,7 @@ import { MovieCardComponent } from './movie-card/movie-card.component';
 import { MovieService } from './services/movie.service';
 import { TestComponent } from './test/test.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { MoviesListComponent } from './movies-list/movies-list.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -21,9 +22,20 @@ import { UserService } from './services/user.service';
 import { InMemoryDataService } from './services/in-memory-data.service';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { MoviesListModule } from './movies-list/movies-list/movies-list.module';
-import { ShortPipe} from './pipes/short.pipe';
-import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faHome, faSearch, faCalendar, faClapperboard, faEye } from '@fortawesome/free-solid-svg-icons';
+import { ShortPipe } from './pipes/short.pipe';
+import {
+  FaIconLibrary,
+  FontAwesomeModule,
+} from '@fortawesome/angular-fontawesome';
+import {
+  faHome,
+  faSearch,
+  faCalendar,
+  faClapperboard,
+  faEye,
+} from '@fortawesome/free-solid-svg-icons';
+import { DiscoverService } from './services/discover.service';
+import { DiscoverListComponent } from './discover-list/discover-list.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +45,7 @@ import { faHome, faSearch, faCalendar, faClapperboard, faEye } from '@fortawesom
     HomePageComponent,
     PageNotFoundComponent,
     TestComponent,
+    // DiscoverListComponent,
     // ShortPipe
   ],
   imports: [
@@ -42,20 +55,17 @@ import { faHome, faSearch, faCalendar, faClapperboard, faEye } from '@fortawesom
     AppRoutingModule,
     FontAwesomeModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    InfiniteScrollModule,
   ],
 
   exports: [RouterModule, HttpClientModule],
-  providers: [MovieService, UserService, ShortPipe],
+  providers: [MovieService, DiscoverService, UserService, ShortPipe],
 
   bootstrap: [AppComponent],
 })
 export class AppModule {
   constructor(library: FaIconLibrary) {
-    library.addIcons(
-      faCalendar, faHome, faSearch,
-      faClapperboard,
-      faEye
-    );
+    library.addIcons(faCalendar, faHome, faSearch, faClapperboard, faEye);
   }
 }

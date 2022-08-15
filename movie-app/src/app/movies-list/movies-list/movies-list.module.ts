@@ -4,16 +4,23 @@ import { MoviesListComponent } from '../movies-list.component';
 import { MovieCardComponent } from '../../movie-card/movie-card.component';
 import { ShortPipe } from '../../pipes/short.pipe';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { DiscoverListComponent } from 'src/app/discover-list/discover-list.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
     ShortPipe,
     MovieCardComponent,
-    MoviesListComponent
+    MoviesListComponent,
+    DiscoverListComponent,
   ],
   imports: [
     FontAwesomeModule,
-    CommonModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    InfiniteScrollModule,
   ],
 })
-export class MoviesListModule { }
+export class MoviesListModule {}

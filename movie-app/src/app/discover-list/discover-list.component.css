@@ -1,0 +1,39 @@
+.container {
+  margin-top: 5rem;
+  overflow: auto;
+}
+.form__container {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  top: 0;
+  height: 10%;
+  background-color: black;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* box-shadow: 0 0 6px gray; */
+}
+.form__container > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+}
+.form__icon {
+  width: 10%;
+}
+.form__group {
+  width: 90%;
+}
+.input__search {
+  padding: 1rem;
+  width: 100%;
+}
+.movie__container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  min-height: 80rem;
+}

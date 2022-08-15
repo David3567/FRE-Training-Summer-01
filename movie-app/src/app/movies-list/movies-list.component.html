@@ -4,89 +4,93 @@
       <div class="sidebar">
         <div class="sidebar__control--btn flex__wrapper">
           <span>
-            <fa-icon [icon]="['fas','search']"></fa-icon>
+            <fa-icon [icon]="['fas', 'search']" (click)="searchTab()"></fa-icon>
           </span>
           <span>
-            <fa-icon [icon]="['fas','home']"></fa-icon>
+            <fa-icon [icon]="['fas', 'home']"></fa-icon>
           </span>
           <span>
-            <fa-icon [icon]="['fas','calendar']"></fa-icon>
+            <fa-icon [icon]="['fas', 'calendar']"></fa-icon>
           </span>
           <span>
-              <fa-icon [icon]="['fas','clapperboard']"></fa-icon>
+            <fa-icon [icon]="['fas', 'clapperboard']"></fa-icon>
           </span>
-          <span>
-            +
-          </span>
+          <span> + </span>
         </div>
       </div>
       <section class="content flex__wrapper">
-        <div *ngIf="selectedMovieVideo && showMovie" class="movie__video__trailer">
+        <div
+          *ngIf="selectedMovieVideo && showMovie"
+          class="movie__video__trailer"
+        >
           <iframe
             [title]="selectedMovieVideo.name"
-            [src]="sanitize.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/'+selectedMovieVideo.key)"
-            allowfullscreen allow="true">
+            [src]="
+              sanitize.bypassSecurityTrustResourceUrl(
+                'https://www.youtube.com/embed/' + selectedMovieVideo.key
+              )
+            "
+            allowfullscreen
+            allow="true"
+          >
           </iframe>
-          <span
-            class="close__video"
-            (click)="showMovie=false">
-            X
-          </span>
+          <span class="close__video" (click)="showMovie = false"> X </span>
         </div>
         <header
+          *ngIf="searchHidden"
           class="flex__wrapper"
-          [style.backgroundImage]="'url(https://image.tmdb.org/t/p/original/'+bannerMovie.poster_path+')'"
+          [style.backgroundImage]="
+            'url(https://image.tmdb.org/t/p/original/' +
+            bannerMovie.poster_path +
+            ')'
+          "
         >
           <aside
-            [attr.aria-label]="bannerMovie.original_title+' basics info'"
-            class="movie__info">
+            [attr.aria-label]="bannerMovie.original_title + ' basics info'"
+            class="movie__info"
+          >
             <div class="flex__wrapper">
               <span class="movie__item__category">Series</span>
               <h2 class="movie__title">
-                {{bannerMovie.original_title}}
+                {{ bannerMovie.original_title }}
               </h2>
               <div class="movie__basic__stat__info">
-                <strong class="movie__match">
-                  97% Match
-                </strong>
+                <strong class="movie__match"> 97% Match </strong>
                 <span class="movie__year__produced">
-                  {{bannerMovie.release_date | date: 'yyyy'}}
+                  {{ bannerMovie.release_date | date: "yyyy" }}
                 </span>
-                <span class="movie__streaming__tv">
-                  TV-MA
-                </span>
-                <span class="movie__quantity">
-                  2 Seasons
-                </span>
-                <span class="movie__quality">
-                  HD
-                </span>
+                <span class="movie__streaming__tv"> TV-MA </span>
+                <span class="movie__quantity"> 2 Seasons </span>
+                <span class="movie__quality"> HD </span>
                 <span class="movie__rating" [title]="bannerMovie.popularity">
-                 {{bannerMovie.popularity}} <fa-icon [icon]="['fas', 'eye']"></fa-icon>
+                  {{ bannerMovie.popularity }}
+                  <fa-icon [icon]="['fas', 'eye']"></fa-icon>
                 </span>
               </div>
               <div class="movie__average__vote">
-                Average: {{bannerMovie.vote_average}} vote(s)
+                Average: {{ bannerMovie.vote_average }} vote(s)
               </div>
               <div class="movie__overview">
                 <p>
-                  {{bannerMovie.overview | makeShort: 180}}
+                  {{ bannerMovie.overview }}
                 </p>
               </div>
             </div>
           </aside>
         </header>
-        <main>
+        <main *ngIf="searchHidden">
           <section class="all_movies">
             <h3>
-              Hottest movies <strong *ngIf="movies!.length > 0">{{movies.length}}</strong>
+              Hottest movies
+              <strong *ngIf="movies!.length > 0">{{ movies.length }}</strong>
             </h3>
-             <ul class="movies__list">
+            <ul class="movies__list">
               <li
                 (click)="onWatchTrailer(movie.id)"
                 [title]="movie.original_title"
                 class="movie flex__wrapper"
-                *ngFor="let movie of movies">
+                *ngFor="let movie of movies"
+              >
                 <app-movie-card [movie]="movie"> working</app-movie-card>
               </li>
             </ul>
@@ -94,21 +98,28 @@
 
           <section class="trending__movies">
             <h3>
-              Trending Now <strong *ngIf="trending!.length > 0">{{trending.length}}</strong>
+              Trending Now
+              <strong *ngIf="trending!.length > 0">{{
+                trending.length
+              }}</strong>
             </h3>
-             <ul class="movies__list">
+            <ul class="movies__list">
               <li
                 (click)="onWatchTrailer(movie.id)"
                 [title]="movie.original_title"
                 class="movie flex__wrapper"
-                 *ngFor="let movie of trending">
+                *ngFor="let movie of trending"
+              >
                 <app-movie-card [movie]="movie"> working</app-movie-card>
               </li>
             </ul>
           </section>
-          </main>
+        </main>
+        <section *ngIf="!searchHidden">
+          <app-discover-list></app-discover-list>
+        </section>
       </section>
-      <aside aria-label="Application title"  class="project__title">
+      <aside aria-label="Application title" class="project__title">
         <strong>KCBFLEX</strong>
       </aside>
     </div>
