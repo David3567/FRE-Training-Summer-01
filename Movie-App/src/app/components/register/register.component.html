@@ -1,95 +1,109 @@
-<div class="full__Page">
-    <form action="" class="form">
-      <header class="header__Register">Register</header>
-      <div class="fullname">
-        <div>
-          <input
-            type="text"
-            class="fname"
-            name="first name"
-            placeholder="First Name"
-            aria-placeholder="First Name"
-            required
-          />
+<div class="register-page">
+  <main>
+    <section class="register-section">
+      <header>
+        <h1 class="register-header">
+          Start watching the most popular
+          <span class="register-header-span">movies in 2022.</span>
+        </h1>
+      </header>
+      <div class="register-container">
+        <header class="title"><h1>Register</h1></header>
+        <!-- error messages -->
+        <div *ngIf="!username?.valid && (username?.dirty || username?.touched)">
+          <div [hidden]="username?.errors?.['required']">
+            Username is required
+          </div>
+          <div [hidden]="!username?.errors?.['minlength']">
+            Min Email Length is 4
+          </div>
         </div>
-        <div>
-          <input
-            type="text"
-            class="lname"
-            name="last name"
-            placeholder="Last Name"
-            aria-placeholder="Last Name"
-            required
-          />
+        <div *ngIf="!email?.valid && (email?.dirty || email?.touched)">
+          <div [hidden]="email?.errors?.['required']">Email is required</div>
+          <div [hidden]="!email?.errors?.['minlength']">
+            Min Email Length is 8
+          </div>
+        </div>
+        <div *ngIf="!password?.valid && (password?.dirty || password?.touched)">
+          <div [hidden]="password?.errors?.['required']">
+            Password is required
+          </div>
+          <div [hidden]="!password?.errors?.['minlength']">
+            Min Password Length is 4
+          </div>
+        </div>
+        <div
+          *ngIf="
+            !confirmPassword?.valid &&
+            (confirmPassword?.dirty || email?.touched)
+          "
+        >
+          <div [hidden]="confirmPassword?.errors?.['required']">
+            Confirming Password is required
+          </div>
+        </div>
+
+        <!--  -->
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="field">
+            <span class="fa fa-user"></span>
+            <input
+              type="text"
+              name="registerUsername"
+              id="registerUsername"
+              placeholder="Username..."
+              maxlength="10"
+              formControlName="username"
+            />
+          </div>
+
+          <div class="field">
+            <span class="fa fa-user"></span>
+            <input
+              type="text"
+              name="registerEmail"
+              id="registerEmail"
+              placeholder="Email..."
+              maxlength="20"
+              formControlName="email"
+            />
+          </div>
+
+          <div class="field">
+            <span class="fa fa-lock"></span>
+            <input
+              type="password"
+              name="registerPassword"
+              id="registerPassword"
+              placeholder="Password..."
+              maxlength="10"
+              formControlName="password"
+            />
+          </div>
+
+          <div class="field">
+            <span class="fa fa-user"></span>
+            <input
+              type="password"
+              name="confirmPassword"
+              id="confirmPassword"
+              placeholder="Confirm Password..."
+              maxlength="10"
+              formControlName="confirmPassword"
+            />
+          </div>
+
+          <div class="register-button-holder">
+            <button class="register-button" type="submit">Register</button>
+          </div>
+        </form>
+
+        <div class="register-options">
+          <span class="signin-left">Already have an account? Sign in</span>
+          <a routerLink="/login" class="signin-text"> here</a>
+          .
         </div>
       </div>
-      <div class="email-mobile">
-        <div>
-          <input
-            type="text"
-            class="mobile-number"
-            name="mobile number"
-            id="phone-number"
-            placeholder="Mobile No."
-            aria-placeholder="Mobile No."
-            required
-          />
-        </div>
-        <div>
-          <input
-            type="email"
-            class="email"
-            name="email address"
-            placeholder="Email Address"
-            aria-placeholder="Email Address"
-            required
-          />
-        </div>
-      </div>
-      <div class="passwords">
-        <div>
-          <input
-            type="password"
-            class="password"
-            name="password"
-            placeholder="Password"
-            aria-placeholder="Password"
-            required
-          />
-        </div>
-        <div>
-          <input
-            type="password"
-            class="confirm password"
-            name="confirm password"
-            id="confirm-password"
-            placeholder="Confirm Password"
-            aria-placeholder="Confirm Password"
-            required
-          />
-        </div>
-      </div>
-      <div class="checkbox">
-        <input
-          type="checkbox"
-          class="clickbox"
-          name="agree"
-          checked
-          aria-checked="mixed"
-          required
-        />
-        <span>I Agree</span>
-      </div>
-      <div>
-        <p class="terms-and-conditions">
-          By clicking <span>Register</span> you agree to the
-          <a href="#">Terms and Conditions</a> set<br />
-          out by this site, including our Cookie Use.
-        </p>
-      </div>
-      <div class="button">
-        <button type="submit" class="register">Register</button>
-      </div>
-    </form>
-  </div>
-  
+    </section>
+  </main>
+</div>

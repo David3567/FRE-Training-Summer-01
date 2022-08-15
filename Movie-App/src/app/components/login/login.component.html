@@ -3,38 +3,61 @@
     <section class="login-section">
       <header>
         <h1 class="login-header">
-          Start watching the most popular movies in 2022.
+          Sign in to watch the most popular
+          <span class="login-header-span">movies in 2022.</span>
         </h1>
       </header>
+
       <div class="login-container">
         <header class="title"><h1>Login</h1></header>
-        <form action="">
+        <!-- error messsages -->
+        <div *ngIf="!email?.valid && (email?.dirty || email?.touched)">
+          <div [hidden]="email?.errors?.['required']">Email is required</div>
+          <div [hidden]="!email?.errors?.['minlength']">
+            Min Email Length is 8
+          </div>
+        </div>
+        <div *ngIf="!password?.valid && (email?.dirty || email?.touched)">
+          <div [hidden]="password?.errors?.['required']">
+            Password is required
+          </div>
+          <div [hidden]="!password?.errors?.['minlength']">
+            Min Password Length is 4
+          </div>
+        </div>
+
+        <!--  -->
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
           <div class="field">
             <span class="fa fa-user"></span>
             <input
               type="text"
-              name="email"
-              id="email"
+              name="loginEmail"
+              id="loginEmail"
               placeholder="Email"
-              required
+              maxlength="20"
+              formControlName="email"
             />
           </div>
           <div class="field">
             <span class="fa fa-lock"></span>
             <input
               type="password"
-              name="password"
-              id="password"
+              name="loginPassword"
+              id="loginPassword"
               placeholder="Password"
+              maxlength="10"
+              formControlName="password"
             />
           </div>
           <div class="login-button-holder">
             <button class="login-button" type="submit">Sign In</button>
           </div>
         </form>
+
         <div class="login-options">
-          <span class="signup-left">New to Akira? </span>
-          <a href="" class="signup-text">Sign up now</a>
+          <span class="signup-left">New to Akira? Sign up</span>
+          <a routerLink="/register" class="signup-text"> here</a>
           .
         </div>
       </div>
