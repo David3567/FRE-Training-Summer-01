@@ -1,7 +1,7 @@
 <app-sidebar [ngClass]="{'disabled':isDisabled}" (selectUpcoming)="selectUpcoming()"
   (selectNowPlaying)="selectNowPlaying()">
 </app-sidebar>
-<main [ngClass]="{'disabled':isDisabled}">
+<main [ngClass]="{'disabled':isDisabled}" appTrackScroll (direction)="goDirection($event)">
   <form [formGroup]="SearchForm">
     <i class="material-icons material-icons-search">search</i><input matInput #search type="text" class="search-bar"
       formControlName="search" (keyup)="changeOtherControls()" autocomplete="off" placeholder="Search by Title">

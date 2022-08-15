@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
 import { MoviesService } from '../../../services/movies.service';
 import { Router } from '@angular/router';
-import { fromEvent, debounceTime, distinctUntilChanged, map, switchMap, mergeMap, filter, isEmpty } from 'rxjs';
+import { fromEvent, debounceTime, distinctUntilChanged, map, switchMap, mergeMap, filter, isEmpty, forkJoin } from 'rxjs';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MovieDialogComponent } from '../movie-dialog/movie-dialog.component';
+import { getLocaleDirection } from '@angular/common';
 
 @Component({
   selector: 'app-movielist',
@@ -34,20 +35,24 @@ export class MovielistComponent implements OnInit {
     public router: Router,
     private service: MoviesService,
     public dialog: MatDialog) { }
-
+    public casts=[]
   openDialog(movie: any): void {
     this.movie = movie;
-    let dialogRef = this.dialog.open(MovieDialogComponent, {
-      panelClass: 'custom-dialog-container',
-      data: {
-        movie: this.movie
-      },
-      disableClose: true,
-    });
+    forkJoin(this.service.getCredits(movie.id),this.service.getMovieVideos(movie.id)).subscribe((res: any) => { this.casts = res[0].cast;
+      this.videos=res[1]
+      let dialogRef = this.dialog.open(MovieDialogComponent, {
+        panelClass: 'custom-dialog-container',
+        data: {
+          movie:this.movie,
+          casts:this.casts,
+          videos:this.videos
+        },
+        disableClose: true,
+      });
 
-    dialogRef.backdropClick().subscribe(_ => {
-      dialogRef.close();
-    })
+      dialogRef.backdropClick().subscribe(_ => {
+        dialogRef.close();
+      })})
   }
 
   ngOnInit(): void {
@@ -98,8 +103,12 @@ export class MovielistComponent implements OnInit {
     if (this.SearchForm.controls.nowplaying.enabled) {
       this.service.getMovies(this.page).subscribe((result: any) => { for (let i of result.results) { this.Movies.push(i) } })
     }
+
   }
 
+  goDirection(str:string){
+    if(str=="down"){this.Movies.splice(this.Movies.length-20,20)}
+  }
   // onActivate(event: any) {
   //   let scrollToTop = window.setInterval(() => {
   //     let pos = window.pageYOffset;

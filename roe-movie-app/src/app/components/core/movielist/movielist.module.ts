@@ -10,12 +10,15 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MovieDialogComponent } from '../movie-dialog/movie-dialog.component';
-
+import { TrackScrollDirective } from './track-scroll.directive'
+import { YouTubePlayerModule } from "@angular/youtube-player";
 
 @NgModule({
   declarations: [
     MovielistComponent,
-    SidebarComponent
+    SidebarComponent,
+    MovieDialogComponent,
+    TrackScrollDirective
   ],
   imports: [
     CommonModule,
@@ -25,10 +28,12 @@ import { MovieDialogComponent } from '../movie-dialog/movie-dialog.component';
     HttpClientModule,
     MatCardModule,
     InfiniteScrollModule,
-    MatDialogModule
+    MatDialogModule,
+    YouTubePlayerModule
   ],
   entryComponents: [
     MovieDialogComponent
-  ]
+  ],
+  exports:[MovieDialogComponent]
 })
 export class MovielistModule { }

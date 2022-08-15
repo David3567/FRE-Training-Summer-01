@@ -6,11 +6,9 @@ import { MatCommonModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-  
-import { MovieDialogComponent } from './movie-dialog.component';
-  
+import { YouTubePlayerModule } from "@angular/youtube-player";
+
 @NgModule({
-  declarations: [MovieDialogComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -19,9 +17,7 @@ import { MovieDialogComponent } from './movie-dialog.component';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
+    YouTubePlayerModule
   ],
-  exports: [
-    MovieDialogComponent
-  ]
 })
 export class MovieDialogModule {}
