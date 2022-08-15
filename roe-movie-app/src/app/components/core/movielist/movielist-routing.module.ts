@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MovielistComponent } from './movielist.component';
-
-const routes: Routes = [{ path: '', component: MovielistComponent }];
+import { AuthenticationGuard } from './authentication.guard'
+const routes: Routes = [{ path: '', component: MovielistComponent, canActivate:[AuthenticationGuard] }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
