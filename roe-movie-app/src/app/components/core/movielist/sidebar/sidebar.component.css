@@ -1,0 +1,56 @@
+.sidenav {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 250px; /* Set the width of the sidebar */
+    position: fixed;
+    z-index: 1; 
+    top: 0; 
+    left: 0;
+    background-color: black;; /* Black */
+    opacity: 0.9;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    text-align: center;
+  }
+
+  .title-container {
+    height: 20px;
+  }
+
+  a h1 {
+    color: rgb(161, 20, 20);
+    font-size: 48px;
+    font-weight: 800;
+    padding-top: 20px;
+  }
+
+  .sidenav a {
+    color: rgb(161, 20, 20);
+    text-decoration: none;
+
+  }
+
+  hr.solid {
+    border-top: 1px solid lightgray;
+    margin-top: 80px;
+  }
+
+  .button-container {
+    margin-top: 60px;
+  }
+
+  .upcoming,
+  .nowPlaying {
+    border: transparent;
+    background-color: transparent;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    width: 100%;
+    margin: 20px 0;
+    padding: 10px 0;
+    outline: none;
+  }
+
+ button:hover {
+    background-color: grey;
+    transform: 0.7s;
+}

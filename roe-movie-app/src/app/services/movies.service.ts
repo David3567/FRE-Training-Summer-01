@@ -15,8 +15,8 @@ export class MoviesService {
   private readonly api_key:string = '6e7a30a6be99643eb9de647bea8a65b1'
   page:number=1
   public moveiList$:BehaviorSubject<Object> = new BehaviorSubject({})
+  public moveiCredit$:BehaviorSubject<Object> = new BehaviorSubject({})
   constructor(private http:HttpClient) {
-    //this.moveiList$=new BehaviorSubject([''])
    }
 
   getMovies(page:number){
@@ -32,7 +32,18 @@ export class MoviesService {
     )
   }
 
-  getByTitle(query:string,page:number):Observable<any>{
+  getCredits(movieID: number) {
+    return this.http.get(`${this.MoviInfoURL}/${movieID}/credits?api_key=${this.api_key}`).pipe(
+      map( result => {this.moveiCredit$.next(result); return this.moveiCredit$.value })
+    )
+  }
+
+  getMovieVideos(movieID:number){
+    return this.http.get(`${this.MoviInfoURL}/${movieID}/videos?api_key=${this.api_key}`).pipe(
+      map( result => {this.moveiCredit$.next(result); return this.moveiCredit$.value }))
+  }
+
+  getByTitle(query:string,page:number){
     if(query.trim()===''){return this.moveiList$.value as Observable<any>}
     return this.http.get(`${this.SearchByTitleURL}?page=${page}&api_key=${this.api_key}&query=${query}`).pipe(
       map(result=>{this.moveiList$?.next(result); return this.moveiList$.value}))
@@ -43,3 +54,4 @@ export class MoviesService {
         map(result=>{this.moveiList$?.next(result); return this.moveiList$.value}))
     }
 }
+

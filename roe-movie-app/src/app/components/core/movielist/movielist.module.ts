@@ -7,11 +7,18 @@ import { SharedModule} from '../../shared/shared/shared.module'
 import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MovieDialogComponent } from '../movie-dialog/movie-dialog.component';
+import { TrackScrollDirective } from './track-scroll.directive'
+import { YouTubePlayerModule } from "@angular/youtube-player";
 
 @NgModule({
   declarations: [
     MovielistComponent,
+    SidebarComponent,
+    MovieDialogComponent,
+    TrackScrollDirective
   ],
   imports: [
     CommonModule,
@@ -20,7 +27,13 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
     SharedModule,
     HttpClientModule,
     MatCardModule,
-    InfiniteScrollModule
-  ]
+    InfiniteScrollModule,
+    MatDialogModule,
+    YouTubePlayerModule
+  ],
+  entryComponents: [
+    MovieDialogComponent
+  ],
+  exports:[MovieDialogComponent]
 })
 export class MovielistModule { }
