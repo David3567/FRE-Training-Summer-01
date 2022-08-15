@@ -8,5 +8,11 @@
     <p class="date">{{ movie.release_date }}</p>
     <p class="overview">{{ movie.overview }}</p>
   </div>
-  <button [value]="movie.id">More</button>
+  <button
+    [value]="movie.id"
+    routerLink="/movie-item"
+    [state]="{ id: movie.id }"
+  >
+    More
+  </button>
 </div>

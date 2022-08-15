@@ -18,11 +18,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { MovieService } from './services/movie.service';
 import { HttpClientModule } from '@angular/common/http';
-// <<<<<<< Updated upstream
 
-// =======
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-// >>>>>>> Stashed changes
+import { YouTubePlayerModule } from '@angular/youtube-player';
 
 @NgModule({
   declarations: [
@@ -40,6 +38,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ReactiveFormsModule,
     HttpClientModule,
     FontAwesomeModule,
+    YouTubePlayerModule,
   ],
   providers: [MovieService],
   bootstrap: [AppComponent],
