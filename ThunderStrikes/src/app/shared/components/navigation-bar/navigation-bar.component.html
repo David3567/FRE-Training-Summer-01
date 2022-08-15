@@ -1,11 +1,16 @@
 <div class="navbar">
-    <div class="navLeft"><a (click)="toPage(routingPages.Home)">⚡ Strikes</a></div>
-    <ul class="navMain">
-        <li><button (click)="toPage(routingPages.MovieDashboard)">🎞️Browse</button></li>
+    <div class="navLeft"><a [routerLink]="routingPages.Home">⚡ Strikes</a></div>
+    <ul class="navMain" *ngIf="isRestrictedUrl">
+        <li><button [routerLink]="routingPages.Register">✍🏻 Register</button></li>
+        <li><button [routerLink]="routingPages.Login">🔒 Login</button></li>
+    </ul>
+    <ul class="navMain" *ngIf="!isRestrictedUrl">
+        <li><button [routerLink]="routingPages.MovieDashboard">📈 Trending</button></li>
+        <li><button [routerLink]="routingPages.MovieBrowse">🎞️ Browse</button></li>
         <li><button (click)="toSearch()">🔍Search</button></li>
         <li><button (click)="toBookmarks()">🔖Bookmarks</button></li>
     </ul>
-    <div class="navRight">
+    <div class="navRight" *ngIf="!isRestrictedUrl">
         <ul>
             <li><button (click)="toAccountPage()">My Account</button></li>
             <li><button (click)="toSettingsPage()">⚙️</button></li>

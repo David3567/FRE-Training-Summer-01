@@ -5,7 +5,6 @@ import { MarketingSalePointsComponent } from '../home-page/components/marketing-
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { NowPlayingMoviesComponent } from './components/now-playing-movies/now-playing-movies.component';
 import { HttpClientModule } from '@angular/common/http';
-import { WelcomeHeaderComponent } from './components/welcome-header/welcome-header.component';
 import { RouterModule } from '@angular/router';
 
 
@@ -16,7 +15,6 @@ import { RouterModule } from '@angular/router';
     MarketingSalePointsComponent,
     HomepageComponent,
     NowPlayingMoviesComponent,
-    WelcomeHeaderComponent
   ],
   imports: [
     CommonModule,
