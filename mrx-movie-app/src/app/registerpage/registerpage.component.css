@@ -4,36 +4,14 @@
     min-height: 100vh;
     padding-bottom: 0;
 }
-.register-header {
-    position: relative;
-    height: 90px;
-}
-.basicLayout .register-header {
-    border-bottom: 1px solid #e6e6e6;
-}
-.nfLogo {
-    margin-left: 3%;
-
-    fill: #e50914;
-    display: inline-block;
-    line-height: 90px;
-    text-decoration: none;
-    vertical-align: middle;
-}
-.authLinks {
-    margin: 0 3%;
-    color: #333;
-    float: right;
-    font-size: 19px;
-    font-weight: 700;
-    line-height: 90px;
-}
 .form-container {
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     overflow: hidden;
     width: 100%;
     padding-bottom: 95px;
     flex-grow: 1;
+    position: relative;
+    padding-top: 7rem;
 }
 .center-container {
     box-sizing: border-box;
