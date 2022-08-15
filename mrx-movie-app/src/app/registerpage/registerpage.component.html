@@ -6,7 +6,7 @@
         <div class="center-container">
             
 
-            <form method="POST">
+            <form (ngSubmit)="submitForm()" [formGroup]="myForm">
                 <div class="regFormContainer" data-uia="form-registration">
                     <div class="">
                         <div class="stepHeader-container" data-uia="header">
@@ -21,8 +21,17 @@
                             <ul class="simpleForm structural ui-grid">
                                 <li data-uia="field-email+wrapper" class="nfFormSpace">
                                     <div data-uia="field-email+container" class="nfInput nfInputOversize">
+                                        <div class="nfInputPlacement"><label class="input_id" placeholder="username">
+                                            <input type="username" data-uia="field-username" name="username" class="nfTextField" id="id_username" value="" tabindex="0" autocomplete="off" maxlength="50" minlength="5" dir="" formControlName="username">
+                                            <label for="id_username" class="placeLabel">username</label>
+                                        </label>
+                                    </div>
+                                </div>
+                            </li>
+                                <li data-uia="field-email+wrapper" class="nfFormSpace">
+                                    <div data-uia="field-email+container" class="nfInput nfInputOversize">
                                         <div class="nfInputPlacement"><label class="input_id" placeholder="email">
-                                            <input type="email" data-uia="field-email" name="email" class="nfTextField" id="id_email" value="" tabindex="0" autocomplete="off" maxlength="50" minlength="5" dir="">
+                                            <input type="email" data-uia="field-email" name="email" class="nfTextField" id="id_email" value="" tabindex="0" autocomplete="off" maxlength="50" minlength="5" dir="" formControlName="email">
                                             <label for="id_email" class="placeLabel">Email</label>
                                         </label>
                                     </div>
@@ -32,7 +41,7 @@
                                 <div data-uia="field-password+container" class="nfInput nfInputOversize">
                                     <div class="nfInputPlacement">
                                         <label class="input_id" placeholder="password">
-                                            <input type="password" data-uia="field-password" name="password" class="nfTextField" id="id_password" value="" tabindex="0" autocomplete="new-password" maxlength="61" minlength="6" dir="">
+                                            <input type="password" data-uia="field-password" name="password" class="nfTextField" id="id_password" value="" tabindex="0" autocomplete="new-password" maxlength="61" minlength="6" dir="" formControlName="password">
                                             <label for="id_password" class="placeLabel">Add a password</label>
                                         </label>
                                     </div>
