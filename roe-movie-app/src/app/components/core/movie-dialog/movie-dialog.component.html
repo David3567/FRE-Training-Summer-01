@@ -16,6 +16,14 @@
 			</div>
 		</div>
 	</div>
+  <div *ngIf="key">
+    <youtube-player
+      videoId="{{key}}"
+      suggestedQuality="highres"
+      [height]="250"
+      [width]="800"
+      >
+</youtube-player>
 	<div mat-dialog-content class="dialog-content">
 		<h3>Series Cast</h3>
 		<!-- <div *ngFor="let cast of casts let i=index" class="row">
@@ -25,20 +33,20 @@
 			</div>
 		</div> -->
 		<div class="row">
-			<div class="column">
-				<img class="profile_img" src="https://image.tmdb.org/t/p/w500{{ casts[0].profile_path }}">
+			<div class="column"  >
+				<img *ngIf="casts[0].profile_path"  class="profile_img"  src="https://image.tmdb.org/t/p/w500{{ casts[0].profile_path }}">
 				<div>{{ casts[0].name }}</div>
 			</div>
 			<div class="column">
-				<img class="profile_img" src="https://image.tmdb.org/t/p/w500{{ casts[1].profile_path }}">
+				<img  class="profile_img" src="https://image.tmdb.org/t/p/w500{{ casts[1].profile_path }}">
 				<div>{{ casts[1].name }}</div>
 			</div>
 			<div class="column">
-				<img class="profile_img" src="https://image.tmdb.org/t/p/w500{{ casts[2].profile_path }}">
+				<img  class="profile_img" src="https://image.tmdb.org/t/p/w500{{ casts[2].profile_path }}">
 				<div>{{ casts[2].name }}</div>
 			</div>
 			<div class="column">
-				<img class="profile_img" src="https://image.tmdb.org/t/p/w500{{ casts[3].profile_path }}">
+				<img  class="profile_img" src="https://image.tmdb.org/t/p/w500{{ casts[3].profile_path }}">
 				<div>{{ casts[3].name }}</div>
 			</div>
 		</div>
