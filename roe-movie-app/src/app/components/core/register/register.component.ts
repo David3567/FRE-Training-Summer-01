@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { pswduppercase, pswdnumeric, pswdlowercase, passwordMatch } from '../../../services/passwordvalidator';
-
+import { Router, ActivatedRoute } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/authservice.service';
+import {  ViewportScroller } from '@angular/common';
+import { __values } from 'tslib';
+import { User } from '../../../interfaces/user';
 
 @Component({
   selector: 'app-register',
@@ -29,7 +33,13 @@ export class RegisterComponent implements OnInit {
     return this.registerForm.get('confirmPassword') as FormControl;
   }
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private authService: AuthenticationService,
+    private viewportScroller: ViewportScroller
+  ) {
    }
 
   ngOnInit(): void {
@@ -38,7 +48,7 @@ export class RegisterComponent implements OnInit {
         validators: [
           Validators.required,
           Validators.email,
-          Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
+          Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$'),
         ],
         updateOn: 'blur'
       }],
@@ -65,22 +75,41 @@ export class RegisterComponent implements OnInit {
           Validators.minLength(8),
           passwordMatch()
         ],
-        updateOn: 'blur',
+        updateOn: 'change',
       }]
     });
+
+    this.registerForm.patchValue(
+      { email: this.route.snapshot.paramMap.get('email') }
+    )
   }
 
   onSubmit() {
-    console.log(this.registerForm)
-    this.registerForm.valid ? this.counter++ : null;
+    const credentialRegister: User = {
+      email: this.email?.value,
+      username: this.username?.value,
+      password: this.password?.value,
+      role: "USER",
+      tmdb_key: "randomassortment"
+    }
+    this.authService.register(credentialRegister).subscribe({
+      next: () => this.counter++,
+      error: () => alert(`Hmmm. That didn't seem to work. Try again.`),
+      complete: () => console.log('complete')
+    });
   }
 
   incrementCount(): void{
     this.counter++
+    this.viewportScroller.scrollToPosition([0, 0]);
   }
 
   toggleSelect(e: MouseEvent): void {
     this.selected = (e.target as HTMLElement).innerText.toLowerCase();
+  }
+
+   signin(){
+    this.router.navigate(['signin']);
   }
 
 }

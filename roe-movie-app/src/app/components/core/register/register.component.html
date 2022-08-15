@@ -25,7 +25,7 @@
         formControlName="email"
       />
       <div class="field-message" *ngIf="!email.valid && (email.touched || email.dirty)">
-        <p class="field-message" *ngIf="email?.errors?.required">
+        <p class="field-message" *ngIf="email?.errors?.required || email?.errors?.pattern">
         Please add a valid email.
         </p>
       </div>
@@ -167,9 +167,9 @@
     <table>
       <tr>
         <td></td>
-        <th (click)="toggleSelect($event)"><div [ngClass]="selected === 'basic' ? 'select select-2 arrow-box' : ''">Basic</div></th>
-        <th (click)="toggleSelect($event)"><div [ngClass]="selected === 'standard' ? 'select select-2 arrow-box' : ''">Standard</div></th>
-        <th (click)="toggleSelect($event)"><div [ngClass]="selected === 'premium' ? 'select select-2 arrow-box' : ''">Premium</div></th>
+        <th (click)="toggleSelect($event)" [ngClass]="selected === 'basic' ? 'paddingselect' : ''"><div [ngClass]="selected === 'basic' ? 'select select-2 arrow-box' : ''">Basic</div></th>
+        <th (click)="toggleSelect($event)" [ngClass]="selected === 'standard' ? 'paddingselect' : ''"><div [ngClass]="selected === 'standard' ? 'select select-2 arrow-box' : ''">Standard</div></th>
+        <th (click)="toggleSelect($event)" [ngClass]="selected === 'premium' ? 'paddingselect' : ''"><div [ngClass]="selected === 'premium' ? 'select select-2 arrow-box' : ''">Premium</div></th>
       </tr>
       <tr>
         <td>Monthly Price</td>
@@ -237,13 +237,11 @@
   [ngClass] = "counter === 3 ? 'visible' : ''"
   >
     <header>STEP <span>3</span> OF <span>3</span></header>
-    <h2>Set up your payment</h2>
-    <p>Your membership starts as soon as you set up payment.</p>
-    <p><span>No commitments.</span></p>
-    <p><span>Cancel online anytime.</span></p>
-    <button>Credit or Debit Card <span>></span></button>
-    <button>Paypal <span>></span></button>
-    <button>Gift Code <span>></span></button>
+    <h2>We fibbed.</h2>
+    <p>There is no step 3.</p>
+    <p>Welcome!</p>
+    <p>Sign in.</p>
+    <button (click)="signin()">Sign In <span>></span></button>
   </div>
 </div>
 <footer>
@@ -251,3 +249,13 @@
 
   </app-footer>
 </footer>
+
+<!-- last modal is setup payment modal for credit card, paypal, etc.-->
+<!-- <header>STEP <span>3</span> OF <span>3</span></header>
+    <h2>Set up your payment</h2>
+    <p>Your membership starts as soon as you set up payment.</p>
+    <p><span>No commitments.</span></p>
+    <p><span>Cancel online anytime.</span></p>
+    <button>Credit or Debit Card <span>></span></button>
+    <button>Paypal <span>></span></button>
+    <button>Gift Code <span>></span></button> -->
