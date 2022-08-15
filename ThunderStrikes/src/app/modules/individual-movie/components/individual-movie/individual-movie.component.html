@@ -1,20 +1,12 @@
 <main class="container" *ngIf="movie">
     <div class="movie-image-container">
-        <!-- <picture>
-            <source [srcset]="movie.backdrop_path" media="(min-width: 650px)">
-            <img
-                [src]="movie.poster_path" 
-                [width]="posterSize.width"
-                [height]="posterSize.height"
-                alt="{{movie.title}} poster image."
-            >
-        </picture> -->
         <app-poster-image [movie]="movie"></app-poster-image>
     </div>
     <div class="movie-content">
         <app-movie-tags [movie]="movie"></app-movie-tags>
         <p class="overview">{{movie.overview}}</p>
         <app-genres [movie]="movie"></app-genres>
+        <app-trailer-videos [movieId]="movie.id"></app-trailer-videos>
         <app-cast-and-crew [movie]="movie"></app-cast-and-crew>
     </div>
 </main>

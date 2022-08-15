@@ -1,0 +1,14 @@
+<div class="container" *ngIf="currentVideoId">
+    <nav>
+        <h3>Trailers</h3>
+        <div class="videoButtons">
+            <button (click)="previousVideo()" [disabled]="!showPreviousButton">Previous</button>
+            <button (click)="nextVideo()" [disabled]="!showNextButton">Next</button>
+        </div>
+    </nav>
+    <div class="video-container">
+        <youtube-player [videoId]="currentVideoId" suggestedQuality="default" [height]="250" [width]="360">
+        </youtube-player>
+    </div>    
+
+</div>

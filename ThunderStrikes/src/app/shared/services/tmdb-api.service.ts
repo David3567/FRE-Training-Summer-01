@@ -1,27 +1,22 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { map, Observable } from 'rxjs';
 import { MovieOptions } from '../interfaces/movie-options.interface';
 import { MovieDetails, MovieResults } from '../interfaces/tmdb.interface';
+import { TrailerVideos, Videos } from '../interfaces/trailer-videos';
 import { SharedApiDataService } from './shared-api-data.service';
 @Injectable({
   providedIn: 'root'
 })
-export class TmdbApiService {
+export class TmdbApiService implements OnInit {
   private readonly movieCount: number = 6;
   constructor(
     private readonly httpClient: HttpClient,
     private readonly sharedApiService: SharedApiDataService,
-  ) {}
-
-  // getMovie(id: number | string): Observable<MovieDetails> {
-  //   return this.httpClient.get([this.sharedApiService.baseUrl, Number(id)].join('/'), { headers: this.sharedApiService.httpHeaders }).pipe(
-  //     <any>map((movie: MovieDetails) => {
-  //       this.sharedApiService.setMovieImageUrl(movie);
-  //       return movie;
-  //     })
-  //   ) as Observable<MovieDetails>;
-  // }
+  ) { }
+  ngOnInit(): void {
+  }
 
   getMovie(id: number | string): Observable<MovieDetails> {
     return this.httpClient.get([this.sharedApiService.baseUrl, Number(id)].join('/'), { headers: this.sharedApiService.httpHeaders }) as Observable<MovieDetails>;
@@ -41,6 +36,17 @@ export class TmdbApiService {
       })
     );
   }
-
+  getVideoTrailers(id: number | string): Observable<Videos[]> {
+    return this.httpClient.get([this.sharedApiService.baseUrl, Number(id), "videos"].join('/'), 
+    { headers: this.sharedApiService.httpHeaders }).pipe(
+      <any>map((trailerVideos: TrailerVideos) => {
+        let videos: Videos[] = trailerVideos.results;
+        videos = videos.filter(ele => {
+          return ele.type === "Trailer"
+        });
+        return videos;
+      })
+    );
+  }
 }
 

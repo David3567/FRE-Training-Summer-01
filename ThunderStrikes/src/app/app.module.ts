@@ -5,7 +5,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './modules/app-routing/app-routing.module';
 import { NavigationBarComponent } from './shared/components/navigation-bar/navigation-bar.component';
-import { ModuleHandlerModule } from './modules/module-handler/module-handler.module';
+import { HomePageModule } from './modules/home-page/home-page.module';
 
 
 @NgModule({
@@ -16,7 +16,7 @@ import { ModuleHandlerModule } from './modules/module-handler/module-handler.mod
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ModuleHandlerModule,
+    HomePageModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the application is stable
