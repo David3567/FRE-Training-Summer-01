@@ -7,10 +7,9 @@
   flex-direction: row;
   top: 0;
   width: 85%;
-  height: 8.5vh;
-  flex-wrap: wrap;
+  /* height: 8.5vh; */
+  flex-wrap: nowrap;
   align-items: center;
-  align-content: center;
 }
 
 .nav-logo-wrapper {
@@ -49,4 +48,14 @@
   color: #fff;
   white-space: nowrap;
   border: none;
+}
+
+@media screen and (max-width: 768px) {
+  .hero-navbar {
+    margin: 20px 40px;
+  }
+
+  .nav-logo-wrapper {
+    width: 80%;
+  }
 }
