@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { fromEvent, Observable, Subscription } from 'rxjs';
 import { Movie } from '../interface/movie.interface';
 import { MovieService } from '../movie.service';
 
@@ -11,26 +11,39 @@ import { MovieService } from '../movie.service';
 export class MovieListComponent implements OnInit {
 
   movies: Movie[] = [];
-  movies2: Movie[] = [];
-  movies3: Movie[] = [];
-  movies4: Movie[] = [];
 
   movies$!: Observable<Movie[]>;
+
+  currPage: number = 1;
+
+  onScrollSub!: Subscription;
 
 
   constructor(public readonly movieService: MovieService) { }
 
   ngOnInit(): void {
-    this.movieService.getMovies().subscribe();
+    // this.movieService.getMovies().subscribe();
+    this.movieService.getMoviesScroll(this.currPage).subscribe();
 
     this.movies$ = this.movieService.movies$;
 
     this.movies$.subscribe((list) => {
-      this.movies = list.slice(0,4);
-      this.movies2 = list.slice(4,8);
-      this.movies3 = list.slice(8,12);
-      this.movies4 = list.slice(12,16);
+      this.movies = list;
     })
+
+    this.onScrollSub = fromEvent(window, 'scroll').pipe()
+    .subscribe((e: any) => {
+      if (e.target.scrollingElement.scrollHeight - e.target.scrollingElement.scrollTop <= (e.target.scrollingElement.clientHeight + 16)) {
+        // console.log('hit bottom');
+        this.currPage++;
+        this.movieService.getMoviesScroll(this.currPage).subscribe();
+      }
+
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.onScrollSub.unsubscribe();
   }
 
 }
