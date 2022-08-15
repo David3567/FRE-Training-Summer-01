@@ -27,7 +27,11 @@
     4.478975999999999rem
   );
   line-height: 1.1;
-  color: rgb(30, 41, 59);
+  color: rgb(118, 158, 223);
+}
+
+.login-header-span {
+  color: rgb(245, 146, 228);
 }
 
 .login-container {
@@ -109,13 +113,19 @@
   cursor: pointer;
 
   border-radius: 10px;
-  transition: all 0.5s linear;
+  transition: all 0.4s linear;
 }
 
 .login-button:hover {
   box-shadow: none;
   background: black;
   color: rgb(238, 226, 226);
+}
+
+.login-button:active {
+  box-shadow: none;
+  transform: scale(0.95);
+  border: none;
 }
 
 .login-options {
@@ -135,4 +145,10 @@
   text-decoration: none;
   font-weight: bolder;
   color: rgb(30, 41, 59);
+}
+.signup-text:hover {
+  color: rgb(118, 158, 223);
+}
+.signup-text:active {
+  color: rgb(245, 146, 228);
 }
