@@ -8,7 +8,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [],
+  declarations: [RegisterpageComponent],
   imports: [ CommonModule, RouterModule.forChild(routes) ]
 })
 export class RegisterpageModule { }
