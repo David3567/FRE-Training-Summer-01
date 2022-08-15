@@ -8,7 +8,8 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-  readonly API_KEY: '3b12cfa2e8e41ce85be82944f8b7e697';
+  readonly API_KEY: string = '3b12cfa2e8e41ce85be82944f8b7e697';
+  readonly role: string = 'USER';
   word: string = 'register';
   registerForm: FormGroup;
   constructor(private fb: FormBuilder, private auth: AuthService) {}
@@ -40,14 +41,16 @@ export class RegisterComponent implements OnInit {
           Validators.maxLength(10),
         ],
       ],
-      confirmPassword: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(8),
-          Validators.maxLength(16),
-        ],
-      ],
+      // confirmPassword: [
+      //   '',
+      //   [
+      //     Validators.required,
+      //     Validators.minLength(8),
+      //     Validators.maxLength(16),
+      //   ],
+      // ],
+      role: this.role,
+      tmdb_key: this.API_KEY,
     });
   }
 
@@ -66,17 +69,16 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.password !== this.confirmPassword) {
-      console.log("Passwords don't match");
-      return;
-    }
-    if (!this.registerForm.valid) {
-      console.log('Please enter a valid email or password');
-      return;
-    }
+    // if (this.password != this.confirmPassword) {
+    //   console.log(this.password, this.confirmPassword);
+    //   console.log("Passwords don't match");
+    //   return;
+    // }
+    // if (!this.registerForm.valid) {
+    //   console.log('Please enter a valid email or password');
+    //   return;
+    // }
 
-    // this.auth
-    //   .register(this.registerForm.value, this.API_KEY, this.role)
-    //   .subscribe((res) => console.log(res));
+    this.auth.register(this.registerForm.value);
   }
 }
