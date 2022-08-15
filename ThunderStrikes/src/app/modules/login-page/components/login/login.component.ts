@@ -10,17 +10,30 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+
   signinForm!: FormGroup;
+
+  get email() {
+    return this.signinForm.get('email');
+  }
+
+  get password() {
+    return this.signinForm.get('password');
+  }
+
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
+
   ngOnInit(): void {
     this.signinForm = this.fb.group({
       email: ['', [Validators.required]],
-      password: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(10)]],
     })
   }
+
   loginUser(): void{
     console.log(this.signinForm.value)
     this.authService.signin(this.signinForm.value).subscribe();
     this.router.navigate(["movie-dashboard"])
   }
+
 }

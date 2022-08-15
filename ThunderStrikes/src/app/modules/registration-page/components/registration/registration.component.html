@@ -2,8 +2,21 @@
 <div class="input-container">
     <h2>Register</h2>
   <input type="text" placeholder="Username" formControlName="username" />
-  <input type="text" placeholder="Email" formControlName="email" />
+  <div *ngIf="!username?.valid && (username?.dirty ||username?.touched)">
+    <div><p>Username is required!</p></div>
+    <div [hidden]="!username?.errors?.['minlength']"><p>Username must have minimum length of 4</p></div>
+    <div [hidden]="!username?.errors?.['maxlength']"><p>Username must have maximum length of 10</p></div>
+  </div>
+  <input type="text" placeholder="Email" formControlName="email"/>
+  <div *ngIf="!email?.valid && (email?.dirty ||email?.touched)">
+    <div><p>Email is required!</p></div>
+  </div>
   <input type="text" placeholder="Password" formControlName="password" />
+  <div *ngIf="!password?.valid && (password?.dirty ||password?.touched)">
+    <div><p>Password is required!</p></div>
+    <div [hidden]="!password?.errors?.['minlength']"><p>Password must have minimum length of 4</p></div>
+    <div [hidden]="!password?.errors?.['maxlength']"><p>Password must have maximum length of 10</p></div>
+  </div>
   <div class="Terms_Conditions">
     <p>
       ThunderStrikes will use your data to personalize and improve your
@@ -12,7 +25,7 @@
       <a href="#">Privacy Policy</a>. By clicking "Agree & Continue", you agree
       to our <a href="#">Terms and Conditions</a>.
     </p>
-    <button type="submit">AGREE & CONTINUE</button>
+    <button type="submit" [disabled]="!registerForm.valid">AGREE & CONTINUE</button>
   </div>
 </div>
 </form>

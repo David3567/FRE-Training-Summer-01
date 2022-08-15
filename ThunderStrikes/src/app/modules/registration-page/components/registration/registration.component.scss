@@ -27,6 +27,10 @@ input {
   color: #cacaca;
   margin-bottom: 1em;
 }
+p{
+  color: red;
+  margin-bottom: 0.5em;
+}
 .Terms_Conditions {
   font-size: 0.75em;
   line-height: 1.5;
@@ -36,6 +40,9 @@ input {
   outline: none;
   padding: 0.4375em 0.75em;
   width: 100%;
+  color: white;
+}
+.Terms_Conditions p {
   color: white;
 }
 .Terms_Conditions button {
