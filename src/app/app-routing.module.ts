@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomepageComponent } from './homepage/homepage.component';
-import { LoginPageComponent } from './login-page/login-page.component';
-import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {
@@ -12,13 +10,21 @@ const routes: Routes = [
         (m) => m.MoviesListModule
       ),
   },
-  { path: 'login', component: LoginPageComponent },
-  { path: 'register', component: RegisterComponent },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./login-page/login.module').then((m) => m.LoginModule),
+  },
+  {
+    path: 'register',
+    loadChildren: () =>
+      import('./register/register.module').then((m) => m.RegisterModule),
+  },
   { path: '', component: HomepageComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
