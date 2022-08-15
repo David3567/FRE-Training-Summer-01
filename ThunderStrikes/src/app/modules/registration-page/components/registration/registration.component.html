@@ -1,1 +1,18 @@
-<p>registration works!</p>
+<form [formGroup]="registerForm" (ngSubmit)="registerUser()">
+<div class="input-container">
+    <h2>Register</h2>
+  <input type="text" placeholder="Username" formControlName="username" />
+  <input type="text" placeholder="Email" formControlName="email" />
+  <input type="text" placeholder="Password" formControlName="password" />
+  <div class="Terms_Conditions">
+    <p>
+      ThunderStrikes will use your data to personalize and improve your
+      ThunderStrikes experience and to send you information about
+      ThunderStrikes. We may use your data as described in our
+      <a href="#">Privacy Policy</a>. By clicking "Agree & Continue", you agree
+      to our <a href="#">Terms and Conditions</a>.
+    </p>
+    <button type="submit">AGREE & CONTINUE</button>
+  </div>
+</div>
+</form>
