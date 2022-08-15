@@ -167,9 +167,9 @@
     <table>
       <tr>
         <td></td>
-        <th (click)="toggleSelect($event)"><div [ngClass]="selected === 'basic' ? 'select select-2 arrow-box' : ''">Basic</div></th>
-        <th (click)="toggleSelect($event)"><div [ngClass]="selected === 'standard' ? 'select select-2 arrow-box' : ''">Standard</div></th>
-        <th (click)="toggleSelect($event)"><div [ngClass]="selected === 'premium' ? 'select select-2 arrow-box' : ''">Premium</div></th>
+        <th (click)="toggleSelect($event)" [ngClass]="selected === 'basic' ? 'paddingselect' : ''"><div [ngClass]="selected === 'basic' ? 'select select-2 arrow-box' : ''">Basic</div></th>
+        <th (click)="toggleSelect($event)" [ngClass]="selected === 'standard' ? 'paddingselect' : ''"><div [ngClass]="selected === 'standard' ? 'select select-2 arrow-box' : ''">Standard</div></th>
+        <th (click)="toggleSelect($event)" [ngClass]="selected === 'premium' ? 'paddingselect' : ''"><div [ngClass]="selected === 'premium' ? 'select select-2 arrow-box' : ''">Premium</div></th>
       </tr>
       <tr>
         <td>Monthly Price</td>
