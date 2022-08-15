@@ -7,14 +7,21 @@ import { MovieService } from 'src/app/services/movie.service';
   styleUrls: ['./movies-page.component.css'],
 })
 export class MoviesPageComponent implements OnInit {
+  movieList: any[] = [];
+
   constructor(private movieService: MovieService) {}
-  movieList = [];
 
   ngOnInit(): void {
-    this.movieService.getMovie().subscribe((movie: any) => {
-      this.movieList = movie;
-      console.log(movie);
+    this.getMovies()
+  }
+
+  onScroll() {
+    this.getMovies();
+  }
+
+  getMovies() {
+    this.movieService.getMovie().subscribe((movies) => {
+      this.movieList.push(...movies);
     });
   }
-  
 }

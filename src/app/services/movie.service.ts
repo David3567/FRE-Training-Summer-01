@@ -8,16 +8,18 @@ import { MovieList, RawMovie } from '../interfaces/movie.interface';
   providedIn: 'root',
 })
 export class MovieService {
-  // ?api_key=a3aca7803e3483b603d87731babf7690
-  private baseUrl = 'https://api.themoviedb.org/3';
-  page: number = 1;
+  private readonly api_key = 'a3aca7803e3483b603d87731babf7690';
+  private readonly baseUrl = 'https://api.themoviedb.org/3';
+  private readonly imgBaseUrl = 'https://image.tmdb.org/t/p/original';
+  private page: number = 0;
 
   constructor(private readonly http: HttpClient) {}
 
   getMovie() {
+    this.page++;
     return this.http
       .get<RawMovie>(`${this.baseUrl}/trending/movie/week`, {
-        params: { api_key: 'a3aca7803e3483b603d87731babf7690', [this.page]: 1 },
+        params: { api_key: this.api_key, page: this.page },
       })
       .pipe(
         map((data) => {
@@ -25,8 +27,7 @@ export class MovieService {
             return {
               id: result.id,
               title: result.title,
-              posterUrl:
-                'https://image.tmdb.org/t/p/original' + result.poster_path,
+              posterUrl: this.imgBaseUrl + result.poster_path,
               releaseDate: result.release_date,
               score: result.vote_average,
               voteCount: result.vote_count,
@@ -34,8 +35,7 @@ export class MovieService {
               originalLanguage: result.original_language,
               originalTitle: result.original_title,
               popularity: result.popularity,
-              backdrop_path:
-                'https://image.tmdb.org/t/p/original' + result.backdrop_path,
+              backdrop_path: this.imgBaseUrl + result.backdrop_path,
               mediaType: result.media_type,
               video: result.video,
               genreId: result.genre_ids,
