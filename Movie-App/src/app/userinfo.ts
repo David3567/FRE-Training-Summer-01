@@ -7,3 +7,5 @@ export interface UserInfo {
   exp?: number;
   jwt_token?: string;
 }
+
+export interface RegisterInfo {}

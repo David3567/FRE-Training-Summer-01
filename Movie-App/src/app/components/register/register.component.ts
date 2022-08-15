@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
+  readonly API_KEY: '3b12cfa2e8e41ce85be82944f8b7e697';
   word: string = 'register';
   registerForm: FormGroup;
   constructor(private fb: FormBuilder, private auth: AuthService) {}
@@ -69,13 +70,13 @@ export class RegisterComponent implements OnInit {
       console.log("Passwords don't match");
       return;
     }
-    // if (!this.registerForm.valid) {
-    //   console.log('Please enter a valid email or password');
-    //   return;
-    // }
+    if (!this.registerForm.valid) {
+      console.log('Please enter a valid email or password');
+      return;
+    }
 
     // this.auth
-    //   .register(this.registerForm.value)
+    //   .register(this.registerForm.value, this.API_KEY, this.role)
     //   .subscribe((res) => console.log(res));
   }
 }

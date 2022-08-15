@@ -18,8 +18,8 @@ export class ApiService {
       loginInfo
     );
   }
-
-  // register(registerInfo: RegisterInfo) {
-  //   return this.http.post(`${this.ROOT_URL}/auth/signup`, registerInfo);
-  // }
+  // //register api
+  //    register(registerInfo: RegisterInfo, key:string,role:string) {
+  //      return this.http.post(`${this.ROOT_URL}/auth/signup`, registerInfo);
+  //    }
 }
