@@ -15,7 +15,6 @@ export class HomepageComponent implements OnInit {
     this.movieService.getMovies().subscribe()
     this.movies$ = this.movieService.movies$;
     console.log(this.movies$ = this.movieService.movies$);
-        
   }
 
 }

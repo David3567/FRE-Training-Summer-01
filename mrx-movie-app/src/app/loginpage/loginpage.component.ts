@@ -27,6 +27,8 @@ export class LoginpageComponent implements OnInit {
 
   submitForm() {
     this.authService.signin(this.myForm.value).subscribe(console.log);
+    
+    
   }
 }
 

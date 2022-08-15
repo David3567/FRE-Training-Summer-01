@@ -20,7 +20,7 @@ export class MovieService {
   getMovies(){
     return this.http.get(this.baseUrl).pipe(
       <any>tap(({ results }: RootObject)=>{
-        console.log(results);
+        //console.log(results);
         this.movies = results.map((result)=>{
           return{
             id :result.id,
