@@ -18,8 +18,9 @@ export class MovieCardComponent implements OnInit {
     console.log(this.movie)
   }
   onClickPlay(){
-    this.router.navigate(['/single-movie',{}])
+    this.router.navigate(['single-movie'])
     this.singleMovieService.sendMovie(this.movie)
+   
    
   }
  

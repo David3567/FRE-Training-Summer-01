@@ -54,11 +54,11 @@ export class MovieService {
   getMovieList() {
     return this.http
       .get(`${this.baseUrl}/list/${this.listId}${this.apiKey}`)
-      .pipe( <any>tap(({ poster_path, title, release_date, vote_average }: any) => {
-          this.movies = [{ poster_path, title, release_date, vote_average}, ...this.movies];
+      .pipe(<any>tap(({ poster_path, title, release_date, vote_average }: any) => {
+        this.movies = [{ poster_path, title, release_date, vote_average }, ...this.movies];
 
-          this.moviesSubject$.next(this.movies);
-        })
+        this.moviesSubject$.next(this.movies);
+      })
       );
   }
 
@@ -75,7 +75,7 @@ export class MovieService {
     return this.http.get<RootObject>(url, this.helper.httpOptions)
       .pipe(
         debounceTime(100),
-        map(({items}:any) => {
+        map(({ items }: any) => {
           console.log("Successfully retrieved movies here\n", items);
           if (items.length === 0) {
             this.defaultId = 5;
@@ -84,28 +84,28 @@ export class MovieService {
           return items;
         }),
         catchError(this.helper.errorHandler<any>("getMoviesList"))
-    )
+      )
   }
 
-  getTrendingMovies(){
+  getTrendingMovies() {
     let url = `https://api.themoviedb.org/3/trending/all/day?api_key=7979b0e432796fe7fa957d6fbbeb0835`
 
     return this.http.get<RootObject>(url)
       .pipe(
         debounceTime(50),
-        map(({results}:any) => {
+        map(({ results }: any) => {
           console.log("Successfully retrieved trending movies here\n", results);
           return results;
         }),
         catchError(this.helper.errorHandler<any>("getTrendingMovies"))
-    )
+      )
   }
 
   getVideoById(id: number): Observable<any> {
     let url = `https://api.themoviedb.org/3/movie/${id}/videos${this.apiKey}&language=en-US`
 
     return this.http.get(url, this.helper.httpOptions).pipe(
-      map(({results}:any) => {
+      map(({ results }: any) => {
         console.log("movie video successfully retrieved")
         console.log(results)
         return results.map((result: any) => {
@@ -119,7 +119,12 @@ export class MovieService {
       }),
       catchError(this.helper.errorHandler<any>("GetMovie"))
     )
-   }
+  }
+  getSingleMovie(id: number): Observable<any> {
+    let url = `https://api.themoviedb.org/3/movie/${id+this.apiKey}&language=en-US`
+    return this.http.get(url, this.helper.httpOptions)
+  }
+
 }
 
 

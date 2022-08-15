@@ -7,6 +7,7 @@ import { RegisterPageRoutingModule } from "./register-page/register/register-pag
 import { SignInRoutingModule } from './sign-in/sign-in/sign-in-routing.module';
 import { HomepageRoutingModule } from './components/home-page/homepage/homepage-routing.module';
 import { SingleMovieComponent } from "./single-movie/single-movie.component";
+// import { SingleMovieRouterModule } from "./single-movie/single-movie-routing.module";
 const routes: Route[] = [
   {
     path: "", redirectTo:"/homepage",  pathMatch:"full"
@@ -27,6 +28,7 @@ const routes: Route[] = [
     RegisterPageRoutingModule,
     SignInRoutingModule,
     MoviesLisRoutingModule,
+    // SingleMovieRouterModule,
     RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })

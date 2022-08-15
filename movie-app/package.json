@@ -21,6 +21,7 @@
     "@fortawesome/angular-fontawesome": "^0.11.1",
     "@fortawesome/fontawesome-svg-core": "^6.1.2",
     "@fortawesome/free-solid-svg-icons": "^6.1.2",
+    "angular-embed-video": "^0.0.4",
     "angular-in-memory-web-api": "^0.14.0",
     "ng": "^0.0.0",
     "rxjs": "~7.5.0",

@@ -26,6 +26,7 @@ import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontaweso
 import { faHome, faSearch, faCalendar, faClapperboard, faEye } from '@fortawesome/free-solid-svg-icons';
 import { SingleMovieComponent } from './single-movie/single-movie.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +36,10 @@ import { SingleMovieComponent } from './single-movie/single-movie.component';
     PageNotFoundComponent,
     TestComponent,
     SingleMovieComponent,
+ 
+
+    
+   
     // ShortPipe
   ],
   imports: [
