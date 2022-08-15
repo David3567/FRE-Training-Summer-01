@@ -13,7 +13,7 @@ export class SigninComponent implements OnInit {
   loginForm: FormGroup | any;
   show: boolean = false;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private authService: AuthenticationService,) {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email, Validators.pattern(
         '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,63}$'
