@@ -10,6 +10,7 @@
   <input type="text" placeholder="Email" formControlName="email"/>
   <div *ngIf="!email?.valid && (email?.dirty ||email?.touched)">
     <div><p>Email is required!</p></div>
+    <div [hidden]="!email?.errors?.['pattern']"><p>Invalid Email</p></div>
   </div>
   <input type="text" placeholder="Password" formControlName="password" />
   <div *ngIf="!password?.valid && (password?.dirty ||password?.touched)">
