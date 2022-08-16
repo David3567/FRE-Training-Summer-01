@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { AuthService } from '../auth/auth.service';
+import { BehaviorSubject } from 'rxjs';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -10,8 +11,10 @@ export class NavbarComponent {
   renderBtn: boolean = true;
   currBtnOn: string = 'Sign In';
   navigateTo: string = 'login';
-
-  constructor(private router: Router) {}
+  signedin$: BehaviorSubject<boolean>;
+  constructor(private router: Router, private authService: AuthService) {
+    this.signedin$ = this.authService.signedin$
+  }
 
   onButtonClick() {
     if (this.router.url === '/' || this.router.url === '/register') {
@@ -38,4 +41,6 @@ export class NavbarComponent {
     this.currBtnOn = 'Sign In';
     this.renderBtn = true;
   }
+ 
+  
 }
