@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-youtube-player',
@@ -6,7 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./youtube-player.component.css'],
 })
 export class YoutubePlayerComponent implements OnInit {
+  @Input() videoKey: any;
+
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    console.log(this.videoKey);
+  }
 }
