@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BackdropSizes, PosterSizes } from '../../interfaces/image-size.interface';
 import { MovieDetails } from '../../interfaces/tmdb.interface';
-import { SharedApiDataService } from '../../services/shared-api-data.service';
+import { ImageSizesService } from '../../services/image-sizes.service';
 
 @Component({
   selector: 'app-poster-image',
@@ -13,20 +13,20 @@ export class PosterImageComponent implements OnInit {
   readonly posterSizes: number[] = PosterSizes;
   readonly backdropSizes: number[] = BackdropSizes;
   constructor(
-    private readonly sharedApiService: SharedApiDataService,
+    private readonly imageSizesService: ImageSizesService
   ) {}
 
   ngOnInit(): void {
   }
   getPosterSize(width: number){
-    return this.sharedApiService.getImageSizeUrl(this.movie.poster_path, width);
+    return this.imageSizesService.getPosterSize(this.movie, width);
   }
 
   getBackdropSize(width: number){
-    return this.sharedApiService.getImageSizeUrl(this.movie.backdrop_path, width);
+    return this.imageSizesService.getBackdropSize(this.movie, width);
   }
 
   getOriginalBackdrop(){
-    return this.sharedApiService.getOriginalImage(this.movie.backdrop_path);
+    return this.imageSizesService.getOriginalBackdrop(this.movie);
   }
 }

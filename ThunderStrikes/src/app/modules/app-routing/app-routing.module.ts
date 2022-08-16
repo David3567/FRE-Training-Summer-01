@@ -23,9 +23,14 @@ const routes: Routes = [
     path: "movie-dashboard",
     loadChildren: () => import('../movie-dashboard/movie-dashboard.module').then(m => m.MovieDashboardModule)
   },
+  
   {
     path: "movie-browse", 
     loadChildren: () => import('../movie-browse/movie-browse.module').then(m => m.MovieBrowseModule)
+  },
+  {
+    path: "search",
+    loadChildren: () => import('../search-movie/search-movie.module').then(m => m.SearchMovieModule)
   },
   {
     path: "**",

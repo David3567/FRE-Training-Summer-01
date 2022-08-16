@@ -1,3 +1,4 @@
+
 a {
     font-size: 1.5em;
     font-weight: bolder;
@@ -27,10 +28,6 @@ button:active {
 }
 
 .navbar {
-    position: sticky;
-    top: 0;
-    margin: 0;
-    z-index: 5;
     // width: 100%;
     max-width: 100vw;
     padding: 1.2em;

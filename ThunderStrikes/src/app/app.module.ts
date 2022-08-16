@@ -4,19 +4,20 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './modules/app-routing/app-routing.module';
-import { NavigationBarComponent } from './shared/components/navigation-bar/navigation-bar.component';
 import { HomePageModule } from './modules/home-page/home-page.module';
+import { NavigationBarModule } from './modules/navigation-bar/navigation-bar.module';
+import { NavigationBarComponent } from './modules/navigation-bar/components/navigation-bar/navigation-bar.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationBarComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HomePageModule,
+    NavigationBarModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the application is stable

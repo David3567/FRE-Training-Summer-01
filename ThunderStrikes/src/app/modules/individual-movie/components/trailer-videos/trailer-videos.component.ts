@@ -21,8 +21,9 @@ export class TrailerVideosComponent implements OnInit {
   ngOnInit(): void {
     this.tmdbApiService.getVideoTrailers(this.movieId).subscribe(data => {
       this.trailerVideos = data;
-      if (this.trailerVideos) {
+      if (this.trailerVideos && this.trailerVideos[this.videoIndex]) {
         this.currentVideoId = this.trailerVideos[this.videoIndex].key;
+        this.updateVideoSelection();
       }
     });
     if (!this.apiLoaded) {
@@ -47,6 +48,6 @@ export class TrailerVideosComponent implements OnInit {
   private updateVideoSelection() {
     this.currentVideoId = this.trailerVideos[this.videoIndex].key;
     this.showPreviousButton = this.videoIndex > 0 ? true : false;
-    this.showNextButton = (this.videoIndex >= (this.trailerVideos.length - 1) ? false : true) || this.videoIndex < 1;
+    this.showNextButton = (this.trailerVideos.length > 1) && (this.videoIndex < (this.trailerVideos.length - 1));
   }
 }

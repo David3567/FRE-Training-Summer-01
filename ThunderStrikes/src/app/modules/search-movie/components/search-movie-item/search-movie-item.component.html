@@ -1,0 +1,31 @@
+<!-- <picture>
+    <source media="(min-width: 154px) and (max-width: 184px)" [srcset]="getPosterSize(posterSizes[0])">
+    <source media="(min-width: 185px) and (max-width: 341px)" [srcset]="getPosterSize(posterSizes[1])">
+    <source media="(min-width: 342px) and (max-width: 480px)" [srcset]="getPosterSize(posterSizes[2])">
+    <source media="(min-width: 481px) and (max-width: 649px)" [srcset]="getPosterSize(posterSizes[3])">
+    <source media="(min-width: 650px)" [srcset]="getPosterSize(posterSizes[4])">
+    <img
+        [src]="getPosterSize(posterSizes[0])"
+        [width]="posterSizes[0]"
+        height="231"
+        alt="{{movie.title}} poster image."
+    >
+</picture> -->
+
+<ul>
+    <li *ngFor="let movie of movieList">
+        <main class="movie-container" [routerLink]="getRouteLink(movie)">
+            <section class="movie-poster">
+                <img [src]="getPosterSize(movie, posterSizes[2])" alt="{{movie.title}} poster image.">
+            </section>
+            <section class="movie-description">
+                <h3>{{movie.title}}</h3>
+                <p>{{movie.overview}}</p>
+                <h4>{{movie.release_date | date: 'mediumDate'}}</h4>
+                <h4>Rating: {{movie.vote_average}}</h4>
+            </section>
+        </main>
+    </li>
+</ul>
+
+<router-outlet></router-outlet>
