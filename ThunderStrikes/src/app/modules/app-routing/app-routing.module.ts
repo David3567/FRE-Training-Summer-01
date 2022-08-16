@@ -24,6 +24,10 @@ const routes: Routes = [
     loadChildren: () => import('../movie-dashboard/movie-dashboard.module').then(m => m.MovieDashboardModule)
   },
   {
+    path: "movie-browse", 
+    loadChildren: () => import('../movie-browse/movie-browse.module').then(m => m.MovieBrowseModule)
+  },
+  {
     path: "**",
     pathMatch: "full",
     loadChildren: () => import('../page-not-found/page-not-found.module').then(m => m.PageNotFoundModule)

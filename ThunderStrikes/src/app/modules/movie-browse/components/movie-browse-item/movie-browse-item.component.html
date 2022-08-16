@@ -1,0 +1,16 @@
+<li [ngStyle]="{
+  background: 'url(' + movie.poster_path + ')', 
+  'background-size': 'cover',
+  width: '15rem', 
+  height: '25rem'}">
+  <header class="movie-card-header">
+    <p class="movie-vote">{{movie.vote_average | number:'1.1-1'}}</p>
+  </header>
+  <main class="movie-card-main">
+    <h4>{{movie.title}}</h4>
+    <p>{{movie.release_date}}</p>
+  </main>
+  <footer>
+    {{movie.overview | shortDescription}}
+  </footer>
+</li>
