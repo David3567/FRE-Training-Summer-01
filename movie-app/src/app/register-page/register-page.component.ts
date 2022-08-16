@@ -1,51 +1,59 @@
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { User } from '../interfaces/user.interface';
 import { UserService } from '../services/user.service';
-
 @Component({
   selector: 'app-register-page',
   templateUrl: './register-page.component.html',
   styleUrls: ['./register-page.component.css']
 })
 export class RegisterPageComponent implements OnInit {
-  currentUsers:User[] = [];
+  currentUsers: User[] = [];
+  signUpForm!: FormGroup;//
 
   constructor(
-    private route: Router,
     private userService: UserService,
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit(): void {
-    this.getUsers()
+    this.signUpForm = this.formBuilder.group({
+      email: ['', [Validators.required]],
+      password: ['', [Validators.required]],
+      repeatPassword: ['', [Validators.required]],
+      username: ['', [Validators.maxLength(10), Validators.minLength(4)]]
+    })
   }
 
-  getUsers(): void{
-    this.userService.getUsers().subscribe((users) => {
-      console.log(users + "users")
-      console.log(users)
-      this.currentUsers = users;
-     })
+  get email() {
+    return this.signUpForm.get("email");
   }
 
-  onSignUp(email: string, password: string, repeatPassword: string, e: any): void {
-    e.preventDefault();
-    this.getUsers();
+  get password() {
+    return this.signUpForm.get("password");
+  }
 
-    for (let i = 0; i < this.currentUsers.length; i++){
-      if (this.currentUsers[i].email === email) {
-        throw new Error(`User with email ${this.currentUsers[i].email} already exists`);
+  get username() {
+    return this.signUpForm.get("username");
+  }
+
+  get repeatPassword() {
+    return this.signUpForm.get("repeatPassword");
+  }
+
+  onSignUp(): void {
+    if (this.password?.value === this.repeatPassword?.value) {
+      let userInfo: User =
+      {
+        username:  this.username?.value,
+        email: this.email?.value,
+        password:  this.password?.value,
+        role: "USER",
+        tmdb_key: '7979b0e432796fe7fa957d6fbbeb0835'
       }
-    }
-
-    if (password &&
-      repeatPassword.toLowerCase() === password.toLowerCase()) {
-      this.userService.register({ email, password })
-        .subscribe(newUser => {
-          console.log("Current registered user: " + newUser)
-          //Navigate to sign in page
-          this.route.navigate(['/sign-in']);
-        })
+      this.userService.register(userInfo).subscribe(console.log);
+    } else {
+      console.log("passwords don't match")
     }
   }
 }

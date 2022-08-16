@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RegisterPageComponent } from '../register-page.component';
-import { ShortPipe } from '../../pipes/short.pipe';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     RegisterPageComponent
-    // ShortPipe,
   ],
   imports: [
+    ReactiveFormsModule,
     CommonModule
   ]
 })

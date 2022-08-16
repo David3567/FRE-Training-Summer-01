@@ -1,38 +1,47 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable, tap, catchError } from 'rxjs';
+import { BASRURL } from '../app.module';
 import { User } from '../interfaces/user.interface';
 import { HelperService } from './helper.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
-  baseUrl: string = "api/users";
-
   constructor(
-    private http: HttpClient,
-    private helper: HelperService
+    private readonly http: HttpClient,
+    private router: Router,
+    private helper: HelperService,
+    @Inject(BASRURL) private baseUrl: string
   ) { }
 
   register(user: User): Observable<User> {
-    console.log('register', user);
-    return this.http.post<User>(this.baseUrl, user ,this.helper.httpOptions)
+    return this.http.post<any>(`${this.baseUrl}/auth/signup`, user)
       .pipe(
         tap((newUser: User) => {
-          console.log(`Successfully registered ${newUser.email}`)
+          console.log('registered', newUser);
+          console.log(`Successfully registered ${newUser.email}`);
+          setTimeout(() => {
+            this.router.navigate([`sign-in`]);
+          }, 2000);
         }),
-        catchError(this.helper.errorHandler<User>("signUp"))
+        catchError(this.helper.errorHandler<User>("register"))
     )
   }
 
-  signIn(email: string, password: string): any{
-    let url = `${this.baseUrl}/?email=${email}&password=${password}`;
+  signIn({email, password}: any): any{
+    let url = `${this.baseUrl}/auth/signin`;
 
-    return this.http.get<User[]>(url ,this.helper.httpOptions)
+    return this.http.post<{ accessToken: string }>(url,{email, password} ,this.helper.httpOptions)
       .pipe(
-        tap(_ => {
-          console.log(`Successfully logged in ${email}`)
+        tap((token) => {
+          console.log(`Successfully logged in ${token}`)
+          localStorage.setItem('currentUser', token.accessToken)
+          setTimeout(() => {
+            this.router.navigate([`movies-list`]);
+          }, 5000);
         }),
         catchError(this.helper.errorHandler<User>("signIn"))
       );
@@ -45,9 +54,5 @@ export class UserService {
 
   edit(user: User): Observable<User> {
     return this.http.put<User>(this.baseUrl, this.helper.httpOptions);
-  }
-
-  getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.baseUrl);
   }
 }

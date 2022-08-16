@@ -1,35 +1,48 @@
 <p class="logo">KCB Movies</p>
 <div class="form-group">
-  <form>
+  <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()">
     <div class="container">
       <h1 id="sign_up">Sign Up</h1>
 
       <input
+        formControlName="email"
         type="text"
         placeholder="Email"
         name="email"
         id="email"
         #email
         required
-         />
+        />
+
+        <input
+        type="text"
+        #username
+        formControlName="username"
+        name="username"
+        id="usename"
+        placeholder="Username (Optional)"
+        />
 
       <input
         type="password"
-        placeholder="Password"
-        name="psw"
-        id="psw"
         #password
+        formControlName="password"
+        placeholder="New password"
+        name="new-password"
+        id="new-password"
         required
-      />
+        />
+        <!-- value="Abc1234@" -->
 
       <input
+        formControlName="repeatPassword"
         type="password"
-        placeholder="Repeat Password"
-        name="psw-repeat"
-        id="psw-repeat"
+        placeholder="Repeat new-password"
+        name="new-password-repeat"
+        id="new-password-repeat"
         #passwordRepeat
         required
-      />
+        />
       <br/>
 
       <p>
@@ -38,8 +51,9 @@
       <button
         type="submit"
         class="registerbtn"
-        (click)="onSignUp(email.value, password.value, passwordRepeat.value, $event);"
-       >Register</button>
+        >
+        Register
+      </button>
     </div>
 
     <div class="container signin">

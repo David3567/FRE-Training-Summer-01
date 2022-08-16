@@ -19,7 +19,12 @@ export class HelperService {
   }
   get httpOptions() {
     return {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+      headers: new HttpHeaders(
+        {
+          'Content-Type': 'application/json',
+          'accept': '*/*'
+        }
+      )
     };
   }
 }
