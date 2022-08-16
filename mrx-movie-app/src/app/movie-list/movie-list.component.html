@@ -3,7 +3,7 @@
     <div class="container">
         <div class="columns is-multiline p-0 pt-6 last" >
             
-            <div *ngFor="let movie of movies" class="column is-one-quarter" >
+            <div *ngFor="let movie of movies" class="column is-one-quarter" [routerLink]="['../', 'movie', movie.id]">
                 <div class="image" >
                     <img class="img image__img" src="https://image.tmdb.org/t/p/w500{{movie.image}}" alt="">
                     

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { map, take, tap } from 'rxjs/operators';
 import { Movie, RootObject } from './interface/movie.interface'
+import { Videos, TrailerVideos } from "./interface/videos.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -52,6 +53,17 @@ export class MovieService {
         })
         this.movies.push(...tempMovie);
         this.moviesSubject$.next(this.movies )
+      })
+    )
+  }
+
+  getMovieItem(id: string) {
+    let url = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${this.apiKey}`
+    return this.http.get(url).pipe(
+      take(1),
+      <any>map((trailerVideos: TrailerVideos)=>{
+        let videos: Videos[] = trailerVideos.results;
+        return videos[0].key
       })
     )
   }

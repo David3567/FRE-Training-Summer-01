@@ -1,12 +1,13 @@
-
-
 .welcomeBanner {
     color: white;
     font-size: 1.5rem;
-    background-image: radial-gradient(circle, rgba(0,0,0,0.5) 0%, rgba(51,51,51,0.9) 100%), url(../../assets/images/homepage-image.jpg);
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.5) 0%, rgba(51, 51, 51, 0.9) 100%), url(../../assets/images/homepage-image.jpg);
     position: relative;
     width: 100%;
     height: 65rem;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 input {
@@ -33,14 +34,14 @@ button {
     position: absolute;
 }
 
-p{
+p {
     width: 55vw;
     margin: 1rem auto;
 }
 
 
 
-input{
+input {
     height: 3rem;
     width: 55vw;
     border-radius: 5px;
@@ -48,21 +49,21 @@ input{
     margin: 2rem;
     padding: 1rem;
     font-size: 1.5rem;
-    
+
 }
 
-.get_started_btn{
+.get_started_btn {
     height: 3rem;
     width: 20vw;
     font-size: 1.5rem;
 }
 
-.welcome-message{
+.welcome-message {
     width: 60vw;
     animation: leftMove 3s;
 }
 
-.register-area{
+.register-area {
     animation: rightMove 3s;
 }
 
@@ -71,6 +72,7 @@ input{
         opacity: 0;
         transform: translateX(-10rem);
     }
+
     100% {
         opacity: 1;
         transform: translate(0);
@@ -82,6 +84,7 @@ input{
         opacity: 0;
         transform: translateX(10rem);
     }
+
     100% {
         opacity: 1;
         transform: translate(0);
@@ -89,7 +92,7 @@ input{
 
 }
 
-.content-card{
+.content-card {
     background-color: black;
     color: white;
     font-size: 1.3rem;
@@ -101,16 +104,16 @@ input{
     border-top: 8px solid #333;
 }
 
-.content-card img{
+.content-card img {
     width: 512px;
     height: 384px;
 }
 
-.card-message{
+.card-message {
     margin: 1rem auto;
 }
 
-footer{
+footer {
     display: flex;
     background-color: #222;
     color: gray;
