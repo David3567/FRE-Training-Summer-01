@@ -1,3 +1,7 @@
+h1{
+  overflow: hidden;
+  font-size: 14px;
+}
 .back_img{
   opacity: 0.5;
  }
@@ -25,8 +29,8 @@
  perspective:100rem;
   border-radius: 1rem;
   /* temp value  */
-  margin:2rem; 
-  
+  margin:2rem;
+
 }
 .back_img{
   -webkit-transform: scaleX(-1);
@@ -70,9 +74,9 @@
 
 }
 .img-container{
-  
+
   background-color: Black;
-  
+
   }
 
   .play_icon{
@@ -85,13 +89,12 @@
     top:1.5rem;
     font-size: 1.5rem;
     color: aliceblue;
-    
+
   }
   .year_back{
     position: absolute;
     z-index: 20;
     top:8rem;
-   
+
   }
-  
-  
+

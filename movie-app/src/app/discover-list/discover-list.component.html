@@ -1,0 +1,35 @@
+<!-- ISD -- when it should start to be define as scrolled -->
+<!-- IST -- Time between interval for the scroll to stop and call scrolled -->
+
+<div class="form__container">
+  <div>
+    <form action="" [formGroup]="form" class="form__group">
+      <!-- <button (click)="searchTab()">Search</button> -->
+      <input
+        class="input__search"
+        type="text"
+        formControlName="inputbox"
+        #val
+      />
+    </form>
+    <fa-icon [icon]="['fas', 'search']"></fa-icon>
+  </div>
+</div>
+
+<!-- [ngStyle]="
+searchHidden === true ? { display: 'inline' } : { display: 'none' }
+" -->
+
+<div class="container">
+  <ul
+    infiniteScroll
+    [infiniteScrollDistance]="0"
+    [infiniteScrollThrottle]="50"
+    (scrolled)="onScroll(val.value)"
+    class="movie__container"
+  >
+    <li *ngFor="let data of discover$ | async">
+      <app-movie-card [movie]="data"></app-movie-card>
+    </li>
+  </ul>
+</div>
