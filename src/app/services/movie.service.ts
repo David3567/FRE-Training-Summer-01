@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { MovieList, RawMovie } from '../interfaces/movie.interface';
+import { RawMovie, RootVideo } from '../interfaces/movie.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -12,8 +13,14 @@ export class MovieService {
   private readonly baseUrl = 'https://api.themoviedb.org/3';
   private readonly imgBaseUrl = 'https://image.tmdb.org/t/p/original';
   private page: number = 0;
+  movieId: any;
 
   constructor(private readonly http: HttpClient) {}
+
+  ngOnInit() {
+    // console.log(this.activateRoute);
+    // this.movieId = this.activateRoute.snapshot.params;
+  }
 
   getMovie() {
     this.page++;
@@ -40,6 +47,25 @@ export class MovieService {
               video: result.video,
               genreId: result.genre_ids,
               overview: result.overview,
+            };
+          });
+        })
+      );
+  }
+
+  getVideo(movieId: string) {
+    // this.movieId = '718789';
+    return this.http
+      .get<RootVideo>(`${this.baseUrl}/movie/${movieId}/videos`, {
+        params: { api_key: this.api_key },
+      })
+      .pipe(
+        map((data) => {
+          return data.results.map((result) => {
+            return {
+              // movieName: result.name,
+              // type: result.type,
+              key: result.key,
             };
           });
         })

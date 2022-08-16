@@ -18,8 +18,4 @@ export class HomepageComponent implements OnInit {
       .getMovie()
       .subscribe((movie: any) => (this.movieList = movie));
   }
-
-  getMovieList() {
-    console.log(this.movieList);
-  }
 }
