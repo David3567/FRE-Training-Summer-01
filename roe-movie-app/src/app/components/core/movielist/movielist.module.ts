@@ -13,7 +13,7 @@ import { MovieDialogComponent } from '../movie-dialog/movie-dialog.component';
 import { TrackScrollDirective } from './track-scroll.directive'
 import { YouTubePlayerModule } from "@angular/youtube-player";
 import { AuthenticationGuard } from './authentication.guard'
-
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt'
 @NgModule({
   declarations: [
     MovielistComponent,
@@ -35,7 +35,7 @@ import { AuthenticationGuard } from './authentication.guard'
   entryComponents: [
     MovieDialogComponent
   ],
-  providers:[AuthenticationGuard],
+  providers:[AuthenticationGuard,{provide:JWT_OPTIONS, useValue:JWT_OPTIONS},JwtHelperService],
   exports:[MovieDialogComponent]
 })
 export class MovielistModule { }
