@@ -1,9 +1,10 @@
-a{
+a {
     font-size: 1.5em;
     font-weight: bolder;
     color: var(--color-font-button);
-    text-decoration:none;
+    text-decoration: none;
 }
+
 button {
     text-decoration: none;
     font-size: 1.5em;
@@ -13,43 +14,55 @@ button {
     background-color: transparent;
     border: none;
 }
+
 button:hover {
     background-color: rgb(54, 54, 54);
     padding: 0.5rem;
-  border-radius: 1em;
-  border: 1em;
+    border-radius: 1em;
+    border: 1em;
 }
+
 button:active {
     transform: translateY(+0.15em);
 }
+
 .navbar {
+    position: sticky;
+    top: 0;
     margin: 0;
-    width:100%;
+    z-index: 5;
+    // width: 100%;
+    max-width: 100vw;
     padding: 1.2em;
     background-color: rgb(37, 37, 37);
     display: flex;
 }
+
 ul {
     display: flex-box;
-  list-style-type: none;
-  text-align: center;
-  justify-content: space-between;
-  }
+    list-style-type: none;
+    text-align: center;
+    justify-content: space-between;
+}
+
 ul li {
-    display:inline;
-    padding-right: 1em;
+    display: inline;
+    padding-left: 1em;
     width: 100vw;
     height: 8vh;
 }
-.navLeft{
+
+.navLeft {
     flex: 1;
 
 }
+
 .navRight {
     float: right;
     flex: 1;
 }
+
 .navRight ul {
-    float:right;
+    float: right;
     margin-right: 1em;
-} 
+}
