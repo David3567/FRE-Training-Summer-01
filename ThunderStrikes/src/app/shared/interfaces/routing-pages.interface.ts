@@ -5,5 +5,6 @@ export enum RoutingPages{
     Movie = "movie/:id",
     MovieDashboard = "movie-dashboard",
     MovieBrowse = "movie-browse",
+    Search = "search",
     NotFound = "**",
 }

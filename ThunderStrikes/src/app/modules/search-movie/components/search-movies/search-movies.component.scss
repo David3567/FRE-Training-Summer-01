@@ -1,0 +1,34 @@
+$searchWidth: 80vw;
+:host{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 100vw;
+    padding: 5vh;
+}
+
+input[type=text]{
+    width: $searchWidth;
+    font-size: 1.5em;
+    text-align: center;
+    box-sizing: border-box;
+    background-color: rgb(71, 71, 71);
+    border: none;
+    outline: none;
+    color: white;
+}
+
+
+h2{
+    color: white;
+    padding: 30vh;
+}
+
+section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: $searchWidth;
+    background-color: rgb(27, 27, 27);
+}

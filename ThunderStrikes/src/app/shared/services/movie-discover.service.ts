@@ -13,7 +13,7 @@ export class MovieDiscoverService {
     private readonly http: HttpClient,
     private readonly sharedApiService: SharedApiDataService
   ) { }
-
+  
   getMovies(page:number) : Observable<MovieDetails[]>{
     return this.http.get(
       [this.sharedApiService.discoverUrl, "movie"].join('/'),

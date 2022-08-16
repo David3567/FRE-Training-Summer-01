@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { RoutingPages } from '../../interfaces/routing-pages.interface';
+import { RoutingPages } from '../../../../shared/interfaces/routing-pages.interface';
 @Component({
     selector: 'app-navigation-bar',
     templateUrl: './navigation-bar.component.html',

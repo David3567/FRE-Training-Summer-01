@@ -1,0 +1,6 @@
+<input #searchBar type="text" placeholder="Search for a movie..." [(ngModel)]="titleSearch">
+
+<h2 *ngIf="movieList.length === 0">Start typing to get a list of movies.</h2>
+<section *ngIf="movieList">
+    <app-search-movie-item  [movieList]="movieList"></app-search-movie-item>
+</section>
