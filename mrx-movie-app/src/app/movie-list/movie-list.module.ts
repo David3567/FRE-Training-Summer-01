@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MovieListComponent } from './movie-list.component';
 import { TrimStringPipe } from '../trim-string.pipe';
 const routes: Routes = [
-  {path: '', component: MovieListComponent}
+  {path: '', component: MovieListComponent},
 ];
 
 @NgModule({

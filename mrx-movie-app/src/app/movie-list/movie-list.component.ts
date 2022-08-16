@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { fromEvent, Observable, Subscription } from 'rxjs';
 import { Movie } from '../interface/movie.interface';
 import { MovieService } from '../movie.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-movie-list',
@@ -19,7 +20,7 @@ export class MovieListComponent implements OnInit {
   onScrollSub!: Subscription;
 
 
-  constructor(public readonly movieService: MovieService) { }
+  constructor(public router: Router, public readonly movieService: MovieService) { }
 
   ngOnInit(): void {
     // this.movieService.getMovies().subscribe();
@@ -42,6 +43,9 @@ export class MovieListComponent implements OnInit {
     });
   }
 
+  getMovieItem(){
+    this.router.navigate(['movie-item'])
+  }
   ngOnDestroy(): void {
     this.onScrollSub.unsubscribe();
   }
