@@ -15,7 +15,8 @@
           </mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline">
-          <input matInput class="loginPwd" [type]="show ? 'text' : 'password'" placeholder="Password" formControlName="password" autocomplete="off">
+          <input matInput class="loginPwd" [type]="show ? 'text' : 'password'" placeholder="Password"
+            formControlName="password" autocomplete="off">
           <button mat-button class="pwdBtn" (click)="showPassword()"> {{show ? 'Hide' : 'Show'}}</button>
           <mat-error *ngIf="!loginForm.get('password')?.errors?.required">
             Incorrect Password.
