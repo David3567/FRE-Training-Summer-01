@@ -39,6 +39,7 @@ export class NavbarComponent {
   onLogoClick() {
     this.router.navigateByUrl('/');
     this.currBtnOn = 'Sign In';
+    this.navigateTo = 'login';
     this.renderBtn = true;
   }
  
