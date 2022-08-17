@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+.left{
+  width:50%;
+  float:left;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+.left h1{
+  color:#f8f8f8;
+  font-family: 'Anton', sans-serif;
+  font-size: 24px;
+  text-align: center;
+}
+
+mat-expansion-panel-header{
+  color:#f8f8f8;
+  background-color: rgb(12, 11, 11);
+  justify-content: center;
+  border-bottom: 2px outset #f8f8f8;
+}
+
+mat-panel-title{
+  font-size: 24px;
+  text-align: center;
+  justify-content: center;
+  color: #163fc4 !important;
+}
+
+.input_container {
+  background-color: rgb(110, 110, 110);
+  justify-content: center;
+  text-align: center;
+}
+
+.input_container  label {
+  color:#f8f8f8;
+  font-size: 26px;
+  margin-top: 5px;
+  margin-right: 4px;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+.container{
+  color:#696969;
+  background-color: rgb(240, 240, 240);
+  justify-content: center;
+  text-align: center;
+}
+
+.class1{background-color: rgb(165, 165, 165); color:#f8f8f8}
+.class2{background-color: #949090; color:black}
+
+
