@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { AuthService } from '../auth/auth.service';
+import { BehaviorSubject } from 'rxjs';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -10,10 +11,16 @@ export class NavbarComponent {
   renderBtn: boolean = true;
   currBtnOn: string = 'Sign In';
   navigateTo: string = 'login';
-
   movieId: any;
 
-  constructor(private router: Router, private activateRoute: ActivatedRoute) {}
+  signedin$: BehaviorSubject<boolean>;
+  constructor(
+    private router: Router,
+    private activateRoute: ActivatedRoute,
+    private authService: AuthService
+  ) {
+    this.signedin$ = this.authService.signedin$;
+  }
 
   ngOnInit() {
     this.movieId = this.activateRoute.snapshot.params['id'];

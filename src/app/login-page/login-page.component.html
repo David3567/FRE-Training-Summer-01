@@ -3,18 +3,19 @@
     <div class="form-title">
       <h3>Login to your account</h3>
     </div>
-    <app-login-input
-      label="email"
-      [control]="loginForm.controls.email"
-    ></app-login-input>
-    <app-login-input
-      label="password"
-      [control]="loginForm.controls.password"
-    ></app-login-input>
-    <app-login-input
-      label="rememberMe"
-      [control]="loginForm.controls.rememberMe"
-    ></app-login-input>
+    <app-input
+      inputType="email"
+      label="Email"
+      [control]="loginForm.get('email')"
+    ></app-input>
+    <app-input
+      inputType="password"
+      label="Password"
+      [control]="loginForm.get('password')"
+    ></app-input>
+    <label class="error-msg" *ngIf="loginForm.errors?.credentials">
+        Invalid email or password
+      </label>
     <button
       [disabled]="loginForm.invalid"
       [ngClass]="{ 'btn-disabled': loginForm.invalid }"
@@ -22,9 +23,9 @@
     >
       Submit
     </button>
-    <div class="form-link-container">
+    <!-- <div class="form-link-container">
       <a class="form-link" href="#">Forgot your password?</a>
-    </div>
+    </div> -->
   </form>
 </div>
 <!-- <hr/>

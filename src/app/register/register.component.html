@@ -2,64 +2,45 @@
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <h1 class="form-title">Register</h1>
     <span class="error-msg" *ngIf="serverErrorMsg">{{ serverErrorMsg }}</span>
-    <div>
-      <input
-        formControlName="username"
-        placeholder="username"
-        type="text"
-        id="username"
-      />
-      <label
-        class="error-msg"
-        *ngIf="hasError('username', 'required') && hasUserEvent('username')"
-        >username missing</label
-      >
-    </div>
-    <div>
-      <input
-        formControlName="email"
-        placeholder="email"
-        type="email"
-        id="email"
-      />
-      <label
-        class="error-msg"
-        *ngIf="hasError('email', 'required') && hasUserEvent('email')"
-        >email address missing</label
-      >
-      <label
-        class="error-msg"
-        *ngIf="hasError('email', 'email') && hasUserEvent('email')"
-        >provide a valid email address</label
-      >
-    </div>
-    <div>
-      <input
-        formControlName="password"
-        placeholder="password"
-        type="password"
-      />
-      <label
-        class="error-msg"
-        *ngIf="hasError('password', 'required') && hasUserEvent('password')"
-        >password missing</label
-      >
-    </div>
-    <div>
-      <input
-        formControlName="confirmPassword"
-        placeholder="confirm password"
-        type="password"
-      />
-      <label
-        class="error-msg"
-        *ngIf="
-          hasError('confirmPassword', 'required') &&
-          hasUserEvent('confirmPassword')
-        "
-        >confirm your password</label
-      >
-    </div>
+
+    <app-input
+      inputType="text"
+      label="Username"
+      [control]="registerForm.get('username')"
+    ></app-input>
+    <app-input
+      inputType="email"
+      label="Email"
+      [control]="registerForm.get('email')"
+    ></app-input>
+    <app-input
+      inputType="password"
+      label="Password"
+      [control]="registerForm.get('password')"
+    ></app-input>
+    <app-input
+      inputType="password"
+      label="Confirm password"
+      [control]="registerForm.get('confirmPassword')"
+    ></app-input>
+    <ng-container
+      *ngIf="
+        registerForm.get('password').touched &&
+        registerForm.get('confirmPassword').touched
+      "
+      &&
+      registerForm.errors
+    >
+      <label class="error-msg" *ngIf="registerForm.errors?.passwordsDontMatch">
+        Password and password confirmation must match
+      </label>
+      <label class="error-msg" *ngIf="registerForm.errors?.noConnection">
+        No internet connection detected, failed to sign up
+      </label>
+       <label class="error-msg" *ngIf="registerForm.errors?.unknownError">
+        Failed to sign up
+      </label>
+    </ng-container>
     <button [disabled]="!registerForm.valid">Register</button>
   </form>
 </div>
