@@ -10,6 +10,7 @@ import { UserService } from '../services/user.service';
 export class RegisterPageComponent implements OnInit {
   currentUsers: User[] = [];
   signUpForm!: FormGroup;//
+  emailExists: boolean = false;
 
   constructor(
     private userService: UserService,
@@ -41,7 +42,21 @@ export class RegisterPageComponent implements OnInit {
     return this.signUpForm.get("repeatPassword");
   }
 
+  checkEmail() {
+    this.userService.checkEmail(this.email?.value).subscribe(e => {
+      this.emailExists = e;
+    })
+  }
+
   onSignUp(): void {
+    this.checkEmail();
+
+    console.log(this.emailExists)
+    if (this.emailExists) {
+      alert("Email already exists");
+      return;
+    }
+
     if (this.password?.value === this.repeatPassword?.value) {
       let userInfo: User =
       {

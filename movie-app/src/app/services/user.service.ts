@@ -5,6 +5,7 @@ import { Observable, tap, catchError } from 'rxjs';
 import { BASRURL } from '../app.module';
 import { User } from '../interfaces/user.interface';
 import { HelperService } from './helper.service';
+import { debounceTime } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -21,7 +22,6 @@ export class UserService {
     return this.http.post<any>(`${this.baseUrl}/auth/signup`, user)
       .pipe(
         tap((newUser: User) => {
-          console.log('registered', newUser);
           console.log(`Successfully registered ${newUser.email}`);
           setTimeout(() => {
             this.router.navigate([`sign-in`]);
@@ -45,6 +45,16 @@ export class UserService {
         }),
         catchError(this.helper.errorHandler<User>("signIn"))
       );
+  }
+
+  checkEmail(email: string){
+    return this.http.post<{ email: string }>(`${this.baseUrl}/auth/check-email`, {email}, this.helper.httpOptions)
+      .pipe(
+        debounceTime(50),
+        tap((res) => {
+          console.log(`Email ${email} already in use:\n ${res}`)
+        }),
+        catchError(this.helper.errorHandler<any>("checkEmail")));
   }
 
   resetPassword(email: string): void {
