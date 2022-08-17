@@ -1,5 +1,5 @@
+import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
-import { NgControl } from "@angular/forms";
 import { RouterModule } from '@angular/router';
 import { RegisterPageComponent } from "../register-page.component";
 
@@ -9,12 +9,11 @@ import { RegisterPageComponent } from "../register-page.component";
       {
         path: "register", component: RegisterPageComponent,
         loadChildren: () => import("./register.module").then(m => m.RegisterModule)
-
       },
     ])
   ],
-  exports: [RouterModule]
+  exports: [
+    RouterModule
+  ]
 })
-export class RegisterPageRoutingModule {
-
-}
+export class RegisterPageRoutingModule {}

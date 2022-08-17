@@ -1,8 +1,7 @@
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
 import { SignInComponent } from '../sign-in.component';
-import { SignInRoutingModule } from './sign-in-routing.module';
 
 
 @NgModule({
@@ -10,9 +9,8 @@ import { SignInRoutingModule } from './sign-in-routing.module';
     SignInComponent
   ],
   imports: [
-    // BrowserModule,
+    ReactiveFormsModule,
     CommonModule,
-    // SignInRoutingModule
   ]
 })
 export class SignInModule { }
