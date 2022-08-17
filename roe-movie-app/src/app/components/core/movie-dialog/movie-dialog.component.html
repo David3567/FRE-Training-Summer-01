@@ -1,57 +1,56 @@
 <div class="dialog">
-	<div class="container">
-		<img class="background-img" src="https://image.tmdb.org/t/p/w500{{data.movie.backdrop_path}}">
-		<h1 mat-dialog-title>{{ data.movie.title }}</h1>
-		<div class="dialog-upper-container">
-			<div class="left">
-				<img class="display-img" src="https://image.tmdb.org/t/p/w500{{data.movie.poster_path}}">
-			</div>
-			<div class="right">
-				<div class="display-info">
-					<div class="movie-ol">{{ data.movie.original_language.toUpperCase()}}</div>
-					<p>Voting Count: {{ data.movie.vote_count}}</p>
-					<h2>Overview</h2>
-					<p>{{ data.movie.overview }}</p>
-				</div>
-			</div>
-		</div>
-	</div>
+  <div class="container">
+    <img class="background-img" src="https://image.tmdb.org/t/p/w500{{data.movie.backdrop_path}}">
+    <h1 mat-dialog-title>{{ data.movie.title }}</h1>
+    <div class="dialog-upper-container">
+      <div class="left">
+        <img class="display-img" src="https://image.tmdb.org/t/p/w500{{data.movie.poster_path}}">
+      </div>
+      <div class="right">
+        <div class="display-info">
+          <div class="movie-ol">{{ data.movie.original_language.toUpperCase()}}</div>
+          <p>Voting Count: {{ data.movie.vote_count}}</p>
+          <h2>Overview</h2>
+          <p>{{ data.movie.overview }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
   <div *ngIf="key">
-    <youtube-player
-      videoId="{{key}}"
-      suggestedQuality="highres"
-      [height]="250"
-      [width]="800"
-      >
-</youtube-player>
-	<div mat-dialog-content class="dialog-content">
-		<h3>Series Cast</h3>
-		<!-- <div *ngFor="let cast of casts let i=index" class="row">
+    <youtube-player videoId="{{key}}" suggestedQuality="highres" [height]="250" [width]="800">
+    </youtube-player>
+    <div mat-dialog-content class="dialog-content">
+      <h3>Series Cast</h3>
+      <!-- <div *ngFor="let cast of casts let i=index" class="row">
 			<div class="column">
 				<img class="profile_img" src="https://image.tmdb.org/t/p/w500{{ casts[i].profile_path }}">
 				<div>{{ cast[i].name }}</div>
 			</div>
 		</div> -->
-		<div class="row">
-			<div class="column"  >
-				<img *ngIf="casts[0].profile_path"  class="profile_img"  src="https://image.tmdb.org/t/p/w500{{ casts[0].profile_path }}">
-				<div>{{ casts[0].name }}</div>
-			</div>
-			<div class="column">
-				<img  class="profile_img" src="https://image.tmdb.org/t/p/w500{{ casts[1].profile_path }}">
-				<div>{{ casts[1].name }}</div>
-			</div>
-			<div class="column">
-				<img  class="profile_img" src="https://image.tmdb.org/t/p/w500{{ casts[2].profile_path }}">
-				<div>{{ casts[2].name }}</div>
-			</div>
-			<div class="column">
-				<img  class="profile_img" src="https://image.tmdb.org/t/p/w500{{ casts[3].profile_path }}">
-				<div>{{ casts[3].name }}</div>
-			</div>
-		</div>
-		<div mat-dialog-actions class="dialog-actions">
-			<button mat-button (click)="onCancel()">Back</button>
-		</div>
-	</div>
-</div>
+      <div class="row">
+        <div class="column">
+          <img *ngIf="casts[0].profile_path" class="profile_img"
+            src="https://image.tmdb.org/t/p/w500{{ casts[0].profile_path }}">
+          <div>{{ casts[0].name }}</div>
+        </div>
+        <div class="column">
+          <img *ngIf="casts[1].profile_path" class="profile_img"
+            src="https://image.tmdb.org/t/p/w500{{ casts[1].profile_path }}">
+          <div>{{ casts[1].name }}</div>
+        </div>
+        <div class="column">
+          <img *ngIf="casts[2].profile_path" class="profile_img"
+            src="https://image.tmdb.org/t/p/w500{{ casts[2].profile_path }}">
+          <div>{{ casts[2].name }}</div>
+        </div>
+        <div class="column">
+          <img *ngIf="casts[3].profile_path" class="profile_img"
+            src="https://image.tmdb.org/t/p/w500{{ casts[3].profile_path }}">
+          <div>{{ casts[3].name }}</div>
+        </div>
+      </div>
+      <div mat-dialog-actions class="dialog-actions">
+        <button mat-button (click)="onCancel()">Back</button>
+      </div>
+    </div>
+  </div>

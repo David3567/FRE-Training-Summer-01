@@ -15,20 +15,13 @@ import jwt_decode from 'jwt-decode';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthenticationGuard implements CanActivate {
+export class AuthenticationUserGuard implements CanActivate {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     public jwtHelper: JwtHelperService
   ) {}
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ):
-    | Observable<boolean | UrlTree>
-    | Promise<boolean | UrlTree>
-    | boolean
-    | UrlTree {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): any {
     const token: string | any = localStorage.getItem('user');
     if (!token) {
       this.router.navigate(['signin']);
@@ -45,11 +38,6 @@ export class AuthenticationGuard implements CanActivate {
       return false;
     }
     if (role == 'USER') {
-      this.router.navigate(['movielist/movielist_user'], {
-        relativeTo: this.route,
-      });
-      return false;
-    } else {
       return true;
     }
   }
