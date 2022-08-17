@@ -10,11 +10,12 @@ import { ProductService } from './services/product.service';
 import { FakeProductService } from './services/fake-product.service';
 import { HelloComponent } from './hello/hello.component';
 import { EagerModule } from './eager/eager.module';
+import { ChildComponent } from './child/child.component';
 
 export const USE_FAKE = new InjectionToken<boolean>('');
 
 @NgModule({
-  declarations: [AppComponent, TrackByComponent, HelloComponent],
+  declarations: [AppComponent, TrackByComponent, HelloComponent, ChildComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule, EagerModule],
   providers: [
     LoggerService,

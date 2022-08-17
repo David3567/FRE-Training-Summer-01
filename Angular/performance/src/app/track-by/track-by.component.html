@@ -1,8 +1,8 @@
 <h1>{{ title }}</h1>
 
 <ul>
-  <!-- <li *ngFor="let movie of movies; let i = index; trackBy: trackByFn"> -->
-  <li *ngFor="let movie of movies; let i = index">
+  <li *ngFor="let movie of movies; let i = index; trackBy: trackByFn">
+    <!-- <li *ngFor="let movie of movies; let i = index"> -->
     {{ i }}. {{ movie.title }} - {{ movie.director }}
     <button (click)="remove(i)">remove</button>
   </li>

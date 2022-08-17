@@ -1,4 +1,9 @@
-import { Component, OnInit, Optional } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  Optional,
+} from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { EagerService } from './eager/eager.service';
 import { LazyService } from './lazy/lazy.service';
@@ -14,6 +19,33 @@ export class AppComponent implements OnInit {
   randomApp = 'App : Not defined';
   randomEager = 'Eager : Not defined';
   randomLazy = 'Lazy : Not defined';
+  name = '';
+  todolist: any = [
+    {
+      userId: 1,
+      id: 1,
+      title: 'delectus aut autem',
+      completed: false,
+    },
+    {
+      userId: 1,
+      id: 2,
+      title: 'quis ut nam facilis et officia qui',
+      completed: false,
+    },
+    {
+      userId: 1,
+      id: 3,
+      title: 'fugiat veniam minus',
+      completed: false,
+    },
+    {
+      userId: 1,
+      id: 4,
+      title: 'et porro tempora',
+      completed: true,
+    },
+  ];
 
   constructor(
     private readonly productService: ProductService,
@@ -34,5 +66,13 @@ export class AppComponent implements OnInit {
     if (this.laztyService) {
       this.randomLazy = this.laztyService.RandomNo;
     }
+  }
+
+  changeFirst() {
+    this.todolist[2].id = 123;
+    // this.todolist[0] = { ...this.todolist[0] };
+  }
+  changeData(value: string) {
+    this.todolist[0].title = value;
   }
 }
