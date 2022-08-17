@@ -1,0 +1,28 @@
+<div>
+  <input [type]="inputType"  [placeholder]="label" [formControl]="control" />
+  <ng-container *ngIf="showErrors()">
+    <label class="error-msg" *ngIf="control.errors?.['required']">
+      {{label}} missing
+    </label>
+    <label class="error-msg" *ngIf="control.errors?.['minlength']">
+      {{label}} must be atleast {{control.errors?.['minlength'].requiredLength}}
+      characters long
+    </label>
+    <label class="error-msg" *ngIf="control.errors?.['email']">
+      Enter valid email
+    </label>
+    <label class="error-msg" *ngIf="control.errors?.['maxlength']">
+      {{label}} must be no more than {{control.errors?.['maxlength'].requiredLength}}
+      characters long
+    </label>
+    <label class="error-msg" *ngIf="control.errors?.['minlength']&& control.errors?.['pattern']">
+      Invalid format
+    </label>
+    <label class="error-msg" *ngIf="control.errors?.['nonUniqueEmail']">
+      {{label}} already exists. <a routerLink="/login">Sign in</a>
+    </label>
+     <label class="error-msg" *ngIf="control.errors?.['noConnection']">
+      {{label}} your internet connection and try again.
+    </label>
+  </ng-container>
+</div>
