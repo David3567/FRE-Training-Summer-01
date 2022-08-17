@@ -10,12 +10,15 @@ import { Router } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
-import { SharedModule } from '../../shared/shared/shared.module';
+import { SharedModule} from '../../shared/shared/shared.module'
 import { SigninRoutingModule } from './signin-routing.module';
 import { SigninComponent } from './signin.component';
 
+
 @NgModule({
-  declarations: [SigninComponent],
+  declarations: [
+    SigninComponent
+  ],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -24,7 +27,7 @@ import { SigninComponent } from './signin.component';
     ReactiveFormsModule,
     SigninRoutingModule,
     SharedModule,
-    MatFormFieldModule,
-  ],
+    MatFormFieldModule
+  ]
 })
-export class SigninModule {}
+export class SigninModule { }
