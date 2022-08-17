@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -11,7 +11,13 @@ export class NavbarComponent {
   currBtnOn: string = 'Sign In';
   navigateTo: string = 'login';
 
-  constructor(private router: Router) {}
+  movieId: any;
+
+  constructor(private router: Router, private activateRoute: ActivatedRoute) {}
+
+  ngOnInit() {
+    this.movieId = this.activateRoute.snapshot.params['id'];
+  }
 
   onButtonClick() {
     if (this.router.url === '/' || this.router.url === '/register') {
@@ -26,7 +32,10 @@ export class NavbarComponent {
         this.navigateTo = 'login';
         this.renderBtn = true;
       } else {
-        if (this.router.url === '/movies') {
+        if (
+          this.router.url === '/movies' ||
+          this.router.url === `/movies/${this.movieId}`
+        ) {
           this.renderBtn = false;
         }
       }
