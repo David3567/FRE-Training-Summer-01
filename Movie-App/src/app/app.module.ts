@@ -15,10 +15,10 @@ import { MovieService } from './services/movie.service';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 
 const appRoutes: Routes = [
-  { path: 'home', component: HomepageComponent },
+  { path: '', component: HomepageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'home', loadChildren: () => import('./movie-module/movie-module.module').then(m => m.MovieModuleModule) },
+  { path: '', loadChildren: () => import('./components/homepage/movie-module.module').then(m => m.MovieModuleModule) },
   { path: '**', component: ErrorPageComponent },
 ];
 
