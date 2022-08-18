@@ -5,7 +5,12 @@ import { HomepageComponent } from './homepage.component';
 
 
 const routes: Routes = [
-  { path: '', component: HomepageComponent  }
+  { path: '', component: HomepageComponent  },
+    {
+    path: '',
+    redirectTo: '',
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({
