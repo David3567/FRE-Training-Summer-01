@@ -9,6 +9,9 @@ import { Todo } from '../interfaces/todo.interface';
 import { TodoitemComponent } from '../todoitem/todoitem.component';
 import { TodoService } from '../services/todo.service';
 import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+
+import * as TodoSelectors from '../ngrx/todo.selectors';
 
 @Component({
   selector: 'app-todolist',
@@ -26,12 +29,15 @@ export class TodolistComponent implements OnInit {
 
   todolist$!: Observable<Todo[]>;
 
-  constructor(private todoService: TodoService) {}
+  constructor(
+    private todoService: TodoService,
+    private readonly store: Store
+  ) {}
 
   ngOnInit(): void {
-    this.todoService.getTodos().subscribe();
-
-    this.todolist$ = this.todoService.todolist$;
+    this.todolist$ = this.store.select(TodoSelectors.getTodoList);
+    // this.todoService.getTodos().subscribe();
+    // this.todolist$ = this.todoService.todolist$;
   }
 
   deleteTodo(id: string) {

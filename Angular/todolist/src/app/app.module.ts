@@ -9,10 +9,23 @@ import { HttpClientModule } from '@angular/common/http';
 import { TodoService } from './services/todo.service';
 import { FormsModule } from '@angular/forms';
 import { DemoComponent } from './demo/demo.component';
+import { StoreModule } from '@ngrx/store';
+import { todoReducer } from './ngrx/todo.reducers';
 
 @NgModule({
-  declarations: [AppComponent, TodolistComponent, TodoitemComponent, DemoComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  declarations: [
+    AppComponent,
+    TodolistComponent,
+    TodoitemComponent,
+    DemoComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    StoreModule.forRoot({ todos: todoReducer }),
+  ],
   providers: [TodoService],
   bootstrap: [AppComponent],
 })
