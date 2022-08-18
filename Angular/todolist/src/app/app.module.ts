@@ -25,6 +25,7 @@ import { todoReducer } from './ngrx/todo.reducers';
     HttpClientModule,
     FormsModule,
     StoreModule.forRoot({ todos: todoReducer }),
+    StoreModule.forRoot({}, {}),
   ],
   providers: [TodoService],
   bootstrap: [AppComponent],
