@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 
 import * as TodoSelectors from '../ngrx/todo.selectors';
+import * as TodoActions from '../ngrx/todo.actions';
 
 @Component({
   selector: 'app-todolist',
@@ -35,9 +36,10 @@ export class TodolistComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.todolist$ = this.store.select(TodoSelectors.getTodoList);
     // this.todoService.getTodos().subscribe();
+    this.store.dispatch(TodoActions.initTodolist());
     // this.todolist$ = this.todoService.todolist$;
+    this.todolist$ = this.store.select(TodoSelectors.getTodoList);
   }
 
   deleteTodo(id: string) {

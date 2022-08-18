@@ -1,5 +1,6 @@
-import { createReducer } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import { TodoState } from '../interfaces/todo.interface';
+import * as TodoActions from './todo.actions';
 
 const todoState: TodoState = {
   todolist: [
@@ -43,4 +44,9 @@ const todoState: TodoState = {
   error: '',
 };
 
-export const todoReducer = createReducer(todoState);
+export const todoReducer = createReducer(
+  todoState,
+  on(TodoActions.initTodolist, (state) => {
+    return { ...state };
+  })
+);
