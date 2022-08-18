@@ -6,6 +6,6 @@ const routes: Routes = [{ path: '', component: SigninComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class SigninRoutingModule { }
+export class SigninRoutingModule {}

@@ -1,80 +1,82 @@
 .login-component {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    letter-spacing: .5px;
-    background: url('../../../../assets/header_background.jpg');
-    color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  letter-spacing: 0.5px;
+  background: url("../../../../assets/header_background.jpg");
+  color: white;
 }
 
 .login-container {
-    background-color: black;
-    padding: 50px;
-    box-sizing: border-box;
-    width: 400px;
+  background-color: black;
+  padding: 50px;
+  box-sizing: border-box;
+  width: 400px;
 }
 
 .mat-form-field {
-    width: 100%;
-    margin-top: 25px;
+  width: 100%;
+  margin-top: 25px;
 }
 
 .mat-form-field input {
-    width: 200px;
-    height: 55px;
+  width: 200px;
+  height: 55px;
 }
 
 .mat-error {
-    font-size: 15px;
+  font-size: 15px;
 }
 
 .input-container {
-    height: 50%;
-    width: 100%;
-    text-align: left;
+  height: 50%;
+  width: 100%;
+  text-align: left;
 }
 
 .loginPwd,
 .pwdBtn {
-    display: inline-block;
+  display: inline-block;
 }
 
 .pwdBtn {
-    font-weight: bold;
-    color: white;
-    background-color: transparent;
-    margin-bottom: 5px;
+  font-weight: bold;
+  color: white;
+  background-color: transparent;
+  margin-bottom: 5px;
 }
 
-app-footer>>>.text-white, app-footer>>>.text-center {
-    color: gray !important;
-    font-weight: normal;
-    background-color: #F3F3F3 !important;
+app-footer >>> .text-white,
+app-footer >>> .text-center {
+  color: gray !important;
+  font-weight: normal;
+  background-color: #f3f3f3 !important;
 }
 
-app-header-top>>>.header-top {
-    background-color: transparent;
-    border-bottom: .5px solid lightgray;
-    padding-bottom: 80px;
+app-header-top >>> .header-top {
+  background-color: transparent;
+  border-bottom: 0.5px solid lightgray;
+  padding-bottom: 80px;
 }
 
-app-footer>>>.footer, app-footer>>>footer {
-    background-color: #F3F3F3 !important;
-    border-bottom: none;
+app-footer >>> .footer,
+app-footer >>> footer {
+  background-color: #f3f3f3 !important;
+  border-bottom: none;
 }
 
 .mt-top {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
 .mt-top button {
-    width: 100%;
-    background-color: rgb(161, 20, 20);
+  width: 100%;
+  background-color: rgb(161, 20, 20);
 }
 
-.mt-top button:disabled{
-    background-color: #cccccc;;
-    color:#666666;
+.mt-top button:disabled {
+  background-color: #cccccc;
+  color: #666666;
 }

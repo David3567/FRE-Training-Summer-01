@@ -18,9 +18,7 @@ export class SigninComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email, Validators.pattern(
         '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,63}$'
       )]),
-      password: new FormControl('', [Validators.required, Validators.pattern(
-        '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$'
-      )])
+      password: new FormControl('', [Validators.required])
     });
   }
 
@@ -32,9 +30,14 @@ export class SigninComponent implements OnInit {
       return;
     }
     const credentialLogin = this.loginForm.value;
-    this.authService.login(credentialLogin).subscribe(console.log);
-    localStorage.setItem('user', this.loginForm.value)
-    this.router.navigate(['movielist'])
+    this.authService.login(credentialLogin).subscribe({
+      next: (val)=> (
+        localStorage.setItem('user',JSON.stringify(val)), this.router.navigate(['movielist'])),
+      error: (e) =>
+        alert(e.error.message),
+      complete: () =>
+        console.log('complete')
+    });
   }
 
   showPassword() {
