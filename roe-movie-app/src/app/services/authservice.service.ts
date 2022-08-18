@@ -36,9 +36,6 @@ export class AuthenticationService {
   refresh_Token(registerInfo: User) {
     const url = `${this.baseUrl}/auth/refresh-token`;
     return this.http.post<{ accessToken: string }>(url, registerInfo).pipe(
-      tap(({ accessToken }) => {
-        console.log('access', jwt_decode(accessToken));
-      }),
       catchError((err) => {
         console.log(err);
         throw err;

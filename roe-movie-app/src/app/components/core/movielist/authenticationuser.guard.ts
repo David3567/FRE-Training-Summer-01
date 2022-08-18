@@ -16,24 +16,24 @@ import jwt_decode from 'jwt-decode';
   providedIn: 'root',
 })
 export class AuthenticationUserGuard implements CanActivate {
+  token?:string|any=localStorage.getItem('user')
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     public jwtHelper: JwtHelperService
   ) {}
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): any {
-    const token: string | any = localStorage.getItem('user');
-    if (!token) {
+    if (!this.token) {
       this.router.navigate(['signin']);
       return false;
     }
-    const Role: any = jwt_decode(token);
+    const Role: any = jwt_decode(this.token);
     const role = Role.role;
     if (Role == undefined) {
       this.router.navigate(['signin']);
       return false;
     }
-    if (this.jwtHelper.isTokenExpired(token)) {
+    if (this.jwtHelper.isTokenExpired(this.token)) {
       this.router.navigate(['signin']);
       return false;
     }

@@ -31,7 +31,7 @@ export class AuthenticationGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    const token: string | any = localStorage.getItem('user');
+    let token : string | any = localStorage.getItem('user');
     if (!token) {
       this.router.navigate(['signin']);
       return false;
@@ -92,7 +92,7 @@ export class AuthenticationResolver implements Resolve<any> {
           .subscribe((data: any) => {
             localStorage.setItem('user', JSON.stringify(data));
           });
-      }, 1000 * 60 * 25);
+      }, 500);
       return { userinfo: userInfo, interval };
     }
   }
