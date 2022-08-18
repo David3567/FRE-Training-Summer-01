@@ -11,19 +11,20 @@ export class TodoEffects {
   private baseUrl: string = 'https://jsonplaceholder.typicode.com';
   private todoPath: string = 'todos';
 
-  loadTodoList$ = createEffect((): any => {
+  loadTodoList$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(TodoActions.loadTodolist),
       switchMap((_) => {
-        console.log('effect');
-        return this.http.get([this.baseUrl, this.todoPath].join('/')).pipe(
-          <any>map((todolist: Todo[]) => {
-            return TodoActions.loadTodoSuccess({ todolist });
-          }),
-          catchError((error) => {
-            return of(TodoActions.loadTodoFailure({ error }));
-          })
-        );
+        return this.http
+          .get<Todo[]>([this.baseUrl, this.todoPath].join('/'))
+          .pipe(
+            map((todolist: Todo[]) => {
+              return TodoActions.loadTodoSuccess({ todolist });
+            }),
+            catchError((error) => {
+              return of(TodoActions.loadTodoFailure({ error }));
+            })
+          );
       })
     );
   });
