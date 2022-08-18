@@ -1,55 +1,27 @@
-<app-sidebar
-  [ngClass]="{ disabled: isDisabled }"
-  (selectUpcoming)="selectUpcoming()"
-  (selectNowPlaying)="selectNowPlaying()"
->
+<app-sidebar [ngClass]="{'disabled':isDisabled}" (selectUpcoming)="selectUpcoming()"
+  (selectNowPlaying)="selectNowPlaying()">
 </app-sidebar>
-<main
-  [ngClass]="{ disabled: isDisabled }"
-  appTrackScroll
-  (direction)="goDirection($event)"
->
+<main [ngClass]="{'disabled':isDisabled}" appTrackScroll (direction)="goDirection($event)">
   <form [formGroup]="SearchForm">
-    <i class="material-icons material-icons-search">search</i
-    ><input
-      matInput
-      #search
-      type="text"
-      class="search-bar"
-      formControlName="search"
-      (keyup)="changeOtherControls()"
-      autocomplete="off"
-      placeholder="Search by Title"
-    />
+    <i class="material-icons material-icons-search">search</i><input matInput #search type="text" class="search-bar"
+      formControlName="search" (keyup)="changeOtherControls()" autocomplete="off" placeholder="Search by Title">
   </form>
-  <div
-    class="movie-container"
-    infinite-scroll
-    [infiniteScrollDistance]="6"
-    [infiniteScrollThrottle]="1750"
-    (scrolled)="onScroll()"
-  >
-    <div
-      *ngFor="let Movie of Movies; let i = index"
-      class="movie-list"
-      (click)="openDialog(Movie)"
-    >
+  <div class="movie-container" infinite-scroll [infiniteScrollDistance]="6" [infiniteScrollThrottle]="1750"
+    (scrolled)="onScroll()">
+    <div *ngFor="let Movie of Movies let i=index" class="movie-list" (click)="openDialog(Movie)">
       <div class="image-section">
         <div class="movie-rating">
-          <i class="material-icons material-icons-stars">star</i>
-          {{ Movie.vote_average }}
+          <i class="material-icons material-icons-stars">star</i> {{ Movie.vote_average }}
         </div>
         <div class="image-section">
-          <img
-            *ngIf="Movie.poster_path"
-            src="https://image.tmdb.org/t/p/w500{{ Movie.poster_path }}"
-          />
+          <img *ngIf="Movie.poster_path" src="https://image.tmdb.org/t/p/w500{{Movie.poster_path}}">
         </div>
       </div>
       <section class="text-section">
-        <div class="movie-title">{{ Movie.title }}</div>
-        <div class="movie-date">{{ Movie.release_date }}</div>
+        <div class="movie-title"> {{ Movie.title }}</div>
+        <div class="movie-date">{{Movie.release_date}}</div>
       </section>
     </div>
   </div>
 </main>
+

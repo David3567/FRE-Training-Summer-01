@@ -4,20 +4,23 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-header-top',
   templateUrl: './header-top.component.html',
-  styleUrls: ['./header-top.component.css'],
+  styleUrls: ['./header-top.component.css']
 })
 export class HeaderTopComponent implements OnInit {
-  @Input() displayButton: Boolean = false;
-  @Input() displaySelect = false;
-  constructor(private router: Router) {}
 
-  ngOnInit() {}
+  @Input() displayButton:Boolean=false;
+  @Input() displaySelect=false;
+  constructor(private router:Router) { }
 
-  signin() {
+  ngOnInit() {
+  }
+
+  signin(){
     this.router.navigate(['signin']);
   }
 
-  returnhome() {
+  returnhome(){
     this.router.navigate(['home']);
   }
+
 }

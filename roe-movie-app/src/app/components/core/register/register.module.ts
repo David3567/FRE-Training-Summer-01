@@ -9,18 +9,21 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { Router } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { SharedModule } from '../../shared/shared/shared.module';
+import { SharedModule} from '../../shared/shared/shared.module'
 
 import { RegisterRoutingModule } from './register-routing.module';
 import { RegisterComponent } from './register.component';
 
+
 @NgModule({
-  declarations: [RegisterComponent],
+  declarations: [
+    RegisterComponent
+  ],
   imports: [
     CommonModule,
     RegisterRoutingModule,
     SharedModule,
-    ReactiveFormsModule,
-  ],
+    ReactiveFormsModule
+  ]
 })
-export class RegisterModule {}
+export class RegisterModule { }
