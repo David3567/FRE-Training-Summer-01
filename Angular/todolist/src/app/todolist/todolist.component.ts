@@ -1,12 +1,5 @@
-import {
-  Component,
-  ElementRef,
-  OnInit,
-  ViewChild,
-  ViewChildren,
-} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Todo } from '../interfaces/todo.interface';
-import { TodoitemComponent } from '../todoitem/todoitem.component';
 import { TodoService } from '../services/todo.service';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
@@ -37,7 +30,7 @@ export class TodolistComponent implements OnInit {
 
   ngOnInit(): void {
     // this.todoService.getTodos().subscribe();
-    this.store.dispatch(TodoActions.initTodolist());
+    this.store.dispatch(TodoActions.loadTodolist());
     // this.todolist$ = this.todoService.todolist$;
     this.todolist$ = this.store.select(TodoSelectors.getTodoList);
   }

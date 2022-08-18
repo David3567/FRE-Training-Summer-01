@@ -11,6 +11,9 @@ import { FormsModule } from '@angular/forms';
 import { DemoComponent } from './demo/demo.component';
 import { StoreModule } from '@ngrx/store';
 import { todoReducer } from './ngrx/todo.reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { TodoEffects } from './ngrx/todo.effects';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,11 @@ import { todoReducer } from './ngrx/todo.reducers';
     HttpClientModule,
     FormsModule,
     StoreModule.forRoot({ todos: todoReducer }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      name: 'TodoList',
+    }),
+    EffectsModule.forRoot([TodoEffects]),
   ],
   providers: [TodoService],
   bootstrap: [AppComponent],
