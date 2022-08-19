@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from 'src/app/services/movie.service';
+import { ActivatedRoute } from '@angular/router';
+import { Movie } from 'src/app/interfaces/movie.interface';
 
 @Component({
   selector: 'app-movies-page',
@@ -9,19 +11,20 @@ import { MovieService } from 'src/app/services/movie.service';
 export class MoviesPageComponent implements OnInit {
   movies: Movie[] = [];
 
-  constructor(private movieService: MovieService) {}
+  constructor(
+    private movieService: MovieService,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.getMovies()
+    this.activatedRoute.data.subscribe(({ movies }) => {
+      this.movies.push(...movies);
+    });
   }
 
   onScroll() {
-    this.getMovies();
-  }
-
-  getMovies() {
     this.movieService.getMovie().subscribe((movies) => {
-      this.movieList.push(...movies);
+      this.movies.push(...movies);
     });
   }
 }
