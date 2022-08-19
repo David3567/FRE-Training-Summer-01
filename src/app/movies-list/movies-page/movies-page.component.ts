@@ -7,7 +7,7 @@ import { MovieService } from 'src/app/services/movie.service';
   styleUrls: ['./movies-page.component.css'],
 })
 export class MoviesPageComponent implements OnInit {
-  movieList: any[] = [];
+  movies: Movie[] = [];
 
   constructor(private movieService: MovieService) {}
 
