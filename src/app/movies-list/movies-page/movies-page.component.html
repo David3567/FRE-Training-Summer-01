@@ -1,6 +1,6 @@
 <div class="section-center">
   <header>
-    <app-featured-movie [featured]="movieList[0]"></app-featured-movie>
+    <app-featured-movie [featured]="movies[0]"></app-featured-movie>
   </header>
   <main
     infinite-scroll
@@ -11,7 +11,7 @@
     <h2 class="section-title">Recently added</h2>
     <div class="section-container">
       <app-movie-card
-        *ngFor="let movie of movieList; let i = index"
+        *ngFor="let movie of movies; let i = index"
         [movie]="movie"
       >
       </app-movie-card>

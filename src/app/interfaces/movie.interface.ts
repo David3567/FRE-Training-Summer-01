@@ -40,3 +40,21 @@ export interface MovieVideo {
   official: boolean;
   id: string;
 }
+
+export interface Movie {
+  id: number;
+  title: string;
+  posterUrl: string;
+  releaseDate: string;
+  score: number;
+  voteCount: number;
+  adult: boolean;
+  originalLanguage: string;
+  originalTitle: string;
+  popularity: number;
+  backdrop_path: string;
+  mediaType: string;
+  video: boolean;
+  genreId: number[];
+  overview: string;
+}

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { MovieService } from 'src/app/services/movie.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-movie-item',
@@ -8,24 +7,13 @@ import { MovieService } from 'src/app/services/movie.service';
   styleUrls: ['./movie-item.component.css'],
 })
 export class MovieItemComponent implements OnInit {
-  movieId: any;
-  videoKey: any;
+  public keys: { key: string }[] = [];
 
-  constructor(
-    private videoService: MovieService, // currently loaded route
-    private activateRoute: ActivatedRoute,
-    private router: Router
-  ) {}
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.movieId = this.activateRoute.snapshot.params['id'];
-    this.getVideo();
-  }
-
-  getVideo() {
-    this.videoService.getVideo(this.movieId).subscribe((video) => {
-      this.videoKey = video[0].key;
-      console.log('Video Key:' + this.videoKey);
+    this.route.data.subscribe(({ keys }) => {
+      this.keys.push(...keys);
     });
   }
 }
