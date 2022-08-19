@@ -14,18 +14,21 @@ import { RegisterComponent } from './components/register/register.component';
 import { MovieService } from './services/movie.service';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 
-const appRoutes: Routes = [
-  { path: '', component: HomepageComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: '**', component: ErrorPageComponent },
-];
+import { AppRoutingModule } from './app-routing.module';
+
+// const appRoutes: Routes = [
+//   { path: '', component: HomepageComponent },
+//   { path: 'login', component: LoginComponent },
+//   { path: 'register', component: RegisterComponent },
+//   { path: '', loadChildren: () => import('./components/homepage/movie-module.module').then(m => m.MovieModuleModule) },
+//   { path: '**', component: ErrorPageComponent },
+// ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomepageComponent,
     NavbarComponent,
+    HomepageComponent,
     MovieListComponent,
     LoginComponent,
     RegisterComponent,
@@ -37,7 +40,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes),
+    AppRoutingModule,
     InfiniteScrollModule,
   ],
 
