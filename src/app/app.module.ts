@@ -9,6 +9,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
+import { YouTubePlayerModule } from '@angular/youtube-player';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,12 @@ import { FooterComponent } from './footer/footer.component';
     NavbarComponent,
     FooterComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    YouTubePlayerModule,
+  ],
   providers: [MovieService],
   bootstrap: [AppComponent],
 })
