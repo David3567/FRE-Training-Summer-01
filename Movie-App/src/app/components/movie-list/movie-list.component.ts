@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../../services/movie.service';
 import { MovieDiscover } from '../../movies';
+import { MovieDiscoverList } from '../../movies';
 
 @Component({
   selector: 'app-movie-list',
@@ -9,6 +10,7 @@ import { MovieDiscover } from '../../movies';
 })
 export class MovieListComponent implements OnInit {
   movieData: MovieDiscover[] = [];
+  movies: any
   constructor(private movieService: MovieService) {}
 
   ngOnInit(): void {
@@ -40,6 +42,13 @@ export class MovieListComponent implements OnInit {
   //   }
 
   onScroll() {
-    this.movieData;
+    this.movieService.page
+    // this.movieService.getDiscoverMovies().subscribe((data) => {
+    //   this.movies.push(...this.movieService.page)
+    // })
+
+    // console.log(this.movies.page);
+
+    console.log("🚀 ~ file: movie-list.component.ts ~ line 49 ~ MovieListComponent ~ onScroll ~ this.movieService.page", this.movieService.page++)
   }
 }

@@ -12,7 +12,7 @@ export class AuthService {
   private userAuthInfo: UserInfo = {};
   constructor(private api: ApiService, private router: Router) {}
 
-  //login function to decode incoming accessToken and store it in userAuth statem then store to local storage.
+  //login function to decode incoming accessToken and store it in userAuth state then store to local storage.
   login(loginInfo: UserInfo) {
     return this.api.login(loginInfo).pipe(
       tap(({ accessToken }) => {

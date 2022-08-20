@@ -1,10 +1,6 @@
 <main>
   <div
     class="row"
-    infiniteScroll
-    [infiniteScrollDistance]="2"
-    [infiniteScrollThrottle]="1000"
-    (scrolled)="onScroll()"
   >
     <div class="col-xs-6 col-md-2">
       <div class="input-group">
@@ -41,8 +37,17 @@
             <div class="caption">
               <h3>{{ movie.title }}</h3>
             </div>
+            <h6> {{ movie.page }}</h6>
           </li>
         </ul>
+        <!-- <div *ngFor="let moviePage of movies"
+        class="movie-card"
+            infiniteScroll
+            [infiniteScrollDistance]="2"
+            [infiniteScrollThrottle]="1000"
+            (scrolled)="onScroll()">
+          <p>{{ moviePage.page }}</p>
+        </div> -->
       </div>
     </div>
   </div>

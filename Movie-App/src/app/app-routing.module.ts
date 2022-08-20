@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomepageComponent } from './components/homepage/homepage.component'
 import { ErrorPageComponent } from './components/error-page/error-page.component';
+import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
   {
@@ -14,7 +15,8 @@ const routes: Routes = [
     loadChildren: () =>
       import('./components/register/register-routing.module').then((m) => m.RegisterRoutingModule),
   },
-  { path: '', component: HomepageComponent },
+  { path: '', component: HomepageComponent,
+    canActivate: [AuthGuard] },
   { path: '**', component: ErrorPageComponent },
 ];
 

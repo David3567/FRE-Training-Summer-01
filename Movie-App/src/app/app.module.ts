@@ -15,6 +15,7 @@ import { MovieService } from './services/movie.service';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 
 import { AppRoutingModule } from './app-routing.module';
+import { AuthGuard } from './services/auth.guard';
 
 // const appRoutes: Routes = [
 //   { path: '', component: HomepageComponent },
@@ -44,7 +45,7 @@ import { AppRoutingModule } from './app-routing.module';
     InfiniteScrollModule,
   ],
 
-  providers: [MovieService],
+  providers: [MovieService, AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

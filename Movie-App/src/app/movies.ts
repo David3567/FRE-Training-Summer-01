@@ -1,4 +1,5 @@
 export interface MovieDiscover {
+  page: number;
   adult: boolean;
   backdrop_path: string;
   genre_ids: number[];
@@ -13,6 +14,8 @@ export interface MovieDiscover {
   video: boolean;
   vote_average: number;
   vote_count: number;
+  total_pages: number;
+  total_results: number;
 }
 
 export interface MovieDiscoverList {
