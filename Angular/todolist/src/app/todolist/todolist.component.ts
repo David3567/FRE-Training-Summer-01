@@ -23,23 +23,18 @@ export class TodolistComponent implements OnInit {
 
   todolist$!: Observable<Todo[]>;
 
-  constructor(
-    private todoService: TodoService,
-    private readonly store: Store
-  ) {}
+  constructor(private readonly store: Store) {}
 
   ngOnInit(): void {
-    // this.todoService.getTodos().subscribe();
     this.store.dispatch(TodoActions.loadTodolist());
-    // this.todolist$ = this.todoService.todolist$;
     this.todolist$ = this.store.select(TodoSelectors.getTodoList);
   }
 
   deleteTodo(id: string) {
-    this.todoService.deleteTodo(id).subscribe();
+    this.store.dispatch(TodoActions.deleteTodo({ id }));
   }
 
   addTodo() {
-    this.todoService.addTodo(this.todo).subscribe();
+    this.store.dispatch(TodoActions.addTodo({ todo: this.todo }));
   }
 }

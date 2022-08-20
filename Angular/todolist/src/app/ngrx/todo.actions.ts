@@ -14,3 +14,33 @@ export const loadTodoFailure = createAction(
   '[TodoList] Load Todolist Failure',
   props<{ error: string }>()
 );
+
+//* ~~~~~~~~~~~~~~~~ Add Todo
+export const addTodo = createAction(
+  '[TodoList] Add Todo',
+  props<{ todo: Todo }>()
+);
+
+export const addTodoSuccess = createAction(
+  '[TodoList] Add Todo Success',
+  props<{ todo: Todo }>()
+);
+export const addTodoFailure = createAction(
+  '[TodoList] Add Todo Failure',
+  props<{ error: string }>()
+);
+
+//* ~~~~~~~~~~~~~~~~ delete Todo
+export const deleteTodo = createAction(
+  '[TodoList] Delete Todo',
+  props<{ id: string }>()
+);
+
+export const deleteTodoSuccess = createAction(
+  '[TodoList] Delete Todo Success',
+  props<{ id: string }>()
+);
+export const deleteTodoFailure = createAction(
+  '[TodoList] Delete Todo Failure',
+  props<{ error: string }>()
+);

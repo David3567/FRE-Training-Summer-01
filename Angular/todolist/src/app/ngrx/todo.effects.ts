@@ -28,6 +28,40 @@ export class TodoEffects {
       })
     );
   });
+  addTodo$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(TodoActions.addTodo),
+      switchMap(({ todo: todofromfe }) => {
+        return this.http
+          .post<Todo>([this.baseUrl, this.todoPath].join('/'), todofromfe)
+          .pipe(
+            map((todofrombe: Todo) => {
+              return TodoActions.addTodoSuccess({ todo: todofrombe });
+            }),
+            catchError((error) => {
+              return of(TodoActions.addTodoFailure({ error }));
+            })
+          );
+      })
+    );
+  });
+  deleteTodo$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(TodoActions.deleteTodo),
+      switchMap(({ id }) => {
+        return this.http
+          .delete([this.baseUrl, this.todoPath, id].join('/'))
+          .pipe(
+            map((_) => {
+              return TodoActions.deleteTodoSuccess({ id });
+            }),
+            catchError((error) => {
+              return of(TodoActions.deleteTodoFailure({ error }));
+            })
+          );
+      })
+    );
+  });
 
   constructor(
     private readonly actions$: Actions,
