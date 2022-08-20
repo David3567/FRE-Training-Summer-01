@@ -53,7 +53,6 @@ export class MovieService {
   }
 
   getVideo(movieId: string) {
-    // this.movieId = '718789';
     return this.http
       .get<RootVideo>(`${this.baseUrl}/movie/${movieId}/videos`, {
         params: { api_key: this.api_key },
