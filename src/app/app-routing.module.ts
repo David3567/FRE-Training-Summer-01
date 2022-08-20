@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomepageComponent } from './homepage/homepage.component';
+import { MovieItemGuard } from './movie-item/movie-item.guard';
 
 const routes: Routes = [
   {
@@ -12,6 +13,7 @@ const routes: Routes = [
   },
   {
     path: 'movies/:id',
+    canActivate: [MovieItemGuard],
     loadChildren: () =>
       import('./movie-item/movie-item.module').then((m) => m.MovieItemModule),
   },

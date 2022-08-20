@@ -9,11 +9,16 @@ import {
   SignInCredentials,
 } from '../interfaces/auth';
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'any',
 })
 export class AuthService {
   rootUrl = 'http://localhost:4231';
   signedin$ = new BehaviorSubject(false);
+
+  get userInfo() {
+    return { role: 'ADMIN' };
+  }
+
   constructor(private http: HttpClient) {}
   emailAvailable(email: string) {
     return this.http.post<EmailAvailableResponse>(
@@ -32,12 +37,12 @@ export class AuthService {
         })
       );
   }
-  
+
   signin(credentials: SignInCredentials) {
-    return this.http
-      .post(`${this.rootUrl}/auth/signin`, credentials)
-      .pipe(tap(() => {
-        this.signedin$.next(true)
-      }));
+    return this.http.post(`${this.rootUrl}/auth/signin`, credentials).pipe(
+      tap(() => {
+        this.signedin$.next(true);
+      })
+    );
   }
 }
