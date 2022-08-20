@@ -1,19 +1,22 @@
-:host{
-    background-color: black;
 
-}
 .single_movie_page{
     background-color: var(--main-bg-color);
     color: var(--main-text-color);
     display: flex;
     flex-direction: column;
+    padding-left: 15rem;
+    padding-right: 15rem;
+   
+    
+   
+    
+    
    
 }
 .single_movie_page-top{
     display:flex;
     align-items: center;
-    width: 100vw;
-    justify-content: center;
+    
     gap: 2rem;
     height: 40rem;
     
@@ -29,36 +32,44 @@
 }
 .movie-image{
      max-height: 40rem;
-     width: 70vw;
+     max-width: 50vw;
     z-index: 2;
      position: absolute;
-     left: 30vw;
+    
 
      
     
 }
 .movie-image-shadow{
-    height: 30rem;
+    height: 34rem;
     width: 70vw;
     box-shadow: inset 5rem 5rem 5rem 0rem rgba(0,0,0,1);
-    left: 30vw;
+   
     position: absolute;
     z-index: 20;
 }
 
 .movie-information{
-    padding: 3rem;
+   
     display:flex;
     flex-direction: column;
     gap: 2rem;
     z-index: 30;
+   
+
+    
+
 }
 .movie-properities{
     display: flex;
     gap: 2rem;
+    font-style: italic;
 }
 .movie-explanation{
-    max-width:70%;
+    width:70%;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-style: italic;
+    
 }
 .movie-info-navbar{
     margin-top:1rem;
@@ -74,7 +85,15 @@
 .movie-info{
     margin-top:2rem;
     display: flex;
-    padding:2rem;
+    justify-content: center;
+    align-items: center;
+   
+}
+.single_movie_page_middle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
 }
 .movie-poster{
     width: 15rem;
@@ -88,10 +107,13 @@
 }
 .movie-info-storyline{
     padding-left:3rem;
+    max-width:80%;
 }
 .movie-info-storyline h2{
-    font-size:1.5rem;
-    margin-bottom:0.5rem
+    font-size:2rem;
+    margin-bottom:1rem;
+    
+    
 }
 
 .movie__video__trailer{
