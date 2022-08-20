@@ -1,23 +1,41 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { tap } from 'rxjs';
+import jwt_decode from 'jwt-decode';
 import {
   SignUpCredentials,
-  SignUpResponse,
   EmailAvailableResponse,
-  SignInCredentials,
+  UserInfoCredentials,
 } from '../interfaces/auth';
-@Injectable({
-  providedIn: 'root',
-})
+import { BASEURL } from '../app.module';
+import { User } from './user/user.module';
+import { Router } from '@angular/router';
+@Injectable()
 export class AuthService {
-  rootUrl = 'http://localhost:4231';
   signedin$ = new BehaviorSubject(false);
-  constructor(private http: HttpClient) {}
+  private userAuthInfo: UserInfoCredentials = {};
+  private tokenExpirationTimer: any;
+  private userAuth$ = new BehaviorSubject<UserInfoCredentials | User>(
+    this.userAuthInfo
+  );
+
+  userAuthObs$ = this.userAuth$.asObservable();
+  user$ = new Subject<User>();
+
+  userObs$ = this.user$.asObservable();
+  get userInfo() {
+    return this.userAuth$.value;
+  }
+
+  constructor(
+    private readonly http: HttpClient,
+    @Inject(BASEURL) private baseUrl: string,
+    private router: Router
+  ) {}
   emailAvailable(email: string) {
     return this.http.post<EmailAvailableResponse>(
-      `${this.rootUrl}/auth/check-email`,
+      `${this.baseUrl}/auth/check-email`,
       {
         email: email,
       }
@@ -25,19 +43,117 @@ export class AuthService {
   }
   signup(credentials: SignUpCredentials) {
     return this.http
-      .post<SignUpResponse>(`${this.rootUrl}/auth/signup`, credentials)
+      .post<{ accessToken: string }>(`${this.baseUrl}/auth/signup`, credentials)
       .pipe(
-        tap(() => {
-          this.signedin$.next(true);
+        tap(({ accessToken }) => {
+          const {
+            username,
+            email,
+            id,
+            role,
+            tmdb_key,
+            iat,
+            exp,
+          }: UserInfoCredentials = jwt_decode(accessToken);
+          this.userAuthInfo = {
+            username,
+            email,
+            id,
+            role,
+            tmdb_key,
+            exp,
+            iat,
+            jwt_token: accessToken,
+          };
+          this.handleAuthentication();
+          this.userAuth$.next(this.userAuthInfo);
         })
       );
   }
-  
-  signin(credentials: SignInCredentials) {
+
+  signin(credentials: UserInfoCredentials) {
     return this.http
-      .post(`${this.rootUrl}/auth/signin`, credentials)
-      .pipe(tap(() => {
-        this.signedin$.next(true)
-      }));
+      .post<{ accessToken: string }>(`${this.baseUrl}/auth/signin`, credentials)
+      .pipe(
+        tap(({ accessToken }) => {
+          const {
+            username,
+            email,
+            id,
+            role,
+            tmdb_key,
+            iat,
+            exp,
+          }: UserInfoCredentials = jwt_decode(accessToken);
+          this.userAuthInfo = {
+            username,
+            email,
+            id,
+            role,
+            tmdb_key,
+            exp,
+            iat,
+            jwt_token: accessToken,
+          };
+          this.handleAuthentication();
+          this.userAuth$.next(this.userAuthInfo);
+        })
+      );
+  }
+  signout() {
+    this.userAuth$.next({});
+    this.router.navigateByUrl('/');
+    localStorage.removeItem('userData');
+    if (this.tokenExpirationTimer) {
+      clearTimeout(this.tokenExpirationTimer);
+    }
+    this.tokenExpirationTimer = null;
+  }
+  autoLogout(expirDuration: number) {
+    // console.log(expirDuration);
+    this.tokenExpirationTimer = setTimeout(() => {
+      this.signout();
+    }, expirDuration);
+  }
+  autoLogin() {
+    const userData: {
+      username: string;
+      email: string;
+      id: string;
+      exp: string;
+      jwt_token: string;
+    } = JSON.parse(localStorage.getItem('userData') || '');
+    if (!userData) {
+      return;
+    }
+    const loadedUser = new User(
+      userData.username,
+      userData.email,
+      userData.id,
+      new Date(userData.exp),
+      userData.jwt_token
+    );
+    if (loadedUser.token) {
+      this.userAuth$.next(loadedUser);
+      this.user$.next(loadedUser);
+      const expirationDuration =
+        new Date(userData.exp).getTime() + new Date().getTime();
+      this.autoLogout(expirationDuration);
+    }
+  }
+  handleAuthentication() {
+    const expireDate: any = new Date(
+      new Date().getTime() + this.userAuthInfo.exp * 1000
+    );
+    const user = new User(
+      this.userAuthInfo.username,
+      this.userInfo.email,
+      this.userAuthInfo.id,
+      expireDate,
+      this.userAuthInfo.jwt_token
+    );
+    this.user$.next(user);
+    this.autoLogout(expireDate);
+    localStorage.setItem('userData', JSON.stringify(user));
   }
 }

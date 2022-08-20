@@ -7,14 +7,12 @@ import { BehaviorSubject } from 'rxjs';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
+  userinfo: any;
   renderBtn: boolean = true;
   currBtnOn: string = 'Sign In';
   navigateTo: string = 'login';
-  signedin$: BehaviorSubject<boolean>;
-  constructor(private router: Router, private authService: AuthService) {
-    this.signedin$ = this.authService.signedin$
-  }
+  constructor(private router: Router, private authService: AuthService) {}
 
   onButtonClick() {
     if (this.router.url === '/' || this.router.url === '/register') {
@@ -42,6 +40,12 @@ export class NavbarComponent {
     this.navigateTo = 'login';
     this.renderBtn = true;
   }
- 
-  
+  onSignout(){
+    this.authService.signout()
+  }
+  ngOnInit(): void {
+    this.authService.userAuthObs$.subscribe(
+      (userinfo) => (this.userinfo = userinfo)
+    );
+  }
 }

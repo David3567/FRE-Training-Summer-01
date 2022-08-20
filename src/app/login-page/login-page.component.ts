@@ -26,6 +26,7 @@ export class LoginPageComponent implements OnInit {
 
   // eslint-disable-next-line class-methods-use-this
   onSubmit() {
+   
     if (this.loginForm.invalid) {
       return;
     }
