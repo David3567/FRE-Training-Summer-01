@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { InjectionToken, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -9,7 +9,12 @@ import { HomepageComponent } from './homepage/homepage.component';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
+
 import { YouTubePlayerModule } from '@angular/youtube-player';
+
+
+import { AuthService } from './auth/auth.service';
+export const BASEURL = new InjectionToken<string>('')
 
 @NgModule({
   declarations: [
@@ -18,13 +23,12 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
     NavbarComponent,
     FooterComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    YouTubePlayerModule,
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  providers: [
+    MovieService,
+    AuthService,
+    { provide: BASEURL, useValue: 'http://localhost:4231' },
   ],
-  providers: [MovieService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
