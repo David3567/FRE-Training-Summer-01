@@ -67,6 +67,7 @@ export class AuthService {
           };
           this.handleAuthentication();
           this.userAuth$.next(this.userAuthInfo);
+          this.signedin$.next(true);
         })
       );
   }
@@ -95,6 +96,9 @@ export class AuthService {
             iat,
             jwt_token: accessToken,
           };
+          this.signedin$.next(true);
+          console.log('auth service signedin$ works!');
+          console.log(this.signedin$.value);
           this.handleAuthentication();
           this.userAuth$.next(this.userAuthInfo);
         })
@@ -108,6 +112,7 @@ export class AuthService {
       clearTimeout(this.tokenExpirationTimer);
     }
     this.tokenExpirationTimer = null;
+    this.signedin$.next(false);
   }
   autoLogout(expirDuration: number) {
     // console.log(expirDuration);

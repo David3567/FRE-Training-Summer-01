@@ -22,9 +22,10 @@ export class MovieItemGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
+    console.log(this.authService.userInfo);
     if (
-      this.authService.userInfo.role === 'ADMIN' ||
-      this.authService.userInfo.role === 'SUPER'
+      this.authService.userInfo === 'ADMIN' ||
+      this.authService.userInfo === 'SUPER'
     ) {
       return true;
     } else {
