@@ -7,6 +7,8 @@ import jwt_decode from 'jwt-decode';
 
 import { User } from '../interfaces/user';
 
+
+
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
   private userAuthInfo: User = {};
@@ -33,7 +35,7 @@ export class AuthenticationService {
       })
     );
   }
-  refresh_Token(registerInfo: User) {
+  refresh_Token(registerInfo:any) {
     const url = `${this.baseUrl}/auth/refresh-token`;
     return this.http.post<{ accessToken: string }>(url, registerInfo).pipe(
       catchError((err) => {

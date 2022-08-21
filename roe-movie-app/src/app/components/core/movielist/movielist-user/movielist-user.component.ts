@@ -8,14 +8,13 @@ import { ActivatedRoute, Route } from '@angular/router';
 export class MovielistUserComponent implements OnInit , DoCheck{
   userInfo:object|any
   constructor(private route: ActivatedRoute) {
-    this.userInfo=this.route.snapshot.data[0].userinfo;
   }
 
   ngOnInit(): void {
   }
 
   ngDoCheck(): void {
-    
+
   }
 
 }
