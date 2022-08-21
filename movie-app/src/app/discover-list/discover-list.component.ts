@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { debounceTime, Observable, tap, switchMap } from 'rxjs';
 import { DiscoverService } from '../services/discover.service';
@@ -9,10 +9,10 @@ import { DiscoverService } from '../services/discover.service';
   styleUrls: ['./discover-list.component.css'],
 })
 export class DiscoverListComponent implements OnInit {
+  @Input() apiKey: any;
   discover$!: Observable<any>;
   form!: FormGroup;
   count = 1;
-  // searchHidden: boolean = false;
 
   constructor(
     private readonly discoverService: DiscoverService,
@@ -31,21 +31,15 @@ export class DiscoverListComponent implements OnInit {
         debounceTime(500),
         switchMap((val) => {
           this.count = 1;
-          return this.discoverService.getSearch(val);
+          return this.discoverService.getSearch(val, this.apiKey);
         })
       )
-      .subscribe();
+      .subscribe(console.log);
   }
 
   onScroll(val: string) {
-    this.discoverService.addAdditionallyPage(val, this.count++).subscribe();
+    this.discoverService
+      .addAdditionallyPage(val, this.count++ + 1, this.apiKey)
+      .subscribe(console.log);
   }
-
-  // searchTab() {
-  //   if (!this.searchHidden) {
-  //     this.searchHidden = !this.searchHidden;
-  //   } else {
-  //     this.searchHidden = !this.searchHidden;
-  //   }
-  // }
 }
