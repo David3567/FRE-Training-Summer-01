@@ -71,10 +71,4 @@ export class MovieService {
         })
       );
   }
-
-  // searchMovie(movieId: string) {
-  //   this.http.get<any>(`${this.baseUrl}/movie/${movieId}`, {
-  //     params: { api_key: 'a3aca7803e3483b603d87731babf7690' },
-  //   });
-  // }
 }

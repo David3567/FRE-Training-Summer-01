@@ -9,9 +9,10 @@ import { Observable } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 
 @Injectable({
-  providedIn: 'any',
+  providedIn: 'root',
 })
-export class MovieItemGuard implements CanActivate {
+export class MovieListGuard implements CanActivate {
+  signedIn = false;
   constructor(private authService: AuthService) {}
 
   canActivate(
@@ -22,13 +23,8 @@ export class MovieItemGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (
-      this.authService.userInfo.role === 'ADMIN' ||
-      this.authService.userInfo.role === 'SUPER'
-    ) {
-      return true;
-    } else {
-      return false;
-    }
+    // console.log(this.authService.signedIn);
+    // return true;
+    return this.authService.signedin$;
   }
 }

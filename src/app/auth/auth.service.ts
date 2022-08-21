@@ -9,7 +9,7 @@ import {
   SignInCredentials,
 } from '../interfaces/auth';
 @Injectable({
-  providedIn: 'any',
+  providedIn: 'root',
 })
 export class AuthService {
   rootUrl = 'http://localhost:4231';

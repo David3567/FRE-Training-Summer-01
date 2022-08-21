@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomepageComponent } from './homepage/homepage.component';
 import { MovieItemGuard } from './movie-item/movie-item.guard';
+import { MovieListGuard } from './movies-list/movie-list.guard';
 
 const routes: Routes = [
   {
     path: 'movies',
+    canActivate: [MovieListGuard],
     loadChildren: () =>
       import('./movies-list/movies-list.module').then(
         (m) => m.MoviesListModule
