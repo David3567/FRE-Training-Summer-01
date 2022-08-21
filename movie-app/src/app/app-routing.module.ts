@@ -5,6 +5,7 @@ import { MoviesLisRoutingModule } from './movies-list/movies-list/movies-routing
 import { RegisterPageRoutingModule } from "./register-page/register/register-page-routing.module";
 import { SignInRoutingModule } from './sign-in/sign-in/sign-in-routing.module';
 import { HomepageRoutingModule } from './components/home-page/homepage/homepage-routing.module';
+import { SingleMovieRoutingModule } from "./single-movie/single-movie/single-movie-routing.module";
 
 const routes: Route[] = [
   {
@@ -20,6 +21,7 @@ const routes: Route[] = [
     RegisterPageRoutingModule,
     SignInRoutingModule,
     MoviesLisRoutingModule,
+    SingleMovieRoutingModule ,
     RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })

@@ -43,8 +43,10 @@ export class MovieService {
 
   getMoviesList(apiKey: string): Observable<any> {
     let id =
-      this.defaultId > 0 ? this.defaultId : Math.floor(Math.random() * 500);
-    let url = `https://api.themoviedb.org/3/list/${id}?api_key=${apiKey}`;
+
+      this.defaultId > 0 ? this.defaultId : Math.floor(Math.random() * 40);
+    let url = `https://api.themoviedb.org/3/list/${id}?api_key=7979b0e432796fe7fa957d6fbbeb0835`;
+
 
     return this.http.get<RootObject>(url, this.helper.httpOptions).pipe(
       debounceTime(100),
@@ -66,7 +68,7 @@ export class MovieService {
     return this.http.get<RootObject>(url).pipe(
       debounceTime(50),
       map(({ results }: any) => {
-        console.log('Successfully retrieved trending movies here\n', results);
+        // console.log('Successfully retrieved trending movies here\n', results);
         return results;
       }),
       catchError(this.helper.errorHandler<any>('getTrendingMovies'))
