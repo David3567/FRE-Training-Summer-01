@@ -1,16 +1,22 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, tap, catchError } from 'rxjs';
+import { Observable, tap, catchError, BehaviorSubject } from 'rxjs';
 import { BASRURL } from '../app.module';
 import { User } from '../interfaces/user.interface';
 import { HelperService } from './helper.service';
 import { debounceTime } from 'rxjs/operators';
-
+import jwt_decode from 'jwt-decode';
+// import jwt_decode from 'jwt_decode';
+// jwtDecode
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
+  currentUserInfo: any = {};
+  currentUser$ = new BehaviorSubject<any>(this.currentUserInfo);
+  user = this.currentUser$.asObservable();
+
   constructor(
     private readonly http: HttpClient,
     private router: Router,
@@ -31,17 +37,34 @@ export class UserService {
     )
   }
 
-  signIn({email, password}: any): any{
+  signIn(userInfo: any): any{
     let url = `${this.baseUrl}/auth/signin`;
 
-    return this.http.post<{ accessToken: string }>(url,{email, password} ,this.helper.httpOptions)
+    return this.http.post<{ accessToken: string }>(url,userInfo ,/*this.helper.httpOptions*/)
       .pipe(
-        tap((token) => {
-          console.log(`Successfully logged in ${token}`)
-          localStorage.setItem('currentUser', token.accessToken)
+        tap(({accessToken}) => {
+          console.log(`Successfully logged in ${accessToken}`)
+          localStorage.setItem('currentUser', accessToken);
+
+          const {
+            username,  id,  email, role, tmdb_key, exp
+          }: any = jwt_decode(accessToken);
+
+          this.currentUserInfo = {
+            username,
+            id,
+            email,
+            role,
+            moviesSecretKey: tmdb_key,
+            exp,
+            jwt_token: accessToken
+          }
+          this.currentUser$.next(this.currentUserInfo);
+
+          // console.log(this.currentUser);
           setTimeout(() => {
             this.router.navigate([`movies-list`]);
-          }, 5000);
+          }, 1000);
         }),
         catchError(this.helper.errorHandler<User>("signIn"))
       );

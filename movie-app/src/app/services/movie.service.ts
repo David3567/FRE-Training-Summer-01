@@ -30,10 +30,6 @@ export class MovieService {
     private helper: HelperService
   ) {}
 
-  getData() {
-    throw new Error('Method not implemented.');
-  }
-
   getMovieList() {
     return this.http
       .get(`${this.baseUrl}/list/${this.listId}${this.apiKey}`)
@@ -43,8 +39,6 @@ export class MovieService {
             { poster_path, title, release_date, vote_average },
             ...this.movies,
           ];
-
-
         this.moviesSubject$.next(this.movies);
       })
       );
@@ -64,7 +58,7 @@ export class MovieService {
     return this.http.get<RootObject>(url, this.helper.httpOptions).pipe(
       debounceTime(100),
       map(({ items }: any) => {
-        console.log('Successfully retrieved movies here\n', items);
+        console.log('Successfully retrieved movies here\n');
         if (items.length === 0) {
           this.defaultId = 5;
           this.getMoviesList();
@@ -80,10 +74,7 @@ export class MovieService {
 
     return this.http.get<RootObject>(url).pipe(
       debounceTime(50),
-      map(({ results }: any) => {
-        console.log('Successfully retrieved trending movies here\n', results);
-        return results;
-      }),
+      map(({ results }: any) => results),
       catchError(this.helper.errorHandler<any>('getTrendingMovies'))
     );
   }
@@ -94,7 +85,6 @@ export class MovieService {
     return this.http.get(url, this.helper.httpOptions).pipe(
       map(({ results }: any) => {
         console.log("movie video successfully retrieved")
-        console.log(results)
         return results.map((result: any) => {
           return {
             id: result.id,

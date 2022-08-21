@@ -22,7 +22,6 @@ export class MoviesListComponent implements OnInit {
 
   ngOnInit(): void {
     this.movieService.getMoviesList().subscribe((movies: any) => {
-      console.log(movies);
       this.bannerMovie = movies[0];
       this.movies = movies.filter((m: any, i: number) => i > 0);
     });
@@ -35,18 +34,13 @@ export class MoviesListComponent implements OnInit {
   onWatchTrailer(id: number): void {
     this.showMovie = true;
     this.movieService.getVideoById(id).subscribe((trailer: Video[]) => {
-      console.log('Watching trailer now...');
-      console.dir(trailer);
       this.selectedMovieVideo = trailer[0];
     });
   }
 
+  //REVIEW: Check it it's needed, otherwise delete it
   searchTab() {
-    console.log('click');
-    if (!this.searchHidden) {
-      this.searchHidden = !this.searchHidden;
-    } else {
-      this.searchHidden = !this.searchHidden;
-    }
+    console.log('H');
+     this.searchHidden = !this.searchHidden
   }
 }
