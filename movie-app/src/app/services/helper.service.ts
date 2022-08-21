@@ -1,7 +1,7 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
-
+import jwt_decode from 'jwt-decode';
 @Injectable({
   providedIn: 'root'
 })
@@ -27,4 +27,6 @@ export class HelperService {
       )
     };
   }
+
+
 }

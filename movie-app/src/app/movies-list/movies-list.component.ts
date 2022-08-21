@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Video } from '../interfaces/movie.interface';
 import { MovieService } from '../services/movie.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-movies-list',
@@ -15,10 +16,12 @@ export class MoviesListComponent implements OnInit {
   showMovie: boolean = false;
   constructor(
     public sanitize: DomSanitizer,
-    private movieService: MovieService
+    private movieService: MovieService,
+    private userService: UserService
   ) {}
   trending: any[] = [];
   searchHidden: boolean = true;
+  currentUser!: any;
 
   ngOnInit(): void {
     this.movieService.getMoviesList().subscribe((movies: any) => {
@@ -29,6 +32,13 @@ export class MoviesListComponent implements OnInit {
     this.movieService.getTrendingMovies().subscribe((movies: any) => {
       this.trending = movies;
     });
+
+    this.userService.generateToken();
+
+    this.userService.currentUser$.subscribe(user => {
+      console.log(user);
+       this.currentUser = user;
+   })
   }
 
   onWatchTrailer(id: number): void {

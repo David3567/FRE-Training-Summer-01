@@ -17,6 +17,7 @@ import { UserService } from './services/user.service';
 import { ShortPipe} from './pipes/short.pipe';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faHome, faSearch, faCalendar, faClapperboard, faEye } from '@fortawesome/free-solid-svg-icons';
+import { SubscriptionComponent } from './subscription/subscription.component';
 
 
 export const BASRURL = new InjectionToken<string>('');
@@ -29,6 +30,7 @@ export const BASRURL = new InjectionToken<string>('');
     HomePageComponent,
     PageNotFoundComponent,
     TestComponent,
+    SubscriptionComponent,
     // ShortPipe
   ],
   imports: [

@@ -46,22 +46,8 @@ export class UserService {
           console.log(`Successfully logged in ${accessToken}`)
           localStorage.setItem('currentUser', accessToken);
 
-          const {
-            username,  id,  email, role, tmdb_key, exp
-          }: any = jwt_decode(accessToken);
+          this.generateToken();
 
-          this.currentUserInfo = {
-            username,
-            id,
-            email,
-            role,
-            moviesSecretKey: tmdb_key,
-            exp,
-            jwt_token: accessToken
-          }
-          this.currentUser$.next(this.currentUserInfo);
-
-          // console.log(this.currentUser);
           setTimeout(() => {
             this.router.navigate([`movies-list`]);
           }, 1000);
@@ -85,7 +71,44 @@ export class UserService {
     this.http.patch<User>(this.baseUrl, this.helper.httpOptions);
   }
 
-  edit(user: User): Observable<User> {
-    return this.http.put<User>(this.baseUrl, this.helper.httpOptions);
+  /**
+   * This function will generate a the token even on the page
+    reload as long as the user is logged in.
+   */
+  generateToken() {
+    let accessToken = localStorage.getItem('currentUser');
+
+    const {
+      username,  id,  email, role, tmdb_key, exp
+    }: any = jwt_decode(accessToken!);
+
+    this.currentUserInfo = {
+      username,
+      id,
+      email,
+      role,
+      moviesSecretKey: tmdb_key,
+      exp,
+      jwt_token: accessToken
+    }
+   this.currentUser$.next(this.currentUserInfo);
+  }
+
+  onUpdateRole(user:
+    {
+      username: string,
+      password: string,
+      email: string,
+      role: string,
+      tmdb_key: string
+    }): Observable<User> {
+    return this.http.patch<User>(`${this.baseUrl}/auth-c/updateuser`, this.helper.httpOptions)
+      .pipe(
+        tap((currentUser) => {
+          console.log("Successfully updated user")
+          console.log(currentUser)
+        }),
+        catchError(this.helper.errorHandler<any>("The user Update info"))
+      )
   }
 }
