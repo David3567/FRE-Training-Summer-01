@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MovielistComponent } from './movielist.component';
-import { AuthenticationGuard, AuthenticationResolver } from './authentication.guard';
+import { AuthenticationGuard,  } from './authentication.guard';
 import { AuthenticationUserGuard } from './authenticationuser.guard'
 import { MovielistUserComponent } from './movielist-user/movielist-user.component'
 const routes: Routes = [
@@ -9,12 +9,10 @@ const routes: Routes = [
     path: '',
     component: MovielistComponent,
     canActivate: [AuthenticationGuard],
-    resolve:[AuthenticationResolver]
   },{
         path: 'movielist_user',
         component: MovielistUserComponent,
         canActivate: [AuthenticationUserGuard],
-        resolve:[AuthenticationResolver]
   },
 ];
 

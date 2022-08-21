@@ -12,7 +12,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MovieDialogComponent } from '../movie-dialog/movie-dialog.component';
 import { TrackScrollDirective } from './track-scroll.directive'
 import { YouTubePlayerModule } from "@angular/youtube-player";
-import { AuthenticationGuard, AuthenticationResolver } from './authentication.guard';
+import { AuthenticationGuard,  } from './authentication.guard';
 import { AuthenticationUserGuard } from './authenticationuser.guard';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { MovielistUserComponent } from './movielist-user/movielist-user.component'
@@ -38,7 +38,7 @@ import { MovielistUserComponent } from './movielist-user/movielist-user.componen
   entryComponents: [
     MovieDialogComponent
   ],
-  providers: [AuthenticationGuard, { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }, JwtHelperService, AuthenticationUserGuard,AuthenticationResolver],
+  providers: [AuthenticationGuard, { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }, JwtHelperService, AuthenticationUserGuard],
   exports: [MovieDialogComponent, MovielistUserComponent]
 })
 export class MovielistModule { }
