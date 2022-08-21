@@ -117,6 +117,7 @@ export class AuthService {
   autoLogin() {
     const userData: {
       username: string;
+      role: string;
       email: string;
       id: string;
       exp: number;
@@ -127,6 +128,7 @@ export class AuthService {
     }
     const loadedUser = new User(
       userData.username,
+      userData.role,
       userData.email,
       userData.id,
       userData.exp,
@@ -145,7 +147,8 @@ export class AuthService {
     const expireDate: any = new Date(new Date(this.userAuthInfo.exp * 1000));
     const user = new User(
       this.userAuthInfo.username,
-      this.userInfo.email,
+      this.userAuthInfo.role,
+      this.userAuthInfo.email,
       this.userAuthInfo.id,
       expireDate,
       this.userAuthInfo.jwt_token
