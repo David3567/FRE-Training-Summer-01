@@ -9,8 +9,13 @@ import { HomepageComponent } from './homepage/homepage.component';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
+
+import { YouTubePlayerModule } from '@angular/youtube-player';
+
+
 import { AuthService } from './auth/auth.service';
 export const BASEURL = new InjectionToken<string>('')
+
 @NgModule({
   declarations: [
     AppComponent,
