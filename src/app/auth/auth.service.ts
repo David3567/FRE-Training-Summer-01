@@ -13,12 +13,12 @@ import { User } from './user/user.module';
 import { Router } from '@angular/router';
 @Injectable()
 export class AuthService {
-  signedin$ = new BehaviorSubject(false);
   private userAuthInfo: UserInfoCredentials = {};
   private tokenExpirationTimer: any;
   private userAuth$ = new BehaviorSubject<UserInfoCredentials | User>(
     this.userAuthInfo
   );
+  signedin$ = new BehaviorSubject(false);
 
   userAuthObs$ = this.userAuth$.asObservable();
   user$ = new Subject<User>();
@@ -96,9 +96,11 @@ export class AuthService {
             iat,
             jwt_token: accessToken,
           };
+
           this.signedin$.next(true);
           console.log('auth service signedin$ works!');
           console.log(this.signedin$.value);
+
           this.handleAuthentication();
           this.userAuth$.next(this.userAuthInfo);
         })
@@ -115,19 +117,18 @@ export class AuthService {
     this.signedin$.next(false);
   }
   autoLogout(expirDuration: number) {
-    // console.log(expirDuration);
     this.tokenExpirationTimer = setTimeout(() => {
       this.signout();
-    }, expirDuration);
+    }, expirDuration * 1000);
   }
   autoLogin() {
     const userData: {
       username: string;
       email: string;
       id: string;
-      exp: string;
+      exp: number;
       jwt_token: string;
-    } = JSON.parse(localStorage.getItem('userData') || '');
+    } = JSON.parse(localStorage.getItem('userData') || '{}');
     if (!userData) {
       return;
     }
@@ -135,21 +136,20 @@ export class AuthService {
       userData.username,
       userData.email,
       userData.id,
-      new Date(userData.exp),
+      userData.exp,
       userData.jwt_token
     );
     if (loadedUser.token) {
       this.userAuth$.next(loadedUser);
       this.user$.next(loadedUser);
+      console.log(new Date(userData.exp));
       const expirationDuration =
-        new Date(userData.exp).getTime() + new Date().getTime();
+        new Date(userData.exp).getTime() - new Date().getTime();
       this.autoLogout(expirationDuration);
     }
   }
   handleAuthentication() {
-    const expireDate: any = new Date(
-      new Date().getTime() + this.userAuthInfo.exp * 1000
-    );
+    const expireDate: any = new Date(new Date(this.userAuthInfo.exp * 1000));
     const user = new User(
       this.userAuthInfo.username,
       this.userInfo.email,
