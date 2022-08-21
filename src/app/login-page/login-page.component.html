@@ -14,8 +14,8 @@
       [control]="loginForm.get('password')"
     ></app-input>
     <label class="error-msg" *ngIf="loginForm.errors?.credentials">
-        Invalid email or password
-      </label>
+      Invalid email or password
+    </label>
     <button
       [disabled]="loginForm.invalid"
       [ngClass]="{ 'btn-disabled': loginForm.invalid }"
@@ -23,12 +23,5 @@
     >
       Submit
     </button>
-    <!-- <div class="form-link-container">
-      <a class="form-link" href="#">Forgot your password?</a>
-    </div> -->
   </form>
 </div>
-<!-- <hr/>
-<div>form contents : {{ loginForm.value | json }}</div>
-<div>form is valid: {{ loginForm.valid }}</div>
-<div>errors around email: {{ loginForm.controls.email.errors | json }}</div> -->

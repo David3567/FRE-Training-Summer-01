@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { InjectionToken, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -9,7 +9,8 @@ import { HomepageComponent } from './homepage/homepage.component';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
-
+import { AuthService } from './auth/auth.service';
+export const BASEURL = new InjectionToken<string>('')
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +19,11 @@ import { FooterComponent } from './footer/footer.component';
     FooterComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
-  providers: [MovieService],
+  providers: [
+    MovieService,
+    AuthService,
+    { provide: BASEURL, useValue: 'http://localhost:4231' },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

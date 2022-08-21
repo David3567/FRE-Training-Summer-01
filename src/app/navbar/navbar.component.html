@@ -2,13 +2,13 @@
   <div class="nav-logo-wrapper">
     <span class="font-effect-3d-float" (click)="onLogoClick()">NETPLIX</span>
   </div>
-
-  <ng-container *ngIf="!(signedin$ | async)">
+  <ng-container *ngIf="!userinfo.jwt_token">
     <button class="nav-btn-signIn" *ngIf="renderBtn" (click)="onButtonClick()">
       {{ this.currBtnOn }}
     </button>
   </ng-container>
-  <ng-container *ngIf="signedin$ | async">
-    <button class="nav-btn-signIn">Sign out</button>
+  <ng-container *ngIf="userinfo.jwt_token">
+    <span class="user">{{ userinfo.username.toUpperCase() }}</span>
+    <button (click)="onSignout()" class="nav-btn-signIn">Sign out</button>
   </ng-container>
 </nav>

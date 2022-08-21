@@ -50,6 +50,7 @@
   border: none;
 }
 
+
 @media screen and (max-width: 768px) {
   .hero-navbar {
     margin: 20px 40px;
