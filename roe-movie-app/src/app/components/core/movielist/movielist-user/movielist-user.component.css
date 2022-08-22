@@ -1,0 +1,136 @@
+button {
+  border: none;
+  background-color: #E50915;
+  height: 65px;
+  margin-top: 30px;
+  color: #fff;
+  font-size: 24px;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  font-weight: 300;
+}
+
+app-footer>>>.footer,
+app-footer>>>footer {
+  background-color: #F3F3F3 !important;
+  border-bottom: none;
+}
+
+app-footer>>>.text-white,
+app-footer>>>.text-center {
+  color: gray !important;
+  font-weight: normal;
+  background-color: #F3F3F3 !important;
+}
+
+form {
+  background: white;
+  height: 200px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.movie-list {
+  width: 950px;
+  margin: 60px auto 150px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.movie-list div div {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.select {
+  opacity: 1 !important;
+  color: #E50915;
+}
+
+svg {
+  color: red;
+  width: 40px;
+  height: 30px;
+}
+
+table {
+  width: 100%;
+}
+
+tr:nth-child(1) th:nth-child(n+2) div {
+  height: 120px;
+  width: 120px;
+  background-color: #E50915;
+  background-clip: border-box;
+  justify-content: center;
+  color: #fff;
+  margin: auto;
+  opacity: .6;
+  border-radius: 2px;
+}
+
+tr:nth-child(1) td:nth-child(1) {
+  width: 40%;
+}
+
+td,
+th {
+  padding: 25px;
+  color: gray;
+}
+
+tr:nth-child(2),
+tr:nth-child(3),
+tr:nth-child(4) {
+  border-bottom: 1px solid lightgray;
+}
+
+tr:nth-child(n+2) td:nth-child(n+2) {
+  font-weight: bold;
+  text-align: center;
+}
+
+tr:nth-child(5) svg {
+  padding-left: 7px;
+}
+
+tr:nth-child(5) svg path {
+  color: lightgray;
+}
+
+.movie-list button {
+  width: 45%;
+  margin: auto;
+}
+
+.movie-list header {
+  background: none;
+  border: none;
+  width: 100%;
+  font-size: 12px;
+}
+
+.password-modal {
+  visibility: hidden;
+  display: none;
+  position: absolute;
+}
+
+.open {
+  top: 20%;
+  visibility: visible;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(189, 195, 199, .3);
+  height: 1000px;
+  width: 100vw;
+}
+
+app-header-top>>>.header-top {
+  background-color: transparent;
+  border-bottom: .5px solid lightgray;
+}
