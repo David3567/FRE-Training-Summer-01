@@ -6,11 +6,11 @@
   height: 100%;
   letter-spacing: 0.5px;
   background: url("../../../../assets/header_background.jpg");
-  color: black;
+  color: white;
 }
 
 .login-container {
-  background-color: white;
+  background-color: black;
   padding: 50px;
   box-sizing: border-box;
   width: 400px;

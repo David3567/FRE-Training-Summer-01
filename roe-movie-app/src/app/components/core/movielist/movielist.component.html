@@ -1,9 +1,11 @@
 <app-sidebar
+  [ngClass]="{ disabled: isDisabled }"
   (selectUpcoming)="selectUpcoming()"
   (selectNowPlaying)="selectNowPlaying()"
 >
 </app-sidebar>
 <main
+  [ngClass]="{ disabled: isDisabled }"
   appTrackScroll
   (direction)="goDirection($event)"
 >

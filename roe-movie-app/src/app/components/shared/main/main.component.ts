@@ -1,7 +1,7 @@
 import { Component, ComponentRef, OnInit } from '@angular/core';
 import { ViewEncapsulation } from '@angular/core';
 import { MatExpansionPanel, MatExpansionPanelTitle, MatExpansionPanelHeader } from '@angular/material/expansion';
-import { MoviesService } from 'src/app/services/movies.service';
+import { MoviesService } from 'src/services/movies.service';
 
 @Component({
   selector: 'app-main',
@@ -51,7 +51,7 @@ export class MainComponent implements OnInit {
   constructor(private service:MoviesService) { }
 
   ngOnInit(): void {
-    this.service.getMovies(1).subscribe((result: any)=>{this.Movies=result; console.log(this.Movies)})
+    this.service.getMovies().subscribe((result: any)=>{this.Movies=result; console.log(this.Movies)})
   }
 
 }

@@ -10,10 +10,10 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MovieDialogComponent } from '../movie-dialog/movie-dialog.component';
-import { TrackScrollDirective } from './track-scroll.directive'
+import { TrackScrollDirective } from '../../../directives/track-scroll.directive'
 import { YouTubePlayerModule } from "@angular/youtube-player";
-import { AuthenticationGuard,  } from './authentication.guard';
-import { AuthenticationUserGuard } from './authenticationuser.guard';
+import { AuthenticationGuard,  } from '../../../guards/authentication.guard';
+import { AuthenticationUserGuard } from '../../../guards/authenticationuser.guard';
 // import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { MovielistUserComponent } from './movielist-user/movielist-user.component'
 
@@ -39,7 +39,7 @@ import { MovielistUserComponent } from './movielist-user/movielist-user.componen
   entryComponents: [
     MovieDialogComponent
   ],
-  providers: [AuthenticationGuard, AuthenticationUserGuard,AuthenticationResolver],
+  providers: [AuthenticationGuard, AuthenticationUserGuard],
   exports: [MovieDialogComponent, MovielistUserComponent]
 })
 export class MovielistModule { }
