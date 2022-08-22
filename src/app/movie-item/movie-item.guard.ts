@@ -12,6 +12,8 @@ import { AuthService } from '../auth/auth.service';
   providedIn: 'any',
 })
 export class MovieItemGuard implements CanActivate {
+  userRole?: string = 'USER';
+
   constructor(private authService: AuthService) {}
 
   canActivate(
@@ -22,11 +24,10 @@ export class MovieItemGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    console.log(this.authService.userInfo);
-    if (
-      this.authService.userInfo === 'ADMIN' ||
-      this.authService.userInfo === 'SUPER'
-    ) {
+    this.authService.userObs$.subscribe((userInfo) => {
+      this.userRole = userInfo.username;
+    });
+    if (this.userRole === 'ADMIN' || this.userRole === 'SUPER') {
       return true;
     } else {
       return false;

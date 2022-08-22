@@ -25,7 +25,7 @@ export class AuthService {
 
   userObs$ = this.user$.asObservable();
   get userInfo() {
-    return this.userAuth$.value;
+    return this.userObs$;
   }
 
   constructor(
@@ -152,7 +152,7 @@ export class AuthService {
     const expireDate: any = new Date(new Date(this.userAuthInfo.exp * 1000));
     const user = new User(
       this.userAuthInfo.username,
-      this.userInfo.email,
+      this.userAuthInfo.email,
       this.userAuthInfo.id,
       expireDate,
       this.userAuthInfo.jwt_token

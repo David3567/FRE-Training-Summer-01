@@ -43,8 +43,5 @@ export class LoginPageComponent implements OnInit {
     this.authService.signedin$.subscribe((val) => {
       this.signedIn = val;
     });
-    console.log(this.signedIn);
-    this.userInfo = this.authService.userInfo;
-    console.log(this.userInfo);
   }
 }
