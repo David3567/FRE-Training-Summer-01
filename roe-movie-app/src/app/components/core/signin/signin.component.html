@@ -20,8 +20,6 @@
           <button mat-button class="pwdBtn" (click)="showPassword()"> {{show ? 'Hide' : 'Show'}}</button>
           <mat-error *ngIf="!loginForm.get('password')?.errors?.required">
             Incorrect Password.
-            <!-- Password length must be greater than or equal to 8 and password must contain one or more uppercase ,
-            lowercase , numeric and special characters -->
           </mat-error>
           <mat-error
             *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched) && loginForm.get('password')?.errors?.required">
@@ -41,6 +39,3 @@
 <footer>
   <app-footer></app-footer>
 </footer>
-
-<!-- <input class="pwd" [type]="show ? 'text' : 'password'" placeholder="Enter Your Password" />
-         -->

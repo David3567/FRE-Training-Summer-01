@@ -22,7 +22,7 @@ export class AuthenticationGuard implements CanActivate {
     private route: ActivatedRoute,
     private router: Router,
     public jwtHelper: JwtHelperService
-  ) {}
+  ) { }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -31,7 +31,7 @@ export class AuthenticationGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    let token : string | any = localStorage.getItem('user');
+    let token: string | any = localStorage.getItem('user');
     if (!token) {
       this.router.navigate(['signin']);
       return false;
@@ -46,12 +46,13 @@ export class AuthenticationGuard implements CanActivate {
       this.router.navigate(['signin']);
       return false;
     }
-    if (role == 'USER') {
-      this.router.navigate(['movielist/movielist_user'], {
-        relativeTo: this.route,
-      });
-      return false;
-    } else {
+    // if (role == 'USER') {
+    //   this.router.navigate(['movielist/movielist_user'], {
+    //     relativeTo: this.route,
+    //   });
+    //   return false;
+    // } 
+    else {
       return true;
     }
   }

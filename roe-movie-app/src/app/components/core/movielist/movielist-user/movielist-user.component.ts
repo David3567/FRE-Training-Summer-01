@@ -7,6 +7,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
   templateUrl: './movielist-user.component.html',
   styleUrls: ['./movielist-user.component.css']
 })
+
 export class MovielistUserComponent implements OnInit , DoCheck, OnChanges{
   selected: string = '';
   form!: FormGroup
