@@ -17,8 +17,8 @@ export class LoginPageComponent implements OnInit {
       Validators.maxLength(20),
     ]),
   });
-  signedIn: any;
-  userInfo: any;
+  signedIn!: boolean;
+  signedInInfo: any;
 
   // eslint-disable-next-line no-empty-function
   constructor(private authService: AuthService, private router: Router) {}
@@ -43,5 +43,10 @@ export class LoginPageComponent implements OnInit {
     this.authService.signedin$.subscribe((val) => {
       this.signedIn = val;
     });
+    console.log(this.signedIn);
+    this.authService.userInfo.subscribe((userInfo) => {
+      this.signedInInfo = userInfo;
+    });
+    console.log(this.signedInInfo);
   }
 }

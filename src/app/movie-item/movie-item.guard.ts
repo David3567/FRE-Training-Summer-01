@@ -27,6 +27,7 @@ export class MovieItemGuard implements CanActivate {
     this.authService.userObs$.subscribe((userInfo) => {
       this.userRole = userInfo.username;
     });
+    console.log(this.userRole);
     if (this.userRole === 'ADMIN' || this.userRole === 'SUPER') {
       return true;
     } else {

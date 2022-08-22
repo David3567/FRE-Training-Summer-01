@@ -14,6 +14,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'user-update',
+    loadChildren: () =>
+      import('./user-update/user-update.module').then(
+        (m) => m.UserUpdateModule
+      ),
+  },
+  {
     path: 'movies/:id',
     canActivate: [MovieItemGuard],
     loadChildren: () =>
