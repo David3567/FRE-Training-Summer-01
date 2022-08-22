@@ -1,8 +1,13 @@
+.navbar{
+  background-color: #caddff;
+}
+
+
 .navbar-brand{
   text-align: center;
   font-weight: 800;
   font-size: 30px;
-  color: rgb(118, 158, 223);
+  color: rgba(219, 111, 254, 0.902);
 }
 
 .Login{
@@ -17,6 +22,10 @@
   font-weight: 800;
   font-size: 20px;
   color: rgb(118, 158, 223);
+}
+
+.navbar-brand :hover{
+  color: rgba(219, 111, 254, 0.902);
 }
 
 /* text-align: center;
