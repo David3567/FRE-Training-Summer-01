@@ -38,33 +38,31 @@ export class MoviesListComponent implements OnInit {
     if (localStorage.getItem('currentUser') !== null) {
       this.jwtToken = localStorage.getItem('currentUser');
       this.authData = jwt_decode(this.jwtToken);
+      this.userService.userAuthSubject$.next(this.authData);
       this.apiKey = this.authData.tmdb_key;
+      this.movieService.getApi(this.apiKey);
     } else {
       console.log(false);
     }
 
-    this.movieService.getMoviesList(this.apiKey).subscribe((movies: any) => {
+    this.movieService.getMoviesList().subscribe((movies: any) => {
       // console.log(movies);
       this.bannerMovie = movies[0];
       this.movies = movies.filter((m: any, i: number) => i > 0);
     });
 
-    this.movieService
-      .getTrendingMovies(this.apiKey)
-      .subscribe((movies: any) => {
-        this.trending = movies;
-      });
+    this.movieService.getTrendingMovies().subscribe((movies: any) => {
+      this.trending = movies;
+    });
   }
 
   onWatchTrailer(id: number): void {
     this.showMovie = true;
-    this.movieService
-      .getVideoById(id, this.apiKey)
-      .subscribe((trailer: Video[]) => {
-        // console.log('Watching trailer now...');
-        // console.dir(trailer);
-        this.selectedMovieVideo = trailer[0];
-      });
+    this.movieService.getVideoById(id).subscribe((trailer: Video[]) => {
+      // console.log('Watching trailer now...');
+      // console.dir(trailer);
+      this.selectedMovieVideo = trailer[0];
+    });
   }
 
   searchTab() {

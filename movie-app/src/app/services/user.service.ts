@@ -13,7 +13,7 @@ import jwt_decode from 'jwt-decode';
 })
 export class UserService {
   private userAuth: User = {};
-  private userAuthSubject$ = new BehaviorSubject<User>(this.userAuth);
+  public userAuthSubject$ = new BehaviorSubject<User>(this.userAuth);
   userAuthObs$ = this.userAuthSubject$.asObservable();
 
   constructor(
