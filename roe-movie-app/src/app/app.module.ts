@@ -24,7 +24,7 @@ function initializeAppFactory(httpClient: HttpClient): void {
     let tmdb_key = userInfo.tmdb_key;
     console.log(tmdb_key)
     const url = `http://localhost:4231/auth/refresh-token`;
-    return httpClient.post<{ accessToken: string }>(url,{ id, username, email, role, tmdb_key }).subscribe(data=>{localStorage.setItem('user',JSON.stringify(data)); console.log(data)})},2000)
+    return httpClient.post<{ accessToken: string }>(url,{ id, username, email, role, tmdb_key }).subscribe(data=>{localStorage.setItem('user',JSON.stringify(data)); console.log(data)})},600000)
 }
 
 @NgModule({
