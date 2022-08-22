@@ -14,9 +14,8 @@ import { AuthService } from './auth.service';
 })
 export class AuthGuard implements CanActivate, CanLoad {
   constructor(private authService: AuthService, private router: Router) {}
-
   canActivate(): boolean {
-    if (this.authService.isLoggedIn) {
+    if (localStorage.getItem('token')) {
       return true;
     } else {
       this.router.navigate(['/login']);
