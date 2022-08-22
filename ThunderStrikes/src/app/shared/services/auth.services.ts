@@ -30,6 +30,23 @@ export class AuthService {
   get userInfo() {
     return this.userAuth$.value;
   }
+  set role(newRole: string) {
+    this._userAuthInfo.role = newRole;
+  }
+  validRole(): boolean{
+    if (this._userAuthInfo.role === "SUPERUSER" || this._userAuthInfo.role === "ADMIN"){
+      console.log("Valid Role detected");
+      return true;
+    }
+    if (this._userAuthInfo.role === "USER"){
+      console.log("Role USER detected");
+      return false;
+    }
+    else {
+      console.log("none detected");
+      return false;
+    }
+  }
   set userAuthInfo(newInfo: User) {
     this._userAuthInfo = newInfo;
     this.userAuth$.next(this._userAuthInfo);
@@ -72,7 +89,51 @@ export class AuthService {
     return this.http.post<{ accessToken: string }>(
       url,
       registerInfo
+    ).pipe(
+      tap(({ accessToken }) => {
+        this.setToken(accessToken);
+        console.log("Registered");
+        this.refreshToken()?.subscribe();
+      }),
+      catchError(err => {
+        console.log(err);
+        return of('Register Failed')
+      })
     )
+  }
+
+  checkEmail(email: string){
+    const url = `${this.baseUrl}/auth/check-email`;
+  return this.http.post<{ accessToken: string }>(
+    url,
+    email
+  )
+  }
+
+  upgradeRole(newRole: string, password: string){ 
+    let retrievedUserToken = localStorage.getItem(LocalStorageVariables.JWT_TOKEN)!;
+    const {exp, iat, id, jwt_token, ...retrievedUserInfo}: User = jwtDecode(retrievedUserToken);
+    retrievedUserInfo.role = newRole;
+    console.log(retrievedUserInfo);
+    const url = `${this.baseUrl}/auth/userupdate`;
+  return this.http.patch<{ accessToken: string }>(
+    url,
+    {
+    retrievedUserInfo,
+    password,
+  }
+  ).pipe(
+    tap(({ accessToken }) => {
+      this.setToken(accessToken);
+      console.log("Role Updated");
+      this.refreshToken()?.subscribe();
+      this.router.navigate(["movie-dashboard"]);
+    }),
+    catchError(err => {
+      console.log(err);
+      return of('Role Update Failed')
+    })
+  )
   }
 
   private refreshTokenTimeout: any;

@@ -32,8 +32,14 @@ export class LoginComponent implements OnInit {
 
   loginUser(): void{
     console.log(this.signinForm.value)
-    this.authService.signin(this.signinForm.value).subscribe();
-    this.router.navigate(["movie-dashboard"])
+    this.authService.signin(this.signinForm.value).subscribe(
+      () => { console.log("User Signed In");
+    } 
+    );
+    if (this.authService.isLoggedIn === true){
+      this.router.navigate(["movie-dashboard"]);
+    }
+    
   }
 
 }
