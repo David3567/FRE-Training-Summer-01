@@ -13,8 +13,9 @@ export class NavigationBarComponent implements OnInit {
     constructor(private readonly router: Router, private readonly authService: AuthService) {
         this.routingPages = RoutingPages;
     }
-    get isRestrictedUrl() {
-        return this.restrictedUrls.includes(this.router.url) ? true : false;
+
+    get username(): string | undefined{
+        return this.authService.username;
     }
     get isLoggedIn(): boolean{
         return this.authService.isLoggedIn;

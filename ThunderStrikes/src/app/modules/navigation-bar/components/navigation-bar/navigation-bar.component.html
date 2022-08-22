@@ -12,7 +12,7 @@
     </ul>
     <div class="navRight" *ngIf="isLoggedIn">
         <ul>
-            <li><button (click)="toAccountPage()">My Account</button></li>
+            <li><button (click)="toAccountPage()">{{username}}</button></li>
             <li><button (click)="toSettingsPage()">⚙️</button></li>
             <li><button (click)="signOut()">Sign out</button></li>
         </ul>
