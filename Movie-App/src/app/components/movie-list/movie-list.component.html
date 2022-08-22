@@ -1,18 +1,16 @@
-<main>
-  <div
-    class="row"
-    infiniteScroll
-    [infiniteScrollDistance]="2"
-    [infiniteScrollThrottle]="1000"
-    (scrolled)="onScroll()"
-  >
+<main
+infiniteScroll
+[infiniteScrollDistance]="2"
+[infiniteScrollThrottle]="100"
+(scrolled)="onScroll()">
+  <div>
     <div class="col-xs-6 col-md-2">
-      <div class="input-group">
+      <!-- <div class="input-group">
         <input type="text" class="form-control" placeholder="Search for..." />
         <span class="input-group-btn">
           <button class="btn btn-default btn-go" type="button">Go!</button>
         </span>
-      </div>
+      </div> -->
 
       <div class="col-sm-6 col-md-4">
         <ul class="movie-list">
@@ -21,7 +19,7 @@
             class="movie-card"
             infiniteScroll
             [infiniteScrollDistance]="2"
-            [infiniteScrollThrottle]="1000"
+            [infiniteScrollThrottle]="100"
             (scrolled)="onScroll()"
           >
             <div class="thumbnail">
@@ -39,8 +37,9 @@
               </div>
             </div>
             <div class="caption">
-              <h3>{{ movie.title }}</h3>
+              <h5>{{ movie.title }}</h5>
             </div>
+            <span></span>
           </li>
         </ul>
       </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../../services/movie.service';
-import { MovieDiscover } from '../../movies';
+import { Movie, MovieDiscover, MovieDiscoverList } from '../../movies';
 
 @Component({
   selector: 'app-movie-list',
@@ -9,6 +9,7 @@ import { MovieDiscover } from '../../movies';
 })
 export class MovieListComponent implements OnInit {
   movieData: MovieDiscover[] = [];
+  moviePage: Movie[] = []
   constructor(private movieService: MovieService) {}
 
   ngOnInit(): void {
@@ -31,15 +32,23 @@ export class MovieListComponent implements OnInit {
     return `https://www.themoviedb.org/t/p/w220_and_h330_face${api_path}`;
   }
 
-  // onScroll(): void {
-  //     this.movieService
-  //       .getDiscoverMovies()
-  //       .subscribe((getPosterPath: movieData[]) => {
-  //         this.movieData.push(...getPosterPath);
-  //       });
-  //   }
+  onScroll(): void {
+      this.movieService
+        .getMorePages()
+        .subscribe((movieData) => {
+          this.moviePage.push(movieData)
+          console.log(this.moviePage);
+        });
+    }
 
-  onScroll() {
-    this.movieData;
-  }
+  // onScroll() {
+  //   let moviePage = 'https://api.themoviedb.org/3/discover/movie?api_key=3b12cfa2e8e41ce85be82944f8b7e697'
+  //   console.log(moviePage);
+  //   this.moviePage.push(...this.movieData)
+
+  //   //   this.movieService.PagesUrl().subscribe((moviePage: any) => {
+  //   //   this.moviePage.push(...moviePage)
+  //   // })
+
+  // }
 }
