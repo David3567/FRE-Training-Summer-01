@@ -1,1 +1,36 @@
+.navbar-brand{
+  text-align: center;
+  font-weight: 800;
+  font-size: 30px;
+  color: rgb(118, 158, 223);
+}
 
+.Login{
+  text-align: center;
+  font-weight: 800;
+  font-size: 20px;
+  color: rgb(118, 158, 223);
+}
+
+.Register{
+  text-align: center;
+  font-weight: 800;
+  font-size: 20px;
+  color: rgb(118, 158, 223);
+}
+
+/* text-align: center;
+  font-weight: 800;
+  font-size: clamp(
+    2.565784513950348rem,
+    calc(
+      2.565784513950348rem +
+        (
+          (4.478975999999999 - 2.565784513950348) *
+            ((100vw - 20rem) / (96 - 20))
+        )
+    ),
+    4.478975999999999rem
+  );
+  line-height: 1.1;
+  color: rgb(118, 158, 223); */

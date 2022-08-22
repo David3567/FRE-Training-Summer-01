@@ -8,7 +8,7 @@ import { Movie, MovieDiscover, MovieDiscoverList } from '../../movies';
   styleUrls: ['./movie-list.component.css'],
 })
 export class MovieListComponent implements OnInit {
-  movieData: MovieDiscover[] = [];
+  movieData: MovieDiscover[] = []
   moviePage: Movie[] = []
   constructor(private movieService: MovieService) {}
 
@@ -19,7 +19,7 @@ export class MovieListComponent implements OnInit {
         console.log(this.movieData);
 
       },
-      (error) => {
+      (_error) => {
         console.error('Request failed with error');
       },
       () => {
@@ -32,23 +32,39 @@ export class MovieListComponent implements OnInit {
     return `https://www.themoviedb.org/t/p/w220_and_h330_face${api_path}`;
   }
 
-  onScroll(): void {
-      this.movieService
+  getPage(){
+    this.movieService
         .getMorePages()
         .subscribe((movieData) => {
-          this.moviePage.push(movieData)
+          this.moviePage.push(...this.movieData)
           console.log(this.moviePage);
+
         });
-    }
+  }
 
   // onScroll() {
-  //   let moviePage = 'https://api.themoviedb.org/3/discover/movie?api_key=3b12cfa2e8e41ce85be82944f8b7e697'
-  //   console.log(moviePage);
-  //   this.moviePage.push(...this.movieData)
+  //   console.log(this.moviePage);
 
-  //   //   this.movieService.PagesUrl().subscribe((moviePage: any) => {
-  //   //   this.moviePage.push(...moviePage)
-  //   // })
+  //     this.getPage()
+  //     this.getPosterPath()
+  //   }
+
+    // onScroll(){
+    //   this.movieData
+    //   console.log(this.movieData);
+
+    // }
+
+  // onScroll() {
+  //   // let moviePage = 'https://api.themoviedb.org/3/movie?api_key=3b12cfa2e8e41ce85be82944f8b7e697'
+  //   // console.log(moviePage);
+  //   // this.moviePage.push(...this.movieData)
+  //   // console.log(this.movieData);
+
+
+  //     this.movieService.getDiscoverMovies().subscribe((moviePage: any) => {
+  //     this.moviePage.push(...moviePage)
+  //   })
 
   // }
 }

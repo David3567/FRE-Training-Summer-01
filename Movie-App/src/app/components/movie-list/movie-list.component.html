@@ -1,8 +1,4 @@
-<main
-infiniteScroll
-[infiniteScrollDistance]="2"
-[infiniteScrollThrottle]="100"
-(scrolled)="onScroll()">
+<main>
   <div>
     <div class="col-xs-6 col-md-2">
       <!-- <div class="input-group">
@@ -17,10 +13,6 @@ infiniteScroll
           <li
             *ngFor="let movie of movieData"
             class="movie-card"
-            infiniteScroll
-            [infiniteScrollDistance]="2"
-            [infiniteScrollThrottle]="100"
-            (scrolled)="onScroll()"
           >
             <div class="thumbnail">
               <div class="movie-card-container">
@@ -29,20 +21,27 @@ infiniteScroll
                 <div class="movie-card-likes">{{ movie.vote_count }}</div>
                 <img
                   src="{{ getPosterPath(movie.poster_path) }}"
-                  alt=""
-                  class="img-responsive"
+                  alt="{{ movie.title }}"
+                  class="img-responsive center-block d-block mx-auto"
                   class="img-rounded"
                   class="card-image"
                 />
               </div>
             </div>
             <div class="caption">
-              <h5>{{ movie.title }}</h5>
+              <h3>{{ movie.title }}</h3>
+              <hr>
+              <h5>Overview</h5>
+              <p>{{ movie.overview }}</p>
             </div>
-            <span></span>
           </li>
         </ul>
       </div>
     </div>
   </div>
 </main>
+
+<!-- infiniteScroll
+[infiniteScrollDistance]="2"
+[infiniteScrollThrottle]="100"
+(scrolled)="onScroll()" -->
