@@ -21,6 +21,8 @@ import { AuthGuard } from './guards/auth.guard';
 import { NotAuthorizedUserGuard } from './guards/not-authorized-user.guard';
 import { SharedModule } from './shared/shared.module';
 import { AuthorizedUserGuard } from './guards/authorized-user.guard';
+import { HelperService } from './services/helper.service';
+import { User } from './interfaces/user.interface';
 export const BASRURL = new InjectionToken<string>('');
 
 @NgModule({
@@ -60,7 +62,14 @@ export const BASRURL = new InjectionToken<string>('');
   bootstrap: [AppComponent],
 })
 export class AppModule {
-  constructor(library: FaIconLibrary) {
+  currentUser!: User;
+
+  constructor(
+    library: FaIconLibrary,
+    public helper: HelperService,
+    private userService: UserService,
+
+  ) {
     library.addIcons(
       faCalendar, faHome, faSearch,
       faClapperboard,

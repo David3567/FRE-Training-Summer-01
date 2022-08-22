@@ -20,7 +20,18 @@ export class UserService {
     private router: Router,
     private helper: HelperService,
     @Inject(BASRURL) private baseUrl: string
-  ) { }
+    ) { }
+    navigateToMovies() {
+      this.generateToken();
+
+      this.currentUser$.subscribe(res => {
+        this.currentUserInfo = res;
+      });
+
+      if (this.currentUserInfo.jwt_token) {
+        this.helper. navigateTo('/movies-list')
+      }
+    }
 
   register(user: User): Observable<User> {
     return this.http.post<any>(`${this.baseUrl}/auth-c/signup`, user)
@@ -59,7 +70,7 @@ export class UserService {
       .pipe(
         debounceTime(50),
         tap((res) => {
-          console.log(`Email ${email} already in use:\n ${res}`)
+          console.log(`Email ${email} already in use:\n ${res}`);
         }),
         catchError(this.helper.errorHandler<any>("checkEmail")));
   }
@@ -109,5 +120,16 @@ export class UserService {
         }),
         catchError(this.helper.errorHandler<any>("The user Update info"))
       )
+  }
+
+  onRefreshToken() {
+    return this.http.get(this.baseUrl + '/auth-c/refresh-token', this.helper.httpOptions)
+      .pipe(
+        tap((token) => {
+          console.log("Successfully refreshed token", token);
+          return token;
+        }),
+        catchError(this.helper.errorHandler<any>("Refreshing token"))
+    )
   }
 }

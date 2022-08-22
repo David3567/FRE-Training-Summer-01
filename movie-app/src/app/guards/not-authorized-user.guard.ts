@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, CanDeactivate, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, CanDeactivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from '../interfaces/user.interface';
 import { UserService } from '../services/user.service';
@@ -12,7 +12,10 @@ import { HomePageComponent } from '../components/home-page/home-page.component';
 })
 export class NotAuthorizedUserGuard implements CanDeactivate<SignInComponent | RegisterPageComponent> {
   currentUser!: User;
-  constructor(private user: UserService) {
+  constructor(
+    private user: UserService,
+    private router: Router
+  ) {
     user.currentUser$.subscribe(user => this.currentUser = user);
   }
 

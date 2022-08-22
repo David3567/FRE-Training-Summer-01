@@ -1,6 +1,8 @@
 import { ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
+import { HelperService } from '../services/helper.service';
+import { User } from '../interfaces/user.interface';
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
@@ -9,6 +11,7 @@ import { UserService } from '../services/user.service';
 export class SignInComponent implements OnInit {
   isHidden = true;
   showErrorMess = false;
+  currentUser!: User;
 
   signInForm: FormGroup = this.formBuilder.group({
     email: ['', [Validators.required, Validators.minLength(3)]],
@@ -17,27 +20,29 @@ export class SignInComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private helper: HelperService
   ) { }
 
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-    //GETTING THE CURRENTLY LOGGED IN MEMBER
-    this.userService.currentUser$.subscribe(res => {
-      console.log("Inside the sign in component (nginit): ");
-      console.log(res);
-    })
+    this.userService.navigateToMovies()
   }
 
   showPassword(): void {
     this.isHidden = !this.isHidden;
   }
 
+  get email() {
+    return this.signInForm.get('email')
+  }
+
+  get password() {
+    return this.signInForm.get('password');
+  }
+
   onLogin(e: any): void {
     this.userService.signIn(this.signInForm.value)
       .subscribe((user: any) => {
-      console.log("Inside the sign in component (onLogin): ");
         console.log(user);
       })
   }

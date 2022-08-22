@@ -15,6 +15,7 @@ const routes: Route[] = [
   },
   {
     path: 'movie-card',
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import('./movies-list.module').then((m) => m.MoviesListModule),
     component: MovieCardComponent,

@@ -7,21 +7,21 @@
           Sign In
         </h2>
         <form
+        [formGroup]="signInForm"
           class="sign__in--form"
-          [formGroup]="signInForm"
           (ngSubmit)="onLogin($event)">
           <label for="email_or_phone_number">
             <input
             formControlName="email"
-              #email
+              #emailRef
               type="text"
               id="email_or_phone_number"
               name="email_or_phone_number"
               placeholder="Email or phone"
               required>
-            <em *ngIf="showErrorMess" class="error">
-                Something went wrong with the email
-            </em>
+              <em *ngIf="emailRef.value.trim()!== '' && email?.hasError" class="error">
+                Email has errors
+              </em>
           </label>
             <label for="password" class="space__between">
               <input
@@ -29,7 +29,7 @@
                 name="password"
                 id="password"
                 placeholder="Password"
-                #password
+                #passwordRef
                 formControlName="password">
               <span (click)="showPassword()" class="show__password">
                 <ng-container *ngIf="isHidden; else hidePassword">
@@ -39,8 +39,8 @@
                   Hide
                 </ng-template>
               </span>
-              <em *ngIf="showErrorMess" class="error">
-                There's Something wrong with the password
+              <em *ngIf="passwordRef.value.trim() !== '' && password?.hasError " class="error">
+                Password has error
               </em>
             </label>
 
