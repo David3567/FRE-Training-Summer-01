@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -6,8 +6,7 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './modules/app-routing/app-routing.module';
 import { HomePageModule } from './modules/home-page/home-page.module';
 import { NavigationBarModule } from './modules/navigation-bar/navigation-bar.module';
-import { NavigationBarComponent } from './modules/navigation-bar/components/navigation-bar/navigation-bar.component';
-
+import { AppInitializerService } from './shared/services/app-initializer.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +24,13 @@ import { NavigationBarComponent } from './modules/navigation-bar/components/navi
       registrationStrategy: 'registerWhenStable:30000'
     }),
   ],
-  providers: [],
+  providers: [
+    AppInitializerService,
+    { provide: APP_INITIALIZER, useFactory: initializeApp, deps: [AppInitializerService], multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function initializeApp(initializer: AppInitializerService) {
+  return () => initializer.init();
+}

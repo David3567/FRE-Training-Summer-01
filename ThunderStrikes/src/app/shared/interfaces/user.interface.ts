@@ -5,6 +5,7 @@ export interface User {
     email?: string;
     role?: string;
     tmdb_key?: string;
+    iat?: number;
     exp?: number;
     jwt_token?: string;
   }
