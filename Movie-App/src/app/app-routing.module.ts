@@ -36,7 +36,7 @@ const routes: Routes = [
     resolve: { movieData: AppResolverService }
   },
   {
-    path: '',
+    path: 'movies/:id',
     children: [
       {
         path: 'movies/:id',

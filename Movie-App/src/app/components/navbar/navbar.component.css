@@ -2,7 +2,6 @@
   background-color: #caddff;
 }
 
-
 .navbar-brand{
   text-align: center;
   font-weight: 800;
@@ -10,36 +9,19 @@
   color: rgba(219, 111, 254, 0.902);
 }
 
-.Login{
+.Login,
+.Register,
+.user-update,
+.user-logout{
   text-align: center;
   font-weight: 800;
   font-size: 20px;
   color: rgb(118, 158, 223);
 }
 
-.Register{
-  text-align: center;
-  font-weight: 800;
-  font-size: 20px;
-  color: rgb(118, 158, 223);
-}
-
-.navbar-brand :hover{
+.navbar-brand,
+.user-update,
+.user-logout :hover{
   color: rgba(219, 111, 254, 0.902);
 }
 
-/* text-align: center;
-  font-weight: 800;
-  font-size: clamp(
-    2.565784513950348rem,
-    calc(
-      2.565784513950348rem +
-        (
-          (4.478975999999999 - 2.565784513950348) *
-            ((100vw - 20rem) / (96 - 20))
-        )
-    ),
-    4.478975999999999rem
-  );
-  line-height: 1.1;
-  color: rgb(118, 158, 223); */
