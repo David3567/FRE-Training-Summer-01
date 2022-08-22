@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomepageComponent } from '../home-page/components/homepage/homepage.component';
+import { MovieBrowseResolverResolver } from '../movie-browse/resolver/movie-browse-resolver.resolver';
 
 const routes: Routes = [
   {
@@ -26,7 +27,8 @@ const routes: Routes = [
   
   {
     path: "movie-browse", 
-    loadChildren: () => import('../movie-browse/movie-browse.module').then(m => m.MovieBrowseModule)
+    loadChildren: () => import('../movie-browse/movie-browse.module').then(m => m.MovieBrowseModule),
+    resolve: {movies: MovieBrowseResolverResolver}
   },
   {
     path: "search",

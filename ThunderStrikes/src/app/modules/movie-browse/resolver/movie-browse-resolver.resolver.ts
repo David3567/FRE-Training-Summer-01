@@ -4,7 +4,7 @@ import {
   RouterStateSnapshot,
   ActivatedRouteSnapshot
 } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { debounce, debounceTime, Observable, of } from 'rxjs';
 import { MovieDetails } from '../../../shared/interfaces/tmdb.interface';
 import { MovieDiscoverService } from '../../../shared/services/movie-discover.service';
 
