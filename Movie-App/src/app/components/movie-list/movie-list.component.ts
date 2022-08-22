@@ -9,12 +9,14 @@ import { MovieDiscover } from '../../movies';
 })
 export class MovieListComponent implements OnInit {
   movieData: MovieDiscover[] = [];
+  show: boolean = false;
   constructor(private movieService: MovieService) {}
 
   ngOnInit(): void {
     this.movieService.getDiscoverMovies().subscribe(
       (data) => {
         this.movieData = data.results;
+        console.log(this.movieData)
       },
       (error) => {
         console.error('Request failed with error');
@@ -36,5 +38,9 @@ export class MovieListComponent implements OnInit {
 
   onScroll() {
     this.movieData;
+  }
+
+  toggleTrailer() {
+    console.log(this.show)
   }
 }
