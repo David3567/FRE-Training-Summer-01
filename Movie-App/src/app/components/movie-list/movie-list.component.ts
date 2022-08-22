@@ -16,14 +16,9 @@ export class MovieListComponent implements OnInit {
     this.movieService.getDiscoverMovies().subscribe(
       (data) => {
         this.movieData = data.results;
-        console.log(this.movieData);
-
       },
       (_error) => {
         console.error('Request failed with error');
-      },
-      () => {
-        console.log('Request completed');
       }
     );
   }
