@@ -32,7 +32,7 @@ export class SigninComponent implements OnInit {
     const credentialLogin = this.loginForm.value;
     this.authService.login(credentialLogin).subscribe({
       next: (val)=> (
-        localStorage.setItem('user',JSON.stringify(val)), this.router.navigate(['movielist'])),
+        localStorage.setItem('user',val.accessToken), this.router.navigate(['movielist'])),
       error: (e) =>
         alert(e.error.message),
       complete: () =>

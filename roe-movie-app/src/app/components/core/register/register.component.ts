@@ -15,7 +15,12 @@ import { User } from '../../../interfaces/user';
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup
   counter : number = 0;
-  selected : string = '';
+  selected: string = '';
+  roles = [
+    'USER',
+    'ADMIN',
+    'SUPERUSER',
+  ]
 
   get email(): FormControl {
     return this.registerForm.get('email') as FormControl;
@@ -31,6 +36,10 @@ export class RegisterComponent implements OnInit {
 
   get confirmPassword(): FormControl {
     return this.registerForm.get('confirmPassword') as FormControl;
+  }
+
+  get role(): FormControl {
+    return this.registerForm.get('role') as FormControl;
   }
 
   constructor(
@@ -76,7 +85,14 @@ export class RegisterComponent implements OnInit {
           passwordMatch()
         ],
         updateOn: 'change',
-      }]
+      }],
+      role: ['', {
+        validators: [
+          Validators.required,
+        ],
+        updateOn: 'change',
+      }
+    ]
     });
 
     this.registerForm.patchValue(
@@ -89,13 +105,14 @@ export class RegisterComponent implements OnInit {
       email: this.email?.value,
       username: this.username?.value,
       password: this.password?.value,
-      role: "ADMIN",
-      tmdb_key: "randomassortment"
+      role: this.role.value,
+      tmdb_key: ""
     }
+    console.log(credentialRegister)
     this.authService.register(credentialRegister).subscribe({
       next: () => this.counter++,
       error: () => alert(`Hmmm. That didn't seem to work. Try again.`),
-      complete: () => console.log('complete')
+      // complete: () => console.log('complete')
     });
   }
 

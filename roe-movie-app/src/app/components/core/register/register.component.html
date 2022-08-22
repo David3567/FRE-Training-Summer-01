@@ -4,7 +4,7 @@
     class="modal"
     [ngClass] = "counter === 0 ? 'visible' : ''"
   >
-    <header>STEP <span>1</span> OF <span>3</span></header>
+    <header>STEP <span>1</span> OF <span>2</span></header>
     <h2>Create a password to start your membership</h2>
     <p>Just a few more steps and you're done!</p>
     <p>We hate paperwork, too.</p>
@@ -29,6 +29,10 @@
         Please add a valid email.
         </p>
       </div>
+      <select name="roles" formControlName="role">
+        <option [ngValue]="null">Select a Role</option>
+        <option *ngFor="let role of roles" [ngValue]="role">{{role}}</option>
+      </select>
       <input
         name="password"
         type="password"
@@ -76,7 +80,7 @@
 
   <div
   class="modal"
-  [ngClass] = "counter === 1 ? 'visible' : ''"
+  
   >
   <div>
     <span class="'checkmark'"></span>
@@ -126,7 +130,7 @@
 
   <div
   class="modal"
-  [ngClass] = "counter === 2 ? 'visible' : ''"
+  
   >
   <div class="'modal-3'">
     <header>STEP <span>2</span> OF <span>3</span></header>
@@ -167,34 +171,34 @@
     <table>
       <tr>
         <td></td>
-        <th (click)="toggleSelect($event)" [ngClass]="selected === 'basic' ? 'paddingselect' : ''"><div [ngClass]="selected === 'basic' ? 'select select-2 arrow-box' : ''">Basic</div></th>
-        <th (click)="toggleSelect($event)" [ngClass]="selected === 'standard' ? 'paddingselect' : ''"><div [ngClass]="selected === 'standard' ? 'select select-2 arrow-box' : ''">Standard</div></th>
-        <th (click)="toggleSelect($event)" [ngClass]="selected === 'premium' ? 'paddingselect' : ''"><div [ngClass]="selected === 'premium' ? 'select select-2 arrow-box' : ''">Premium</div></th>
+        <th (click)="toggleSelect($event)" [ngClass]="selected === 'user' ? 'paddingselect' : ''"><div [ngClass]="selected === 'user' ? 'select select-2 arrow-box' : ''">user</div></th>
+        <th (click)="toggleSelect($event)" [ngClass]="selected === 'admin' ? 'paddingselect' : ''"><div [ngClass]="selected === 'admin' ? 'select select-2 arrow-box' : ''">admin</div></th>
+        <th (click)="toggleSelect($event)" [ngClass]="selected === 'superuser' ? 'paddingselect' : ''"><div [ngClass]="selected === 'superuser' ? 'select select-2 arrow-box' : ''">superuser</div></th>
       </tr>
       <tr>
         <td>Monthly Price</td>
-        <td [ngClass]="selected === 'basic' ? 'select' : ''">$9.99</td>
-        <td [ngClass]="selected === 'standard' ? 'select' : ''">$15.99</td>
-        <td [ngClass]="selected === 'premium' ? 'select' : ''">$19.99</td>
+        <td [ngClass]="selected === 'user' ? 'select' : ''">$9.99</td>
+        <td [ngClass]="selected === 'admin' ? 'select' : ''">$15.99</td>
+        <td [ngClass]="selected === 'superuser' ? 'select' : ''">$19.99</td>
       </tr>
       <tr>
         <td>Video Quality</td>
-        <td [ngClass]="selected === 'basic' ? 'select' : ''">Good</td>
-        <td [ngClass]="selected === 'standard' ? 'select' : ''">Better</td>
-        <td [ngClass]="selected === 'premium' ? 'select' : ''">Best</td>
+        <td [ngClass]="selected === 'user' ? 'select' : ''">Good</td>
+        <td [ngClass]="selected === 'admin' ? 'select' : ''">Better</td>
+        <td [ngClass]="selected === 'superuser' ? 'select' : ''">Best</td>
       </tr>
       <tr>
         <td>Resolution</td>
-        <td [ngClass]="selected === 'basic' ? 'select' : ''">480p</td>
-        <td [ngClass]="selected === 'standard' ? 'select' : ''">1080p</td>
-        <td [ngClass]="selected === 'premium' ? 'select' : ''">4K+HDR</td>
+        <td [ngClass]="selected === 'user' ? 'select' : ''">480p</td>
+        <td [ngClass]="selected === 'admin' ? 'select' : ''">1080p</td>
+        <td [ngClass]="selected === 'superuser' ? 'select' : ''">4K+HDR</td>
       </tr>
       <tr>
         <td>Watch on your TV, computer, mobile phone and table</td>
-        <td [ngClass]="selected === 'basic' ? 'select' : ''">
+        <td [ngClass]="selected === 'user' ? 'select' : ''">
           <svg>
             <path
-              [ngClass]="selected === 'basic' ? 'select select-1' : ''"
+              [ngClass]="selected === 'user' ? 'select select-1' : ''"
               fill-rule="evenodd"
               clip-rule="evenodd"
               d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z"
@@ -202,9 +206,9 @@
             ></path>
           </svg>
         </td>
-        <td [ngClass]="selected === 'standard' ? 'select' : ''">
+        <td [ngClass]="selected === 'admin' ? 'select' : ''">
           <svg>
-            <path [ngClass]="selected === 'standard' ? 'select select-1' : ''"
+            <path [ngClass]="selected === 'admin' ? 'select select-1' : ''"
               fill-rule="evenodd"
               clip-rule="evenodd"
               d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z"
@@ -212,10 +216,10 @@
             ></path>
           </svg>
         </td>
-        <td [ngClass]="selected === 'premium' ? 'select' : ''">
+        <td [ngClass]="selected === 'superuser' ? 'select' : ''">
           <svg>
             <path
-              [ngClass]="selected === 'premium' ? 'select select-1' : ''"
+              [ngClass]="selected === 'superuser' ? 'select select-1' : ''"
               fill-rule="evenodd"
               clip-rule="evenodd"
               d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z"
@@ -234,12 +238,9 @@
 
   <div
   class="modal"
-  [ngClass] = "counter === 3 ? 'visible' : ''"
+  [ngClass] = "counter === 2 ? 'visible' : ''"
   >
-    <header>STEP <span>3</span> OF <span>3</span></header>
-    <h2>We fibbed.</h2>
-    <p>There is no step 3.</p>
-    <p>Welcome!</p>
+    <header>STEP <span>2</span></header>
     <p>Sign in.</p>
     <button (click)="signin()">Sign In <span>></span></button>
   </div>
@@ -249,13 +250,3 @@
 
   </app-footer>
 </footer>
-
-<!-- last modal is setup payment modal for credit card, paypal, etc.-->
-<!-- <header>STEP <span>3</span> OF <span>3</span></header>
-    <h2>Set up your payment</h2>
-    <p>Your membership starts as soon as you set up payment.</p>
-    <p><span>No commitments.</span></p>
-    <p><span>Cancel online anytime.</span></p>
-    <button>Credit or Debit Card <span>></span></button>
-    <button>Paypal <span>></span></button>
-    <button>Gift Code <span>></span></button> -->
