@@ -1,1 +1,132 @@
-<p>movielist-user works!</p>
+<app-header-top></app-header-top>
+  <div
+  class="movie-list"
+  >
+  <div class="'modal-3'">
+    <h2>Choose the plan that's right for you.</h2>
+    <div>
+      <svg>
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z"
+          fill="currentColor"
+        ></path>
+      </svg>
+      <p>Watch all you want. Ad-free.</p>
+    </div>
+    <div>
+      <svg>
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z"
+          fill="currentColor"
+        ></path>
+      </svg>
+      <p>Recommendations just for you.</p>
+    </div>
+    <div>
+      <svg>
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z"
+          fill="currentColor"
+        ></path>
+      </svg>
+      <p>Change or cancel your plan anytime.</p>
+    </div>
+    <table>
+      <tr>
+        <td></td>
+        <th (click)="toggleSelect($event)" [ngClass]="selected === 'user' ? 'paddingselect' : ''"><div [ngClass]="selected === 'user' ? 'select select-2 arrow-box' : ''">user</div></th>
+        <th (click)="toggleSelect($event)" [ngClass]="selected === 'admin' ? 'paddingselect' : ''"><div [ngClass]="selected === 'admin' ? 'select select-2 arrow-box' : ''">admin</div></th>
+        <th (click)="toggleSelect($event)" [ngClass]="selected === 'superuser' ? 'paddingselect' : ''"><div [ngClass]="selected === 'superuser' ? 'select select-2 arrow-box' : ''">superuser</div></th>
+      </tr>
+      <tr>
+        <td>Monthly Price</td>
+        <td [ngClass]="selected === 'user' ? 'select' : ''">$9.99</td>
+        <td [ngClass]="selected === 'admin' ? 'select' : ''">$15.99</td>
+        <td [ngClass]="selected === 'superuser' ? 'select' : ''">$19.99</td>
+      </tr>
+      <tr>
+        <td>Video Quality</td>
+        <td [ngClass]="selected === 'user' ? 'select' : ''">Good</td>
+        <td [ngClass]="selected === 'admin' ? 'select' : ''">Better</td>
+        <td [ngClass]="selected === 'superuser' ? 'select' : ''">Best</td>
+      </tr>
+      <tr>
+        <td>Resolution</td>
+        <td [ngClass]="selected === 'user' ? 'select' : ''">480p</td>
+        <td [ngClass]="selected === 'admin' ? 'select' : ''">1080p</td>
+        <td [ngClass]="selected === 'superuser' ? 'select' : ''">4K+HDR</td>
+      </tr>
+      <tr>
+        <td>Watch on your TV, computer, mobile phone and table</td>
+        <td [ngClass]="selected === 'user' ? 'select' : ''">
+          <svg>
+            <path
+              [ngClass]="selected === 'user' ? 'select select-1' : ''"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z"
+              fill="currentColor"
+            ></path>
+          </svg>
+        </td>
+        <td [ngClass]="selected === 'admin' ? 'select' : ''">
+          <svg>
+            <path [ngClass]="selected === 'admin' ? 'select select-1' : ''"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z"
+              fill="currentColor"
+            ></path>
+          </svg>
+        </td>
+        <td [ngClass]="selected === 'superuser' ? 'select' : ''">
+          <svg>
+            <path
+              [ngClass]="selected === 'superuser' ? 'select select-1' : ''"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M8.68239 19.7312L23.6824 5.73115L22.3178 4.26904L8.02404 17.6098L2.70718 12.293L1.29297 13.7072L7.29297 19.7072C7.67401 20.0882 8.28845 20.0988 8.68239 19.7312Z"
+              fill="currentColor"
+            ></path>
+          </svg>
+        </td>
+      </tr>
+    </table>
+    <div>
+      <button 
+      (click)="openModal()"
+      [disabled]="!this.selected"
+      >
+        Set Role
+      </button>
+    </div>
+  </div>
+  </div>
+  <div 
+    class="password-modal"
+    [ngClass]="open ? 'open' : ''"
+  >
+     <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <input name="password"
+        type="password"
+        placeholder="Please confirm your password"
+        formControlName="password"
+      />
+      <button
+        type="submit"
+        [disabled]="!form.valid"
+      >
+        Confirm Change
+      </button>
+     </form>
+  </div>
+  <footer>
+  <app-footer>
+  </app-footer>
+</footer>

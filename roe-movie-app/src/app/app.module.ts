@@ -4,7 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {HttpClientModule, HttpClient} from '@angular/common/http';
+import { JwtInterceptor } from './services/jwt.interceptor';
+import {HttpClientModule, HttpClient, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import jwt_decode from 'jwt-decode';
@@ -35,6 +36,10 @@ function initializeAppFactory(httpClient: HttpClient): void {
     HttpClientModule,
   ],
   providers: [JwtHelperService, { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },AuthenticationService,
+    { provide: HTTP_INTERCEPTORS, 
+      useClass: JwtInterceptor, 
+      multi: true 
+     },
     {
       provide: APP_INITIALIZER,
       useFactory: initializeAppFactory,

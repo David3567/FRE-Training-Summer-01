@@ -8,8 +8,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { Router } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
-
 import { SharedModule } from '../../shared/shared/shared.module';
 import { SigninRoutingModule } from './signin-routing.module';
 import { SigninComponent } from './signin.component';
