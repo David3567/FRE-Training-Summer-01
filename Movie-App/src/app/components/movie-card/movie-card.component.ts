@@ -23,8 +23,8 @@ export class MovieCardComponent implements OnInit {
     this.movieService.getMovies().subscribe(
       (data) => {
         this.movieData = data.results;
-        console.log(data)
-        console.log(this.movieData)
+        console.log(data) // This displays the youtube trailer data
+        console.log(this.movieData) // This comesback undefined
       },
       (error) => {
         console.error('Request failed with error');
