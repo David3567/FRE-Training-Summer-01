@@ -24,6 +24,7 @@
     "angular-embed-video": "^0.0.4",
     "angular-in-memory-web-api": "^0.14.0",
     "angular-module": "^1.0.1",
+    "jwt-decode": "^3.1.2",
     "ng": "^0.0.0",
     "ngx-infinite-scroll": "^14.0.0",
     "rxjs": "~7.5.0",

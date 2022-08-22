@@ -11,6 +11,8 @@ import {
 } from 'rxjs';
 import { Movie, RootObject } from '../interfaces/movie.interface';
 import { HelperService } from './helper.service';
+import jwt_decode from 'jwt-decode';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root',
@@ -21,45 +23,36 @@ export class MovieService {
   movies$ = this.moviesSubject$.asObservable();
   private defaultId: number = 0;
   private baseUrl: string = 'https://api.themoviedb.org/3';
-  private apiKey: string = '?api_key=7979b0e432796fe7fa957d6fbbeb0835';
-  private testUrl: string =
-    'https://api.themoviedb.org/3/list/5?api_key=7979b0e432796fe7fa957d6fbbeb0835';
-  private listId = '5';
+  private apiKeys?: string;
+
+  authData: any;
+
   constructor(
     private readonly http: HttpClient,
+    private readonly userService: UserService,
     private helper: HelperService
   ) {}
+
+  ngOnInint() {}
+
+  getApi(apikey: string) {
+    this.apiKeys = apikey;
+  }
 
   getData() {
     throw new Error('Method not implemented.');
   }
 
-  getMovieList() {
-    return this.http
-      .get(`${this.baseUrl}/list/${this.listId}${this.apiKey}`)
-      .pipe(
-        <any>tap(({ poster_path, title, release_date, vote_average }: any) => {
-          this.movies = [
-            { poster_path, title, release_date, vote_average },
-            ...this.movies,
-          ];
-
-
-        this.moviesSubject$.next(this.movies);
-      })
-      );
-  }
-
   searchMovies(movieName: string) {
     return this.http.get(
-      `${this.baseUrl}/search/movie${this.apiKey}&query=${movieName}`
+      `${this.baseUrl}/search/movie?api_key=${this.apiKeys}&query=${movieName}`
     );
   }
 
   getMoviesList(): Observable<any> {
     let id =
-      this.defaultId > 0 ? this.defaultId : Math.floor(Math.random() * 40);
-    let url = `https://api.themoviedb.org/3/list/${id}?api_key=7979b0e432796fe7fa957d6fbbeb0835`;
+      this.defaultId > 0 ? this.defaultId : Math.floor(Math.random() * 500);
+    let url = `https://api.themoviedb.org/3/list/${id}?api_key=${this.apiKeys}`;
 
     return this.http.get<RootObject>(url, this.helper.httpOptions).pipe(
       debounceTime(100),
@@ -76,7 +69,7 @@ export class MovieService {
   }
 
   getTrendingMovies() {
-    let url = `https://api.themoviedb.org/3/trending/all/day?api_key=7979b0e432796fe7fa957d6fbbeb0835`;
+    let url = `https://api.themoviedb.org/3/trending/all/day?api_key=${this.apiKeys}`;
 
     return this.http.get<RootObject>(url).pipe(
       debounceTime(50),
@@ -89,12 +82,12 @@ export class MovieService {
   }
 
   getVideoById(id: number): Observable<any> {
-    let url = `https://api.themoviedb.org/3/movie/${id}/videos${this.apiKey}&language=en-US`;
+    let url = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${this.apiKeys}&language=en-US`;
 
     return this.http.get(url, this.helper.httpOptions).pipe(
       map(({ results }: any) => {
-        console.log("movie video successfully retrieved")
-        console.log(results)
+        console.log('movie video successfully retrieved');
+        console.log(results);
         return results.map((result: any) => {
           return {
             id: result.id,
@@ -107,8 +100,10 @@ export class MovieService {
       catchError(this.helper.errorHandler<any>('GetMovie'))
     );
   }
+
   getSingleMovie(id: number): Observable<any> {
-    let url = `https://api.themoviedb.org/3/movie/${id+this.apiKey}&language=en-US`
-    return this.http.get(url, this.helper.httpOptions)
+    let url = `https://api.themoviedb.org/3/movie/${id}?api_key=${this.apiKeys}&language=en-US`;
+
+    return this.http.get(url, this.helper.httpOptions);
   }
 }

@@ -8,16 +8,23 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MovieService } from './services/movie.service';
-import { TestComponent } from './test/test.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { UserService } from './services/user.service';
-import { ShortPipe} from './pipes/short.pipe';
-import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faHome, faSearch, faCalendar, faClapperboard, faEye } from '@fortawesome/free-solid-svg-icons';
-
+import { ShortPipe } from './pipes/short.pipe';
+import {
+  FaIconLibrary,
+  FontAwesomeModule,
+} from '@fortawesome/angular-fontawesome';
+import {
+  faHome,
+  faSearch,
+  faCalendar,
+  faClapperboard,
+  faEye,
+} from '@fortawesome/free-solid-svg-icons';
 
 export const BASRURL = new InjectionToken<string>('');
 
@@ -28,7 +35,6 @@ export const BASRURL = new InjectionToken<string>('');
     NavHeaderHPComponent,
     HomePageComponent,
     PageNotFoundComponent,
-    TestComponent,
     // ShortPipe
   ],
   imports: [
@@ -51,10 +57,6 @@ export const BASRURL = new InjectionToken<string>('');
 })
 export class AppModule {
   constructor(library: FaIconLibrary) {
-    library.addIcons(
-      faCalendar, faHome, faSearch,
-      faClapperboard,
-      faEye
-    );
+    library.addIcons(faCalendar, faHome, faSearch, faClapperboard, faEye);
   }
 }

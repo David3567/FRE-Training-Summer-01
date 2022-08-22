@@ -1,6 +1,5 @@
 .container {
-  margin-top: 5rem;
-  overflow: auto;
+  margin-top: 7rem;
 }
 .form__container {
   position: fixed;
@@ -32,8 +31,8 @@
   width: 100%;
 }
 .movie__container {
+  height: 50rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  min-height: 80rem;
 }
