@@ -9,6 +9,7 @@ import { User } from '../interfaces/user.interface';
 })
 export class SubscriptionComponent implements OnInit {
   currentUser!: User;
+  selectedMembership!: string;
 
   features: string[] = [
     'Monthly price after free ends on 01/01/2024',
@@ -54,16 +55,15 @@ export class SubscriptionComponent implements OnInit {
     })
   }
 
-  selectedMembership!: string;
   onRoleUpdate(role: string) {
     this.selectedMembership = role;
-    // this.userService.onUpdateRole({
-    //   username: this.currentUser.username!,
-    //   password: "123Abc",
-    //   email: this.currentUser.email!,
-    //   role: "ADMIN",
-    //   tmdb_key: "7979b0e432796fe7fa957d6fbbeb0835"
-    // }).subscribe(console.log)
+    this.userService.onUpdateRole({
+      username: this.currentUser.username!,
+      password: "123Abc",
+      email: this.currentUser.email!,
+      role: "ADMIN",
+      tmdb_key: "7979b0e432796fe7fa957d6fbbeb0835"
+    }).subscribe(console.log)
   }
 }
 
