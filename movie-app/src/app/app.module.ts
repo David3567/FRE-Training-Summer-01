@@ -1,5 +1,5 @@
 import { InjectionToken, NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { WelBannerComponent } from './components/home-page/wel-banner/wel-banner.component';
 import { NavHeaderHPComponent } from './components/home-page/nav-header-hp/nav-header-hp.component';
@@ -10,16 +10,13 @@ import { CommonModule } from '@angular/common';
 import { MovieService } from './services/movie.service';
 import { TestComponent } from './test/test.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { UserService } from './services/user.service';
 import { ShortPipe} from './pipes/short.pipe';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faHome, faSearch, faCalendar, faClapperboard, faEye } from '@fortawesome/free-solid-svg-icons';
-import { SubscriptionComponent } from './subscription/subscription.component';
-
-
+import { faHome, faSearch, faCalendar, faClapperboard, faEye, faCheck, faTimeline, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { AuthInterceptor } from './auth.interceptor';
 export const BASRURL = new InjectionToken<string>('');
 
 @NgModule({
@@ -30,7 +27,6 @@ export const BASRURL = new InjectionToken<string>('');
     HomePageComponent,
     PageNotFoundComponent,
     TestComponent,
-    SubscriptionComponent,
     // ShortPipe
   ],
   imports: [
@@ -48,6 +44,11 @@ export const BASRURL = new InjectionToken<string>('');
     ShortPipe,
     UserService,
     { provide: BASRURL, useValue: 'http://localhost:4231' },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass:AuthInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent],
 })
@@ -56,7 +57,8 @@ export class AppModule {
     library.addIcons(
       faCalendar, faHome, faSearch,
       faClapperboard,
-      faEye
+      faEye,
+      faCheck, faTimes
     );
   }
 }

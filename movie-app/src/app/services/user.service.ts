@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, tap, catchError, BehaviorSubject } from 'rxjs';
@@ -7,13 +7,11 @@ import { User } from '../interfaces/user.interface';
 import { HelperService } from './helper.service';
 import { debounceTime } from 'rxjs/operators';
 import jwt_decode from 'jwt-decode';
-// import jwt_decode from 'jwt_decode';
-// jwtDecode
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  currentUserInfo: any = {};
+  currentUserInfo!: User;
   currentUser$ = new BehaviorSubject<any>(this.currentUserInfo);
   user = this.currentUser$.asObservable();
 
@@ -25,7 +23,7 @@ export class UserService {
   ) { }
 
   register(user: User): Observable<User> {
-    return this.http.post<any>(`${this.baseUrl}/auth/signup`, user)
+    return this.http.post<any>(`${this.baseUrl}/auth-c/signup`, user)
       .pipe(
         tap((newUser: User) => {
           console.log(`Successfully registered ${newUser.email}`);
@@ -87,9 +85,9 @@ export class UserService {
       id,
       email,
       role,
-      moviesSecretKey: tmdb_key,
+      tmdb_key,
       exp,
-      jwt_token: accessToken
+      jwt_token: accessToken!
     }
    this.currentUser$.next(this.currentUserInfo);
   }
@@ -102,11 +100,12 @@ export class UserService {
       role: string,
       tmdb_key: string
     }): Observable<User> {
-    return this.http.patch<User>(`${this.baseUrl}/auth-c/updateuser`, this.helper.httpOptions)
+
+    return this.http.patch<any>(`${this.baseUrl}/auth/userupdate`, user)
       .pipe(
-        tap((currentUser) => {
-          console.log("Successfully updated user")
-          console.log(currentUser)
+        tap((updated) => {
+          console.log("Successfully updated user");
+          return updated;
         }),
         catchError(this.helper.errorHandler<any>("The user Update info"))
       )
