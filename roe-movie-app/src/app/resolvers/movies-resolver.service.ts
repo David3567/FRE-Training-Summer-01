@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 import { forkJoin, map, Observable, of } from 'rxjs';
-import { MoviesService } from './movies.service';
+import { MoviesService } from '../services/movies.service';
 
 @Injectable({
   providedIn: 'root'

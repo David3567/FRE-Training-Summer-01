@@ -12,9 +12,9 @@ export class SidebarComponent implements OnInit {
   @Output('selectNowPlaying') selectNowPlaying: EventEmitter<any> =
     new EventEmitter();
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   returnhome() {
     this.router.navigate(['/movielist']);

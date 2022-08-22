@@ -7,7 +7,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
   templateUrl: './movielist-user.component.html',
   styleUrls: ['./movielist-user.component.css']
 })
-export class MovielistUserComponent implements OnInit , DoCheck, OnChanges{
+export class MovielistUserComponent implements OnInit, DoCheck, OnChanges {
   selected: string = '';
   form!: FormGroup
   open: boolean = false;
@@ -15,13 +15,13 @@ export class MovielistUserComponent implements OnInit , DoCheck, OnChanges{
     private route: ActivatedRoute,
     private authService: AuthenticationService,
     private fb: FormBuilder,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
       password: ['', {
         validators: [
-          Validators. required, 
+          Validators.required,
         ],
         updateOn: 'change',
       }],
@@ -39,8 +39,8 @@ export class MovielistUserComponent implements OnInit , DoCheck, OnChanges{
   }
 
   toggleSelect(e: MouseEvent): void {
-  this.selected = (e.target as HTMLElement).innerText.toLowerCase();
-  console.log(this.selected)
+    this.selected = (e.target as HTMLElement).innerText.toLowerCase();
+    console.log(this.selected)
   }
 
   openModal() {
@@ -51,7 +51,7 @@ export class MovielistUserComponent implements OnInit , DoCheck, OnChanges{
   onSubmit() {
     this.authService.setRole(this.password.value, this.selected.toUpperCase()).subscribe({
       error: (e) => console.log(e.error.message)
-  })
+    })
   }
 
 }

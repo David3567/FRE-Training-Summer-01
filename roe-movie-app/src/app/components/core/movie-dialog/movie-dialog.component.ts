@@ -11,12 +11,12 @@ import { MoviesService } from 'src/app/services/movies.service';
 export class MovieDialogComponent implements OnInit {
 
   casts: any = []
-  key:string= ''
+  key: string = ''
 
   constructor(
     public dialogRef: MatDialogRef<MovieDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private service: MoviesService) { dialogRef.disableClose = true; this.casts=data.casts; this.key=data.videos.results[0].key; }
+    private service: MoviesService) { dialogRef.disableClose = true; this.casts = data.casts; this.key = data.videos.results[0].key; }
 
   ngOnInit(): void {
 

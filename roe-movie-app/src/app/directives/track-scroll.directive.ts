@@ -14,7 +14,7 @@ import { MovielistComponent } from '../components/core/movielist/movielist.compo
 export class TrackScrollDirective {
   public initial_up: number = 0;
   @Output() direction: EventEmitter<string> = new EventEmitter();
-  constructor(private com: MovielistComponent) {}
+  constructor(private com: MovielistComponent) { }
   track($event: Event) {
     if (window.pageYOffset > this.initial_up + 1500) {
       this.initial_up = window.pageYOffset;

@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { pswduppercase, pswdnumeric, pswdlowercase, passwordMatch } from '../../../services/passwordvalidator';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authservice.service';
-import {  ViewportScroller } from '@angular/common';
+import { ViewportScroller } from '@angular/common';
 import { __values } from 'tslib';
 import { User } from '../../../interfaces/user';
 
@@ -14,7 +14,7 @@ import { User } from '../../../interfaces/user';
 })
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup
-  counter : number = 0;
+  counter: number = 0;
   selected: string = '';
   roles = [
     'USER',
@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
     private authService: AuthenticationService,
     private viewportScroller: ViewportScroller
   ) {
-   }
+  }
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
@@ -63,7 +63,7 @@ export class RegisterComponent implements OnInit {
       }],
       password: ['', {
         validators: [
-          Validators. required, 
+          Validators.required,
           Validators.minLength(8),
           pswduppercase(),
           pswdnumeric(),
@@ -92,7 +92,7 @@ export class RegisterComponent implements OnInit {
         ],
         updateOn: 'change',
       }
-    ]
+      ]
     });
 
     this.registerForm.patchValue(
@@ -116,7 +116,7 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  incrementCount(): void{
+  incrementCount(): void {
     this.counter++
     this.viewportScroller.scrollToPosition([0, 0]);
   }
@@ -125,7 +125,7 @@ export class RegisterComponent implements OnInit {
     this.selected = (e.target as HTMLElement).innerText.toLowerCase();
   }
 
-   signin(){
+  signin() {
     this.router.navigate(['signin']);
   }
 
