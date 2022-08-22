@@ -8,7 +8,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class HomeComponent implements OnInit {
   public Movies?: any = {};
-  constructor(private service: MoviesService,private JwtHelper:JwtHelperService) {}
+  constructor(private service: MoviesService, private JwtHelper: JwtHelperService) { }
 
   ngOnInit(): void {
     this.service.getMovies(1).subscribe((result: any) => {

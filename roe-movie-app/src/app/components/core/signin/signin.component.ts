@@ -26,13 +26,13 @@ export class SigninComponent implements OnInit {
   }
 
   onSubmit() {
-    if(!this.loginForm.valid){
+    if (!this.loginForm.valid) {
       return;
     }
     const credentialLogin = this.loginForm.value;
     this.authService.login(credentialLogin).subscribe({
-      next: (val)=> (
-        localStorage.setItem('user',val.accessToken), this.router.navigate(['movielist'])),
+      next: (val) => (
+        localStorage.setItem('user', val.accessToken), this.router.navigate(['movielist'])),
       error: (e) =>
         alert(e.error.message),
       complete: () =>
