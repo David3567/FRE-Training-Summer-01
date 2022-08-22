@@ -32,10 +32,10 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   border-radius: 10px;
-  overflow: hidden;
+  /* overflow: hidden;
   height: 500px;
   width: 400px;
-  margin: 0 auto;
+  margin: 0 auto; */
 }
 
 .movie-card:hover {
@@ -119,11 +119,11 @@
   animation: slide 15s linear infinite;
 }
 
-@keyframes slide {
+/* @keyframes slide {
   0% {
     transform: translate3d(0, 0, 0);
   }
   100% {
-    transform: translate3d(-1500px, 0, 0); /* The image width */
+    transform: translate3d(-1500px, 0, 0);
   }
-}
+} */
