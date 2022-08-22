@@ -20,9 +20,6 @@ export class MovieListComponent implements OnInit {
       },
       (error) => {
         console.error('Request failed with error');
-      },
-      () => {
-        console.log('Request completed');
       }
     );
   }
