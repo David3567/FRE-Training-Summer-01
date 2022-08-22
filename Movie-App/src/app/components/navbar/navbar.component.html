@@ -19,6 +19,12 @@
         <li *ngIf="isLoggedOff()"><a routerLink="/login">Login</a></li>
         <li *ngIf="isLoggedOff()"><a routerLink="/register">Register</a></li>
         <li *ngIf="!isLoggedOff()">
+          <a routerLink="/user-update"
+            >{{ userInfo.username }} ({{ userInfo.role }})</a
+          >
+        </li>
+
+        <li *ngIf="!isLoggedOff()">
           <a [routerLink]="['/']" (click)="logout()">Logout</a>
         </li>
       </ul>

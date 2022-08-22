@@ -8,14 +8,18 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class NavbarComponent implements OnInit {
   collapsed = true;
-  username = localStorage.getItem('username');
+  userInfo: any;
 
   constructor(private auth: AuthService) {}
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    this.auth.userAuthObs.subscribe((res) => {
+      this.userInfo = res;
+    });
+  }
 
   isLoggedOff() {
-    if (!localStorage.getItem('username')) {
+    if (!localStorage.getItem('jwt')) {
       return true;
     }
     return false;
@@ -23,6 +27,5 @@ export class NavbarComponent implements OnInit {
 
   logout() {
     this.auth.logout();
-    alert('Logged out');
   }
 }
