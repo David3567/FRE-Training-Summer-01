@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { MoviesResolverService } from './services/movies-resolver.service';
 
 const routes: Routes = [
   {
@@ -35,6 +36,7 @@ const routes: Routes = [
   },
   {
     path: 'movielist',
+    resolve: { Movies: MoviesResolverService },
     loadChildren: () =>
       import('./components/core/movielist/movielist.module').then(
         (m) => m.MovielistModule
@@ -51,4 +53,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

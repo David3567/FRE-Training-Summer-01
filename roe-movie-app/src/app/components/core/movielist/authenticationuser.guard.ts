@@ -16,12 +16,12 @@ import jwt_decode from 'jwt-decode';
   providedIn: 'root',
 })
 export class AuthenticationUserGuard implements CanActivate {
-  token?:string|any=localStorage.getItem('user')
+  token?: string | any = localStorage.getItem('user')
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     public jwtHelper: JwtHelperService
-  ) {}
+  ) { }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): any {
     if (!this.token) {
       this.router.navigate(['signin']);

@@ -5,8 +5,8 @@ import { ActivatedRoute, Route } from '@angular/router';
   templateUrl: './movielist-user.component.html',
   styleUrls: ['./movielist-user.component.css']
 })
-export class MovielistUserComponent implements OnInit , DoCheck{
-  userInfo:object|any
+export class MovielistUserComponent implements OnInit, DoCheck {
+  userInfo: object | any
   constructor(private route: ActivatedRoute) {
   }
 
