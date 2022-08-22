@@ -22,6 +22,10 @@ nav {
 }
 
 .username-box {
-    text-align: center;
-    color: white
+    position: absolute;
+    color: white;
+    right: 40vw;
+    height: 2.5rem;
+    margin: 3rem;
+    z-index: 3;
 }
