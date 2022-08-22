@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Routes, RouterModule } from '@angular/router';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
@@ -15,6 +15,11 @@ import { MovieService } from './services/movie.service';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 
 import { AppRoutingModule } from './app-routing.module';
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './guards/auth.guard';
+import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
+import { UserUpdateComponent } from './components/user-update/user-update.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 // const appRoutes: Routes = [
 //   { path: '', component: HomepageComponent },
@@ -33,6 +38,8 @@ import { AppRoutingModule } from './app-routing.module';
     LoginComponent,
     RegisterComponent,
     ErrorPageComponent,
+    MovieDetailsComponent,
+    UserUpdateComponent,
   ],
 
   imports: [
@@ -44,7 +51,12 @@ import { AppRoutingModule } from './app-routing.module';
     InfiniteScrollModule,
   ],
 
-  providers: [MovieService],
+  providers: [
+    MovieService,
+    AuthService,
+    AuthGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

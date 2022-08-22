@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>Change user role:</h1>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="role">Role:</label>
+      <select formControlName="role" class="form-control">
+        <option disabled>Select Role</option>
+        <option *ngFor="let role of roles">{{ role }}</option>
+      </select>
+    </div>
+
+    <button class="btn btn-primary" type="submit" [disabled]="!form.valid">
+      Submit
+    </button>
+  </form>
+</div>

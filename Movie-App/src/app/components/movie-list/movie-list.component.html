@@ -24,7 +24,7 @@
             [infiniteScrollThrottle]="1000"
             (scrolled)="onScroll()"
           >
-            <div class="thumbnail">
+            <div class="thumbnail" routerLink="/movies/{{ movie.id }}">
               <div class="movie-card-container">
                 <div class="movie-card-HD">HD</div>
                 <div class="movie-card-score">{{ movie.vote_average }}</div>
@@ -47,3 +47,4 @@
     </div>
   </div>
 </main>
+<router-outlet></router-outlet>

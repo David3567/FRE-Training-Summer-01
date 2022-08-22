@@ -1,0 +1,154 @@
+.login-page {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 80rem;
+  min-height: 100vh;
+}
+
+.login-section {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  margin: 5rem auto;
+  margin-top: 2.5rem;
+}
+
+.login-header {
+  text-align: center;
+  font-weight: 800;
+  font-size: clamp(
+    2.565784513950348rem,
+    calc(
+      2.565784513950348rem +
+        (
+          (4.478975999999999 - 2.565784513950348) *
+            ((100vw - 20rem) / (96 - 20))
+        )
+    ),
+    4.478975999999999rem
+  );
+  line-height: 1.1;
+  color: rgb(118, 158, 223);
+}
+
+.login-header-span {
+  color: rgb(245, 146, 228);
+}
+
+.login-container {
+  max-width: 28rem;
+  margin: 5rem auto 5rem auto;
+  padding: 40px 30px;
+  background-color: rgba(203, 213, 225, 0.1);
+  backdrop-filter: blur (2rem);
+  border-radius: 0.75rem;
+  z-index: 3;
+  border: solid 2px rgba(203, 213, 225, 1);
+}
+
+.login-container .title {
+  text-align: center;
+  font-size: clamp(
+    1.265625rem,
+    calc(1.265625rem + ((1.5 - 1.265625) * ((100vw - 20rem) / (96 - 20)))),
+    1.5rem
+  );
+  line-height: 1.1;
+
+  margin-bottom: 35px;
+  color: rgb(20, 26, 37);
+}
+
+.title > h1 {
+  font-weight: 900;
+}
+
+.login-container .field {
+  height: 3.3rem;
+  width: 100%;
+  display: flex;
+  position: relative;
+}
+
+.field input {
+  height: 100%;
+  width: 100%;
+  padding-left: 45px;
+  font-size: 18px;
+  outline: none;
+  border: 2px solid rgba(203, 213, 225, 1);
+  color: rgba(71, 85, 105, 1);
+
+  border-radius: 0.75rem;
+  background: rgba(96, 165, 250, 0.1);
+}
+
+.field input::placeholder {
+  color: rgba(71, 85, 105, 0.5);
+}
+.field:nth-child(2) {
+  margin-top: 20px;
+}
+.field span {
+  position: absolute;
+
+  top: 28%;
+  left: 5%;
+
+  color: rgba(71, 85, 105, 0.5);
+}
+
+.login-button-holder {
+  text-align: center;
+}
+.login-button {
+  margin-top: 25px;
+  width: 95%;
+  height: 3.5rem;
+  color: black;
+  font-size: 18px;
+  font-weight: 600;
+  background-color: #ffffff;
+  box-shadow: 0px 8px 0px black;
+  border: solid 2px black;
+  cursor: pointer;
+
+  border-radius: 10px;
+  transition: all 0.4s linear;
+}
+
+.login-button:hover {
+  box-shadow: none;
+  background: black;
+  color: rgb(238, 226, 226);
+}
+
+.login-button:active {
+  box-shadow: none;
+  transform: scale(0.95);
+  border: none;
+}
+
+.login-options {
+  margin-top: 25px;
+  font-size: 20px;
+  font-weight: bold;
+  outline: none;
+  border: none;
+  color: rgb(247, 233, 233);
+  text-align: center;
+}
+
+.signup-left {
+  color: rgb(0, 0, 0);
+}
+.signup-text {
+  text-decoration: none;
+  font-weight: bolder;
+  color: rgb(30, 41, 59);
+}
+.signup-text:hover {
+  color: rgb(118, 158, 223);
+}
+.signup-text:active {
+  color: rgb(245, 146, 228);
+}
