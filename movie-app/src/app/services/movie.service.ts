@@ -74,7 +74,7 @@ export class MovieService {
     return this.http.get<RootObject>(url).pipe(
       debounceTime(50),
       map(({ results }: any) => {
-        console.log('Successfully retrieved trending movies here\n', results);
+        // console.log('Successfully retrieved trending movies here\n', results);
         return results;
       }),
       catchError(this.helper.errorHandler<any>('getTrendingMovies'))

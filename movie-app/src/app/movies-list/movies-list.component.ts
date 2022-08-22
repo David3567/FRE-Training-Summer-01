@@ -4,6 +4,7 @@ import { Video } from '../interfaces/movie.interface';
 import { MovieService } from '../services/movie.service';
 import { UserService } from '../services/user.service';
 import jwt_decode from 'jwt-decode';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-movies-list',
@@ -16,6 +17,7 @@ export class MoviesListComponent implements OnInit {
   selectedMovieVideo!: Video;
   showMovie: boolean = false;
   constructor(
+    private activatedRoute: ActivatedRoute,
     public sanitize: DomSanitizer,
     private movieService: MovieService,
     private userService: UserService
@@ -54,6 +56,27 @@ export class MoviesListComponent implements OnInit {
     this.movieService.getTrendingMovies().subscribe((movies: any) => {
       this.trending = movies;
     });
+
+    // resolver
+    console.log(
+      'Activated route data in Component:::',
+      this.activatedRoute.data
+    );
+    this.activatedRoute.data.subscribe((response: any) => {
+      console.log('PRODUCT FETCHING', response);
+      console.log('PRODUCT FETCHED');
+    });
+
+    // Resolver implemented
+    this.activatedRoute.data.subscribe((movies: any) => {
+      this.bannerMovie = movies.movieList[0][0];
+      this.movies = movies.movieList[0].filter((m: any, i: number) => i > 0);
+      this.trending = movies.movieList[1];
+    });
+
+    // this.movieService.getTrendingMovies().subscribe((movies: any) => {
+    //   this.trending = movies;
+    // });
   }
 
   onWatchTrailer(id: number): void {
