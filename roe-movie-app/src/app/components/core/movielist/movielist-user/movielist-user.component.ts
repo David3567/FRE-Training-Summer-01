@@ -8,7 +8,6 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
   styleUrls: ['./movielist-user.component.css']
 })
 export class MovielistUserComponent implements OnInit , DoCheck, OnChanges{
-  // userInfo: object | any
   selected: string = '';
   form!: FormGroup
   open: boolean = false;
@@ -16,9 +15,7 @@ export class MovielistUserComponent implements OnInit , DoCheck, OnChanges{
     private route: ActivatedRoute,
     private authService: AuthenticationService,
     private fb: FormBuilder,
-  ) {
-    // this.userInfo=this.route.snapshot.data[0].userinfo;
-  }
+  ) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -32,11 +29,9 @@ export class MovielistUserComponent implements OnInit , DoCheck, OnChanges{
   }
 
   ngOnChanges() {
-    console.log('heck')
   }
 
   ngDoCheck(): void {
-    // console.log('check')
   }
 
   get password(): FormControl {

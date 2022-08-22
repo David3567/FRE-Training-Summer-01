@@ -57,43 +57,8 @@ export class AuthenticationGuard implements CanActivate {
   }
 }
 
-@Injectable({
-  providedIn: 'root',
-})
-export class AuthenticationResolver implements Resolve<any> {
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    public jwtHelper: JwtHelperService,
-    private auth: AuthenticationService
-  ) {}
-  resolve(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<object> | null | Observable<any> | any {
-    const token: string | any = localStorage.getItem('user');
-    if (token) {
-      /*
-       "id": "string",
-  "username": "string",
-  "email": "string",
-  "role": "string",
-  "tmdb_key": "string"
-      */
-      const userInfo: any = jwt_decode(token);
-      let id = userInfo.id;
-      let username = userInfo.username;
-      let email = userInfo.email;
-      let role = userInfo.role;
-      let tmdb_key = userInfo.tmdb_key;
-      const interval = setInterval(() => {
-        this.auth
-          .refresh_Token({ id, username, email, role, tmdb_key })
-          .subscribe((data: any) => {
-            localStorage.setItem('user', JSON.stringify(data));
-          });
-      }, 500);
-      return { userinfo: userInfo, interval };
-    }
-  }
-}
+
+
+
+
+

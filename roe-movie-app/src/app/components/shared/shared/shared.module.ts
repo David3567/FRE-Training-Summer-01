@@ -7,6 +7,7 @@ import { HeaderComponent } from '../header/header.component';
 import { HeaderTopComponent } from '../header/header-top/header-top.component';
 import { HeaderBannerContentComponent } from '../header/header-banner-content/header-banner-content.component';
 
+
 @NgModule({
   declarations: [
     FooterComponent,

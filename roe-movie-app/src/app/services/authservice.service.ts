@@ -8,6 +8,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { User } from '../interfaces/user';
 
+
+
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
   private userAuthInfo: User = {};

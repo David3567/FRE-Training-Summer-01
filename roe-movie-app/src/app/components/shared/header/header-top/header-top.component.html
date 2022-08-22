@@ -1,12 +1,15 @@
 <div class="header-top">
   <a href="#" (click)="returnhome()">
-    <h1>NoFlex</h1>
+    <h1><a routerLink="['/Home']">NoFlex</a></h1>
   </a>
   <div class="top_right">
-    <select *ngIf="displaySelect">
-      <option>English</option>
-      <option>English</option>
-    </select>
     <button (click)="signin()" *ngIf="displayButton">Sign In</button>
+    <ng-container *ngIf="!isSignIn && !displayButton">
+      <span>{{userInfo?.username}}</span>
+      <br>
+      <span>{{userInfo?.email}}</span>
+      <br>
+      <button (click)="signout()">Sign Out</button>
+    </ng-container>
   </div>
 </div>
