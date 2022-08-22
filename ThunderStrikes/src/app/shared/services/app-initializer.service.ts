@@ -11,7 +11,7 @@ export class AppInitializerService {
 
   init() {
     return new Promise<void>((resolve, reject) => {
-      this.authService.setUserInfo();
+      this.authService.refreshToken()?.subscribe();
       setTimeout(() => {
         resolve();
       });
