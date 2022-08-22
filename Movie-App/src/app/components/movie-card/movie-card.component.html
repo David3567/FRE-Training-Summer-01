@@ -1,0 +1,25 @@
+<main>
+<div class="main__container">
+    <ng-container>
+  <div class="movie__trailer">
+      <a class="trailer">
+        <youtube-player
+        videoId="dsvIdXNHgYk" 
+        suggestedQuality="highres" 
+        [height]="250" 
+        [width]="500" 
+        [startSeconds]="4"
+        [endSeconds]="8"
+        >
+        </youtube-player>
+      </a>
+    </div>
+    <div class="movie__info">
+      <div class="movie__name">{{movieData}}</div>
+      <div class="movie__rating">{{movieData}}</div>
+      <div class="release__date">{{movieData}}</div>
+    </div>
+    <div class="overview">hellooooooo</div>
+  </ng-container>
+  </div>
+</main>
