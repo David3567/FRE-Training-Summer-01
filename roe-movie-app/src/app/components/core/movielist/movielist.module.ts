@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms'
 import { MovielistRoutingModule } from './movielist-routing.module';
 import { MovielistComponent } from './movielist.component';
 import { SharedModule } from '../../shared/shared/shared.module'
-import { HttpClientModule } from '@angular/common/http';
+// import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -14,8 +14,9 @@ import { TrackScrollDirective } from './track-scroll.directive'
 import { YouTubePlayerModule } from "@angular/youtube-player";
 import { AuthenticationGuard, AuthenticationResolver } from './authentication.guard';
 import { AuthenticationUserGuard } from './authenticationuser.guard';
-import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+// import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { MovielistUserComponent } from './movielist-user/movielist-user.component'
+
 @NgModule({
   declarations: [
     MovielistComponent,
@@ -29,16 +30,16 @@ import { MovielistUserComponent } from './movielist-user/movielist-user.componen
     ReactiveFormsModule,
     MovielistRoutingModule,
     SharedModule,
-    HttpClientModule,
+    // HttpClientModule,
     MatCardModule,
     InfiniteScrollModule,
     MatDialogModule,
-    YouTubePlayerModule
+    YouTubePlayerModule,
   ],
   entryComponents: [
     MovieDialogComponent
   ],
-  providers: [AuthenticationGuard, { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }, JwtHelperService, AuthenticationUserGuard,AuthenticationResolver],
+  providers: [AuthenticationGuard, AuthenticationUserGuard,AuthenticationResolver],
   exports: [MovieDialogComponent, MovielistUserComponent]
 })
 export class MovielistModule { }
