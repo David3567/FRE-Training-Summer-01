@@ -5,17 +5,11 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.css']
+  styleUrls: ['./homepage.component.css'],
 })
 export class HomepageComponent implements OnInit {
   movies$!: Observable<any>;
-  constructor(private readonly movieService: MovieService) { }
+  constructor() {}
 
-  ngOnInit(): void {
-    this.movieService.getMovies().subscribe()
-    this.movies$ = this.movieService.movies$;
-    console.log(this.movies$ = this.movieService.movies$);
-        
-  }
-
+  ngOnInit(): void {}
 }

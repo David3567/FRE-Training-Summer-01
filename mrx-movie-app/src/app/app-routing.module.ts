@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './services/auth.guard';
 // import { HomepageComponent } from './homepage/homepage.component';
 // import { LoginpageComponent } from './loginpage/loginpage.component';
 // import { MovieListComponent } from './movie-list/movie-list.component';
@@ -8,28 +9,42 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./homepage/homepage.module').then((m) => m.HomepageModule)
+    loadChildren: () =>
+      import('./homepage/homepage.module').then((m) => m.HomepageModule),
   },
   {
     path: 'login',
-    loadChildren: () => import('./loginpage/loginpage.module').then((m) => m.LoginpageModule)
+    loadChildren: () =>
+      import('./loginpage/loginpage.module').then((m) => m.LoginpageModule),
   },
   {
     path: 'register',
-    loadChildren: () => import('./registerpage/registerpage.module').then((m) => m.RegisterpageModule)
+    loadChildren: () =>
+      import('./registerpage/registerpage.module').then(
+        (m) => m.RegisterpageModule
+      ),
   },
   {
     path: 'movie-list',
-    loadChildren: () => import('./movie-list/movie-list.module').then((m) => m.MovieListModule)
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./movie-list/movie-list.module').then((m) => m.MovieListModule),
   },
   {
     path: 'movie/:id',
-    loadChildren: () => import('./movie-item/movie-item.module').then((m) => m.MovieItemModule)
-  }
+    canLoad: [AuthGuard],
+    loadChildren: () =>
+      import('./movie-item/movie-item.module').then((m) => m.MovieItemModule),
+  },
+  {
+    path: 'upgrade',
+    loadChildren: () =>
+      import('./movie-item/movie-item.module').then((m) => m.MovieItemModule),
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

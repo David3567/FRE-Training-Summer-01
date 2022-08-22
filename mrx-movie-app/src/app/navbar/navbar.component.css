@@ -1,15 +1,16 @@
-nav{
+nav {
     position: relative;
     z-index: 2;
 }
-.logo{
+
+.logo {
     margin: 2.5rem;
     width: 8rem;
     position: absolute;
     left: 2rem;
 }
 
-.loginBtn{
+.loginBtn {
     height: 2.5rem;
     margin: 2.5rem;
     width: 5rem;
@@ -18,4 +19,9 @@ nav{
     font-size: 1rem;
     color: white;
     background-color: red;
+}
+
+.username-box {
+    text-align: center;
+    color: white
 }
