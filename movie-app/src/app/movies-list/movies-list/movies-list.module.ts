@@ -17,10 +17,6 @@ import { SharedModule } from '../../shared/shared.module';
     DiscoverListComponent,
   ],
   imports: [
-    FontAwesomeModule,
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
     InfiniteScrollModule,
     SharedModule
   ],
