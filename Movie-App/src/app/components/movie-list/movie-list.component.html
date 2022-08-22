@@ -12,7 +12,7 @@
     <ul class="movie-list">
       <li *ngFor="let movie of movieData" class="movie-card">
       <a href="" routerLink="/movie-card">
-      <div class="thumbnail" routerLink="/movies/{{ movie.id }}">
+      <div class="thumbnail" >
         <div class="movie-card-container">
           <div class="movie-card-HD">HD</div>
           <div class="movie-card-score">{{ movie.vote_average }}</div>
