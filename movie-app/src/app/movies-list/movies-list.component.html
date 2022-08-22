@@ -119,6 +119,17 @@
         <strong>KCBFLEX</strong>
       </aside>
     </div>
+    <ng-container *ngIf="seeYou"
+>
+
+<div class="seeYou">
+  <h1>KCBFLEX</h1>
+  <p>We are sorry you are leaving us!</p>
+  <p>Goodbye...</p>
+</div>
+
+
+</ng-container>
   </ng-container>
   <ng-template #emptyList>
     <p class="empty_list">
@@ -128,3 +139,4 @@
   </ng-template>
 </section>
 <section *ngIf="authData.jwt_token">Session has expired</section>
+

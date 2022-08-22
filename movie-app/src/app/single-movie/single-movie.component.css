@@ -149,3 +149,57 @@
     
     
   }
+ .sidebar{
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 60px;
+    box-shadow: 0 0 5px gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+  }
+  
+  /**
+   * Sidebar content
+   */
+  .sidebar__control--btn{
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 200px;
+  }
+  .sidebar__control--btn > *{
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .sidebar__control--btn > *:hover{
+    border-top: 6px solid red;
+  }
+  .seeYou{
+    height:40vh;
+    width:40vw;
+    background-color: black;
+    position:fixed;
+    top: 25vh;
+    left:30vw;
+    z-index: 10000;
+    box-shadow: 0 0 12px rgb(24, 24, 24);
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  .seeYou h1{
+    font-size :4rem;
+    color: red;
+  }
+  .seeYou p{
+    font-size :2rem;
+    font-style: italic;
+    font-family: Georgia,  serif;
+    height:3rem;
+  }

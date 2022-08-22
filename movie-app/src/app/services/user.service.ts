@@ -78,7 +78,7 @@ export class UserService {
 
     setTimeout(() => {
       this.router.navigate([`homepage`]);
-    }, 1000);
+    }, 2000);
   }
 
   checkEmail(email: string) {

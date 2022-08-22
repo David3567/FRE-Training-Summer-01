@@ -16,6 +16,7 @@ export class MoviesListComponent implements OnInit {
   bannerMovie!: any;
   selectedMovieVideo!: Video;
   showMovie: boolean = false;
+  seeYou:boolean=false;
   constructor(
     private activatedRoute: ActivatedRoute,
     public sanitize: DomSanitizer,
@@ -97,6 +98,8 @@ export class MoviesListComponent implements OnInit {
   }
 
   logOut() {
+    this.seeYou=true
     this.userService.signOut();
   }
+  
 }
