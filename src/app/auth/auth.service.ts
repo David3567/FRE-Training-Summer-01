@@ -18,14 +18,13 @@ export class AuthService {
   private userAuth$ = new BehaviorSubject<UserInfoCredentials | User>(
     this.userAuthInfo
   );
-  signedin$ = new BehaviorSubject(false);
 
   userAuthObs$ = this.userAuth$.asObservable();
   user$ = new Subject<User>();
 
   userObs$ = this.user$.asObservable();
   get userInfo() {
-    return this.userObs$;
+    return this.userAuth$.value;
   }
 
   constructor(
@@ -67,7 +66,6 @@ export class AuthService {
           };
           this.handleAuthentication();
           this.userAuth$.next(this.userAuthInfo);
-          this.signedin$.next(true);
         })
       );
   }
@@ -97,10 +95,6 @@ export class AuthService {
             jwt_token: accessToken,
           };
 
-          this.signedin$.next(true);
-          console.log('auth service signedin$ works!');
-          console.log(this.signedin$.value);
-
           this.handleAuthentication();
           this.userAuth$.next(this.userAuthInfo);
         })
@@ -114,7 +108,6 @@ export class AuthService {
       clearTimeout(this.tokenExpirationTimer);
     }
     this.tokenExpirationTimer = null;
-    this.signedin$.next(false);
   }
   autoLogout(expirDuration: number) {
     this.tokenExpirationTimer = setTimeout(() => {
@@ -124,6 +117,7 @@ export class AuthService {
   autoLogin() {
     const userData: {
       username: string;
+      role: string;
       email: string;
       id: string;
       exp: number;
@@ -134,6 +128,7 @@ export class AuthService {
     }
     const loadedUser = new User(
       userData.username,
+      userData.role,
       userData.email,
       userData.id,
       userData.exp,
@@ -152,6 +147,7 @@ export class AuthService {
     const expireDate: any = new Date(new Date(this.userAuthInfo.exp * 1000));
     const user = new User(
       this.userAuthInfo.username,
+      this.userAuthInfo.role,
       this.userAuthInfo.email,
       this.userAuthInfo.id,
       expireDate,
