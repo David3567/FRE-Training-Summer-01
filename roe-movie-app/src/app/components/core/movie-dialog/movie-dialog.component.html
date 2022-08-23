@@ -28,31 +28,31 @@
 			</div>
 		</div> -->
       <div class="row">
-        <!-- <div class="column" *ngFor="let cast of casts">
+        <div class="column" *ngFor="let cast of $any(casts | slice:0:4)">
           <img *ngIf="cast.profile_path" class="profile_img"
             src="https://image.tmdb.org/t/p/w500{{ cast.profile_path }}">
           <div>{{ cast.name }}</div>
-        </div> -->
-        <div class="column">
-          <img *ngIf="casts[0].profile_path" class="profile_img"
+        </div>
+        <!-- <div *ngIf="casts[0].profile_path" class="column">
+          <img class="profile_img"
             src="https://image.tmdb.org/t/p/w500{{ casts[0].profile_path }}">
-          <div>{{ casts[0].name }}</div>
+          <div class="name">{{ casts[0].name }}</div>
         </div>
         <div class="column">
           <img *ngIf="casts[1].profile_path" class="profile_img"
             src="https://image.tmdb.org/t/p/w500{{ casts[1].profile_path }}">
-          <div>{{ casts[1].name }}</div>
+          <div class="name"> {{ casts[1].name }}</div>
         </div>
         <div class="column">
           <img *ngIf="casts[2].profile_path" class="profile_img"
             src="https://image.tmdb.org/t/p/w500{{ casts[2].profile_path }}">
-          <div>{{ casts[2].name }}</div>
+          <div class="name">{{ casts[2].name }}</div>
         </div>
         <div class="column">
           <img *ngIf="casts[3].profile_path" class="profile_img"
             src="https://image.tmdb.org/t/p/w500{{ casts[3].profile_path }}">
-          <div>{{ casts[3].name }}</div>
-        </div>
+          <div class="name">{{ casts[3].name }}</div>
+        </div> -->
       </div>
       <div mat-dialog-actions class="dialog-actions">
         <button mat-button (click)="onCancel()">Back</button>

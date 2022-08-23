@@ -121,7 +121,7 @@ export class MovielistComponent implements OnInit {
           panelClass: 'custom-dialog-container',
           data: {
             movie: this.movie,
-            casts: this.casts,
+            casts: this.casts.filter((cast: { profile_path: string; }) => cast.profile_path),
             videos: this.videos,
           },
           disableClose: true,

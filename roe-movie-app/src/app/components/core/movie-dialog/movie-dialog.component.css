@@ -35,7 +35,6 @@ h1 {
 }
 
 .dialog-actions {
-  margin-top: 12px;
   margin-bottom: 0;
 }
 
@@ -85,6 +84,12 @@ h1 {
   width: 30%;
 }
 
+.name {
+  margin: auto;
+  width: min-content;
+  padding-top: 5px;
+}
+
 .right {
   float: right;
   width: 70%;
@@ -95,6 +100,7 @@ h1 {
   color: black;
   flex-direction: row;
   justify-content: space-evenly;
+  padding-top: 10px;
   text-align: center;
   flex-wrap:nowrap;
   overflow: scroll;
