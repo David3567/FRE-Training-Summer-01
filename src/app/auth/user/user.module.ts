@@ -6,7 +6,7 @@ export class User {
     public role?: string,
     public email?: string,
     public id?: string,
-    private exp?: number,
+    private exp?: any,
     private jwt_token?: string
   ) {}
   get token() {
