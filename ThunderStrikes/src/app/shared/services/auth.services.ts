@@ -119,6 +119,7 @@ export class AuthService {
     tap(({ accessToken }) => {
       this.setToken(accessToken);
       this._userAuthInfo.role = newRole;
+      console.log(this._userAuthInfo.role);
       console.log("Role Updated");
       this.refreshToken()?.subscribe();
       this.router.navigate(["movie-dashboard"]);
