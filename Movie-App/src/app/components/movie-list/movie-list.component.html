@@ -12,13 +12,15 @@ infiniteScroll
         </span>
       </div> -->
 
-    <div class="col-sm-6 col-md-4">
+    <div class="col-sm-6 col-md-4"
+    *ngIf="currentPage$ |async as currentPage">
+    {{ currentPage }}
     <ul class="movie-list">
       <li *ngFor="let movie of movieData" class="movie-card"
       infiniteScroll
-[infiniteScrollDistance]="2"
-[infiniteScrollThrottle]="100"
-(scrolled)="onScroll()">
+      [infiniteScrollDistance]="2"
+      [infiniteScrollThrottle]="1000"
+      (scrolled)="onScroll()">
       <a href="" routerLink="/movie-card">
       <div class="thumbnail" routerLink="/movies/{{ movie.id }}">
         <div class="movie-card-container">

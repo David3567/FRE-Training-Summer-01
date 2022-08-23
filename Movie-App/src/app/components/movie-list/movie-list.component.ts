@@ -13,8 +13,19 @@ import { switchMap, tap } from 'rxjs/operators';
 export class MovieListComponent implements OnInit {
   movieData: MovieDiscover[] = []
   movie: Movie[] = []
-  curretPage$ = new BehaviorSubject<number>(1)
+  currentPage$ = new BehaviorSubject<number>(1)
 
+    currentPageData$ = this.currentPage$.pipe(
+    switchMap((currentPage) =>
+      this.movieService.getMorePages(currentPage)
+    ),
+    tap(() => {
+      if (this.currentPage$) {
+        this.currentPage$.target.complete();
+        this.currentPage$ = null;
+      }
+    })
+  );
 
   constructor(
     private movieService: MovieService,
@@ -75,7 +86,9 @@ export class MovieListComponent implements OnInit {
   //   }
 
   onScroll(){
-    this.curretPage$.next(this.curretPage$.value + 1)
+    this.currentPage$.next(this.currentPage$.value + 1)
+    console.log(this.currentPage$);
+
   }
 
   }
