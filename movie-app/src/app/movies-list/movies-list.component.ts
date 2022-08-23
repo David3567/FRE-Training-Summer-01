@@ -15,14 +15,15 @@ export class MoviesListComponent implements OnInit {
   bannerMovie!: any;
   selectedMovieVideo!: Video;
   showMovie: boolean = false;
+  trending: any[] = [];
+  searchHidden: boolean = true;
+  currentUser!: User;
+
   constructor(
     public sanitize: DomSanitizer,
     private movieService: MovieService,
     private userService: UserService
   ) {}
-  trending: any[] = [];
-  searchHidden: boolean = true;
-  currentUser!: User;
 
   ngOnInit(): void {
     this.movieService.getMoviesList().subscribe((movies: any) => {

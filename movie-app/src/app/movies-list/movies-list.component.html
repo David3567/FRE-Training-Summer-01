@@ -1,8 +1,7 @@
-<ng-container *ngIf="currentUser.role==='ADMIN' else randomUser">
+<ng-container *ngIf="currentUser.role ==='ADMIN' else randomUser">
 
   <section
-    class="movies__list__container"
-    [style.display]="'none'">
+    class="movies__list__container">
     <ng-container *ngIf="movies && movies.length > 0; else emptyList">
 
       <div class="movies__list__container">
@@ -144,5 +143,6 @@
 </ng-container>
 <ng-template #randomUser>
   <app-subscription></app-subscription>
+
 </ng-template>
 

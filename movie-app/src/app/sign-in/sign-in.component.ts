@@ -40,7 +40,6 @@ export class SignInComponent implements OnInit {
     return this.signInForm.get("email")
   }
 
-
   onLogin(e: any): void {
     this.userService.signIn(this.signInForm.value)
     .subscribe((user: any) => {

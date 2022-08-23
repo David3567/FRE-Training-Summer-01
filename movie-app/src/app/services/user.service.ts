@@ -49,9 +49,6 @@ export class UserService {
   }
 
   signIn(userInfo: any): any{
-
-    console.log(userInfo)
-
     let url = `${this.baseUrl}/auth/signin`;
 
     return this.http.post<{ accessToken: string }>(url,userInfo, this.helper.httpOptions)
@@ -127,17 +124,26 @@ onUpdateRole(user:
     )
 }
 
-// onRefreshToken() {
-//   return this.http.get(this.baseUrl + '/auth-c/refresh-token', this.helper.httpOptions)
-//     .pipe(
-//       tap((token) => {
-//         this.generateToken()
-//         console.log("Successfully refreshed token", token);
-//         return token;
-//       }),
-//       catchError(this.helper.errorHandler<any>("Refreshing token"))
-//   )
-// }
+onRefreshToken(
+  user: {
+    username: string,
+    password: string,
+    email: string,
+    role: string,
+    tmdb_key: string
+  }
+) {
+  return this.http.post(this.baseUrl + '/auth/refresh-token', user, this.helper.httpOptions)
+    .pipe(
+      tap((token) => {
+        debounceTime(60);
+        this.generateToken()
+        console.log("Successfully refreshed token\n", token);
+        return token;
+      }),
+      catchError(this.helper.errorHandler<any>("Refreshing token"))
+  )
+}
 
   signOut(): void {
     localStorage.removeItem('currentUser');
