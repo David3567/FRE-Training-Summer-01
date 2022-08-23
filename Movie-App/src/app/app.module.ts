@@ -6,7 +6,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { YouTubePlayerModule } from '@angular/youtube-player';
 
-
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -22,7 +21,7 @@ import { MovieDetailsComponent } from './components/movie-details/movie-details.
 import { UserUpdateComponent } from './components/user-update/user-update.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { MovieCardComponent } from './components/movie-card/movie-card.component';
-
+import { CommonModule } from '@angular/common';
 
 // const appRoutes: Routes = [
 //   { path: '', component: HomepageComponent },
@@ -31,7 +30,6 @@ import { MovieCardComponent } from './components/movie-card/movie-card.component
 //   { path: 'register', component: RegisterComponent },
 //   { path: '**', component: ErrorPageComponent },
 //  ];
-
 
 @NgModule({
   declarations: [
@@ -44,7 +42,7 @@ import { MovieCardComponent } from './components/movie-card/movie-card.component
     RegisterComponent,
     MovieDetailsComponent,
     UserUpdateComponent,
-    MovieCardComponent
+    MovieCardComponent,
   ],
 
   imports: [
@@ -55,6 +53,7 @@ import { MovieCardComponent } from './components/movie-card/movie-card.component
     AppRoutingModule,
     InfiniteScrollModule,
     YouTubePlayerModule,
+    CommonModule,
   ],
 
   providers: [
