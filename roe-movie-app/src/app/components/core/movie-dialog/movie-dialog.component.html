@@ -31,7 +31,7 @@
         <div class="column" *ngFor="let cast of $any(casts | slice:0:4)">
           <img *ngIf="cast.profile_path" class="profile_img"
             src="https://image.tmdb.org/t/p/w500{{ cast.profile_path }}">
-          <div>{{ cast.name }}</div>
+          <div class="name">{{ cast.name }}</div>
         </div>
         <!-- <div *ngIf="casts[0].profile_path" class="column">
           <img class="profile_img"
