@@ -18,12 +18,14 @@ export class MoviesListComponent implements OnInit {
   trending: any[] = [];
   searchHidden: boolean = true;
   currentUser!: User;
+  currentUserRole: "USER" | "ADMIN" | "SUPERUSER" | "GUEST" = "GUEST";
 
   constructor(
     public sanitize: DomSanitizer,
     private movieService: MovieService,
     private userService: UserService
   ) {}
+
 
   ngOnInit(): void {
     this.movieService.getMoviesList().subscribe((movies: any) => {
@@ -41,6 +43,7 @@ export class MoviesListComponent implements OnInit {
       console.log(user);
       this.movieService.getApi(user.tmdb_key!)
       this.currentUser = user;
+      this.currentUserRole = user.role!;
    })
   }
 

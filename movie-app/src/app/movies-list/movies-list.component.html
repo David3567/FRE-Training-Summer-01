@@ -1,9 +1,7 @@
-<ng-container *ngIf="currentUser.role ==='ADMIN' else randomUser">
-
+<ng-container *ngIf="currentUserRole==='GUEST'; else randomUser">
   <section
     class="movies__list__container">
     <ng-container *ngIf="movies && movies.length > 0; else emptyList">
-
       <div class="movies__list__container">
         <div class="sidebar">
           <div class="sidebar__control--btn flex__wrapper">
@@ -142,7 +140,6 @@
   </section>
 </ng-container>
 <ng-template #randomUser>
-  <app-subscription></app-subscription>
-
+  <app-subscription [(userRole)]="currentUserRole"></app-subscription>
 </ng-template>
 

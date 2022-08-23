@@ -17,6 +17,7 @@ import { MovieService } from './services/movie.service';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
+import { SubscriptionComponent } from './subscription/subscription.component';
 
 export const BASRURL = new InjectionToken<string>('');
 
@@ -24,6 +25,7 @@ export const BASRURL = new InjectionToken<string>('');
   declarations: [
     AppComponent,
     PageNotFoundComponent,
+    // SubscriptionComponent
   ],
   imports: [
     HomepageModule,
@@ -31,8 +33,11 @@ export const BASRURL = new InjectionToken<string>('');
     CommonModule,
     BrowserModule,
     SharedModule,
+    // SubscriptionComponent,
   ],
-  exports: [RouterModule, HttpClientModule],
+  exports: [RouterModule,
+
+    HttpClientModule],
   providers: [
     MovieService,
     ShortPipe,

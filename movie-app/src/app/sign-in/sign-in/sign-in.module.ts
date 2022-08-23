@@ -12,9 +12,6 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     SharedModule,
-    // ReactiveFormsModule,
-    // CommonModule,
-
   ]
 })
 export class SignInModule { }

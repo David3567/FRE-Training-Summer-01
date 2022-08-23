@@ -6,6 +6,8 @@ import { RegisterPageRoutingModule } from "./register-page/register/register-pag
 import { SignInRoutingModule } from './sign-in/sign-in/sign-in-routing.module';
 import { HomepageRoutingModule } from './components/home-page/homepage/homepage-routing.module';
 import { SingleMovieRoutingModule } from "./single-movie/single-movie/single-movie-routing.module";
+import { SubscriptionComponent } from './subscription/subscription.component';
+// import { SubscriptionRoutingModule } from './subscription/subscription/subscription-routing.module';
 
 const routes: Route[] = [
   {
@@ -21,7 +23,7 @@ const routes: Route[] = [
     RegisterPageRoutingModule,
     SignInRoutingModule,
     MoviesLisRoutingModule,
-    SingleMovieRoutingModule ,
+    SingleMovieRoutingModule,
     RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })

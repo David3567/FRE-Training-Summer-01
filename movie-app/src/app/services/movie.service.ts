@@ -43,7 +43,7 @@ export class MovieService {
   getMoviesList(): Observable<any> {
     let id =
       this.defaultId > 0 ? this.defaultId : Math.floor(Math.random() * 500);
-    let url = `https://api.themoviedb.org/3/list/${id}?api_key=${this.apiKeys}`;
+    let url = `https://api.themoviedb.org/3/list/10?api_key=${this.apiKeys}`;
 
     return this.http.get<RootObject>(url, this.helper.httpOptions).pipe(
       debounceTime(100),

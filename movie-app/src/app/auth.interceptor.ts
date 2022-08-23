@@ -10,6 +10,7 @@ import { User } from './interfaces/user.interface';
 import { HelperService } from './services/helper.service';
 import { BASRURL } from './app.module';
 import { Router } from '@angular/router';
+import { UserService } from './services/user.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -17,8 +18,10 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(
     public helper: HelperService,
     private router: Router,
+    private userService: UserService,
     @Inject(BASRURL) private url: string
   ) {
+    userService.currentUser$.subscribe(user => this.currentUser = user);
   }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
@@ -29,7 +32,7 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   onVerifyToken(request: HttpRequest<any>) {
-    const token = localStorage.getItem("currentUser");
+    const token = localStorage.getItem("currentUser") === this.currentUser.jwt_token;
 
     if (token) {
        return request.clone({

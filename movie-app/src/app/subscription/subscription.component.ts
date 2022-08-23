@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { User } from '../interfaces/user.interface';
 
@@ -9,7 +9,12 @@ import { User } from '../interfaces/user.interface';
 })
 export class SubscriptionComponent implements OnInit {
   currentUser!: User;
+  hasSelected: boolean = false;
+  @Input() userRole: "USER" | "ADMIN" | "SUPERUSER" | "GUEST"= "GUEST";
+  @Output()userRoleChange= new EventEmitter();
+
   selectedMembership!: string;
+  selectRole!: string;
 
   features: string[] = [
     'Monthly price after free ends on 01/01/2024',
@@ -55,16 +60,44 @@ export class SubscriptionComponent implements OnInit {
     })
   }
 
+  onConfirm() {
+    this.userRoleChange.emit(this.currentUser.role)
+  }
+
   onRoleUpdate(role: string) {
     this.selectedMembership = role;
+    this.hasSelected = true;
+
+    switch (role) {
+      case "Basic":
+        this.selectRole = "GUEST"
+        break;
+
+      case "Standard":
+        this.selectRole = "USER"
+        break;
+
+      case "Premium":
+        this.selectRole = "ADMIN"
+        break;
+      case "Ultra":
+        this.selectRole ="SUPERUSER"
+        break;
+    }
+
     this.userService.onUpdateRole({
       username: this.currentUser.username!,
       password: "123Abc",
       email: this.currentUser.email!,
-      role: "ADMIN",
+      role: this.selectRole,
       tmdb_key: "7979b0e432796fe7fa957d6fbbeb0835"
     }).subscribe(console.log)
   }
+
+  hideModal() {
+    this.hasSelected = false;
+  }
+
 }
 
 
