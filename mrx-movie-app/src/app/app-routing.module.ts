@@ -39,7 +39,7 @@ const routes: Routes = [
   {
     path: 'upgrade',
     loadChildren: () =>
-      import('./movie-item/movie-item.module').then((m) => m.MovieItemModule),
+      import('./upgrade/upgrade.module').then((m) => m.UpgradeModule),
   },
 ];
 

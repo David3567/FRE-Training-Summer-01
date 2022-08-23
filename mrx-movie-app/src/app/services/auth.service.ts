@@ -101,4 +101,10 @@ export class AuthService {
     this.router.navigate(['/login']);
     console.log('Logged Out Successfully');
   }
+
+  // upgradeRole(newRole: string) {
+  //   let getInfo = jwt_decode<string>(localStorage.getItem('token')!);
+  //   const url = `${this.baseUrl}/auth/userupdate`;
+  //   console.log(getInfo);
+  // }
 }
