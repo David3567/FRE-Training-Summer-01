@@ -10,4 +10,5 @@ export interface User{
   tmdb_key?: string
   jwt_token?: string
   exp?: string
+  connected?: boolean
 }

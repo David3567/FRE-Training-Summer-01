@@ -20,6 +20,8 @@ export class MoviesListComponent implements OnInit {
   currentUser!: User;
   currentUserRole: "USER" | "ADMIN" | "SUPERUSER" | "GUEST" = "GUEST";
 
+  isMember: boolean = false;
+
   constructor(
     public sanitize: DomSanitizer,
     private movieService: MovieService,
@@ -31,6 +33,7 @@ export class MoviesListComponent implements OnInit {
     this.movieService.getMoviesList().subscribe((movies: any) => {
       this.bannerMovie = movies[0];
       this.movies = movies.filter((m: any, i: number) => i > 0);
+      console.log(this.movies);
     });
 
     this.movieService.getTrendingMovies().subscribe((movies: any) => {
