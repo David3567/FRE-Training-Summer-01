@@ -11,7 +11,7 @@ import { Movie, MovieDiscover, MovieDiscoverList } from '../../movies';
 export class MovieListComponent implements OnInit {
   movieData: MovieDiscover[] = []
   movie: any
-  page: number = 1
+  Number: number
 
 
   constructor(
@@ -28,9 +28,9 @@ export class MovieListComponent implements OnInit {
         console.error('Request failed with error');
       }
     ),
-    this.movieService.getMorePages(this.page).subscribe((data) => {
+    this.movieService.getMorePages(this.Number).subscribe((data) => {
       this.movie = data
-      console.log(this.movie);
+      console.log(this.movie.page);
     })
   }
 
@@ -38,9 +38,9 @@ export class MovieListComponent implements OnInit {
     return `https://www.themoviedb.org/t/p/w220_and_h330_face${api_path}`;
   }
 
-  getMovies(page: number){
-    this.page++
-    return (`https://api.themoviedb.org/3/discover/movie?api_key=3b12cfa2e8e41ce85be82944f8b7e697&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&${page}`)
+  getMovies(Number: number){
+    this.Number++
+    return (`https://api.themoviedb.org/3/discover/movie?api_key=3b12cfa2e8e41ce85be82944f8b7e697&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${Number}`)
   }
 
   // onScroll() {
@@ -60,9 +60,8 @@ export class MovieListComponent implements OnInit {
   onScroll(){
     // let moviePage = 'https://api.themoviedb.org/3/movie?api_key=3b12cfa2e8e41ce85be82944f8b7e697'
     // console.log(moviePage);
-    console.log(this.getMovies(this.page));
-
-    this.movieData
+    this.movie.page++
+    console.log(this.movie.page++);
   }
 
   }
