@@ -1,4 +1,8 @@
-<main>
+<main
+infiniteScroll
+[infiniteScrollDistance]="2"
+[infiniteScrollThrottle]="100"
+(scrolled)="onScroll()">
   <div>
     <div class="col-xs-6 col-md-2">
       <!-- <div class="input-group">
@@ -10,9 +14,13 @@
 
     <div class="col-sm-6 col-md-4">
     <ul class="movie-list">
-      <li *ngFor="let movie of movieData" class="movie-card">
+      <li *ngFor="let movie of movieData" class="movie-card"
+      infiniteScroll
+[infiniteScrollDistance]="2"
+[infiniteScrollThrottle]="100"
+(scrolled)="onScroll()">
       <a href="" routerLink="/movie-card">
-      <div class="thumbnail" >
+      <div class="thumbnail" routerLink="/movies/{{ movie.id }}">
         <div class="movie-card-container">
           <div class="movie-card-HD">HD</div>
           <div class="movie-card-score">{{ movie.vote_average }}</div>

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../../services/movie.service';
 import { ActivatedRoute } from '@angular/router';
 import { Movie, MovieDiscover, MovieDiscoverList } from '../../movies';
+import { BehaviorSubject } from 'rxjs';
+import { switchMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-movie-list',
@@ -10,7 +12,10 @@ import { Movie, MovieDiscover, MovieDiscoverList } from '../../movies';
 })
 export class MovieListComponent implements OnInit {
   movieData: MovieDiscover[] = []
-  moviePage: Movie[] = []
+  movie: Movie[] = []
+  curretPage$ = new BehaviorSubject<number>(1)
+
+
   constructor(
     private movieService: MovieService,
     private activatedRoute: ActivatedRoute) {}
@@ -31,21 +36,22 @@ export class MovieListComponent implements OnInit {
     return `https://www.themoviedb.org/t/p/w220_and_h330_face${api_path}`;
   }
 
-  getPage(){
-    this.movieService
-        .getMorePages()
-        .subscribe((movieData) => {
-          this.moviePage.push(...this.movieData)
-          console.log(this.moviePage);
+  // getPage(){
+  //   this.movieService
+  //       .getMorePages()
+  //       .subscribe((movie) => {
+  //         this.movieData.push(...movie)
+  //         console.log(movie);
 
-        });
-  }
+  //       });
+  // }
 
   // onScroll() {
   //   console.log(this.moviePage);
 
-  //     this.getPage()
-  //     this.getPosterPath()
+  //     this.getPage.push(...this.movieData)
+  //     console.log(this.getPage());
+
   //   }
 
     // onScroll(){
@@ -57,13 +63,20 @@ export class MovieListComponent implements OnInit {
   // onScroll() {
   //   // let moviePage = 'https://api.themoviedb.org/3/movie?api_key=3b12cfa2e8e41ce85be82944f8b7e697'
   //   // console.log(moviePage);
-  //   // this.moviePage.push(...this.movieData)
+  //   // this.movie.push(...this.movieData)
   //   // console.log(this.movieData);
 
+  //   this.movie
+  //     // this.movieService.getMorePages().subscribe((movie) => {
+  //     // this.movie.push(...this.movieData)
+  //     // console.log(this.movie);
 
-  //     this.movieService.getDiscoverMovies().subscribe((moviePage: any) => {
-  //     this.moviePage.push(...moviePage)
-  //   })
+  // // })
+  //   }
 
-  // }
-}
+  onScroll(){
+    this.curretPage$.next(this.curretPage$.value + 1)
+  }
+
+  }
+
