@@ -18,10 +18,9 @@ export class MovieCardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.movie);
   }
   onClickPlay() {
-    this.router.navigate(['single-movie'])
     this.singleMovieService.sendMovie(this.movie)
+    this.router.navigate(['single-movie'])
   }
 }

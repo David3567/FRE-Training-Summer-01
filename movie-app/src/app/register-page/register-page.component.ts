@@ -26,7 +26,6 @@ export class RegisterPageComponent implements OnInit {
     });
 
     this.userService.navigateToMovies()
-
   }
 
   get email() {

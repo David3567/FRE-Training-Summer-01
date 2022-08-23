@@ -1,5 +1,5 @@
 
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, tap, catchError, BehaviorSubject } from 'rxjs';
@@ -22,17 +22,18 @@ export class UserService {
     private helper: HelperService,
     @Inject(BASRURL) private baseUrl: string
     ) { }
-    navigateToMovies() {
-      this.generateToken();
 
-      this.currentUser$.subscribe(res => {
-        this.currentUserInfo = res;
-      });
+  navigateToMovies() {
+    this.generateToken();
 
+    this.currentUser$.subscribe(res => {
+      console.log(res);
+      this.currentUserInfo = res;
       if (this.currentUserInfo.jwt_token) {
-        this.helper. navigateTo('/movies-list')
+        this.helper.navigateTo('/movies-list')
       }
-    }
+    });
+  }
 
   register(user: User): Observable<User> {
     return this.http.post<any>(`${this.baseUrl}/auth-c/signup`, user)
@@ -48,9 +49,12 @@ export class UserService {
   }
 
   signIn(userInfo: any): any{
+
+    console.log(userInfo)
+
     let url = `${this.baseUrl}/auth/signin`;
 
-    return this.http.post<{ accessToken: string }>(url,userInfo ,/*this.helper.httpOptions*/)
+    return this.http.post<{ accessToken: string }>(url,userInfo, this.helper.httpOptions)
     .pipe(
       tap(({accessToken}) => {
         console.log(`Successfully logged in ${accessToken}`)
@@ -123,17 +127,17 @@ onUpdateRole(user:
     )
 }
 
-onRefreshToken() {
-  return this.http.get(this.baseUrl + '/auth-c/refresh-token', this.helper.httpOptions)
-    .pipe(
-      tap((token) => {
-        this.generateToken()
-        console.log("Successfully refreshed token", token);
-        return token;
-      }),
-      catchError(this.helper.errorHandler<any>("Refreshing token"))
-  )
-}
+// onRefreshToken() {
+//   return this.http.get(this.baseUrl + '/auth-c/refresh-token', this.helper.httpOptions)
+//     .pipe(
+//       tap((token) => {
+//         this.generateToken()
+//         console.log("Successfully refreshed token", token);
+//         return token;
+//       }),
+//       catchError(this.helper.errorHandler<any>("Refreshing token"))
+//   )
+// }
 
   signOut(): void {
     localStorage.removeItem('currentUser');

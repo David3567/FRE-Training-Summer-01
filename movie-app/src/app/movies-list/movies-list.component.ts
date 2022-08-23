@@ -36,9 +36,10 @@ export class MoviesListComponent implements OnInit {
 
     this.userService.generateToken();
 
-    this.userService.currentUser$.subscribe(user => {
+    this.userService.currentUser$.subscribe((user:User) => {
       console.log(user);
-       this.currentUser = user;
+      this.movieService.getApi(user.tmdb_key!)
+      this.currentUser = user;
    })
   }
 

@@ -33,17 +33,19 @@ export class SignInComponent implements OnInit {
   }
 
   get email() {
-    return this.signInForm.get('email')
+    return this.signInForm.get("email")
   }
 
   get password() {
-    return this.signInForm.get('password');
+    return this.signInForm.get("email")
   }
+
 
   onLogin(e: any): void {
     this.userService.signIn(this.signInForm.value)
-      .subscribe((user: any) => {
-        console.log(user);
-      })
+    .subscribe((user: any) => {
+      console.log(user);
+      this.currentUser = user;
+    })
   }
 }

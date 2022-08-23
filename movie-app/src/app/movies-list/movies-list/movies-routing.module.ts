@@ -13,8 +13,7 @@ const routes: Route[] = [
     canActivate: [AuthGuard],
     loadChildren: () =>
       import('./movies-list.module').then((m) => m.MoviesListModule),
-    resolve: {movieList:MovieListResolverService,
-    },
+    resolve: {movieList:MovieListResolverService},
   },
   {
     path: 'movie-card',
