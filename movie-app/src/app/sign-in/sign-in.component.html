@@ -19,9 +19,9 @@
               name="email_or_phone_number"
               placeholder="Email or phone"
               required>
-              <em *ngIf="emailRef.value.trim()!== '' && email?.hasError" class="error">
+              <!-- <em *ngIf="emailRef.value.trim()!== '' && email?.hasError" class="error">
                 Email has errors
-              </em>
+              </em> -->
           </label>
             <label for="password" class="space__between">
               <input
@@ -39,9 +39,9 @@
                   Hide
                 </ng-template>
               </span>
-              <em *ngIf="passwordRef.value.trim() !== '' && password?.hasError " class="error">
+              <!-- <em *ngIf="passwordRef.value.trim() !== '' && password?.hasError " class="error">
                 Password has error
-              </em>
+              </em> -->
             </label>
 
           <input

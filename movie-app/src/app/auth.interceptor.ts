@@ -9,12 +9,14 @@ import { Observable, tap, catchError } from 'rxjs';
 import { User } from './interfaces/user.interface';
 import { HelperService } from './services/helper.service';
 import { BASRURL } from './app.module';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
   currentUser!: User;
   constructor(
     public helper: HelperService,
+    private router: Router,
     @Inject(BASRURL) private url: string
   ) {
   }
@@ -29,13 +31,14 @@ export class AuthInterceptor implements HttpInterceptor {
   onVerifyToken(request: HttpRequest<any>) {
     const token = localStorage.getItem("currentUser");
 
-    if (token && request.url.startsWith(`${this.url}/auth/userupdate`)) {
+    if (token) {
        return request.clone({
         setHeaders: { Authorization: `Bearer ${token}`}
       })
     } else {
-      console.log('InvalidTokenError')
+      console.log('InvalidTokenError');
+      this.router.navigate(['/movies-list']);
+      return request;
     }
-    return request;
   }
 }

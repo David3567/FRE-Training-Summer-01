@@ -15,11 +15,6 @@ import { HomepageModule } from './components/home-page/homepage/homepage.module'
 import { faHome, faSearch, faCalendar, faClapperboard, faEye, faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { MovieService } from './services/movie.service';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
-
-// import { library } from '@fortawesome/fontawesome-svg-core';
-// import { faSquare, faCheckSquare } from '@fortawesome/free-solid-svg-icons';
-// import { } from '@fortawesome/free-regular-svg-icons';
-// import { faAppStore, faGoogle, faAccessibleIcon } from '@fortawesome/free-brands-svg-icons';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 

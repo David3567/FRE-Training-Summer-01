@@ -51,6 +51,8 @@ export class UserService {
   signIn(userInfo: any): any{
     let url = `${this.baseUrl}/auth/signin`;
 
+    console.log(`Signing ${userInfo}`);
+
     return this.http.post<{ accessToken: string }>(url,userInfo, this.helper.httpOptions)
     .pipe(
       tap(({accessToken}) => {
@@ -61,7 +63,7 @@ export class UserService {
 
         setTimeout(() => {
           this.router.navigate([`movies-list`]);
-        }, 1000);
+        }, 3000);
       }),
       catchError(this.helper.errorHandler<User>("signIn"))
     );
@@ -77,17 +79,12 @@ checkEmail(email: string){
       catchError(this.helper.errorHandler<any>("checkEmail")));
 }
 
-resetPassword(email: string): void {
-  console.log(email + "\n");
-  this.http.patch<User>(this.baseUrl, this.helper.httpOptions);
-}
-
 /**
  * This function will generate a the token even on the page
   reload as long as the user is logged in.
  */
 generateToken() {
-  let accessToken = localStorage.getItem('currentUser');
+  let accessToken = localStorage.getItem('currentUser')!;
 
   const {
     username,  id,  email, role, tmdb_key, exp
@@ -100,7 +97,7 @@ generateToken() {
     role,
     tmdb_key,
     exp,
-    jwt_token: accessToken!
+    jwt_token: accessToken
   }
  this.currentUser$.next(this.currentUserInfo);
 }
@@ -137,7 +134,6 @@ onRefreshToken(
     .pipe(
       tap((token) => {
         debounceTime(60);
-        this.generateToken()
         console.log("Successfully refreshed token\n", token);
         return token;
       }),

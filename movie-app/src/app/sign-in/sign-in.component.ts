@@ -32,19 +32,14 @@ export class SignInComponent implements OnInit {
     this.isHidden = !this.isHidden;
   }
 
-  get email() {
-    return this.signInForm.get("email")
-  }
 
-  get password() {
-    return this.signInForm.get("email")
-  }
 
   onLogin(e: any): void {
+    // this.userService.generateToken()
     this.userService.signIn(this.signInForm.value)
-    .subscribe((user: any) => {
-      console.log(user);
-      this.currentUser = user;
-    })
+      .subscribe((user: any) => {
+        console.log(user);
+        this.currentUser = user;
+      })
   }
 }
