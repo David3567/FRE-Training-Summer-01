@@ -18,13 +18,14 @@ export class AuthService {
   private userAuth$ = new BehaviorSubject<UserInfoCredentials | User>(
     this.userAuthInfo
   );
+  signedin$ = new BehaviorSubject(false);
 
   userAuthObs$ = this.userAuth$.asObservable();
   user$ = new Subject<User>();
 
   userObs$ = this.user$.asObservable();
   get userInfo() {
-    return this.userAuth$.value;
+    return this.userAuthObs$;
   }
 
   constructor(
@@ -64,6 +65,7 @@ export class AuthService {
             iat,
             jwt_token: accessToken,
           };
+          this.signedin$.next(true);
           this.handleAuthentication();
           this.userAuth$.next(this.userAuthInfo);
         })
@@ -94,9 +96,10 @@ export class AuthService {
             iat,
             jwt_token: accessToken,
           };
-
-          this.handleAuthentication();
+          this.signedin$.next(true);
+          // this.handleAuthentication();
           this.userAuth$.next(this.userAuthInfo);
+          console.log('signIn auth service works!');
         })
       );
   }
@@ -108,6 +111,7 @@ export class AuthService {
       clearTimeout(this.tokenExpirationTimer);
     }
     this.tokenExpirationTimer = null;
+    this.signedin$.next(false);
   }
   autoLogout(expirDuration: number) {
     this.tokenExpirationTimer = setTimeout(() => {
@@ -143,11 +147,16 @@ export class AuthService {
       console.log(new Date(userData.exp).getTime());
       console.log(new Date(userData.exp).getTime() - new Date().getTime());
       this.autoLogout(expirationDuration);
+      this.signedin$.next(true);
     }
   }
   handleAuthentication() {
+<<<<<<< feature/Team_AC/S2A-81_auth_service_Component/Christopher
     const expireDate: any = new Date(this.userAuthInfo.exp * 1000);
 
+=======
+
+>>>>>>> Release_Branch/Team_AC
     const user = new User(
       this.userAuthInfo.username,
       this.userAuthInfo.role,

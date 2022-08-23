@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { BehaviorSubject } from 'rxjs';
@@ -12,6 +12,7 @@ export class NavbarComponent implements OnInit {
   renderBtn: boolean = true;
   currBtnOn: string = 'Sign In';
   navigateTo: string = 'login';
+
   constructor(private router: Router, private authService: AuthService) {}
 
   onButtonClick() {
@@ -28,6 +29,7 @@ export class NavbarComponent implements OnInit {
         this.renderBtn = true;
       } else {
         if (this.router.url === '/movies') {
+          // || this.router.url === `/movies/${this.movieId}`
           this.renderBtn = false;
         }
       }
@@ -40,8 +42,9 @@ export class NavbarComponent implements OnInit {
     this.navigateTo = 'login';
     this.renderBtn = true;
   }
-  onSignout(){
-    this.authService.signout()
+
+  onSignout() {
+    this.authService.signout();
   }
   ngOnInit(): void {
     this.authService.userAuthObs$.subscribe(

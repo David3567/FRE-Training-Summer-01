@@ -1,9 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
-import { RawMovie, RootVideo } from '../interfaces/movie.interface';
+import { filter, map, tap } from 'rxjs/operators';
+import { RawMovie, RootVideo, MovieVideo } from '../interfaces/movie.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -54,27 +53,17 @@ export class MovieService {
   }
 
   getVideo(movieId: string) {
-    // this.movieId = '718789';
     return this.http
       .get<RootVideo>(`${this.baseUrl}/movie/${movieId}/videos`, {
         params: { api_key: this.api_key },
       })
       .pipe(
+        // filter((data) => (data.results).type === 'Trailer')
         map((data) => {
-          return data.results.map((result) => {
-            return {
-              // movieName: result.name,
-              // type: result.type,
-              key: result.key,
-            };
+          return data.results.filter((movie) => {
+            return movie.type === 'Trailer';
           });
         })
       );
   }
-
-  // searchMovie(movieId: string) {
-  //   this.http.get<any>(`${this.baseUrl}/movie/${movieId}`, {
-  //     params: { api_key: 'a3aca7803e3483b603d87731babf7690' },
-  //   });
-  // }
 }
