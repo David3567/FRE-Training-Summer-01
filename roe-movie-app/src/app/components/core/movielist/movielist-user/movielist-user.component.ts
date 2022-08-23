@@ -1,5 +1,5 @@
 import { Component, DoCheck, OnInit, Inject, OnChanges } from '@angular/core';
-import { ActivatedRoute, Route } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authservice.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
@@ -13,6 +13,7 @@ export class MovielistUserComponent implements OnInit, DoCheck, OnChanges {
   open: boolean = false;
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private authService: AuthenticationService,
     private fb: FormBuilder,
   ) { }
@@ -48,8 +49,14 @@ export class MovielistUserComponent implements OnInit, DoCheck, OnChanges {
     this.open = true;
   }
 
+  closeModal() {
+    this.open = false;
+  }
+
   onSubmit() {
+    console.log(this.route)
     this.authService.setRole(this.password.value, this.selected.toUpperCase()).subscribe({
+      next: () => this.router.navigate(['movielist']),
       error: (e) => console.log(e.error.message)
     })
   }

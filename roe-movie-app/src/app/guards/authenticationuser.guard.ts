@@ -37,8 +37,9 @@ export class AuthenticationUserGuard implements CanActivate {
       this.router.navigate(['signin']);
       return false;
     }
-    if (role == 'USER') {
-      this.router.navigate(['movielist']);
-    }
+    // if (role == 'USER') {
+    //   console.log('userrr')
+    //   this.router.navigate(['movielist_user']);
+    // }
   }
 }
