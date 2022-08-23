@@ -5,12 +5,15 @@ import { OverviewComponent} from "../overview/overview.component";
 import { PhotosComponent } from "../photos/photos.component";
 import { VideosComponent } from "../videos/videos.component";
 import { SingleMovieComponent } from "../single-movie.component";
+import { CommonModule } from '@angular/common';
+// import{SingleMovieRouterModule} from '../single-movie-routing.module'
+
 
 
 const routes: Routes = [
    {
     path: "single-movie", component: SingleMovieComponent,
-    // loadChildren: () => import("./single-movie.module").then(m => m.SingleMovieModule)
+    loadChildren: () => import("./single-movie.module").then(m => m.SingleMovieModule)
 
   },
   // {
@@ -32,8 +35,10 @@ const routes: Routes = [
 ];
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes),
+    RouterModule.forChild(routes),
+    
   ],
+  
   exports: [RouterModule],
   
 })

@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { SignInComponent } from "../sign-in.component";
 import { NotAuthorizedUserGuard } from '../../guards/not-authorized-user.guard';
 
+
 @NgModule({
   imports: [
     RouterModule.forChild([{

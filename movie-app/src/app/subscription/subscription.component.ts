@@ -26,22 +26,22 @@ export class SubscriptionComponent implements OnInit {
   subscriptions: Membership[] = [
     {
       price: 7.99,
-      name: 'Basic',
+      name: 'Basic', //user
       screenToWatchTotalCount: 1
     },
     {
       price: 10.99,
-      name: 'Standard',
+      name: 'Standard', //user
       screenToWatchTotalCount: 2
     },
     {
       price: 13.99,
-      name: 'Premium',
+      name: 'Premium', //admin
       screenToWatchTotalCount: 4
     },
     {
       price: 19.99,
-      name: 'Ultra',
+      name: 'Ultra', //superuser
       screenToWatchTotalCount: 4
     },
   ]

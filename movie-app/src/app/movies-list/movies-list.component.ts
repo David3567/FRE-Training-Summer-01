@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Video } from '../interfaces/movie.interface';
+import { User } from '../interfaces/user.interface';
 import { MovieService } from '../services/movie.service';
 import { UserService } from '../services/user.service';
 
@@ -21,7 +22,7 @@ export class MoviesListComponent implements OnInit {
   ) {}
   trending: any[] = [];
   searchHidden: boolean = true;
-  currentUser!: any;
+  currentUser!: User;
 
   ngOnInit(): void {
     this.movieService.getMoviesList().subscribe((movies: any) => {
@@ -48,9 +49,11 @@ export class MoviesListComponent implements OnInit {
     });
   }
 
-  //REVIEW: Check it it's needed, otherwise delete it
   searchTab() {
-    console.log('H');
      this.searchHidden = !this.searchHidden
+  }
+
+  logOut() {
+    this.userService.signOut();
   }
 }

@@ -1,8 +1,10 @@
-<ng-container *ngIf="currentUser.role !== 'ADMIN' else randomUser">
+<ng-container *ngIf="currentUser.jwt_token else randomUser">
 
   <section
-    class="movies__list__container">
+    class="movies__list__container"
+    [style.display]="'none'">
     <ng-container *ngIf="movies && movies.length > 0; else emptyList">
+
       <div class="movies__list__container">
         <div class="sidebar">
           <div class="sidebar__control--btn flex__wrapper">
@@ -17,6 +19,11 @@
             </span>
             <span>
               Cl <fa-icon [icon]="['fas', 'clapperboard']"></fa-icon>
+            </span>
+            <span
+              title="Logout"
+              (click)="logOut()">
+              Logout <fa-icon [icon]="['fas', 'door-open']"></fa-icon>
             </span>
             <span> + </span>
           </div>

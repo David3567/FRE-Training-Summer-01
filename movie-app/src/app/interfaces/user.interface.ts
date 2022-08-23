@@ -12,5 +12,7 @@ export interface User{
   exp?: string
 }
 
-
-export type Role = "USER" | "ADMIN" | "SUPERUSER"
+type Role =
+  Partial<
+    Record<"USER" | "ADMIN" | "SUPERUSER", string>
+  >;

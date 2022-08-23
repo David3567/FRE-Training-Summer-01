@@ -8,7 +8,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MovieService } from './services/movie.service';
-import { TestComponent } from './test/test.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -22,7 +21,8 @@ import { NotAuthorizedUserGuard } from './guards/not-authorized-user.guard';
 import { SharedModule } from './shared/shared.module';
 import { AuthorizedUserGuard } from './guards/authorized-user.guard';
 import { HelperService } from './services/helper.service';
-import { User } from './interfaces/user.interface';
+
+
 export const BASRURL = new InjectionToken<string>('');
 
 @NgModule({
@@ -32,7 +32,6 @@ export const BASRURL = new InjectionToken<string>('');
     NavHeaderHPComponent,
     HomePageComponent,
     PageNotFoundComponent,
-    TestComponent,
     // ShortPipe
   ],
   imports: [
@@ -62,12 +61,9 @@ export const BASRURL = new InjectionToken<string>('');
   bootstrap: [AppComponent],
 })
 export class AppModule {
-  currentUser!: User;
-
   constructor(
     library: FaIconLibrary,
     public helper: HelperService,
-    private userService: UserService,
 
   ) {
     library.addIcons(

@@ -10,16 +10,14 @@ export class DiscoverService {
   private discoverSearch: Info[] = [];
   private discoverSearchSubject$ = new BehaviorSubject(this.discoverSearch);
   discoverSearch$ = this.discoverSearchSubject$.asObservable();
-
-  private apiKey: string = '?api_key=7979b0e432796fe7fa957d6fbbeb0835';
   discover$: any;
 
   constructor(private readonly http: HttpClient) {}
 
-  addAdditionallyPage(movieName: string, page: number) {
+  addAdditionallyPage(movieName: string, page: number, apiKey: string) {
     return this.http
       .get(
-        `https://api.themoviedb.org/3/search/movie${this.apiKey}&query=${movieName}&page=${page}`
+        `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${movieName}&page=${page}`
       )
       .pipe(
         <any>tap(({ results }: Movie) => {
@@ -40,11 +38,11 @@ export class DiscoverService {
       );
   }
 
-  getSearch(movieName: string) {
+  getSearch(movieName: string, apiKey: string) {
     if (movieName.trim() !== '')
       return this.http
         .get(
-          `https://api.themoviedb.org/3/search/movie${this.apiKey}&query=${movieName}`
+          `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${movieName}`
         )
         .pipe(
           <any>tap(({ results, total_pages }: Movie) => {

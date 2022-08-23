@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Movie } from '../interfaces/movie.interface';
 import { Router } from '@angular/router';
-import {SingleMovieService } from '../services/single-movie.service'
+import { SingleMovieService } from '../services/single-movie.service';
+
+
 @Component({
   selector: 'app-movie-card',
   templateUrl: './movie-card.component.html',
@@ -10,15 +12,16 @@ import {SingleMovieService } from '../services/single-movie.service'
 export class MovieCardComponent implements OnInit {
   @Input() movie!: Movie;
 
-  constructor(private router: Router,
-    private singleMovieService: SingleMovieService) {}
+  constructor(
+    private router: Router,
+    private singleMovieService: SingleMovieService
+  ) {}
 
   ngOnInit(): void {
-    // console.log(this.movie);
+    console.log(this.movie);
   }
-  onClickPlay(){
+  onClickPlay() {
     this.router.navigate(['single-movie'])
     this.singleMovieService.sendMovie(this.movie)
   }
-
 }
