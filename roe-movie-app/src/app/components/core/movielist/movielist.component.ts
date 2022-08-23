@@ -177,4 +177,9 @@ export class MovielistComponent implements OnInit {
       this.Movies.splice(this.Movies.length - 20, 20);
     }
   }
+
+   signout() {
+    localStorage.removeItem('user');
+    this.router.navigate(['home']);
+  }
 }

@@ -2,6 +2,14 @@
   overflow: hidden;
 }
 
+button {
+  width: 100px;
+  height: 50px;
+  border: none;
+  border-radius: 8px;
+  background: red;
+}
+
 main {
   background: url('../../../../assets/1014.jpg');
   background-repeat: repeat;
@@ -13,23 +21,34 @@ main {
   font-size: 10px;
 }
 
+nav {
+  width: 100%;
+  height: 100px;
+  align-items: center;
+  position: relative;
+  display: inline-flex;
+  z-index: 2000;
+}
+
 form {
-  position: fixed;
+  height: 50px;
+  width: 80%;
+  padding-left: 50px;
   top: 0;
   z-index: 1;
 }
 
 .search-bar {
-  width: 100%;
-  height: 100px;
+  width: 40%;
+  height: 50px;
   background-color: black;
   opacity: 0.8;
   color: white;
+  display: relative;
+  position: fixed;
   text-indent: 80px;
   font-size: 25px;
-  position: fixed;
   border: none;
-  z-index: 10;
 }
 
 .search-bar:focus {
@@ -40,7 +59,7 @@ form {
   position: absolute;
   color: white;
   text-indent: 30px;
-  margin-top: 30px;
+  margin-top: 5px;
   font-size: 40px;
   z-index: 1;
   position: fixed;
@@ -49,10 +68,8 @@ form {
 .movie-container {
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: space-between; */
   margin-top: 150px;
   margin-left: 100px;
-  /* width: calc(100% - 0px); */
   background: transparent;
   text-align: center;
 }

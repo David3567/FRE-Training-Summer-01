@@ -1,15 +1,16 @@
 <app-sidebar
-  (selectUpcoming)="selectUpcoming()"
-  (selectNowPlaying)="selectNowPlaying()"
+(selectUpcoming)="selectUpcoming()"
+(selectNowPlaying)="selectNowPlaying()"
 >
 </app-sidebar>
 <main
-  appTrackScroll
-  (direction)="goDirection($event)"
+appTrackScroll
+(direction)="goDirection($event)"
 >
+<nav>
   <form [formGroup]="SearchForm">
     <i class="material-icons material-icons-search">search</i
-    ><input
+      ><input
       matInput
       #search
       type="text"
@@ -18,8 +19,10 @@
       (keyup)="changeOtherControls()"
       autocomplete="off"
       placeholder="Search by Title"
-    />
-  </form>
+      />
+    </form>
+    <button (click)="signout()">Sign Out</button>
+</nav>
   <div
     class="movie-container"
     infinite-scroll
