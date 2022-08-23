@@ -33,10 +33,10 @@ const routes: Routes = [
     path: '',
     component: MovieListComponent,
     canActivate: [AuthGuard],
-    resolve: { movieData: AppResolverService }
+    resolve: { movieData: AppResolverService },
   },
   {
-    path: 'movies/:id',
+    path: '',
     children: [
       {
         path: 'movies/:id',
