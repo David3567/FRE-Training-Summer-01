@@ -150,6 +150,7 @@ export class AuthService {
   }
   handleAuthentication() {
     const expireDate: any = new Date(this.userAuthInfo.exp * 1000);
+    console.log(expireDate);
 
     const user = new User(
       this.userAuthInfo.username,
