@@ -7,6 +7,7 @@ import { MovieListComponent } from './components/movie-list/movie-list.component
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 import { AdminGuard } from './guards/admin.guard';
 import { UserUpdateComponent } from './components/user-update/user-update.component';
+import { AppResolverService } from './services/app-resolver.service';
 
 const routes: Routes = [
   {
@@ -32,9 +33,10 @@ const routes: Routes = [
     path: '',
     component: MovieListComponent,
     canActivate: [AuthGuard],
+    resolve: { movieData: AppResolverService }
   },
   {
-    path: '',
+    path: 'movies/:id',
     children: [
       {
         path: 'movies/:id',

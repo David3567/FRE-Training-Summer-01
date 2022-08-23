@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../../services/movie.service';
-import { MovieDiscover } from '../../movies';
+import { ActivatedRoute } from '@angular/router';
+import { Movie, MovieDiscover, MovieDiscoverList } from '../../movies';
+import { BehaviorSubject } from 'rxjs';
+import { switchMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-movie-list',
@@ -8,9 +11,14 @@ import { MovieDiscover } from '../../movies';
   styleUrls: ['./movie-list.component.css'],
 })
 export class MovieListComponent implements OnInit {
-  movieData: MovieDiscover[] = [];
-  show: boolean = false;
-  constructor(private movieService: MovieService) {}
+  movieData: MovieDiscover[] = []
+  movie: Movie[] = []
+  curretPage$ = new BehaviorSubject<number>(1)
+
+
+  constructor(
+    private movieService: MovieService,
+    private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.movieService.getDiscoverMovies().subscribe(
@@ -18,7 +26,7 @@ export class MovieListComponent implements OnInit {
         this.movieData = data.results;
         console.log(this.movieData)
       },
-      (error) => {
+      (_error) => {
         console.error('Request failed with error');
       }
     );
@@ -28,19 +36,47 @@ export class MovieListComponent implements OnInit {
     return `https://www.themoviedb.org/t/p/w220_and_h330_face${api_path}`;
   }
 
-  // onScroll(): void {
-  //     this.movieService
-  //       .getDiscoverMovies()
-  //       .subscribe((getPosterPath: movieData[]) => {
-  //         this.movieData.push(...getPosterPath);
+  // getPage(){
+  //   this.movieService
+  //       .getMorePages()
+  //       .subscribe((movie) => {
+  //         this.movieData.push(...movie)
+  //         console.log(movie);
+
   //       });
+  // }
+
+  // onScroll() {
+  //   console.log(this.moviePage);
+
+  //     this.getPage.push(...this.movieData)
+  //     console.log(this.getPage());
+
   //   }
 
-  onScroll() {
-    this.movieData;
+    // onScroll(){
+    //   this.movieData
+    //   console.log(this.movieData);
+
+    // }
+
+  // onScroll() {
+  //   // let moviePage = 'https://api.themoviedb.org/3/movie?api_key=3b12cfa2e8e41ce85be82944f8b7e697'
+  //   // console.log(moviePage);
+  //   // this.movie.push(...this.movieData)
+  //   // console.log(this.movieData);
+
+  //   this.movie
+  //     // this.movieService.getMorePages().subscribe((movie) => {
+  //     // this.movie.push(...this.movieData)
+  //     // console.log(this.movie);
+
+  // // })
+  //   }
+
+  onScroll(){
+    this.curretPage$.next(this.curretPage$.value + 1)
   }
 
-  toggleTrailer() {
-    console.log(this.show)
   }
-}
+

@@ -13,10 +13,10 @@ export class MovieCardComponent implements OnInit {
 
   @Input() movieData: MovieDiscover[] = [];
   movie: MovieDiscover[]
-  
-  
+
+
   constructor(private movieService: MovieService) {
-    
+
    }
 
   ngOnInit(): void {

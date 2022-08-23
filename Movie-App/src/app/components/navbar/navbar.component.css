@@ -1,1 +1,27 @@
+.navbar{
+  background-color: #caddff;
+}
+
+.navbar-brand{
+  text-align: center;
+  font-weight: 800;
+  font-size: 30px;
+  color: rgba(219, 111, 254, 0.902);
+}
+
+.Login,
+.Register,
+.user-update,
+.user-logout{
+  text-align: center;
+  font-weight: 800;
+  font-size: 20px;
+  color: rgb(118, 158, 223);
+}
+
+.navbar-brand,
+.user-update,
+.user-logout :hover{
+  color: rgba(219, 111, 254, 0.902);
+}
 

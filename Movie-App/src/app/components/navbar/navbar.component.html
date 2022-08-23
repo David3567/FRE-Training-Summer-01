@@ -16,16 +16,21 @@
   >
     <div class="navbar-default">
       <ul class="nav navbar-nav">
-        <li *ngIf="isLoggedOff()"><a routerLink="/login">Login</a></li>
-        <li *ngIf="isLoggedOff()"><a routerLink="/register">Register</a></li>
+        <li *ngIf="isLoggedOff()"><a routerLink="/login" class="Login" [ngStyle]="{'color': 'rgb(118, 158, 223)'}">Login</a></li>
+        <li *ngIf="isLoggedOff()"><a routerLink="/register" class="Register" [ngStyle]="{'color': 'rgb(118, 158, 223)'}">Register</a></li>
         <li *ngIf="!isLoggedOff()">
           <a routerLink="/user-update"
-            >{{ userInfo.username }} ({{ userInfo.role }})</a
+            class="user-update"
+            [ngStyle]="{'color': 'rgb(118, 158, 223)'}">{{ userInfo.username }} ({{ userInfo.role }})</a
           >
         </li>
 
         <li *ngIf="!isLoggedOff()">
-          <a [routerLink]="['/']" (click)="logout()">Logout</a>
+          <a [routerLink]="['/']"
+          class="user-logout"
+          [ngStyle]="{'color': 'rgba(219, 111, 254, 0.902)'}"
+          (click)="logout()"
+          >Logout</a>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right"></ul>

@@ -15,30 +15,22 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { MovieService } from './services/movie.service';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
-import { MovieCardComponent } from './components/movie-card/movie-card.component';
-
-
-const appRoutes: Routes = [
-  { path: '', component: HomepageComponent },
-  { path: 'movie-card', component: MovieCardComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: '**', component: ErrorPageComponent },
- ];
 import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { MovieDetailsComponent } from './components/movie-details/movie-details.component';
 import { UserUpdateComponent } from './components/user-update/user-update.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { MovieCardComponent } from './components/movie-card/movie-card.component';
+
 
 // const appRoutes: Routes = [
 //   { path: '', component: HomepageComponent },
+//   { path: 'movie-card', component: MovieCardComponent },
 //   { path: 'login', component: LoginComponent },
 //   { path: 'register', component: RegisterComponent },
-//   { path: '', loadChildren: () => import('./components/homepage/movie-module.module').then(m => m.MovieModuleModule) },
 //   { path: '**', component: ErrorPageComponent },
-// ];
+//  ];
 
 
 @NgModule({
@@ -48,12 +40,11 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     HomepageComponent,
     MovieListComponent,
     LoginComponent,
-    RegisterComponent,
     ErrorPageComponent,
-    MovieCardComponent,
+    RegisterComponent,
     MovieDetailsComponent,
     UserUpdateComponent,
-
+    MovieCardComponent
   ],
 
   imports: [
