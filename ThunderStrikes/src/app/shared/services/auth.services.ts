@@ -112,19 +112,13 @@ export class AuthService {
 
   upgradeRole(newRole: string, password: string){ 
     let retrievedUserToken = localStorage.getItem(LocalStorageVariables.JWT_TOKEN)!;
-    const {exp, iat, id, jwt_token, ...retrievedUserInfo}: User = jwtDecode(retrievedUserToken);
-    retrievedUserInfo.role = newRole;
-    console.log(retrievedUserInfo);
+    const { exp, iat, id, ...user } = jwt_decode<any>(retrievedUserToken);
+    user.role = newRole;
     const url = `${this.baseUrl}/auth/userupdate`;
-  return this.http.patch<{ accessToken: string }>(
-    url,
-    {
-    retrievedUserInfo,
-    password,
-  }
-  ).pipe(
+    return this.http.patch<{ accessToken: string }>(url, {...user, password}).pipe(
     tap(({ accessToken }) => {
       this.setToken(accessToken);
+      this._userAuthInfo.role = newRole;
       console.log("Role Updated");
       this.refreshToken()?.subscribe();
       this.router.navigate(["movie-dashboard"]);
