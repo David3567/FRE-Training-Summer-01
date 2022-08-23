@@ -115,7 +115,9 @@ export class AuthService {
     const { exp, iat, id, ...user } = jwt_decode<any>(retrievedUserToken);
     user.role = newRole;
     const url = `${this.baseUrl}/auth/userupdate`;
-    return this.http.patch<{ accessToken: string }>(url, {...user, password}).pipe(
+    return this.http.patch<{ accessToken: string }>(
+      url, {...user, password}
+      ).pipe(
     tap(({ accessToken }) => {
       this.setToken(accessToken);
       this._userAuthInfo.role = newRole;
