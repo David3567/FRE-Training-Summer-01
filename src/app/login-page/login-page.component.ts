@@ -17,6 +17,8 @@ export class LoginPageComponent implements OnInit {
       Validators.maxLength(20),
     ]),
   });
+  signedIn!: boolean;
+  signedInInfo: any;
 
   // eslint-disable-next-line no-empty-function
   constructor(private authService: AuthService, private router: Router) {}
@@ -26,7 +28,6 @@ export class LoginPageComponent implements OnInit {
 
   // eslint-disable-next-line class-methods-use-this
   onSubmit() {
-   
     if (this.loginForm.invalid) {
       return;
     }
@@ -39,5 +40,13 @@ export class LoginPageComponent implements OnInit {
         this.loginForm.setErrors({ credentials: true });
       },
     });
+    this.authService.signedin$.subscribe((val) => {
+      this.signedIn = val;
+    });
+    console.log(this.signedIn);
+    this.authService.userInfo.subscribe((userInfo) => {
+      this.signedInInfo = userInfo;
+    });
+    console.log(this.signedInInfo);
   }
 }

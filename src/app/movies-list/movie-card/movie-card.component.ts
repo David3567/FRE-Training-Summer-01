@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/auth/auth.service';
 import { MovieList } from '../../interfaces/movie.interface';
 
 @Component({
@@ -8,8 +9,14 @@ import { MovieList } from '../../interfaces/movie.interface';
 })
 export class MovieCardComponent implements OnInit {
   @Input() movie: any;
+  // routerLink = `/movies/` + this.movie.id;
+  userRole?: string;
 
-  constructor() {}
+  constructor(private authService: AuthService) {}
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    this.authService.userObs$.subscribe((userInfo) => {
+      this.userRole = userInfo.username;
+    });
+  }
 }
