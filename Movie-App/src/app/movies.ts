@@ -16,7 +16,6 @@ export interface MovieDiscover {
 }
 
 export interface MovieDiscoverList {
-  map: any;
   page: number;
   results: MovieDiscover[];
   total_pages: number;

@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../../services/movie.service';
 import { ActivatedRoute } from '@angular/router';
 import { Movie, MovieDiscover, MovieDiscoverList } from '../../movies';
-import { BehaviorSubject } from 'rxjs';
-import { switchMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-movie-list',
@@ -12,20 +10,9 @@ import { switchMap, tap } from 'rxjs/operators';
 })
 export class MovieListComponent implements OnInit {
   movieData: MovieDiscover[] = []
-  movie: Movie[] = []
-  currentPage$ = new BehaviorSubject<number>(1)
+  movie: any
+  page: number = 1
 
-    currentPageData$ = this.currentPage$.pipe(
-    switchMap((currentPage) =>
-      this.movieService.getMorePages(currentPage)
-    ),
-    tap(() => {
-      if (this.currentPage$) {
-        this.currentPage$.target.complete();
-        this.currentPage$ = null;
-      }
-    })
-  );
 
   constructor(
     private movieService: MovieService,
@@ -40,36 +27,21 @@ export class MovieListComponent implements OnInit {
       (_error) => {
         console.error('Request failed with error');
       }
-    );
+    ),
+    this.movieService.getMorePages(this.page).subscribe((data) => {
+      this.movie = data
+      console.log(this.movie);
+    })
   }
 
   getPosterPath(api_path: string) {
     return `https://www.themoviedb.org/t/p/w220_and_h330_face${api_path}`;
   }
 
-  // getPage(){
-  //   this.movieService
-  //       .getMorePages()
-  //       .subscribe((movie) => {
-  //         this.movieData.push(...movie)
-  //         console.log(movie);
-
-  //       });
-  // }
-
-  // onScroll() {
-  //   console.log(this.moviePage);
-
-  //     this.getPage.push(...this.movieData)
-  //     console.log(this.getPage());
-
-  //   }
-
-    // onScroll(){
-    //   this.movieData
-    //   console.log(this.movieData);
-
-    // }
+  getMovies(page: number){
+    this.page++
+    return (`https://api.themoviedb.org/3/discover/movie?api_key=3b12cfa2e8e41ce85be82944f8b7e697&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&${page}`)
+  }
 
   // onScroll() {
   //   // let moviePage = 'https://api.themoviedb.org/3/movie?api_key=3b12cfa2e8e41ce85be82944f8b7e697'
@@ -86,9 +58,11 @@ export class MovieListComponent implements OnInit {
   //   }
 
   onScroll(){
-    this.currentPage$.next(this.currentPage$.value + 1)
-    console.log(this.currentPage$);
+    // let moviePage = 'https://api.themoviedb.org/3/movie?api_key=3b12cfa2e8e41ce85be82944f8b7e697'
+    // console.log(moviePage);
+    console.log(this.getMovies(this.page));
 
+    this.movieData
   }
 
   }

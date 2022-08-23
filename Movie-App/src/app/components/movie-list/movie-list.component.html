@@ -12,9 +12,7 @@ infiniteScroll
         </span>
       </div> -->
 
-    <div class="col-sm-6 col-md-4"
-    *ngIf="currentPage$ |async as currentPage">
-    {{ currentPage }}
+    <div class="col-sm-6 col-md-4">
     <ul class="movie-list">
       <li *ngFor="let movie of movieData" class="movie-card"
       infiniteScroll
@@ -41,7 +39,7 @@ infiniteScroll
         </div>
       </div>
         <div class="caption">
-          <h3>{{ movie.title }}</h3>
+          <h4>{{ movie.title }}</h4>
         </div>
       </a>
       </li>
