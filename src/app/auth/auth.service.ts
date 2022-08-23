@@ -120,7 +120,7 @@ export class AuthService {
       role: string;
       email: string;
       id: string;
-      exp: any;
+      exp: number;
       jwt_token: string;
     } = JSON.parse(localStorage.getItem('userData') || '{}');
     if (!userData) {
@@ -140,14 +140,11 @@ export class AuthService {
 
       const expirationDuration =
         new Date(userData.exp).getTime() - new Date().getTime();
-      console.log(new Date(userData.exp).getTime());
-      console.log(new Date(userData.exp).getTime() - new Date().getTime());
       this.autoLogout(expirationDuration);
     }
   }
   handleAuthentication() {
     const expireDate: any = new Date(this.userAuthInfo.exp * 1000);
-
     const user = new User(
       this.userAuthInfo.username,
       this.userAuthInfo.role,
