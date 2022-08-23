@@ -6,15 +6,16 @@ button {
   width: 100px;
   height: 50px;
   border: none;
+  margin-right: 60px;
   border-radius: 8px;
   background: red;
 }
 
 main {
-  background: url('../../../../assets/1014.jpg');
+  background: url("../../../../assets/1014.jpg");
   background-repeat: repeat;
-  width: calc(100% - 195px);
-  float: right;
+  width: auto;
+  padding-left: 195px;
 }
 
 .movie-title {
@@ -24,6 +25,7 @@ main {
 nav {
   width: 100%;
   height: 100px;
+  background: rgba(0,0,0,.4);
   align-items: center;
   position: relative;
   display: inline-flex;
@@ -33,7 +35,7 @@ nav {
 form {
   height: 50px;
   width: 80%;
-  padding-left: 50px;
+  padding-left: 80px;
   top: 0;
   z-index: 1;
 }
@@ -68,8 +70,8 @@ form {
 .movie-container {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 150px;
-  margin-left: 100px;
+  margin-top: 30px;
+  margin-left: 30px;
   background: transparent;
   text-align: center;
 }
