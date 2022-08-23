@@ -28,7 +28,7 @@ h1 {
 .dialog {
   width: 100%;
   height: 100%;
-  padding-bottom: 50px;
+  margin-bottom: 50px;
   margin: 0;
   background-color: black;
   color: white;
@@ -43,7 +43,7 @@ h1 {
 .dialog-content {
   width: 90%;
   display: block;
-  margin-top: 15px;
+  padding-top: 15px;
   margin-left: auto;
   margin-right: auto;
   overflow-y: hidden;
@@ -68,7 +68,7 @@ h1 {
 }
 
 .profile_img {
-  height: 200px;
+  height: 170px;
   width: auto;
   border-radius: 3%;
 }
