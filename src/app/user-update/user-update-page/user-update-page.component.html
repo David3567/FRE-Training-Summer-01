@@ -4,11 +4,26 @@
   <section class="vip-plan">
     <div></div>
     <div></div>
-    <button class="btn-vip-plan">Basic</button
-    ><button class="btn-vip-plan">Standard</button
-    ><button class="btn-vip-plan">Premium</button>
-    <span class="plan-text"
-      >Monthly price
+    <input
+      type="button"
+      class="btn-vip-plan"
+      value="Basic"
+      (click)="updateSelection('USER')"
+    />
+    <input
+      type="button"
+      class="btn-vip-plan"
+      value="Standard"
+      (click)="updateSelection('ADMIN')"
+    />
+    <input
+      type="button"
+      class="btn-vip-plan"
+      value="Premium"
+      (click)="updateSelection('SUPERUSER')"
+    />
+    <span class="plan-text">
+      Monthly price
       <hr class="grid-hr" />
     </span>
     <div></div>
@@ -35,5 +50,8 @@
     <span class="planGrid_booleanLabel">&#10003;</span>
     <span class="planGrid_booleanLabel">&#10003;</span>
   </section>
-  <div class="btn-container"><button class="btn-next">Next</button></div>
+  <div class="btn-container">
+    <button class="btn-next" (click)="submit()">Next</button>
+  </div>
 </main>
+<hr />
