@@ -90,14 +90,14 @@ export class SubscriptionComponent implements OnInit {
       password: "123Abc",
       email: this.currentUser.email!,
       role: this.selectRole,
-      tmdb_key: "7979b0e432796fe7fa957d6fbbeb0835"
+      tmdb_key: this.currentUser.tmdb_key!
+      // tmdb_key: "7979b0e432796fe7fa957d6fbbeb0835"
     }).subscribe(console.log)
   }
 
   hideModal() {
     this.hasSelected = false;
   }
-
 }
 
 
