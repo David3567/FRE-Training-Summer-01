@@ -50,10 +50,10 @@
   width: 70%;
 }
 
-.modal:nth-child(2) p {
+.modal:nth-child(4) p {
   width: 60%;
   letter-spacing: .3px;
-  font-size: 18px;
+  font-size: 28px;
   font-weight: 400;
   line-height: normal;
   margin: 10px 0;
@@ -190,6 +190,7 @@ tr:nth-child(5) svg path {
 .modal:nth-child(4) {
   align-items: center;
   text-align: center;
+  height: 400px;
   width: 40%;
 }
 

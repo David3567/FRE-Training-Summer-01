@@ -119,6 +119,11 @@
         formControlName="password"
       />
       <button
+        (click)="closeModal()"
+      >
+      Cancel
+    </button>
+      <button
         type="submit"
         [disabled]="!form.valid"
       >

@@ -11,6 +11,8 @@ import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import jwt_decode from 'jwt-decode';
 import { AuthenticationService } from './services/authservice.service';
 import { Observable } from 'rxjs';
+import {MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+import { NoopScrollStrategy } from '@angular/cdk/overlay';
 
 function initializeAppFactory(httpClient: HttpClient): void {
 
@@ -41,7 +43,8 @@ function initializeAppFactory(httpClient: HttpClient): void {
     { provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
       multi: true
-     },
+    },
+     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {width: '648px', scrollStrategy: new NoopScrollStrategy()}},
     {
       provide: APP_INITIALIZER,
       useFactory: initializeAppFactory,
