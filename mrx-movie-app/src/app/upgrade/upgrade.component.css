@@ -1,0 +1,41 @@
+h1 {
+    padding: 7rem;
+    text-align: center;
+}
+
+.container {
+    margin: 0 auto;
+}
+
+hr {
+    width: 90vw;
+}
+
+table {
+    margin: 0 auto;
+}
+
+th {
+    width: 3rem;
+    height: 5rem;
+    padding: 2rem;
+    background-color: red;
+    color: white;
+}
+
+tr {
+    border-bottom: 1px solid black;
+}
+
+td {
+    padding: 1rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    text-align: center;
+    border-bottom: 2px solid gray;
+}
+
+a {
+    text-decoration: none;
+    font-weight: bold;
+}
