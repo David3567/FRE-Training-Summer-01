@@ -35,8 +35,7 @@ h1 {
 }
 
 .dialog-actions {
-  margin-top: 18px;
-  margin-left: 5%;
+  margin-top: 12px;
   margin-bottom: 0;
 }
 
@@ -44,11 +43,9 @@ h1 {
   width: 90%;
   display: block;
   padding-top: 15px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
   overflow-y: hidden;
   color: black;
-  /* overflow-x: hidden; */
 }
 
 .dialog-upper-container {
@@ -97,11 +94,11 @@ h1 {
   height: max-content;
   color: black;
   flex-direction: row;
+  justify-content: space-evenly;
   text-align: center;
   flex-wrap:nowrap;
   overflow: scroll;
   font-size: 15px;
-  padding-left: 20px;
 }
 
 .column {
