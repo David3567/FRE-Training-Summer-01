@@ -20,7 +20,7 @@ export class MoviesListComponent implements OnInit {
   currentUser!: User;
   currentUserRole: "USER" | "ADMIN" | "SUPERUSER" | "GUEST" = "GUEST";
 
-  isMember: boolean = false;
+  showMembership: boolean = false;
 
   constructor(
     public sanitize: DomSanitizer,
@@ -62,5 +62,9 @@ export class MoviesListComponent implements OnInit {
 
   logOut() {
     this.userService.signOut();
+  }
+
+  onshowMembership() {
+    this.showMembership = true
   }
 }

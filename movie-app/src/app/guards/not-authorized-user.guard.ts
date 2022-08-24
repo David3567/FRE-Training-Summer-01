@@ -13,10 +13,11 @@ import { HomePageComponent } from '../components/home-page/home-page.component';
 export class NotAuthorizedUserGuard implements CanDeactivate<SignInComponent | RegisterPageComponent> {
   currentUser!: User;
   constructor(
-    private user: UserService,
+    private userService: UserService,
     private router: Router
   ) {
-    user.currentUser$.subscribe(user => this.currentUser = user);
+    userService.currentUser$
+      .subscribe(user => this.currentUser = user);
   }
 
   canDeactivate(
@@ -26,7 +27,7 @@ export class NotAuthorizedUserGuard implements CanDeactivate<SignInComponent | R
     nextState: RouterStateSnapshot
   ): Observable<boolean|UrlTree>|Promise<boolean|UrlTree>|boolean|UrlTree  {
 
-    if (localStorage.getItem("currentUser")! === this.currentUser.tmdb_key) {
+    if (localStorage.getItem("currentUser")! === this.currentUser?.tmdb_key) {
       return true;
     }
     return false;

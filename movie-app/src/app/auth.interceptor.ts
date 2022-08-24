@@ -35,29 +35,28 @@ export class AuthInterceptor implements HttpInterceptor {
 
   onVerifyToken(request: HttpRequest<any>) {
 
-    let currentUser: { connected: boolean, accessToken: string } =
-      JSON.parse(localStorage.getItem('currentUserInfo')!)
-      ;
-    const token = currentUser?.accessToken;
+    let currentUser: User = JSON.parse(localStorage.getItem('currentUserInfo')!);
+    const token = currentUser?.jwt_token;
 
-    if (token &&
-      (request.url.startsWith(`${this.url}/auth/refresh-token`) && request.method === "POST")
-    ) {
-      this.userService.tokenShouldRefresh$.next(true);
-      return request;
-    }
+    if (token) {
+    //   if (request.url.startsWith(`${this.url}/auth/refresh-token`)
+    //     && request.method === "POST") {
+    //   this.userService.tokenShouldRefresh$.next(true);
+    //   return request;
+    // }
 
-    if (token &&
-      (request.url.startsWith(`${this.url}/auth/userupdate`) && request.method ==="PATCH")
-    ) {
-       return request.clone({
-        setHeaders: { Authorization: `Bearer ${token}`}
-      })
+      if (
+        (request.url.startsWith(`${this.url}/auth/userupdate`) && request.method === "PATCH")||
+        (request.url.startsWith(`${this.url}/auth/signin`) && request.method === "POST")
+      ) {
+        return request.clone({
+          setHeaders: { Authorization: `Bearer ${token}`}
+        })
+      }
+      else {
+        console.error('InvalidTokenError')
+      }
     }
-
-    else {
-      console.log('InvalidTokenError')
-      return request;
-    }
+    return request;
   }
 }

@@ -32,7 +32,18 @@ export class SignInComponent implements OnInit {
     this.isHidden = !this.isHidden;
   }
 
+  get email() {
+    return this.signInForm.get("email");
+  }
+
+  get password() {
+    return this.signInForm.get("password");
+  }
+
   onLogin(e: any): void {
+    if (!this.userService.checkEmail(this.email!.value)) {
+      throw new Error("No such member with this email")
+    }
     this.userService.signIn(this.signInForm.value)
       .subscribe((user: any) => {
         console.log(user);

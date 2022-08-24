@@ -12,7 +12,7 @@ import { NotAuthorizedUserGuard } from './guards/not-authorized-user.guard';
 import { SharedModule } from './shared/shared.module';
 import { AuthorizedUserGuard } from './guards/authorized-user.guard';
 import { HomepageModule } from './components/home-page/homepage/homepage.module';
-import { faHome, faSearch, faCalendar, faClapperboard, faEye, faCheck, faTimes, faDoorOpen } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faSearch, faCalendar, faClapperboard, faEye, faCheck, faTimes, faDoorOpen, faUser } from '@fortawesome/free-solid-svg-icons';
 import { MovieService } from './services/movie.service';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { CommonModule } from '@angular/common';
@@ -23,15 +23,13 @@ export const BASRURL = new InjectionToken<string>('');
   declarations: [
     AppComponent,
     PageNotFoundComponent,
-    // SubscriptionComponent
   ],
   imports: [
     HomepageModule,
     AppRoutingModule,
     CommonModule,
     BrowserModule,
-    SharedModule,
-    // SubscriptionComponent,
+    // SharedModule,
   ],
   exports: [RouterModule,
 
@@ -61,7 +59,8 @@ export class AppModule {
       faClapperboard,
       faEye,
       faCheck, faTimes,
-      faDoorOpen
+      faDoorOpen,
+      faUser
     );
   }
 }

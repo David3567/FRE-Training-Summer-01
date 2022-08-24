@@ -124,10 +124,10 @@ onUpdateRole(user:
     tmdb_key: string
   }): Observable<User> {
 
-  return this.http.patch<{role: "USER" | "SUPERUSER" | "ADMIN" | "GUEST"}>(`${this.baseUrl}/auth/userupdate`, user)
+  return this.http.patch<{accessToken: string}>(`${this.baseUrl}/auth/userupdate`, user)
     .pipe(
-      tap(({role}) => {
-        console.log("Successfully updated user", role);
+      tap(({accessToken}) => {
+        console.log("Successfully updated user", accessToken);
       }),
       catchError(this.helper.errorHandler<any>("The user Update info"))
     )

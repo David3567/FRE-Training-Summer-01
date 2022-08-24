@@ -14,13 +14,12 @@ export class SubscriptionComponent implements OnInit {
 
   @Output() userRoleChange = new EventEmitter();
 
-  @Input()isMember = false;
-  @Output()isMemberChange = new EventEmitter();
+  @Input()showMembership = false;
+  @Output()showMembershipChange = new EventEmitter();
   ;
 
   selectedMembership!: string;
   selectRole!: string;
-
 
   features: string[] = [
     'Monthly price after free ends on 01/01/2024',
@@ -67,13 +66,15 @@ export class SubscriptionComponent implements OnInit {
   }
 
   onConfirm() {
-    console.log(this.currentUser.role)
+    this.showMembership = false
+    this.showMembershipChange.emit(this.showMembership);
+
     this.userService.onUpdateRole({
-      username: this.currentUser.username!,
+      username: this.currentUser?.username!,
       password: "123Abc",
-      email: this.currentUser.email!,
+      email: this.currentUser?.email!,
       role: this.userRole,
-      tmdb_key: this.currentUser.tmdb_key!
+      tmdb_key: this.currentUser?.tmdb_key!
       // tmdb_key: "7979b0e432796fe7fa957d6fbbeb0835"
     }).subscribe(console.log)
   }
@@ -82,14 +83,13 @@ export class SubscriptionComponent implements OnInit {
     this.selectedMembership = role;
     this.hasSelected = true;
 
-    // console.log(role)
     switch (role) {
       case "Basic":
         this.userRole = "GUEST"
         break;
 
       case "Standard":
-      this.userRole = "USER"
+        this.userRole = "USER"
         break;
 
       case "Premium":
