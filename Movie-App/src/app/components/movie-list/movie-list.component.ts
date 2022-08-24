@@ -43,20 +43,6 @@ export class MovieListComponent implements OnInit {
     return (`https://api.themoviedb.org/3/discover/movie?api_key=3b12cfa2e8e41ce85be82944f8b7e697&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${Number}`)
   }
 
-  // onScroll() {
-  //   // let moviePage = 'https://api.themoviedb.org/3/movie?api_key=3b12cfa2e8e41ce85be82944f8b7e697'
-  //   // console.log(moviePage);
-  //   // this.movie.push(...this.movieData)
-  //   // console.log(this.movieData);
-
-  //   this.movie
-  //     // this.movieService.getMorePages().subscribe((movie) => {
-  //     // this.movie.push(...this.movieData)
-  //     // console.log(this.movie);
-
-  // // })
-  //   }
-
   onScroll(){
     // let moviePage = 'https://api.themoviedb.org/3/movie?api_key=3b12cfa2e8e41ce85be82944f8b7e697'
     // console.log(moviePage);
