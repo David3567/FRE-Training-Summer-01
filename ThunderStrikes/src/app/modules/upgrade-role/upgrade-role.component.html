@@ -1,0 +1,23 @@
+<form [formGroup]="roleForm" (ngSubmit)="updateRole()">
+    <div class="input-container">
+        <h2>Choose Your Plan</h2>
+        <select name="roles" placeholder = "Select One" formControlName = "role">
+            <option value="" disabled selected hidden>Select Plan</option>
+            <option value="USER">Strikes</option>
+            <option value="SUPERUSER">Strikes +</option>
+            <option value="ADMIN">Strikes Platinum</option>
+            </select>
+      <input type="text" placeholder="Password" formControlName="password" />
+      <div *ngIf="!password?.valid && (password?.dirty ||password?.touched)">
+        <div><p>Password is required!</p></div>
+        <div [hidden]="!password?.errors?.['minlength']"><p>Password must have minimum length of 4</p></div>
+        <div [hidden]="!password?.errors?.['maxlength']"><p>Password must have maximum length of 10</p></div>
+      </div>
+      <div class="Terms_Conditions">
+        <p>
+          Upgrading Plan will cost an extra $10 per month for Strikes+ and extra $15 a month for Strikes Platinum
+        </p>
+        <button type="submit" [disabled]="!roleForm.valid || !validRole() ">AGREE & CONTINUE</button>
+      </div>
+      </div>
+    </form>

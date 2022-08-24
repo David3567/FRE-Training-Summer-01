@@ -1,0 +1,73 @@
+.input-container {
+  box-sizing: border-box;
+  margin: auto;
+  width: 30%;
+  padding: 2em;
+  text-align: left;
+}
+h2 {
+  color: white;
+  margin-bottom: 1em;
+  text-align: center;
+}
+a {
+  color: #66bcff;
+}
+input {
+  backdrop-filter: blur(3.125em);
+  background-color: rgb(49, 52, 62);
+  border: 0.1em solid transparent;
+  border-radius: 0.4em;
+  caret-color: rgb(2, 231, 245);
+  height: 2em;
+  outline: none;
+  padding: 0.4375em 0.75em;
+  transition: all 0.1s ease 0s;
+  width: 100%;
+  color: #cacaca;
+  margin-bottom: 1em;
+}
+select {
+  backdrop-filter: blur(3.125em);
+  background-color: rgb(49, 52, 62);
+  border: 0.1em solid transparent;
+  border-radius: 0.4em;
+  caret-color: rgb(2, 231, 245);
+  height: 2em;
+  outline: none;
+  padding: 0.4375em 0.75em;
+  transition: all 0.1s ease 0s;
+  width: 100%;
+  height: 40%;
+  color: #cacaca;
+  margin-bottom: 1em;
+}
+p{
+  color: red;
+  margin-bottom: 0.5em;
+}
+.Terms_Conditions {
+  font-size: 1em;
+  line-height: 1.5;
+  background-color: rgb(49, 52, 62);
+  border: 0.1em solid transparent;
+  border-radius: 0.4em;
+  outline: none;
+  padding: 0.4375em 0.75em;
+  width: 100%;
+  color: white;
+}
+.Terms_Conditions p {
+  color: white;
+}
+.Terms_Conditions button {
+  background-color: #0072d2;
+  border: 0;
+  border-radius: 0.4rem;
+  color: white;
+  width: 100%;
+  height: 3em;
+}
+.Terms_Conditions button:hover {
+  background-color: #248be0;
+}
