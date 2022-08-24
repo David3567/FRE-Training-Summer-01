@@ -7,10 +7,13 @@ import { AuthService } from '../services/auth.service';
 })
 export class UpgradeComponent implements OnInit {
   constructor(private authService: AuthService) {}
-
+  user: string = 'USER';
+  admin: string = 'ADMIN';
+  super: string = 'SUPERUSER';
   ngOnInit(): void {}
 
-  onClick() {
-    // this.authService.upgradeRole('ADMIN');
+  onClick(roles: string) {
+    console.log(roles);
+    this.authService.upgradeRole(roles).subscribe();
   }
 }

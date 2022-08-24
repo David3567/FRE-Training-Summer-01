@@ -38,6 +38,7 @@ const routes: Routes = [
   },
   {
     path: 'upgrade',
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import('./upgrade/upgrade.module').then((m) => m.UpgradeModule),
   },
