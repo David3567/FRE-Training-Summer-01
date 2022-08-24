@@ -17,10 +17,6 @@ import { MovieService } from './services/movie.service';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { SubscriptionComponent } from './subscription/subscription.component';
-import { User } from './interfaces/user.interface';
-import jwt_decode from 'jwt-decode';
-import { take, tap } from 'rxjs';
 export const BASRURL = new InjectionToken<string>('');
 
 @NgModule({

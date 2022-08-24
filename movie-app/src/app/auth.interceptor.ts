@@ -11,7 +11,6 @@ import { HelperService } from './services/helper.service';
 import { BASRURL } from './app.module';
 import { UserService } from './services/user.service';
 import { HttpClient } from '@angular/common/http';
-import jwt_decode from 'jwt-decode';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {

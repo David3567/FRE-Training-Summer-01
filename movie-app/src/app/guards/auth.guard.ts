@@ -11,7 +11,6 @@ export class AuthGuard implements CanActivate {
   currentUser!: User;
   constructor(
     private user: UserService,
-    private router: Router
   ) {
     this.user.currentUser$.subscribe(user => {
       this.currentUser = user;

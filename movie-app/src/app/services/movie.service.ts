@@ -6,11 +6,9 @@ import {
   debounceTime,
   map,
   Observable,
-  tap,
 } from 'rxjs';
 import { Movie, RootObject } from '../interfaces/movie.interface';
 import { HelperService } from './helper.service';
-import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root',
