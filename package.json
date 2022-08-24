@@ -1,7 +1,9 @@
 {
   "dependencies": {
     "@angular/router": "^14.1.2",
+    "angular-font-awesome": "^3.1.2",
     "angular-in-memory-web-api": "^0.14.0",
-    "angular-module": "^1.0.1"
+    "angular-module": "^1.0.1",
+    "jwt-decode": "^3.1.2"
   }
 }
