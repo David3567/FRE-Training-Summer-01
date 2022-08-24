@@ -1,23 +1,149 @@
-.input_container {
-  background-color: rgb(110, 110, 110);
-  justify-content: center;
-  text-align: center;
+* {
+  overflow: hidden;
 }
 
-.input_container  label {
-  color:#f8f8f8;
-  font-size: 26px;
+button {
+  width: 100px;
+  height: 50px;
+  border: none;
+  margin-right: 60px;
+  border-radius: 8px;
+  background: red;
+}
+
+main {
+  background: url("../../../../assets/1014.jpg");
+  background-repeat: repeat;
+  width: auto;
+  padding-left: 195px;
+}
+
+.movie-title {
+  font-size: 10px;
+}
+
+nav {
+  width: 100%;
+  height: 100px;
+  background: rgba(0,0,0,.4);
+  align-items: center;
+  position: relative;
+  display: inline-flex;
+  z-index: 1;
+}
+
+form {
+  height: 50px;
+  width: 80%;
+  padding-left: 80px;
+  top: 0;
+  z-index: 1;
+}
+
+.search-bar {
+  width: 40%;
+  height: 50px;
+  background-color: black;
+  opacity: 0.8;
+  color: white;
+  display: relative;
+  position: fixed;
+  text-indent: 80px;
+  font-size: 25px;
+  border: none;
+}
+
+.search-bar:focus {
+  outline: none;
+}
+
+.material-icons-search {
+  position: absolute;
+  color: white;
+  text-indent: 30px;
   margin-top: 5px;
-  margin-right: 4px;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+  font-size: 40px;
+  z-index: 1;
+  position: fixed;
 }
 
-.container{
-  color:#696969;
-  background-color: rgb(240, 240, 240);
-  justify-content: center;
+.movie-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  margin-left: 30px;
+  background: transparent;
   text-align: center;
 }
 
-.class1{background-color: rgb(165, 165, 165); color:#f8f8f8}
-.class2{background-color: #949090; color:black}
+.movie-list {
+  background-color: transparent;
+  width: 260px;
+  margin: 33px 0;
+}
+
+img {
+  height: 300px;
+  width: auto;
+  border-radius: 2%;
+  box-shadow: 5px -10px 30px 1px black;
+  margin-bottom: 10px;
+}
+
+
+.movie-title {
+  font-size: 15px;
+  margin-top: 10px;
+  color: white;
+  font-weight: 900;
+}
+
+.movie-date {
+  font-size: 10px;
+  color: white;
+  font-weight: 800;
+}
+
+.movie-rating {
+  position: absolute;
+  background-color: yellow;
+  color: black;
+  font-size: 8px;
+  font-weight: 900;
+  margin-top: 270px;
+  margin-left: 180px;
+  padding: 0 8px;
+  border-radius: 5px;
+  text-align: center;
+  z-index: 0;
+}
+
+.material-icons-stars {
+  color: black;
+  font-size: 6px;
+}
+
+.text-section {
+  text-align: left;
+  padding-left: 30px;
+}
+
+.movie-title {
+  font-size: 17px;
+}
+
+.movie-date {
+  font-size: 9px;
+  padding-top: 2px;
+}
+
+app-footer {
+  width: calc(100% - 250px);
+  float: right;
+}
+
+.disabled {
+  pointer-events: none;
+  /* for "disabled" effect */
+  opacity: 0.5;
+}

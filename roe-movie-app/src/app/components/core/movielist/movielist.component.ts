@@ -27,7 +27,7 @@ import { getLocaleDirection } from '@angular/common';
 @Component({
   selector: 'app-movielist',
   templateUrl: './movielist.component.html',
-  styleUrls: ['./movielist.component.scss'],
+  styleUrls: ['./movielist.component.css'],
 })
 export class MovielistComponent implements OnInit {
   public Movies?: any = [];

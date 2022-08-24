@@ -81,18 +81,25 @@ button {
   }
 
   .content h3 {
+    font-weight: lighter;
     font-size: 18px;
-    padding-bottom: 1rem;
+    padding-bottom: 2.5rem;
   }
 
   .content h6 {
+    display: none;
     font-size: 18px;
     width: 80%;
+    padding-bottom: 30px;
+  }
+
+  :host {
+    height: 400px;
   }
 
   input {
     height: 45px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
 
   form {

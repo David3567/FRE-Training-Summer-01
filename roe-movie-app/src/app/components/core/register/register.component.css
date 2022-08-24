@@ -198,17 +198,28 @@ tr:nth-child(5) svg path {
   width: 50%;
 }
 
-app-footer >>> .footer,
+/* app-footer >>> .footer-div,
 app-footer >>> footer {
-  background-color: #F3F3F3 !important;
   border-bottom: none;
-}
+} */
 
-app-footer >>> .text-white,
+/* app-footer {
+  .footer-div {
+    background-color: #F3F3F3 !important;
+
+  }
+} */
+
+app-footer >>> div,
 app-footer >>> .text-center {
-  color: gray !important;
+  color: gray;
   font-weight: normal;
   background-color: #F3F3F3 !important;
+  border-top: none !important;
+}
+
+app-header-top >>> button {
+  display: none;
 }
 
 app-header-top >>> .header-top {

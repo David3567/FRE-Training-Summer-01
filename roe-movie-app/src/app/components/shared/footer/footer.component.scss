@@ -3,6 +3,14 @@
   border-bottom: 22px solid #ccc;
 }
 
+:host {
+  > div {
+    background: black;
+    border-top: 10px solid rgb(34, 34, 34);
+    padding-top: 10px;
+  }
+}
+
 .me-4 {
   margin: 0 3%;
 }

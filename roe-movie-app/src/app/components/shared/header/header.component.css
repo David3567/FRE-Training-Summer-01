@@ -2,5 +2,11 @@
   color: #fff;
   background-repeat: no-repeat;
   background-size: cover;
-  background: linear-gradient(0deg, rgba(2, 0, 36, 1) 37%, rgba(0, 0, 0, 0) 61%, rgba(2, 0, 36, 0.7721682422969187) 86%);
+  background: linear-gradient(0deg, rgba(2, 0, 0, 1) 37%, rgba(0, 0, 0, 0) 61%, rgba(0, 0, 0, 0.7721682422969187) 86%);
+}
+
+@media screen and (max-width: 750px) {
+  .banner {
+    background: linear-gradient(0deg, rgba(2, 0, 0, .7) 17%, rgba(0, 0, 0, 0) 61%, rgba(0, 0, 0, 0.7721682422969187) 86%);
+  }
 }

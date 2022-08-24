@@ -6,9 +6,9 @@
     <button (click)="signin()" *ngIf="displayButton">Sign In</button>
     <ng-container *ngIf="!isSignIn && !displayButton">
       <span>{{userInfo?.username}}</span>
-      <br>
+      <!-- <br> -->
       <span>{{userInfo?.email}}</span>
-      <br>
+      <!-- <br> -->
       <button (click)="signout()">Sign Out</button>
     </ng-container>
   </div>
