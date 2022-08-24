@@ -14,9 +14,16 @@ export class SearchMovieService {
     private readonly sharedApiService: SharedApiDataService,
   ) { }
 
-searchMovie(title: string){
-  const url: string = this.sharedApiService.searchMovieUrl + "/movie?" + "query=" + title;
-  return this.httpClient.get<MovieResults>(url, {headers: this.sharedApiService.httpHeaders}).pipe(
+searchMovie(title: string, page?: string | null){
+  const url: string = this.sharedApiService.searchMovieUrl + "/movie";
+  return this.httpClient.get<MovieResults>(url, 
+    {
+      headers: this.sharedApiService.httpHeaders,
+      params: {
+        query: title,
+        page: page || '1'
+      }
+    }).pipe(
     map((movieResults) => {
       const results = movieResults.results;
       return results;
