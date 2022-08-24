@@ -10,13 +10,13 @@ import { MovieListResolver } from './resolvers/movie-list.resolver';
 
 const routes: Routes = [
   { path: "", component: SearchMoviesComponent },
-  { path: ":searchInput/:page", 
+  { path: ":title/:page", 
    component: SearchMoviesComponent,
    resolve: {
      movieList: MovieListResolver
    }
   },
-  { path: ":searchInput", redirectTo: "/search/:searchInput/1"},
+  { path: ":title", redirectTo: "/search/:title/1"},
 ];
 @NgModule({
   declarations: [

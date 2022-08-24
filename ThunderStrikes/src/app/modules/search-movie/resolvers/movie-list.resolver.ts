@@ -14,9 +14,9 @@ import { SearchMovieService } from 'src/app/shared/services/search-movie.service
 export class MovieListResolver implements Resolve<MovieDetails[]> {
   constructor(private readonly searchMovieService: SearchMovieService){}
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<MovieDetails[]> {
-    const searchInput:string | null = route.paramMap.get("searchInput");
+    const title:string | null = route.paramMap.get("title");
     const page:string | null = route.paramMap.get("page");
-    if(!searchInput) return of([]);
-    else return this.searchMovieService.searchMovie(searchInput, page);
+    if(!title) return of([]);
+    else return this.searchMovieService.searchMovie(title, page);
   }
 }
