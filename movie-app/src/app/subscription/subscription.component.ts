@@ -71,7 +71,7 @@ export class SubscriptionComponent implements OnInit {
 
     this.userService.onUpdateRole({
       username: this.currentUser?.username!,
-      password: "123Abc",
+      password: localStorage.getItem("password")!,
       email: this.currentUser?.email!,
       role: this.userRole,
       tmdb_key: this.currentUser?.tmdb_key!

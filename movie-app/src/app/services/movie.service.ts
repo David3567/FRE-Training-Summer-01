@@ -19,7 +19,7 @@ export class MovieService {
   movies$ = this.moviesSubject$.asObservable();
   private defaultId: number = 0;
   private baseUrl: string = 'https://api.themoviedb.org/3';
-  private apiKeys?: string = "7979b0e432796fe7fa957d6fbbeb0835";
+  private apiKeys?: string// = "7979b0e432796fe7fa957d6fbbeb0835";
 
   authData: any;
 

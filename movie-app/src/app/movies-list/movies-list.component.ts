@@ -40,11 +40,12 @@ export class MoviesListComponent implements OnInit {
 
 
     let user = JSON.parse(localStorage.getItem("currentUserInfo")!)
-    // this.userService.currentUser$.subscribe((user:User) => {
-      this.movieService.getApi(user.tmdb_key!)
-      this.currentUser = user;
-      this.currentUserRole = user.role!;
-    // })
+
+    this.movieService.getApi(user.tmdb_key!)
+
+    this.currentUser = user;
+
+    this.currentUserRole = user.role!;
 
     console.log("Movies list\n", user)
   }

@@ -18,6 +18,7 @@ import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 export const BASRURL = new InjectionToken<string>('');
+export const movieApiUrl = new InjectionToken<string>('');
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ export const BASRURL = new InjectionToken<string>('');
     AuthorizedUserGuard,
     NotAuthorizedUserGuard,
     { provide: BASRURL, useValue: 'http://localhost:4231' },
+    { provide: movieApiUrl, useValue: 'https://api.themoviedb.org/3' },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
