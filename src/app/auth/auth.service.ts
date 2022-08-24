@@ -141,7 +141,7 @@ export class AuthService {
     if (loadedUser.token) {
       this.userAuth$.next(loadedUser);
       this.user$.next(loadedUser);
-      console.log(new Date(userData.exp));
+
       const expirationDuration =
         new Date(userData.exp).getTime() - new Date().getTime();
       this.autoLogout(expirationDuration);
@@ -149,8 +149,9 @@ export class AuthService {
     }
   }
   handleAuthentication() {
-    const expireDate: any = new Date(new Date(this.userAuthInfo.exp * 1000));
+    const expireDate: any = new Date(this.userAuthInfo.exp * 1000);
     console.log(expireDate);
+
     const user = new User(
       this.userAuthInfo.username,
       this.userAuthInfo.role,
@@ -159,8 +160,7 @@ export class AuthService {
       expireDate,
       this.userAuthInfo.jwt_token
     );
-    this.user$.next(user);
-    this.autoLogout(expireDate);
+    this.autoLogout(expireDate * 1000);
     localStorage.setItem('userData', JSON.stringify(user));
   }
 }
