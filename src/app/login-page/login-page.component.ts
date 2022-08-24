@@ -40,14 +40,12 @@ export class LoginPageComponent implements OnInit {
         this.loginForm.setErrors({ credentials: true });
       },
     });
-    this.authService.signedin$.subscribe((val) => {
+    this.authService.isSignedIn.subscribe((val) => {
       this.signedIn = val;
     });
-    console.log(this.signedIn);
-    this.authService.userAuthObs$.subscribe((info) => {
-      this.signedInInfo = info;
-      console.log(info);
+
+    this.authService.user.subscribe((userInfo) => {
+      this.signedInInfo = userInfo;
     });
-    // console.log(this.signedInInfo);
   }
 }

@@ -8,6 +8,7 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
+  isSignedIn = false;
   userinfo: any;
   renderBtn: boolean = true;
   currBtnOn: string = 'Sign In';
@@ -46,8 +47,13 @@ export class NavbarComponent implements OnInit {
   onSignout() {
     this.authService.signout();
   }
+
   ngOnInit(): void {
-    this.authService.userAuthObs$.subscribe(
+    this.authService.isSignedIn.subscribe(
+      (isSignedIn) => (this.isSignedIn = isSignedIn)
+    );
+
+    this.authService.user.subscribe(
       (userinfo) => (this.userinfo = userinfo)
     );
   }

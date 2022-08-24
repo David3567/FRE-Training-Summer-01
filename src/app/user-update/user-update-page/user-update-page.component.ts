@@ -16,8 +16,8 @@ export class UserUpdatePageComponent implements OnInit {
   constructor(private authService: AuthService, private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.authService.userInfo.subscribe((info) => {
-      this.currentRole = info.role;
+    this.authService.user.subscribe((user) => {
+      this.currentRole = user?.role;
     });
   }
 

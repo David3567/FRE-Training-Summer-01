@@ -6,14 +6,14 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'any',
 })
 export class MovieItemGuard implements CanActivate {
-  userRole?: string = 'USER';
+  userRole!: any
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -25,10 +25,9 @@ export class MovieItemGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    this.authService.userObs$.subscribe((userInfo) => {
-      this.userRole = userInfo.username;
-    });
-    console.log(this.userRole);
+    this.authService.user.subscribe(user => this.userRole = user?.role)
+
+    console.log('at movie item guard', this.userRole);
     if (this.userRole === 'ADMIN' || this.userRole === 'SUPER') {
       return true;
     } else {

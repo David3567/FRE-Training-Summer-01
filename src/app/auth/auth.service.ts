@@ -1,31 +1,30 @@
 import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Subject } from 'rxjs';
-import { tap } from 'rxjs';
+import { Router } from '@angular/router';
+import { BASEURL } from '../app.module';
 import jwt_decode from 'jwt-decode';
+
+import { BehaviorSubject } from 'rxjs';
+import { tap } from 'rxjs';
+
 import {
   SignUpCredentials,
   EmailAvailableResponse,
   UserInfoCredentials,
+  User,
 } from '../interfaces/auth';
-import { BASEURL } from '../app.module';
-import { User } from './user/user.module';
-import { Router } from '@angular/router';
+
 @Injectable()
 export class AuthService {
-  private userAuthInfo: UserInfoCredentials = {};
-  private tokenExpirationTimer: any;
-  private userAuth$ = new BehaviorSubject<UserInfoCredentials | User>(
-    this.userAuthInfo
-  );
-  signedin$ = new BehaviorSubject(false);
+  private timerID: any = null;
+  private signedin$ = new BehaviorSubject(false);
+  private user$ = new BehaviorSubject<User | null>(null);
 
-  userAuthObs$ = this.userAuth$.asObservable();
-  user$ = new Subject<User>();
-
-  userObs$ = this.user$.asObservable();
-  get userInfo() {
-    return this.userAuthObs$;
+  get isSignedIn() {
+    return this.signedin$.asObservable();
+  }
+  get user() {
+    return this.user$.asObservable();
   }
 
   constructor(
@@ -33,135 +32,78 @@ export class AuthService {
     @Inject(BASEURL) private baseUrl: string,
     private router: Router
   ) {}
+
   emailAvailable(email: string) {
     return this.http.post<EmailAvailableResponse>(
       `${this.baseUrl}/auth/check-email`,
-      {
-        email: email,
-      }
+      { email: email }
     );
   }
+
   signup(credentials: SignUpCredentials) {
     return this.http
       .post<{ accessToken: string }>(`${this.baseUrl}/auth/signup`, credentials)
-      .pipe(
-        tap(({ accessToken }) => {
-          const {
-            username,
-            email,
-            id,
-            role,
-            tmdb_key,
-            iat,
-            exp,
-          }: UserInfoCredentials = jwt_decode(accessToken);
-          this.userAuthInfo = {
-            username,
-            email,
-            id,
-            role,
-            tmdb_key,
-            exp,
-            iat,
-            jwt_token: accessToken,
-          };
-          this.signedin$.next(true);
-          this.handleAuthentication();
-          this.userAuth$.next(this.userAuthInfo);
-        })
-      );
+      .pipe(tap(({ accessToken }) => this.onAuth(accessToken)));
   }
 
   signin(credentials: UserInfoCredentials) {
     return this.http
       .post<{ accessToken: string }>(`${this.baseUrl}/auth/signin`, credentials)
-      .pipe(
-        tap(({ accessToken }) => {
-          const {
-            username,
-            email,
-            id,
-            role,
-            tmdb_key,
-            iat,
-            exp,
-          }: UserInfoCredentials = jwt_decode(accessToken);
-          this.userAuthInfo = {
-            username,
-            email,
-            id,
-            role,
-            tmdb_key,
-            exp,
-            iat,
-            jwt_token: accessToken,
-          };
-          this.signedin$.next(true);
-          this.handleAuthentication();
-          this.userAuth$.next(this.userAuthInfo);
-          console.log('signIn auth service works!');
-        })
-      );
+      .pipe(tap(({ accessToken }) => this.onAuth(accessToken)));
   }
+
   signout() {
-    this.userAuth$.next({});
-    this.router.navigateByUrl('/');
-    localStorage.removeItem('userData');
-    if (this.tokenExpirationTimer) {
-      clearTimeout(this.tokenExpirationTimer);
-    }
-    this.tokenExpirationTimer = null;
     this.signedin$.next(false);
+    this.user$.next(null);
+    this.clearToken();
+    this.router.navigateByUrl('/');
   }
-  autoLogout(expirDuration: number) {
-    this.tokenExpirationTimer = setTimeout(() => {
-      this.signout();
-    }, expirDuration * 1000);
-  }
+
   autoLogin() {
-    const userData: {
-      username: string;
-      role: string;
-      email: string;
-      id: string;
-      exp: number;
-      jwt_token: string;
-    } = JSON.parse(localStorage.getItem('userData') || '{}');
-    if (!userData) {
-      return;
-    }
-    const loadedUser = new User(
-      userData.username,
-      userData.role,
-      userData.email,
-      userData.id,
-      userData.exp,
-      userData.jwt_token
-    );
-    if (loadedUser.token) {
-      this.userAuth$.next(loadedUser);
-      this.user$.next(loadedUser);
-
-      const expirationDuration =
-        new Date(userData.exp).getTime() - new Date().getTime();
-      this.autoLogout(expirationDuration);
-      this.signedin$.next(true);
+    const token = this.getToken();
+    if (token) {
+      this.onAuth(token);
+      this.router.navigateByUrl('/movies');
     }
   }
-  handleAuthentication() {
-    const expireDate: any = new Date(this.userAuthInfo.exp * 1000);
-    console.log(expireDate);
 
-    const user = new User(
-      this.userAuthInfo.username,
-      this.userAuthInfo.role,
-      this.userAuthInfo.email,
-      this.userAuthInfo.id,
-      expireDate,
-      this.userAuthInfo.jwt_token
-    );
-    this.user$.next(user);
-    // this.autoLogout(expireDate);
-    localStorage.setItem('userData', JSON.stringify(user));
+  //* executes on every new token
+  private onAuth(token: string) {
+    this.storeToken(token);
+    this.user$.next(jwt_decode(token));
+    this.signedin$.next(true);
+    this.refreshToken();
+    console.log('refreshed', this.user$.value)
+  }
+
+  //* refreshes token on a set time
+  private refreshToken() {
+    clearTimeout(this.timerID);
+    const fifteenMinutes = 900000;
+    this.timerID = setTimeout(() => {
+      this.http
+        .post<{ accessToken: string }>(`${this.baseUrl}/auth/refresh-token`, {
+          id: this.user$.value?.id,
+          username: this.user$.value?.username,
+          email: this.user$.value?.email,
+          role: this.user$.value?.role,
+          tmdb_key: this.user$.value?.tmdb_key,
+        })
+        .subscribe({
+          next: ({ accessToken }) => this.onAuth(accessToken),
+          error: (err) => console.log(err),
+        });
+    }, fifteenMinutes);
+  }
+
+  //* local storage helpers
+  private getToken() {
+    return localStorage.getItem('accessToken');
+  }
+  private storeToken(token: string) {
+    localStorage.setItem('accessToken', token);
+  }
+  private clearToken() {
+    localStorage.removeItem('accessToken');
   }
 }

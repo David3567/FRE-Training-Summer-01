@@ -9,7 +9,6 @@ import { MovieList } from '../../interfaces/movie.interface';
 })
 export class MovieCardComponent implements OnInit {
   @Input() movie: any;
-  // routerLink = `/movies/` + this.movie.id;
 
   constructor(private authService: AuthService) {}
 

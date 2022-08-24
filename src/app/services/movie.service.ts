@@ -1,24 +1,28 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
+import { AuthService } from '../auth/auth.service';
 import { RawMovie, RootVideo, MovieVideo } from '../interfaces/movie.interface';
 
 @Injectable({
   providedIn: 'root',
 })
-export class MovieService {
+export class MovieService implements OnInit {
   private readonly api_key = 'a3aca7803e3483b603d87731babf7690';
   private readonly baseUrl = 'https://api.themoviedb.org/3';
   private readonly imgBaseUrl = 'https://image.tmdb.org/t/p/original';
   private page: number = 0;
   movieId: any;
 
-  constructor(private readonly http: HttpClient) {}
+  constructor(private readonly http: HttpClient, private auth: AuthService) {}
 
   ngOnInit() {
-    // console.log(this.activateRoute);
-    // this.movieId = this.activateRoute.snapshot.params;
+    console.log('before auth')
+    this.auth.user.subscribe({
+      next: x => console.log('on movie', x),
+      error: x => console.log(x)
+    })
   }
 
   getMovie() {
