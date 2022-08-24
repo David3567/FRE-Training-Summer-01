@@ -4,11 +4,19 @@ import { RouterModule, Routes } from '@angular/router';
 import { SearchMoviesComponent } from './components/search-movies/search-movies.component';
 import { SearchMovieItemComponent } from './components/search-movie-item/search-movie-item.component';
 import { FormsModule } from '@angular/forms';
+import { MovieListResolver } from './resolvers/movie-list.resolver';
 
 
 
 const routes: Routes = [
   { path: "", component: SearchMoviesComponent },
+  { path: ":title/:page", 
+   component: SearchMoviesComponent,
+   resolve: {
+     movieList: MovieListResolver
+   }
+  },
+  { path: ":title", redirectTo: "/search/:title/1"},
 ];
 @NgModule({
   declarations: [
