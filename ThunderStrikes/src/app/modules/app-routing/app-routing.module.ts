@@ -32,7 +32,7 @@ const routes: Routes = [
   {
     path: "movie-browse", 
     loadChildren: () => import('../movie-browse/movie-browse.module').then(m => m.MovieBrowseModule),
-    resolve: {movies: MovieBrowseResolverResolver}
+    resolve: {movies: MovieBrowseResolverResolver},
     canActivate:[AuthGuard],
   },
   {
