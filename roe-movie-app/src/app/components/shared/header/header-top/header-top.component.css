@@ -46,6 +46,15 @@
 }
 
 @media screen and (max-width: 767px) {
+  .header-top {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 22px;
+    padding-right: 26px;
+    padding-top: 0;
+  }
+
   .header-top h1 {
     color: #E50915;
     font-size: 32px;
@@ -61,13 +70,16 @@
 
   .top_right button {
     background-color: #E50915;
+    border-radius: 4px;
     -webkit-transition: background-color 1000ms linear;
     -ms-transition: background-color 1000ms linear;
     transition: background-color 1000ms linear;
-    width: 60px;
+    width: 70px;
     color: #fff;
-    height: 34px;
-    font-size: 14px;
+    letter-spacing: .2px;
+    height: 26px;
+    font-size: 15px;
+    font-weight: 100;
   }
 
   .top_right select {

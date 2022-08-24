@@ -52,22 +52,15 @@
   margin-bottom: 5px;
 }
 
-app-footer >>> .text-white,
-app-footer >>> .text-center {
-  color: gray !important;
-  font-weight: normal;
-  background-color: #f3f3f3 !important;
-}
-
 app-header-top >>> .header-top {
   background-color: transparent;
   border-bottom: 0.5px solid lightgray;
 }
 
-app-footer >>> .footer,
+app-footer >>> div,
 app-footer >>> footer {
   background-color: #f3f3f3 !important;
-  border-bottom: none;
+  border-top: none!important;
 }
 
 app-footer >>> .my-5 {
