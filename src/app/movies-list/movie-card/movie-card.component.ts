@@ -10,13 +10,8 @@ import { MovieList } from '../../interfaces/movie.interface';
 export class MovieCardComponent implements OnInit {
   @Input() movie: any;
   // routerLink = `/movies/` + this.movie.id;
-  userRole?: string;
 
   constructor(private authService: AuthService) {}
 
-  ngOnInit() {
-    this.authService.userObs$.subscribe((userInfo) => {
-      this.userRole = userInfo.username;
-    });
-  }
+  ngOnInit() {}
 }

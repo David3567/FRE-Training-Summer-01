@@ -8,7 +8,7 @@ hr {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin: 0 90px;
+  margin: 20px 90px;
 }
 
 .title {
@@ -26,6 +26,7 @@ hr {
   font-size: 25px;
   padding: 3px 80px;
   background-color: #e11221;
+  margin: 20px;
 }
 
 .btn-vip-plan {
@@ -33,6 +34,11 @@ hr {
   height: 110px;
   width: 110px;
   background-color: #da555e;
+}
+
+.form-grid {
+  display: flex;
+  flex-direction: row;
 }
 
 .btn-vip-plan:focus {

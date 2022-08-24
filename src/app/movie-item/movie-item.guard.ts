@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
+  Router,
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
@@ -14,7 +15,7 @@ import { AuthService } from '../auth/auth.service';
 export class MovieItemGuard implements CanActivate {
   userRole?: string = 'USER';
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -31,6 +32,7 @@ export class MovieItemGuard implements CanActivate {
     if (this.userRole === 'ADMIN' || this.userRole === 'SUPER') {
       return true;
     } else {
+      this.router.navigateByUrl('user-update');
       return false;
     }
   }

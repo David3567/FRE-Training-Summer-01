@@ -97,7 +97,7 @@ export class AuthService {
             jwt_token: accessToken,
           };
           this.signedin$.next(true);
-          // this.handleAuthentication();
+          this.handleAuthentication();
           this.userAuth$.next(this.userAuthInfo);
           console.log('signIn auth service works!');
         })
@@ -160,7 +160,8 @@ export class AuthService {
       expireDate,
       this.userAuthInfo.jwt_token
     );
-    this.autoLogout(expireDate * 1000);
+    this.user$.next(user);
+    // this.autoLogout(expireDate);
     localStorage.setItem('userData', JSON.stringify(user));
   }
 }

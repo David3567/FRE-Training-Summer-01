@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-movies',
@@ -7,7 +8,6 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class MoviesComponent implements OnInit {
   @Input() movieList: any;
- 
   constructor() {}
   ngOnInit(): void {}
 }
