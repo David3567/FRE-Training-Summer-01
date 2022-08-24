@@ -39,7 +39,12 @@ export class RegistrationComponent implements OnInit {
 
   registerUser(): void{
     console.log(this.registerForm.value)
-    this.authService.register(this.registerForm.value).subscribe();
-    this.router.navigate(["movie-dashboard"])
+    this.authService.register(this.registerForm.value).subscribe(
+      () => { console.log("User Registered In");
+    }
+    );
+    if (this.authService.isLoggedIn === true){
+      this.router.navigate(["movie-dashboard"]);
+    }
   }
 }
