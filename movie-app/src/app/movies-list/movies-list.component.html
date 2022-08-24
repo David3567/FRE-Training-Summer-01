@@ -1,3 +1,4 @@
+<ng-container *ngIf="currentUser.role === 'ADMIN' else randomUser">
 <section class="movies__list__container" *ngIf="!authData.jwt_token">
   <ng-container *ngIf="movies && movies.length > 0; else emptyList">
     <div class="movies__list__container">
@@ -92,25 +93,26 @@
             </ul>
           </section>
 
-          <section class="trending__movies">
-            <h3>
-              Trending Now
-              <strong *ngIf="trending!.length > 0">{{
-                trending.length
-              }}</strong>
-            </h3>
-            <ul class="movies__list">
-              <li
-                (click)="onWatchTrailer(movie.id)"
-                [title]="movie.original_title"
-                class="movie flex__wrapper"
-                *ngFor="let movie of trending"
-              >
-                <app-movie-card [movie]="movie"> working</app-movie-card>
-              </li>
-            </ul>
-          </section>
-        </main>
+            <section class="trending__movies">
+              <h3>
+                Trending Now
+                <strong *ngIf="trending!.length > 0">{{
+                  trending.length
+                }}</strong>
+              </h3>
+              <ul class="movies__list">
+                <li
+                  (click)="onWatchTrailer(movie.id)"
+                  [title]="movie.original_title"
+                  class="movie flex__wrapper"
+                  *ngFor="let movie of trending"
+                >
+                  <app-movie-card [movie]="movie"> working</app-movie-card>
+                </li>
+              </ul>
+            </section>
+          </main>
+        
         <section *ngIf="!searchHidden">
           <app-discover-list [apiKey]="apiKey"></app-discover-list>
         </section>
@@ -128,3 +130,8 @@
   </ng-template>
 </section>
 <section *ngIf="authData.jwt_token">Session has expired</section>
+</ng-container>
+<ng-template #randomUser>
+  <app-subscription></app-subscription>
+</ng-template>
+

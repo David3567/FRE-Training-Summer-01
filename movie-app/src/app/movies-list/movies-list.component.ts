@@ -6,6 +6,7 @@ import { UserService } from '../services/user.service';
 import jwt_decode from 'jwt-decode';
 import { ActivatedRoute } from '@angular/router';
 
+
 @Component({
   selector: 'app-movies-list',
   templateUrl: './movies-list.component.html',
@@ -24,6 +25,7 @@ export class MoviesListComponent implements OnInit {
   ) {}
   trending: any[] = [];
   searchHidden: boolean = true;
+  currentUser!: any;
 
   // Api key and other information from localStorage
   apiKey?: any;
@@ -47,15 +49,7 @@ export class MoviesListComponent implements OnInit {
       console.log(false);
     }
 
-    this.movieService.getMoviesList().subscribe((movies: any) => {
-      // console.log(movies);
-      this.bannerMovie = movies[0];
-      this.movies = movies.filter((m: any, i: number) => i > 0);
-    });
-
-    this.movieService.getTrendingMovies().subscribe((movies: any) => {
-      this.trending = movies;
-    });
+    
 
     // resolver
     console.log(
@@ -77,23 +71,34 @@ export class MoviesListComponent implements OnInit {
     // this.movieService.getTrendingMovies().subscribe((movies: any) => {
     //   this.trending = movies;
     // });
-  }
 
+    this.userService.generateToken();
+
+    this.userService.currentUser$.subscribe(user => {
+      console.log(user);
+       this.currentUser = user;
+   })
+
+  
+}
   onWatchTrailer(id: number): void {
     this.showMovie = true;
     this.movieService.getVideoById(id).subscribe((trailer: Video[]) => {
-      // console.log('Watching trailer now...');
-      // console.dir(trailer);
+
+
       this.selectedMovieVideo = trailer[0];
     });
   }
 
+  //REVIEW: Check it it's needed, otherwise delete it
   searchTab() {
+
     if (!this.searchHidden) {
       this.searchHidden = !this.searchHidden;
     } else {
       this.searchHidden = !this.searchHidden;
     }
+
   }
 
   logOut() {

@@ -10,5 +10,3 @@ export interface User {
   tmdb_key?: string;
   jwt_token?: string;
 }
-
-type Role = Partial<Record<'USER' | 'ADMIN' | 'SUPERUSER', string>>;

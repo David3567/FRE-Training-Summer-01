@@ -154,3 +154,21 @@ table {
 img {
   width: 100%;
 }
+
+button, a, input{
+  cursor: pointer;
+}
+
+button{
+  border: none;
+}
+button:hover{
+  box-shadow: 0 0 2px gray;
+}
+
+
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
