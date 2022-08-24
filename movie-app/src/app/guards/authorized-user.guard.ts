@@ -14,7 +14,6 @@ export class AuthorizedUserGuard implements CanLoad {
   }
   canLoad(route: Route, segments: UrlSegment[]): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
     let token = this.currentUser.jwt_token;
-    console.log("authorized user")
     return token! ? true : false;
   }
 

@@ -1,17 +1,16 @@
+import { SharedModule } from 'src/app/shared/shared.module';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { HomePageComponent } from '../home-page.component';
-import { BrowserModule } from '@angular/platform-browser';
-import { HomepageRoutingModule } from './homepage-routing.module';
-
+import { NavHeaderHPComponent } from '../nav-header-hp/nav-header-hp.component';
+import { WelBannerComponent } from '../wel-banner/wel-banner.component';
 
 
 @NgModule({
-  declarations: [HomePageComponent],
+  declarations: [HomePageComponent, WelBannerComponent,
+    NavHeaderHPComponent,],
+  exports: [HomePageComponent,NavHeaderHPComponent, WelBannerComponent,],
   imports: [
-    // HomepageRoutingModule,
-    BrowserModule,
-    CommonModule
+    SharedModule
   ]
 })
 export class HomepageModule { }

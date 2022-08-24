@@ -1,4 +1,3 @@
-import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { RouterModule } from '@angular/router';
 import { NotAuthorizedUserGuard } from "src/app/guards/not-authorized-user.guard";
@@ -12,7 +11,6 @@ import { RegisterPageComponent } from "../register-page.component";
         loadChildren: () => import("./register.module").then(m => m.RegisterModule),
         canDeactivate: [NotAuthorizedUserGuard],
       },
-
     ])
   ],
   exports: [
