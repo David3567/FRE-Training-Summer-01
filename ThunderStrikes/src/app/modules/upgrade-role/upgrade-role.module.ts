@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AuthService } from 'src/app/shared/services/auth.services';
+import { AuthService } from 'src/app/shared/services/auth.service';
 import { UpgradeRoleComponent } from './upgrade-role.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from 'src/app/shared/services/auth.interceptor';

@@ -8,6 +8,7 @@ import { of } from 'rxjs';
 import { LocalStorageVariables } from "../interfaces/local-storage-variables";
 import jwtDecode from "jwt-decode";
 import { Router } from "@angular/router";
+import { SharedApiDataService } from "./shared-api-data.service";
 
 
 @Injectable(
@@ -22,7 +23,8 @@ export class AuthService {
 
   constructor(
     private readonly http: HttpClient,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly sharedApiService: SharedApiDataService
   ) { }
   get username(){
     return this.userAuthInfo.username;
@@ -169,6 +171,7 @@ export class AuthService {
 
   private setToken(newToken: string) {
     localStorage.setItem(LocalStorageVariables.JWT_TOKEN, newToken);
+    this.sharedApiService.apiToken = newToken;
     console.log("Successfully updated token.");
   }
 }

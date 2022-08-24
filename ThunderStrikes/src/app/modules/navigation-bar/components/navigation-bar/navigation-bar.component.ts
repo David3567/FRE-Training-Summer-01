@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/shared/services/auth.services';
+import { AuthService } from 'src/app/shared/services/auth.service';
 import { RoutingPages } from '../../../../shared/interfaces/routing-pages.interface';
 @Component({
     selector: 'app-navigation-bar',

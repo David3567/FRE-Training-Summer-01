@@ -4,7 +4,7 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AuthService } from 'src/app/shared/services/auth.services';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 const routes: Routes = [
   { path: "", component: RegistrationComponent },
