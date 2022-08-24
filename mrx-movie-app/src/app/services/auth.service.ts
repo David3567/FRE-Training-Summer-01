@@ -14,10 +14,6 @@ export class AuthService {
   private userAuth$ = new BehaviorSubject<UserInfo>(this.userAuthInfo);
   userAuthObs$ = this.userAuth$.asObservable();
 
-  get userInfo() {
-    return this.userAuth$.value;
-  }
-
   constructor(
     private router: Router,
     private readonly http: HttpClient,
@@ -29,7 +25,7 @@ export class AuthService {
 
   signin(loginInfo: UserInfo) {
     return this.http
-      .post<{ accessToken: string }>(`${this.baseUrl}/auth/signin`, loginInfo)
+      .post<{ accessToken: any }>(`${this.baseUrl}/auth/signin`, loginInfo)
       .pipe(
         tap(({ accessToken }) => {
           const { username, id, email, role, tmdb_key, exp }: UserInfo =
@@ -44,16 +40,11 @@ export class AuthService {
             jwt_token: accessToken,
           };
           this.userAuth$.next(this.userAuthInfo);
+          //console.log(this.userAuthInfo.jwt_token);
           this.loginStatus.next(true);
           localStorage.setItem('loginStatus', '1');
-          localStorage.setItem(
-            'token',
-            JSON.stringify(this.userAuthInfo.jwt_token)
-          );
-          localStorage.setItem(
-            'username',
-            JSON.stringify(this.userAuthInfo.username)
-          );
+          localStorage.setItem('token', this.userAuthInfo.jwt_token!);
+          localStorage.setItem('username', this.userAuthInfo.username!);
           alert(this.userAuthInfo.username + ' successfully logged in');
           this.router.navigate(['movie-list']);
         }),
@@ -62,6 +53,10 @@ export class AuthService {
           return of('cannot find this user');
         })
       );
+  }
+
+  get userInfo() {
+    return this.userAuth$.value;
   }
 
   checkLoginStatus(): boolean {
@@ -95,16 +90,32 @@ export class AuthService {
 
   logout() {
     this.loginStatus.next(false);
-    this.userAuth$.next({});
     localStorage.clear();
     localStorage.setItem('loginStatus', '0');
     this.router.navigate(['/login']);
+    location.reload();
     console.log('Logged Out Successfully');
   }
 
-  // upgradeRole(newRole: string) {
-  //   let getInfo = jwt_decode<string>(localStorage.getItem('token')!);
-  //   const url = `${this.baseUrl}/auth/userupdate`;
-  //   console.log(getInfo);
-  // }
+  upgradeRole(newRole: string) {
+    const { exp, iat, id, ...user } = jwt_decode<any>(
+      localStorage.getItem('token')!
+    );
+    user.role = newRole;
+    //console.log(...user);
+    const url = `${this.baseUrl}/auth/userupdate`;
+    return this.http.patch<{ accessToken: string }>(url, { ...user }).pipe(
+      tap(({ accessToken }) => {
+        this.userAuthInfo.jwt_token = accessToken;
+        this.userAuthInfo.role = newRole;
+        alert('Upgraded to ' + newRole + ', please login again!');
+        this.logout();
+      }),
+      catchError((err) => {
+        //console.log(accessToken);
+        console.log(err);
+        return of('Role Update Failed');
+      })
+    );
+  }
 }
