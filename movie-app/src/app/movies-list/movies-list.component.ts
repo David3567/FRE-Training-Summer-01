@@ -5,7 +5,7 @@ import { MovieService } from '../services/movie.service';
 import { UserService } from '../services/user.service';
 import jwt_decode from 'jwt-decode';
 import { ActivatedRoute } from '@angular/router';
-
+import { User } from '../interfaces/user.interface';
 
 @Component({
   selector: 'app-movies-list',
@@ -25,7 +25,10 @@ export class MoviesListComponent implements OnInit {
   ) {}
   trending: any[] = [];
   searchHidden: boolean = true;
-  currentUser!: any;
+  currentUser!: User;
+  currentUserRole: "USER" | "ADMIN" | "SUPERUSER" | "GUEST" = "GUEST";
+
+  isMember: boolean = false;
 
   // Api key and other information from localStorage
   apiKey?: any;
@@ -48,7 +51,14 @@ export class MoviesListComponent implements OnInit {
     } else {
       console.log(false);
     }
+    let user = JSON.parse(localStorage.getItem("currentUserInfo")!)
+    // this.userService.currentUser$.subscribe((user:User) => {
+      this.movieService.getApi(user.tmdb_key!)
+      this.currentUser = user;
+      this.currentUserRole = user.role!;
+    // })
 
+    console.log("Movies list\n", user)
     
 
     // resolver
@@ -72,7 +82,7 @@ export class MoviesListComponent implements OnInit {
     //   this.trending = movies;
     // });
 
-    this.userService.generateToken();
+    // this.userService.generateToken();
 
     this.userService.currentUser$.subscribe(user => {
       console.log(user);

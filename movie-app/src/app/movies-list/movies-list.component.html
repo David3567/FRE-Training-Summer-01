@@ -132,6 +132,10 @@
 <section *ngIf="authData.jwt_token">Session has expired</section>
 </ng-container>
 <ng-template #randomUser>
-  <app-subscription></app-subscription>
+  <app-subscription>
+
+    <app-subscription [(userRole)]="currentUserRole"></app-subscription>
+    {{currentUserRole}}
+  </app-subscription>
 </ng-template>
 

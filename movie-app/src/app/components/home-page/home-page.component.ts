@@ -13,7 +13,7 @@ export class HomePageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userService.navigateToMovies()
+    // this.userService.navigateToMovies()
   }
 
   onClickGTR(recall: any) {

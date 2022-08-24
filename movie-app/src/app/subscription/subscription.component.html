@@ -47,4 +47,21 @@
       </li>
     </ul>
   </main>
+
+  <div
+    class="confirm__membership__modal"
+    [style.display]="!hasSelected ? 'none': ''">
+    <div class="space__between">
+      <button
+        class="confirm__membership"
+        (click)="onConfirm()">
+        Subscribe Now
+      </button>
+      <button
+         (click)="hideModal()"
+         class="cancel__membership">
+        Cancel
+      </button>
+    </div>
+  </div>
 </div>

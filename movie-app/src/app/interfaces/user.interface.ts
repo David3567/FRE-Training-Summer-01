@@ -6,11 +6,9 @@ export interface User{
   firstName?: string
   lastName?: string
   phone?: string
-  role?: Role
+  role?: "USER" | "ADMIN" | "SUPERUSER",
   tmdb_key?: string
   jwt_token?: string
   exp?: string
+  connected?: boolean
 }
-
-
-export type Role = "USER" | "ADMIN" | "SUPERUSER"

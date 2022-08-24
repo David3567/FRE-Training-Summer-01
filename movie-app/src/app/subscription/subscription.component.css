@@ -1,6 +1,10 @@
+button{
+  border-radius: 3px;
+}
 h1.title{
   font-size: 1.5vmax;
 }
+
 .subscriptions_container{
   color:rgb(180, 180, 180);
   width: 100vw;
@@ -80,4 +84,34 @@ h1.title{
   color: rgb(255, 255, 255);
 }
 
+
+.confirm__membership__modal{
+  position: fixed;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.905);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.confirm__membership__modal > div{
+  position: inherit;
+  bottom: 5%;
+  width: 200px;
+}
+
+.confirm__membership__modal button{
+  padding: 14px 43px;
+  font-size: 18px;
+  margin: 2%;
+  color: #fff;
+}
+button.confirm__membership{
+  background: red;
+}
+
+button.cancel__membership{
+  background: rgb(120, 120, 120);
+}
 

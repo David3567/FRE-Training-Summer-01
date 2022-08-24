@@ -25,8 +25,9 @@ export class NotAuthorizedUserGuard implements CanDeactivate<SignInComponent | R
     currentState: RouterStateSnapshot,
     nextState: RouterStateSnapshot
   ): Observable<boolean|UrlTree>|Promise<boolean|UrlTree>|boolean|UrlTree  {
+   
+    if (localStorage.getItem("currentUser")=== this.currentUser.jwt_token) {
 
-    if (localStorage.getItem("currentUser")) {
       return true;
     }
     return false;
