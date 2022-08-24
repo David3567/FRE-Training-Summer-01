@@ -25,17 +25,14 @@ export class SignInComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.userService.navigateToMovies()
+    this.userService.navigateToMovies();
   }
 
   showPassword(): void {
     this.isHidden = !this.isHidden;
   }
 
-
-
   onLogin(e: any): void {
-    // this.userService.generateToken()
     this.userService.signIn(this.signInForm.value)
       .subscribe((user: any) => {
         console.log(user);

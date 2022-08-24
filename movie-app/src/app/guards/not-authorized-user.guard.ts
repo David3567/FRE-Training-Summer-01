@@ -26,7 +26,7 @@ export class NotAuthorizedUserGuard implements CanDeactivate<SignInComponent | R
     nextState: RouterStateSnapshot
   ): Observable<boolean|UrlTree>|Promise<boolean|UrlTree>|boolean|UrlTree  {
 
-    if (localStorage.getItem("currentUser")) {
+    if (localStorage.getItem("currentUser")! === this.currentUser.tmdb_key) {
       return true;
     }
     return false;

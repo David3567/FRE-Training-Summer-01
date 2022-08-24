@@ -20,7 +20,16 @@ export class AuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (this.currentUser.jwt_token) {
+    let currentUser:User = JSON.parse(
+      localStorage.getItem('currentUserInfo')!
+    );
+    if (currentUser?.connected) {
+      return true;
+    }
+    //Check if current token has expired before the user is logged out
+    else if (!this.currentUser?.jwt_token && currentUser.connected) {
+      this.user.onRefreshToken(currentUser);
+      console.log('user re-connected...')
       return true;
     }
     return false;

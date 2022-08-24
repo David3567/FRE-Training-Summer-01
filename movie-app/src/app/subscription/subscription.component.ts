@@ -67,39 +67,39 @@ export class SubscriptionComponent implements OnInit {
   }
 
   onConfirm() {
-    this.userRoleChange.emit(this.currentUser.role);
-    this.isMemberChange.emit(true)
+    console.log(this.currentUser.role)
+    this.userService.onUpdateRole({
+      username: this.currentUser.username!,
+      password: "123Abc",
+      email: this.currentUser.email!,
+      role: this.userRole,
+      tmdb_key: this.currentUser.tmdb_key!
+      // tmdb_key: "7979b0e432796fe7fa957d6fbbeb0835"
+    }).subscribe(console.log)
   }
 
   onRoleUpdate(role: string) {
     this.selectedMembership = role;
     this.hasSelected = true;
 
+    // console.log(role)
     switch (role) {
       case "Basic":
-        this.selectRole = "GUEST"
+        this.userRole = "GUEST"
         break;
 
       case "Standard":
-        this.selectRole = "USER"
+      this.userRole = "USER"
         break;
 
       case "Premium":
-        this.selectRole = "ADMIN"
+        this.userRole = "ADMIN"
         break;
       case "Ultra":
-        this.selectRole ="SUPERUSER"
+        this.userRole = "SUPERUSER"
         break;
     }
-
-    this.userService.onUpdateRole({
-      username: this.currentUser.username!,
-      password: "123Abc",
-      email: this.currentUser.email!,
-      role: this.selectRole,
-      // tmdb_key: this.currentUser.tmdb_key!
-      tmdb_key: "7979b0e432796fe7fa957d6fbbeb0835"
-    }).subscribe(console.log)
+    this.userRoleChange.emit(this.userRole);
   }
 
   hideModal() {
@@ -116,9 +116,9 @@ interface Membership extends MembershipFeatures{
 
 type MembershipFeatures =
   Partial<
-  Record<
-    "isHD" | "isUltaHD" | "isHDR"
-    | "allDevicesAllowed" | "isUnlimitedWatch"
-    | "canCancelAnytime" | "isFirstMonthFree", boolean
-  >
+    Record<
+      "isHD" | "isUltaHD" | "isHDR"
+      | "allDevicesAllowed" | "isUnlimitedWatch"
+      | "canCancelAnytime" | "isFirstMonthFree", boolean
+    >
 >

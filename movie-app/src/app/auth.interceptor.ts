@@ -36,25 +36,26 @@ export class AuthInterceptor implements HttpInterceptor {
 
   onVerifyToken(request: HttpRequest<any>) {
 
-    let currentUser:{connected: boolean, accessToken: string} = JSON.parse(localStorage.getItem('currentUser')!)
+    let currentUser: { connected: boolean, accessToken: string } =
+      JSON.parse(localStorage.getItem('currentUserInfo')!)
       ;
-    const token = currentUser;
+    const token = currentUser?.accessToken;
 
-    if (token.connected &&
+    if (token &&
       (request.url.startsWith(`${this.url}/auth/refresh-token`) && request.method === "POST")
     ) {
       this.userService.tokenShouldRefresh$.next(true);
       return request;
     }
 
+    if (token &&
+      (request.url.startsWith(`${this.url}/auth/userupdate`) && request.method ==="PATCH")
+    ) {
+       return request.clone({
+        setHeaders: { Authorization: `Bearer ${token}`}
+      })
+    }
 
-    // else if (token.accessToken &&
-    //   (request.url.startsWith(`${this.url}/auth/userupdate`) && request.method ==="PATCH")
-    // ) {
-    //    return request.clone({
-    //     setHeaders: { Authorization: `Bearer ${token}`}
-    //   })
-    // }
     else {
       console.log('InvalidTokenError')
       return request;

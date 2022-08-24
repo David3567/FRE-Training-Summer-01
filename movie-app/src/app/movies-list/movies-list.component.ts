@@ -28,26 +28,25 @@ export class MoviesListComponent implements OnInit {
     private userService: UserService
   ) {}
 
-
   ngOnInit(): void {
     this.movieService.getMoviesList().subscribe((movies: any) => {
       this.bannerMovie = movies[0];
       this.movies = movies.filter((m: any, i: number) => i > 0);
-      console.log(this.movies);
     });
 
     this.movieService.getTrendingMovies().subscribe((movies: any) => {
       this.trending = movies;
     });
 
-    this.userService.generateToken();
 
-    this.userService.currentUser$.subscribe((user:User) => {
-      console.log(user);
+    let user = JSON.parse(localStorage.getItem("currentUserInfo")!)
+    // this.userService.currentUser$.subscribe((user:User) => {
       this.movieService.getApi(user.tmdb_key!)
       this.currentUser = user;
       this.currentUserRole = user.role!;
-   })
+    // })
+
+    console.log("Movies list\n", user)
   }
 
   onWatchTrailer(id: number): void {

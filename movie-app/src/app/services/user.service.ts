@@ -1,4 +1,3 @@
-
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
@@ -13,7 +12,7 @@ import jwt_decode from 'jwt-decode';
 })
 export class UserService {
   currentUserInfo!: User;
-  currentUser$ = new BehaviorSubject<any>(this.currentUserInfo);
+  currentUser$ = new BehaviorSubject<User>(this.currentUserInfo);
   user = this.currentUser$.asObservable();
   shouldRefresh: boolean = false;
   tokenShouldRefresh$ = new BehaviorSubject<boolean>(this.shouldRefresh);
@@ -24,19 +23,7 @@ export class UserService {
     private router: Router,
     private helper: HelperService,
     @Inject(BASRURL) private baseUrl: string
-    ) { }
-
-  navigateToMovies() {
-    this.generateToken();
-
-    this.currentUser$.subscribe(res => {
-      console.log(res);
-      this.currentUserInfo = res;
-      if (this.currentUserInfo.jwt_token) {
-        this.helper.navigateTo('/movies-list')
-      }
-    });
-  }
+  ) { }
 
   register(user: User): Observable<User> {
     return this.http.post<any>(`${this.baseUrl}/auth-c/signup`, user)
@@ -51,23 +38,26 @@ export class UserService {
     )
   }
 
-  signIn(userInfo: UserAuth): any{
+  signIn(userInfo: User): any{
     let url = `${this.baseUrl}/auth/signin`;
-
-    console.log(`Signing ${userInfo}`);
 
     return this.http.post<{ accessToken: string }>(url,userInfo, this.helper.httpOptions)
     .pipe(
       tap(({accessToken}) => {
         console.log(`Successfully logged in ${accessToken}`)
 
-          localStorage.setItem('currentUser', JSON.stringify({
-            accessToken,
-            connected: true,
-          }));
-        // localStorage.setItem('currentUser', accessToken);
+        localStorage.setItem('currentUser', accessToken);
 
-        this.generateToken();
+        const {
+          username,  id,  email, role, tmdb_key, exp, connected=true
+        }: User = jwt_decode(accessToken);
+
+        this.currentUserInfo = {
+          username, id, email, role, tmdb_key, exp, connected,jwt_token: accessToken
+        }
+        this.currentUser$.next(this.currentUserInfo);
+
+        localStorage.setItem('currentUserInfo', JSON.stringify(this.currentUserInfo));
 
         setTimeout(() => {
           this.router.navigate([`movies-list`]);
@@ -75,6 +65,44 @@ export class UserService {
       }),
       catchError(this.helper.errorHandler<User>("signIn"))
     );
+}
+
+generateToken(accessToken:string) {
+  const {
+    username,  id,  email, role, tmdb_key, exp, connected=true
+  }: User = jwt_decode(accessToken);
+
+  this.currentUserInfo = {
+    username, id, email, role, tmdb_key, exp, connected,
+    jwt_token:accessToken
+  }
+  this.currentUser$.next(this.currentUserInfo);
+}
+
+onRefreshToken(user:User) {
+  if (this.shouldRefresh) {
+    return this.http.post<{ accessToken: string}>(this.baseUrl + '/auth/refresh-token', user, this.helper.httpOptions)
+      .pipe(
+        tap(({accessToken}) => {
+          debounceTime(60);
+          console.log("Successfully refreshed token\n", accessToken);
+          localStorage.setItem('currentUser', accessToken);
+          this.generateToken(accessToken)
+        }),
+        catchError(this.helper.errorHandler<{accessToken: string}>("Refreshing token"))
+    )
+  }
+  return of(null)
+}
+
+signOut(): void {
+  localStorage.removeItem('currentUser');
+  localStorage.removeItem('currentUserInfo');
+  this.currentUser$.next({});
+
+  setTimeout(() => {
+  this.router.navigate([`homepage`]);
+  }, 1000);
 }
 
 checkEmail(email: string){
@@ -87,30 +115,6 @@ checkEmail(email: string){
       catchError(this.helper.errorHandler<any>("checkEmail")));
 }
 
-/**
- * This function will generate a the token even on the page
-  reload as long as the user is logged in.
- */
-generateToken() {
-  let accessToken = localStorage.getItem('currentUser')!;
-
-  const {
-    username,  id,  email, role, tmdb_key, exp, connected
-  }: User = jwt_decode(accessToken!);
-
-  this.currentUserInfo = {
-    username,
-    id,
-    email,
-    role,
-    tmdb_key,
-    exp,
-    connected,
-    jwt_token: accessToken
-  }
- this.currentUser$.next(this.currentUserInfo);
-}
-
 onUpdateRole(user:
   {
     username: string,
@@ -120,54 +124,33 @@ onUpdateRole(user:
     tmdb_key: string
   }): Observable<User> {
 
-  return this.http.patch<any>(`${this.baseUrl}/auth/userupdate`, user)
+  return this.http.patch<{role: "USER" | "SUPERUSER" | "ADMIN" | "GUEST"}>(`${this.baseUrl}/auth/userupdate`, user)
     .pipe(
-      tap((updated) => {
-        console.log("Successfully updated user");
-        return updated;
+      tap(({role}) => {
+        console.log("Successfully updated user", role);
       }),
       catchError(this.helper.errorHandler<any>("The user Update info"))
     )
 }
 
-onRefreshToken(
-  user:UserAuth
-) {
-  if (this.shouldRefresh) {
-    return this.http.post(this.baseUrl + '/auth/refresh-token', user, this.helper.httpOptions)
-      .pipe(
-        tap((token) => {
-          debounceTime(60);
-          this.generateToken()
-          console.log("Successfully refreshed token\n", token);
-          return token;
-        }),
-        catchError(this.helper.errorHandler<any>("Refreshing token"))
-    )
+navigateToMovies() {
+  // this.generateToken();
+  let user: User = JSON.parse(
+    localStorage.getItem("currentUserInfo")!
+  )
+
+  if (user?.connected) {
+    console.log(user.connected)
+    this.router.navigate(['/movies-list'])
+    .then(() => console.log("Navigating to movies list..."))
+    .catch((e) => console.log("Can't navigate", e))
   }
-  return of(null)
+  // this.currentUser$.subscribe(res => {
+  //   console.log(res);
+  //   this.currentUserInfo = res;
+  // });
 }
-
-  signOut(): void {
-    localStorage.removeItem('currentUser');
-    this.currentUser$.next({});
-
-  setTimeout(() => {
-    this.router.navigate([`homepage`]);
-  }, 1000);
-  }
-
 }
-
-
-// /**
-
-
-
-
-
-
-
 
 
 
@@ -292,7 +275,7 @@ onRefreshToken(
 //    this.currentUser$.next(this.currentUserInfo);
 //   }
 
-//   onUpdateRole(user:UserAuth): Observable<User> {
+//   onUpdateRole(user:User): Observable<User> {
 
 //     return this.http.patch<any>(`${this.baseUrl}/auth/userupdate`, user)
 //       .pipe(
@@ -304,7 +287,7 @@ onRefreshToken(
 //   }
 
   // onRefreshToken(
-  //   user:UserAuth
+  //   user:User
   // ) {
   //   if (this.tokenShouldRefresh) {
   //     return this.http.post(this.baseUrl + '/auth/refresh-token', user, this.helper.httpOptions)
@@ -334,13 +317,6 @@ onRefreshToken(
 
 
 // */
-interface UserAuth{
-  username: string,
-  password: string,
-  email: string,
-  role: string,
-  tmdb_key: string
-}
 
 
 
@@ -391,9 +367,9 @@ interface UserAuth{
 // //   currentUser$ = new BehaviorSubject<User>(this.currentUserInfo);
 // //   user = this.currentUser$.asObservable();
 
-// //   private userAuth: User = {};
-// //   public userAuthSubject$ = new BehaviorSubject<User>(this.userAuth);
-// //   userAuthObs$ = this.userAuthSubject$.asObservable();
+// //   private User: User = {};
+// //   public UserSubject$ = new BehaviorSubject<User>(this.User);
+// //   UserObs$ = this.UserSubject$.asObservable();
 
 // //   constructor(
 
@@ -462,7 +438,7 @@ interface UserAuth{
 // //           const { id, username, email, role, tmdb_key }: User =
 // //             jwt_decode(accessToken);
 
-// //           this.userAuth = {
+// //           this.User = {
 // //             id,
 // //             username,
 // //             email,
@@ -471,7 +447,7 @@ interface UserAuth{
 // //             jwt_token: accessToken,
 // //           };
 
-// //           this.userAuthSubject$.next(this.userAuth);
+// //           this.UserSubject$.next(this.User);
 // //           localStorage.setItem('currentUser', accessToken);
 
 // //           setTimeout(() => {
@@ -484,8 +460,8 @@ interface UserAuth{
 
 // //   signOut(): void {
 // //     localStorage.removeItem('currentUser');
-// //     this.userAuth = {};
-// //     this.userAuthSubject$.next(this.userAuth);
+// //     this.User = {};
+// //     this.UserSubject$.next(this.User);
 
 // //     setTimeout(() => {
 // //       this.router.navigate([`homepage`]);
