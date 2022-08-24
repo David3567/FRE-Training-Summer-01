@@ -23,7 +23,9 @@ export class RegisterPageComponent implements OnInit {
       password: ['', [Validators.required]],
       repeatPassword: ['', [Validators.required]],
       username: ['', [Validators.maxLength(10), Validators.minLength(4)]]
-    })
+    });
+
+    this.userService.navigateToMovies()
   }
 
   get email() {
@@ -51,7 +53,6 @@ export class RegisterPageComponent implements OnInit {
   onSignUp(): void {
     this.checkEmail();
 
-    console.log(this.emailExists)
     if (this.emailExists) {
       alert("Email already exists");
       return;

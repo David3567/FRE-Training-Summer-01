@@ -1,62 +1,68 @@
 import { InjectionToken, NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { WelBannerComponent } from './components/home-page/wel-banner/wel-banner.component';
-import { NavHeaderHPComponent } from './components/home-page/nav-header-hp/nav-header-hp.component';
-import { HomePageComponent } from './components/home-page/home-page.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { MovieService } from './services/movie.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
-import { BrowserModule } from '@angular/platform-browser';
 import { UserService } from './services/user.service';
-import { ShortPipe } from './pipes/short.pipe';
-import {
-  FaIconLibrary,
-  FontAwesomeModule,
-} from '@fortawesome/angular-fontawesome';
-import {
-  faHome,
-  faSearch,
-  faCalendar,
-  faClapperboard,
-  faEye,
-} from '@fortawesome/free-solid-svg-icons';
-
+import { ShortPipe} from './pipes/short.pipe';
+import { AuthInterceptor } from './auth.interceptor';
+import { AuthGuard } from './guards/auth.guard';
+import { NotAuthorizedUserGuard } from './guards/not-authorized-user.guard';
+import { SharedModule } from './shared/shared.module';
+import { AuthorizedUserGuard } from './guards/authorized-user.guard';
+import { HomepageModule } from './components/home-page/homepage/homepage.module';
+import { faHome, faSearch, faCalendar, faClapperboard, faEye, faCheck, faTimes, faDoorOpen, faUser } from '@fortawesome/free-solid-svg-icons';
+import { MovieService } from './services/movie.service';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
 export const BASRURL = new InjectionToken<string>('');
+export const movieApiUrl = new InjectionToken<string>('');
 
 @NgModule({
   declarations: [
     AppComponent,
-    WelBannerComponent,
-    NavHeaderHPComponent,
-    HomePageComponent,
     PageNotFoundComponent,
-    // ShortPipe
   ],
   imports: [
-    CommonModule,
-    FontAwesomeModule,
-    BrowserModule,
-    HttpClientModule,
+    HomepageModule,
     AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
+    CommonModule,
+    BrowserModule,
+    // SharedModule,
   ],
-  exports: [RouterModule, HttpClientModule],
+  exports: [RouterModule,
+
+    HttpClientModule],
   providers: [
     MovieService,
     ShortPipe,
     UserService,
+    AuthGuard,
+    AuthorizedUserGuard,
+    NotAuthorizedUserGuard,
     { provide: BASRURL, useValue: 'http://localhost:4231' },
+    { provide: movieApiUrl, useValue: 'https://api.themoviedb.org/3' },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent],
 })
 export class AppModule {
-  constructor(library: FaIconLibrary) {
-    library.addIcons(faCalendar, faHome, faSearch, faClapperboard, faEye);
+  constructor(
+    library: FaIconLibrary,
+  ) {
+    library.addIcons(
+      faCalendar, faHome, faSearch,
+      faClapperboard,
+      faEye,
+      faCheck, faTimes,
+      faDoorOpen,
+      faUser
+    );
   }
 }

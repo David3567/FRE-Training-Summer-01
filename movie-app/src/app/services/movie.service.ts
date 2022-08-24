@@ -6,13 +6,9 @@ import {
   debounceTime,
   map,
   Observable,
-  of,
-  tap,
 } from 'rxjs';
 import { Movie, RootObject } from '../interfaces/movie.interface';
 import { HelperService } from './helper.service';
-import jwt_decode from 'jwt-decode';
-import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root',
@@ -23,24 +19,17 @@ export class MovieService {
   movies$ = this.moviesSubject$.asObservable();
   private defaultId: number = 0;
   private baseUrl: string = 'https://api.themoviedb.org/3';
-  private apiKeys?: string;
+  private apiKeys?: string// = "7979b0e432796fe7fa957d6fbbeb0835";
 
   authData: any;
 
   constructor(
     private readonly http: HttpClient,
-    private readonly userService: UserService,
     private helper: HelperService
   ) {}
 
-  ngOnInint() {}
-
   getApi(apikey: string) {
     this.apiKeys = apikey;
-  }
-
-  getData() {
-    throw new Error('Method not implemented.');
   }
 
   searchMovies(movieName: string) {
@@ -52,12 +41,12 @@ export class MovieService {
   getMoviesList(): Observable<any> {
     let id =
       this.defaultId > 0 ? this.defaultId : Math.floor(Math.random() * 500);
-    let url = `https://api.themoviedb.org/3/list/${id}?api_key=${this.apiKeys}`;
+    let url = `https://api.themoviedb.org/3/list/10?api_key=${this.apiKeys}`;
 
     return this.http.get<RootObject>(url, this.helper.httpOptions).pipe(
       debounceTime(100),
       map(({ items }: any) => {
-        console.log('Successfully retrieved movies here\n', items);
+        console.log('Successfully retrieved movies here\n');
         if (items.length === 0) {
           this.defaultId = 5;
           this.getMoviesList();
@@ -74,7 +63,7 @@ export class MovieService {
     return this.http.get<RootObject>(url).pipe(
       debounceTime(50),
       map(({ results }: any) => {
-        // console.log('Successfully retrieved trending movies here\n', results);
+        console.log('Successfully retrieved trending movies here\n', results);
         return results;
       }),
       catchError(this.helper.errorHandler<any>('getTrendingMovies'))
@@ -87,7 +76,6 @@ export class MovieService {
     return this.http.get(url, this.helper.httpOptions).pipe(
       map(({ results }: any) => {
         console.log('movie video successfully retrieved');
-        console.log(results);
         return results.map((result: any) => {
           return {
             id: result.id,
