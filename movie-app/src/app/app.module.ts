@@ -18,6 +18,11 @@ import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontaweso
 import { faHome, faSearch, faCalendar, faClapperboard, faEye, faCheck, faTimeline, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { AuthInterceptor } from './auth.interceptor';
 
+import { AuthGuard } from './guards/auth.guard';
+import { NotAuthorizedUserGuard } from './guards/not-authorized-user.guard';
+import { SharedModule } from './shared/shared.module';
+import { AuthorizedUserGuard } from './guards/authorized-user.guard';
+
 export const BASRURL = new InjectionToken<string>('');
 
 @NgModule({
@@ -43,6 +48,9 @@ export const BASRURL = new InjectionToken<string>('');
     MovieService,
     ShortPipe,
     UserService,
+    AuthGuard,
+    AuthorizedUserGuard,
+    NotAuthorizedUserGuard,
     { provide: BASRURL, useValue: 'http://localhost:4231' },
     {
       provide: HTTP_INTERCEPTORS,
