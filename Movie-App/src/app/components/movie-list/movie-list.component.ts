@@ -28,9 +28,9 @@ export class MovieListComponent implements OnInit {
         console.error('Request failed with error');
       }
     ),
-    this.movieService.getMorePages(this.Number).subscribe((data) => {
-      this.movie = data
-      console.log(this.movie.page);
+    this.movieService.getMorePages(this.Number).subscribe((movieData) => {
+      this.movie.push(...this.movieData)
+      console.log(this.movieData);
     })
   }
 
@@ -46,9 +46,9 @@ export class MovieListComponent implements OnInit {
   onScroll(){
     // let moviePage = 'https://api.themoviedb.org/3/movie?api_key=3b12cfa2e8e41ce85be82944f8b7e697'
     // console.log(moviePage);
-    this.movie.page++
+    this.movieData
     console.log(this.movie.page++);
-  }
 
   }
+}
 
