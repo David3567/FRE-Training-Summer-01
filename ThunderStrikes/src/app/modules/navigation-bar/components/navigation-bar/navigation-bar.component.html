@@ -1,16 +1,16 @@
 <div class="navbar">
     <div class="navLeft"><a [routerLink]="routingPages.Home">⚡ Strikes</a></div>
-    <ul class="navMain" *ngIf="!isLoggedIn">
+    <ul class="navMain" *ngIf="!isAuthenticated">
         <li><button [routerLink]="routingPages.Register">✍🏻 Register</button></li>
         <li><button [routerLink]="routingPages.Login">🔒 Login</button></li>
     </ul>
-    <ul class="navMain" *ngIf="isLoggedIn">
+    <ul class="navMain" *ngIf="isAuthenticated">
         <li><button [routerLink]="routingPages.MovieDashboard">📈 Trending</button></li>
         <li><button [routerLink]="routingPages.MovieBrowse">🎞️ Browse</button></li>
         <li><button [routerLink]="routingPages.Search">🔍Search</button></li>
         <li><button (click)="toBookmarks()">🔖Bookmarks</button></li>
     </ul>
-    <div class="navRight" *ngIf="isLoggedIn">
+    <div class="navRight" *ngIf="isAuthenticated">
         <ul>
             <li><button (click)="toAccountPage()">{{username}}</button></li>
             <li><button (click)="toSettingsPage()">⚙️</button></li>

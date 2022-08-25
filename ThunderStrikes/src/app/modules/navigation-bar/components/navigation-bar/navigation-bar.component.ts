@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { AuthGuard } from 'src/app/shared/services/guards/auth.guard';
 import { RoutingPages } from '../../../../shared/interfaces/routing-pages.interface';
 @Component({
     selector: 'app-navigation-bar',
@@ -10,15 +11,19 @@ import { RoutingPages } from '../../../../shared/interfaces/routing-pages.interf
 export class NavigationBarComponent implements OnInit {
     routingPages: typeof RoutingPages;
     readonly restrictedUrls: string[] = ['/', '/login', '/register'];
-    constructor(private readonly router: Router, private readonly authService: AuthService) {
+    constructor(
+        private readonly router: Router, 
+        private readonly authService: AuthService,
+        private readonly authGuard: AuthGuard,
+        ) {
         this.routingPages = RoutingPages;
     }
 
     get username(): string | undefined{
         return this.authService.username;
     }
-    get isLoggedIn(): boolean{
-        return this.authService.isLoggedIn;
+    get isAuthenticated(): boolean{
+        return this.authGuard.authenticationStatus;
     }
 
     signOut(){
