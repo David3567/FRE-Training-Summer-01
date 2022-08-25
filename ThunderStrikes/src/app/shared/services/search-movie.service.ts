@@ -31,18 +31,3 @@ searchMovie(title: string, page?: string | null){
   );
 }
 }
-
-// getMovieList(option: MovieOptions): Observable<MovieDetails[]> {
-//   return this.httpClient.get([this.sharedApiService.baseUrl, option].join("/"), { headers: this.sharedApiService.httpHeaders }).pipe(
-//     <any>map((data: MovieResults) => {
-//       let results: MovieDetails[] = data.results;
-//       if (option === MovieOptions.Now_Playing) {
-//         results = results.slice(0, this.movieCount) as MovieDetails[];
-//       }
-//       for (let result of results) {
-//         this.sharedApiService.setMovieImageUrl(result);
-//       }
-//       return results;
-//     })
-//   );
-// }

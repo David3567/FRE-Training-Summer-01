@@ -10,7 +10,7 @@ export class SharedApiDataService {
   readonly baseUrl: string = "https://api.themoviedb.org/3/movie";
   readonly discoverUrl: string = "https://api.themoviedb.org/3/discover"
   readonly searchMovieUrl: string = "https://api.themoviedb.org/3/search/";
-  readonly apiToken: string = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NGY0NGYxZDUyZjk0OTNiNjdkZjQzYWQ2MTk0MWQ0YiIsInN1YiI6IjYyY2ZjNzQ0MGI1ZmQ2MDA1Mzg3OTllMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.fslcsTZH_p1LHoiIFiOwqUYgkev98ZoFxOg3Epf9mlc";
+  public apiToken: string = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NGY0NGYxZDUyZjk0OTNiNjdkZjQzYWQ2MTk0MWQ0YiIsInN1YiI6IjYyY2ZjNzQ0MGI1ZmQ2MDA1Mzg3OTllMSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.fslcsTZH_p1LHoiIFiOwqUYgkev98ZoFxOg3Epf9mlc";
   readonly imageUrlPath: string = "https://image.tmdb.org/t/p";
   readonly posterSize: ImageSize = {width: 780, height: 1170};
   readonly actorImageSize: ImageSize = {width: 342, height: 513};
@@ -20,6 +20,7 @@ export class SharedApiDataService {
     'Content-Type': 'application/json;charset=utf-8'
   });
   constructor() { }
+
   getImageSizeUrl(imagePath: string, width: number){
     return this.imageUrlPath + "/w" + width + imagePath;
   }

@@ -7,8 +7,6 @@ import { AppRoutingModule } from './modules/app-routing/app-routing.module';
 import { HomePageModule } from './modules/home-page/home-page.module';
 import { NavigationBarModule } from './modules/navigation-bar/navigation-bar.module';
 import { AppInitializerService } from './shared/services/app-initializer.service';
-import { AuthInterceptor } from './shared/services/auth.interceptor';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [
