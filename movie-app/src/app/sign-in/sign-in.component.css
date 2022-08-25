@@ -114,3 +114,12 @@ label[for="password"] > em.error
 span.show__password{
   cursor: pointer;
 }
+.errorMsg{
+  border-bottom: 1px solid rgba(255, 132, 0, 0.781);
+  color:  rgba(255, 132, 0, 0.781);
+}
+a{
+  text-decoration:none;
+  color:purple;
+  cursor: pointer;
+}

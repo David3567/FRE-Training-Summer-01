@@ -4,6 +4,8 @@ import { Item} from '../interfaces/movie.interface';
 import { MovieService } from '../services/movie.service';
 import { Video } from '../interfaces/movie.interface';
 import { DomSanitizer } from '@angular/platform-browser';
+import { UserService } from '../services/user.service';
+import jwt_decode from 'jwt-decode';
 
 
 @Component({
@@ -16,13 +18,25 @@ export class SingleMovieComponent implements OnInit {
   movieId: number = 0
   selectedMovieVideo!: Video
   showMovie: boolean = false
+  seeYou:boolean=false;
+  authData:any
+  jwtToken:any
   constructor(private singleMovieService: SingleMovieService,
     private movieService: MovieService,
     public sanitize: DomSanitizer,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
-
+    
+    if (localStorage.getItem('currentUser') !== null) {
+      this.jwtToken = localStorage.getItem('currentUser');
+      this.authData = jwt_decode(this.jwtToken);
+   
+    } else {
+      console.log("No user");
+    }
+  
     this.singleMovieService.single_moive$.subscribe(movie => {
       this.movieId = movie.id;
       
@@ -53,6 +67,11 @@ export class SingleMovieComponent implements OnInit {
         console.dir(trailer);
         this.selectedMovieVideo = trailer[0];
     })
+  }
+  logOut() {
+    this.seeYou=true
+    this.userService.signOut();
+    
   }
 
 }

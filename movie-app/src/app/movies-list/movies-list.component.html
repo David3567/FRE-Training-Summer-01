@@ -1,18 +1,19 @@
 <ng-container *ngIf="!showMembership; else randomUser">
 <section class="movies__list__container" *ngIf="!authData.jwt_token">
   <ng-container *ngIf="movies && movies.length > 0; else emptyList">
+    <div class="userRole"> {{authData.role}}</div>
     <div class="movies__list__container">
       <div class="sidebar">
         <div class="sidebar__control--btn flex__wrapper">
           <span (click)="searchTab()">
-            S <fa-icon [icon]="['fas', 'search']"></fa-icon>
+            <fa-icon [icon]="['fas', 'search']"></fa-icon>
           </span>
           <span (click)="onshowMembership()">
             <fa-icon [icon]="['fas', 'user']"></fa-icon>
           </span>
-          <span> H <fa-icon [icon]="['fas', 'home']"></fa-icon> </span>
-          <span> C <fa-icon [icon]="['fas', 'calendar']"></fa-icon> </span>
-          <span> Cl <fa-icon [icon]="['fas', 'clapperboard']"></fa-icon> </span>
+          <span> <fa-icon [icon]="['fas', 'home']"></fa-icon> </span>
+          <span> <fa-icon [icon]="['fas', 'calendar']"></fa-icon> </span>
+          <span> <fa-icon [icon]="['fas', 'clapperboard']"></fa-icon> </span>
           <span>{{ authData.username }}</span>
           <span (click)="logOut()"> Logout </span>
           <span> + </span>
@@ -124,6 +125,17 @@
         <strong>KCBFLEX</strong>
       </aside>
     </div>
+    <ng-container *ngIf="seeYou"
+    >
+    
+    <div class="seeYou">
+      <h1>KCBFLEX</h1>
+      <p>We are sorry you are leaving us!</p>
+      <p>Goodbye...</p>
+    </div>
+    
+    
+    </ng-container>
   </ng-container>
   <ng-template #emptyList>
     <p class="empty_list">

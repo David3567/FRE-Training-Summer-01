@@ -7,21 +7,26 @@
           Sign In
         </h2>
         <form
-        [formGroup]="signInForm"
           class="sign__in--form"
+          [formGroup]="signInForm"
           (ngSubmit)="onLogin($event)">
           <label for="email_or_phone_number">
             <input
             formControlName="email"
-              #emailRef
               type="text"
               id="email_or_phone_number"
               name="email_or_phone_number"
               placeholder="Email or phone"
               required>
-              <!-- <em *ngIf="emailRef.value.trim()!== '' && email?.hasError" class="error">
-                Email has errors
-              </em> -->
+              <em
+              class="error"
+              *ngIf="email?.invalid && (email?.dirty || email?.touched)"
+            >
+              <div *ngIf="email?.errors?.['required']">Email is required.</div>
+              <div *ngIf="email?.errors?.['email']">
+                Email must be a valid email address
+              </div>
+            </em>
           </label>
             <label for="password" class="space__between">
               <input
@@ -29,7 +34,6 @@
                 name="password"
                 id="password"
                 placeholder="Password"
-                #passwordRef
                 formControlName="password">
               <span (click)="showPassword()" class="show__password">
                 <ng-container *ngIf="isHidden; else hidePassword">
@@ -39,9 +43,13 @@
                   Hide
                 </ng-template>
               </span>
-              <!-- <em *ngIf="passwordRef.value.trim() !== '' && password?.hasError " class="error">
-                Password has error
-              </em> -->
+              <em
+              class="error"
+              *ngIf="password?.invalid && (password?.dirty || password?.touched)"
+            >
+              <div *ngIf="password?.errors?.['required']">Password is required.</div>
+              
+            </em>
             </label>
 
           <input
@@ -50,23 +58,22 @@
             name="sign__in--btn"
             id="sign__in"
             >
+            <div  *ngIf="signInClicked">
+              <em class="errorMsg" *ngIf="signInForm?.invalid">
+                Please fill required details
+              </em>
+              <em class="errorMsg" *ngIf="signInForm?.valid&&!validSingIn">
+                Please check your email adress or password, and try again
+              </em>
 
-          <label for="remember_me" class="space__between">
-            <input
-              type="checkbox"
-              name="remember_me"
-              id="remember_me"
-              >
-            <span>
-              Need help?
-            </span>
-          </label>
+            </div>
+          
         </form>
         <footer>
           <div>
             <p>
-              <span>New to Netflix?</span>
-              <a [routerLink]="['/register']">
+              <span>New to KCBFLEX?</span>
+              <a (click)=" navigateToRegister()">
                 Sign Up Now
               </a>
             </p>
