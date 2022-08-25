@@ -65,12 +65,9 @@ export class AuthenticationService {
     );
   }
 
-  setRole(password: string, newRole: string) {
-    let b = localStorage.getItem('user')!
-    const { exp, iat, id, ...user } = jwt_decode<any>(b);
-    user.role = newRole;
+  setRole(password: string, newrole: string) {
     const url = `${this.baseUrl}/auth/userupdate`;
-    return this.http.patch<{ accessToken: string }>(url, JSON.stringify({password, ...user})).pipe(
+    return this.http.patch<{ accessToken: string }>(url, {role: newrole}).pipe(
       tap(({ accessToken }) => {
         const { username, id, email, role, tmdb_key, exp }: User =
           jwt_decode(accessToken);

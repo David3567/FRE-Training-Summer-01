@@ -56,7 +56,9 @@ export class MovielistUserComponent implements OnInit, DoCheck, OnChanges {
   onSubmit() {
     console.log(this.route)
     this.authService.setRole(this.password.value, this.selected.toUpperCase()).subscribe({
-      next: () => this.router.navigate(['movielist']),
+      next: (val) => {
+        localStorage.setItem('user', val.accessToken), this.router.navigate(['movielist'])
+      },
       error: (e) => console.log(e.error.message)
     })
   }
