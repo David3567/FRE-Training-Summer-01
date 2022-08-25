@@ -5,11 +5,11 @@
       <form class="login-form" [formGroup]="signinForm" (ngSubmit)="loginUser()">
         <input type="text" name="email" formControlName="email" placeholder="Email" />
         <div *ngIf="!email?.valid && (email?.dirty ||email?.touched)">
-          <div>
+          <div *ngIf="!email?.errors?.['pattern']">
             <p>Email is required!</p>
           </div>
-          <div [hidden]="!email?.errors?.['pattern']">
-            <p>Invalid Email</p>
+          <div *ngIf="email?.errors?.['pattern']">
+            <p>This email is not valid!</p>
           </div>
         </div>
         <input type="password" name="password" formControlName="password" placeholder="Password" />
@@ -17,14 +17,8 @@
           <div>
             <p>Password is required!</p>
           </div>
-          <div [hidden]="!password?.errors?.['minlength']">
-            <p>Password must have minimum length of 4</p>
-          </div>
-          <div [hidden]="!password?.errors?.['maxlength']">
-            <p>Password must have maximum length of 10</p>
-          </div>
         </div>
-        <div [hidden]="!invalidCredentials">
+        <div *ngIf="invalidCredentials">
           <p>Username or password is incorrect.</p>
         </div>
         <button type="submit" [disabled]="!signinForm.valid">Sign In</button>
@@ -35,7 +29,7 @@
           <input type="checkbox" id="rememberMe" />
           <label for="rememberMe">Remember Me</label>
         </div>
-        <a href="/forgot-password">Forgot password?</a>
+        <a routerLink="/forgot-password">Forgot password?</a>
       </div>
     </div>
   </div>

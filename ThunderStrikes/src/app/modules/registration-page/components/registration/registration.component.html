@@ -3,40 +3,40 @@
     <h2>Register</h2>
     <input type="text" placeholder="Username" formControlName="username" />
     <div *ngIf="!username?.valid && (username?.dirty ||username?.touched)">
-      <div>
+      <div *ngIf="!username?.errors?.['minlength'] && !username?.errors?.['maxlength']">
         <p>Username is required!</p>
       </div>
-      <div [hidden]="!username?.errors?.['minlength']">
+      <div *ngIf="username?.errors?.['minlength']">
         <p>Username must have minimum length of 4</p>
       </div>
-      <div [hidden]="!username?.errors?.['maxlength']">
+      <div *ngIf="username?.errors?.['maxlength']">
         <p>Username must have maximum length of 10</p>
       </div>
     </div>
 
     <input type="text" placeholder="Email" formControlName="email" #emailInput />
     <div *ngIf="!email?.valid && (email?.dirty ||email?.touched)">
-      <div>
+      <div *ngIf="!email?.errors?.['pattern']">
         <p>Email is required!</p>
       </div>
-      <div [hidden]="!email?.errors?.['pattern']">
-        <p>Invalid Email</p>
+      <div *ngIf="email?.errors?.['pattern']">
+        <p>This email is not valid!</p>
       </div>
     </div>
-
 
     <input type="password" placeholder="Password" formControlName="password" />
     <div *ngIf="!password?.valid && (password?.dirty ||password?.touched)">
-      <div>
+      <div *ngIf="!password?.errors?.['minlength'] && !password?.errors?.['maxlength']">
         <p>Password is required!</p>
       </div>
-      <div [hidden]="!password?.errors?.['minlength']">
+      <div *ngIf="password?.errors?.['minlength']">
         <p>Password must have minimum length of 4</p>
       </div>
-      <div [hidden]="!password?.errors?.['maxlength']">
+      <div *ngIf="password?.errors?.['maxlength']">
         <p>Password must have maximum length of 10</p>
       </div>
     </div>
+
     <div class="Terms_Conditions">
       <p>
         ThunderStrikes will use your data to personalize and improve your
