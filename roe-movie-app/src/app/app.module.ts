@@ -13,6 +13,8 @@ import { AuthenticationService } from './services/authservice.service';
 import { Observable } from 'rxjs';
 import {MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { NoopScrollStrategy } from '@angular/cdk/overlay';
+import { MovieDialogEntryComponent } from './components/core/movie-dialog/movie-dialog-entry/movie-dialog-entry.component';
+import { MoviesDialogResolverService } from './resolvers/movies-dialog-resolver.service';
 
 function initializeAppFactory(httpClient: HttpClient): void {
 
@@ -29,8 +31,9 @@ function initializeAppFactory(httpClient: HttpClient): void {
     return httpClient.post<{ accessToken: string }>(url,{ id, username, email, role, tmdb_key }).subscribe(data=>{localStorage.setItem('user',JSON.stringify(data)); console.log(data)})},600000)
 }
 
+
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, MovieDialogEntryComponent],
   imports: [
     BrowserModule,
     CommonModule,

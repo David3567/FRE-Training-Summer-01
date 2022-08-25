@@ -107,32 +107,32 @@ export class MovielistComponent implements OnInit {
 
   /*~~~~~~~~~~~~~~~~~~~~~~~ END Pre-fetched Data Methods ~~~~~~~~~~~~~~~~~~~~~~~~  */
 
-  openDialog(movie: any): void {
-    this.movie = movie;
-    forkJoin([
-      this.service.getCredits(movie.id),
-      this.service.getMovieVideos(movie.id),
-    ]).subscribe((res: any) => {
-      this.casts = res[0].cast;
-      this.videos = res[1];
-      console.log(this.casts, this.videos);
-      if (this.videos.results.length !== 0) {
-        let dialogRef = this.dialog.open(MovieDialogComponent, {
-          panelClass: 'custom-dialog-container',
-          data: {
-            movie: this.movie,
-            casts: this.casts.filter((cast: { profile_path: string; }) => cast.profile_path),
-            videos: this.videos,
-          },
-          disableClose: true,
-        });
+  // openDialog(movie: any): void {
+  //   this.movie = movie;
+  //   forkJoin([
+  //     this.service.getCredits(movie.id),
+  //     this.service.getMovieVideos(movie.id),
+  //   ]).subscribe((res: any) => {
+  //     this.casts = res[0].cast;
+  //     this.videos = res[1];
+  //     console.log(this.casts, this.videos);
+  //     if (this.videos.results.length !== 0) {
+  //       let dialogRef = this.dialog.open(MovieDialogComponent, {
+  //         panelClass: 'custom-dialog-container',
+  //         data: {
+  //           movie: this.movie,
+  //           casts: this.casts.filter((cast: { profile_path: string; }) => cast.profile_path),
+  //           videos: this.videos,
+  //         },
+  //         disableClose: true,
+  //       });
 
-        dialogRef.backdropClick().subscribe((_) => {
-          dialogRef.close();
-        });
-      }
-    });
-  }
+  //       dialogRef.backdropClick().subscribe((_) => {
+  //         dialogRef.close();
+  //       });
+  //     }
+  //   });
+  // }
 
 
 
@@ -178,7 +178,7 @@ export class MovielistComponent implements OnInit {
     }
   }
 
-   signout() {
+  signout() {
     localStorage.removeItem('user');
     this.router.navigate(['home']);
   }
