@@ -27,6 +27,7 @@ export class AuthGuard implements CanActivate, CanLoad {
     if (this.authService.getUserRole() === ('ADMIN' || 'SUPERUSER')) {
       return true;
     } else {
+      console.log('role',this.authService.getUserRole());
       this.router.navigate(['/upgrade']);
       return false;
     }

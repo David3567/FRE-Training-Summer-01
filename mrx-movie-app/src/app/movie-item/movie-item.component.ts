@@ -18,12 +18,10 @@ export class MovieItemComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe((params) => {
-      this.getId = params.get('id') as string;
-    });
 
-    this.movieService.getMovieItem(this.getId).subscribe((res) => {
-      this.getVideos = res;
+    this.activatedRoute.data.subscribe(({movie}) => {
+
+      this.getVideos = movie;
 
       if (!this.apiLoaded) {
         const tag = document.createElement('script');
@@ -32,5 +30,20 @@ export class MovieItemComponent implements OnInit {
         this.apiLoaded = true;
       }
     });
+
+    // this.activatedRoute.paramMap.subscribe((params) => {
+    //   this.getId = params.get('id') as string;
+    // });
+
+    // this.movieService.getMovieItem(this.getId).subscribe((res) => {
+    //   this.getVideos = res;
+
+    //   if (!this.apiLoaded) {
+    //     const tag = document.createElement('script');
+    //     tag.src = 'https://www.youtube.com/iframe_api';
+    //     document.body.appendChild(tag);
+    //     this.apiLoaded = true;
+    //   }
+    // });
   }
 }

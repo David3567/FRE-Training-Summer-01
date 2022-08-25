@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { fromEvent, Observable, Subscription } from 'rxjs';
+import { fromEvent, Observable, of, Subscription } from 'rxjs';
 import { Movie } from '../interface/movie.interface';
 import { MovieService } from '../movie.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-movie-list',
@@ -20,13 +20,24 @@ export class MovieListComponent implements OnInit {
   onScrollSub!: Subscription;
 
 
-  constructor(public router: Router, public readonly movieService: MovieService) { }
+  constructor(
+    public router: Router, 
+    public readonly movieService: MovieService,
+    private activatedRoute: ActivatedRoute
+    ) { }
 
   ngOnInit(): void {
     // this.movieService.getMovies().subscribe();
+    /*
     this.movieService.getMoviesScroll(this.currPage).subscribe();
 
     this.movies$ = this.movieService.movies$;
+    */
+
+    // this.activatedRoute.data.subscribe(({movie}) => {
+    //   this.movies$ = movie;
+    // })
+    this.movies$ = of(this.activatedRoute.snapshot.data['movies']);
 
     this.movies$.subscribe((list) => {
       this.movies = list;
