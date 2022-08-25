@@ -4,7 +4,6 @@ import { ReactiveFormsModule } from '@angular/forms'
 import { MovielistRoutingModule } from './movielist-routing.module';
 import { MovielistComponent } from './movielist.component';
 import { SharedModule } from '../../shared/shared/shared.module'
-// import { HttpClientModule } from '@angular/common/http';
 import { MatCardModule } from '@angular/material/card';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -12,10 +11,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MovieDialogComponent } from '../movie-dialog/movie-dialog.component';
 import { TrackScrollDirective } from '../../../directives/track-scroll.directive'
 import { YouTubePlayerModule } from "@angular/youtube-player";
-import { AuthenticationGuard,  } from '../../../guards/authentication.guard';
+import { AuthenticationGuard, } from '../../../guards/authentication.guard';
 import { AuthenticationUserGuard } from '../../../guards/authenticationuser.guard';
-// import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { MovielistUserComponent } from './movielist-user/movielist-user.component'
+import { MoviesDialogResolverService } from 'src/app/resolvers/movies-dialog-resolver.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +29,6 @@ import { MovielistUserComponent } from './movielist-user/movielist-user.componen
     ReactiveFormsModule,
     MovielistRoutingModule,
     SharedModule,
-    // HttpClientModule,
     MatCardModule,
     InfiniteScrollModule,
     MatDialogModule,

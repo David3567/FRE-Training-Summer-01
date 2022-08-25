@@ -33,7 +33,8 @@ appTrackScroll
     <div
       *ngFor="let Movie of Movies; let i = index"
       class="movie-list"
-      (click)="openDialog(Movie)"
+      routerLink="{{ Movie.id }}"
+      [state]="{currMovie: Movie}"
     >
       <div class="image-section">
         <div class="movie-rating">
@@ -54,3 +55,4 @@ appTrackScroll
     </div>
   </div>
 </main>
+<router-outlet></router-outlet>
