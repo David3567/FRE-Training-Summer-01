@@ -8,22 +8,24 @@ import {
 import { Observable, tap, catchError } from 'rxjs';
 import { User } from './interfaces/user.interface';
 import { HelperService } from './services/helper.service';
-import { BASRURL } from './app.module';
+import { BASRURL, movieApiUrl } from './app.module';
 import { UserService } from './services/user.service';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  currentUser!: User;
+  // currentUser!: User;
   constructor(
     public helper: HelperService,
     private userService: UserService,
     private http: HttpClient,
-    @Inject(BASRURL) private url: string
+    @Inject(BASRURL) private baseApiURL: string,
+    @Inject(movieApiUrl) private moviesApiURL: string
   ) {
-    this.userService.currentUser$.subscribe(user => {
-      this.currentUser = user;
-    })
+    // userService.generateToken(localStorage.getItem('currentUser')!)
+    // this.userService.currentUser$.subscribe(user => {
+    //   this.currentUser = user;
+    // })
   }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
@@ -34,30 +36,37 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   onVerifyToken(request: HttpRequest<any>) {
+    let currentUser: User = JSON.parse(localStorage.getItem('currentUserInfo')!);
+    const token = currentUser?.jwt_token;
 
-    let currentUser: { connected: boolean, accessToken: string } =
-      JSON.parse(localStorage.getItem('currentUserInfo')!)
-      ;
-    const token = currentUser?.accessToken;
+    console.log(token)
+    // console.log(this.currentUser)
 
-    if (token &&
-      (request.url.startsWith(`${this.url}/auth/refresh-token`) && request.method === "POST")
-    ) {
+    if (token ) {
+      if (request.url.startsWith(`${this.baseApiURL}/auth/refresh-token`)
+        && request.method === "POST") {
       this.userService.tokenShouldRefresh$.next(true);
       return request;
     }
 
-    if (token &&
-      (request.url.startsWith(`${this.url}/auth/userupdate`) && request.method ==="PATCH")
+    if ( request.url.startsWith(`${this.moviesApiURL}`) || currentUser.connected){
+      request.headers.set('Content-Type', 'application/json');
+      request.headers.set('Accept', '*');
+      request.headers.set('Authorization', 'Bearer '+token);
+      return request;
+    }
+    if(
+      (request.url.startsWith(`${this.baseApiURL}/auth/userupdate`) && request.method === "PATCH")||
+      (request.url.startsWith(`${this.baseApiURL}/auth/signin`) && request.method === "POST")
     ) {
-       return request.clone({
+      return request.clone({
         setHeaders: { Authorization: `Bearer ${token}`}
       })
     }
-
     else {
-      console.log('InvalidTokenError')
-      return request;
+      console.error('InvalidTokenError')
     }
+  }
+    return request;
   }
 }

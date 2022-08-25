@@ -12,18 +12,18 @@ import { NotAuthorizedUserGuard } from './guards/not-authorized-user.guard';
 import { SharedModule } from './shared/shared.module';
 import { AuthorizedUserGuard } from './guards/authorized-user.guard';
 import { HomepageModule } from './components/home-page/homepage/homepage.module';
-import { faHome, faSearch, faCalendar, faClapperboard, faEye, faCheck, faTimes, faDoorOpen } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faSearch, faCalendar, faClapperboard, faEye, faCheck, faTimes, faDoorOpen, faUser } from '@fortawesome/free-solid-svg-icons';
 import { MovieService } from './services/movie.service';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 export const BASRURL = new InjectionToken<string>('');
+export const movieApiUrl = new InjectionToken<string>('');
 
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
-    // SubscriptionComponent
   ],
   imports: [
     HomepageModule,
@@ -31,7 +31,6 @@ export const BASRURL = new InjectionToken<string>('');
     CommonModule,
     BrowserModule,
     SharedModule,
-    // SubscriptionComponent,
   ],
   exports: [RouterModule,
 
@@ -44,11 +43,12 @@ export const BASRURL = new InjectionToken<string>('');
     AuthorizedUserGuard,
     NotAuthorizedUserGuard,
     { provide: BASRURL, useValue: 'http://localhost:4231' },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true
-    }
+    { provide: movieApiUrl, useValue: 'https://api.themoviedb.org/3' },
+    // {
+    //   // provide: HTTP_INTERCEPTORS,
+    //   // useClass: AuthInterceptor,
+    //   // multi: true
+    // }
   ],
   bootstrap: [AppComponent],
 })
@@ -61,7 +61,8 @@ export class AppModule {
       faClapperboard,
       faEye,
       faCheck, faTimes,
-      faDoorOpen
+      faDoorOpen,
+      faUser
     );
   }
 }

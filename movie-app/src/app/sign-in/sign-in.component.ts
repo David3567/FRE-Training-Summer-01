@@ -25,7 +25,7 @@ export class SignInComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.userService.navigateToMovies();
+    // this.userService.navigateToMovies();
   }
 
   showPassword(): void {

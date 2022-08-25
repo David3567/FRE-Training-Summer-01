@@ -52,7 +52,7 @@ export class RegisterPageComponent implements OnInit {
   }
 
   onSignUp(): void {
-    this.checkEmail();
+    // this.checkEmail();
 
     if (this.emailExists) {
       alert("Email already exists");
@@ -68,7 +68,8 @@ export class RegisterPageComponent implements OnInit {
         role: "USER",
         tmdb_key: '7979b0e432796fe7fa957d6fbbeb0835'
       }
-      this.userService.register(userInfo).subscribe(console.log);
+      console.log(userInfo)
+      this.userService.register(userInfo).subscribe(response => {console.log(response)});
     } else {
       console.log("passwords don't match")
     }

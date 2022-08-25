@@ -27,7 +27,7 @@ export class MoviesListComponent implements OnInit {
   searchHidden: boolean = true;
   currentUser!: User;
   currentUserRole: "USER" | "ADMIN" | "SUPERUSER" | "GUEST" = "GUEST";
-
+  showMembership: boolean = false;
   isMember: boolean = false;
 
   // Api key and other information from localStorage
@@ -113,5 +113,9 @@ export class MoviesListComponent implements OnInit {
 
   logOut() {
     this.userService.signOut();
+  }
+  onshowMembership() {
+    this.showMembership = true
+    console.log(this.showMembership, "this one")
   }
 }

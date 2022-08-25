@@ -1,4 +1,4 @@
-<ng-container *ngIf="currentUser.role === 'ADMIN' else randomUser">
+<ng-container *ngIf="!showMembership; else randomUser">
 <section class="movies__list__container" *ngIf="!authData.jwt_token">
   <ng-container *ngIf="movies && movies.length > 0; else emptyList">
     <div class="movies__list__container">
@@ -6,6 +6,9 @@
         <div class="sidebar__control--btn flex__wrapper">
           <span (click)="searchTab()">
             S <fa-icon [icon]="['fas', 'search']"></fa-icon>
+          </span>
+          <span (click)="onshowMembership()">
+            <fa-icon [icon]="['fas', 'user']"></fa-icon>
           </span>
           <span> H <fa-icon [icon]="['fas', 'home']"></fa-icon> </span>
           <span> C <fa-icon [icon]="['fas', 'calendar']"></fa-icon> </span>
@@ -132,10 +135,7 @@
 <section *ngIf="authData.jwt_token">Session has expired</section>
 </ng-container>
 <ng-template #randomUser>
-  <app-subscription>
-
-    <app-subscription [(userRole)]="currentUserRole"></app-subscription>
+    <app-subscription [(userRole)]="currentUserRole" [(showMembership)]="showMembership"></app-subscription>
     {{currentUserRole}}
-  </app-subscription>
 </ng-template>
 

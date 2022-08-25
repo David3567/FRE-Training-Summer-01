@@ -37,16 +37,16 @@ export class UserService {
 
   register(user: User): Observable<User> {
 // <<<<<<< HEAD
-  //   return this.http.post<any>(`${this.baseUrl}/auth/signup`, user).pipe(
-  //     tap((newUser: User) => {
-  //       console.log(`Successfully registered ${newUser.email}`);
-  //       setTimeout(() => {
-  //         this.router.navigate([`sign-in`]);
-  //       }, 1000);
-  //     }),
-  //     catchError(this.helper.errorHandler<User>('register'))
-  //   );
-  // }
+    return this.http.post<any>(`${this.baseUrl}/auth/signup`, user).pipe(
+      tap((newUser: User) => {
+        console.log(`Successfully registered ${newUser.email}`);
+        setTimeout(() => {
+          this.router.navigate([`sign-in`]);
+        }, 1000);
+      }),
+      catchError(this.helper.errorHandler<User>('register'))
+    );
+  }
 
   // signIn({ email, password }: any): any {
   //   let url = `${this.baseUrl}/auth/signin`;
@@ -77,17 +77,17 @@ export class UserService {
   //         localStorage.setItem('currentUser', accessToken);
 
 // =======
-    return this.http.post<any>(`${this.baseUrl}/auth-c/signup`, user)
-      .pipe(
-        tap((newUser: User) => {
-          console.log(`Successfully registered ${newUser.email}`);
-          setTimeout(() => {
-            this.router.navigate([`sign-in`]);
-          }, 2000);
-        }),
-        catchError(this.helper.errorHandler<User>("register"))
-    )
-  }
+  //   return this.http.post<any>(`${this.baseUrl}/auth-c/signup`, user)
+  //     .pipe(
+  //       tap((newUser: User) => {
+  //         console.log(`Successfully registered ${newUser.email}`);
+  //         setTimeout(() => {
+  //           this.router.navigate([`sign-in`]);
+  //         }, 2000);
+  //       }),
+  //       catchError(this.helper.errorHandler<User>("register"))
+  //   )
+  // }
 
   signIn(userInfo: any): any{
     let url = `${this.baseUrl}/auth/signin`;
