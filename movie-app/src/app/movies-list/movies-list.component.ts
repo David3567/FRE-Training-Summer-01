@@ -66,6 +66,6 @@ export class MoviesListComponent implements OnInit {
   }
 
   onshowMembership() {
-    this.showMembership = true
+    this.showMembership = !this.showMembership
   }
 }

@@ -1,4 +1,4 @@
-<ng-container *ngIf="currentUserRole !== 'GUEST' && !showMembership; else randomUser">
+<ng-container *ngIf="currentUserRole">
   <section
     class="movies__list__container">
     <ng-container *ngIf="movies && movies.length > 0; else emptyList">
@@ -21,7 +21,7 @@
               <fa-icon [icon]="['fas', 'clapperboard']"></fa-icon>
             </span>
             <span>
-              {{currentUser.username}}
+              {{currentUser.username | makeShort: 3}}
             </span>
             <span
               title="Logout"
@@ -145,10 +145,10 @@
     </ng-template>
   </section>
 </ng-container>
-<ng-template #randomUser>
+<div>
   <app-subscription
-  [(userRole)]="currentUserRole"
-  [(showMembership)]="showMembership"></app-subscription>
-  <!-- {{currentUserRole}} -->
-</ng-template>
+  *ngIf="showMembership"
+  [(showMembership)]="showMembership"
+  [(userRole)]="currentUserRole"></app-subscription>
+</div>
 

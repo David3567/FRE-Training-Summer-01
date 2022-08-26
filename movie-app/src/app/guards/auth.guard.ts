@@ -26,7 +26,7 @@ export class AuthGuard implements CanActivate {
       return true;
     }
     //Check if current token has expired before the user is logged out
-    else if (!this.currentUser?.jwt_token && currentUser.connected) {
+    else if (!this.currentUser?.jwt_token && currentUser?.connected) {
       this.user.onRefreshToken(currentUser);
       console.log('user re-connected...')
       return true;

@@ -15,29 +15,30 @@ export class SingleMovieComponent implements OnInit {
   movie: any
   movieId: number = 0
   selectedMovieVideo!: Video
-  showMovie: boolean = false
+  showMovie: boolean = false;
+  showMembership: boolean = false;
+  currentUserRole!: "USER" | "ADMIN" | "SUPERUSER" | "GUEST";
   constructor(private singleMovieService: SingleMovieService,
     private movieService: MovieService,
     public sanitize: DomSanitizer,
   ) { }
 
   ngOnInit(): void {
-
     this.singleMovieService.single_moive$.subscribe(movie => {
       this.movieId = movie.id;
-      
+
     })
-    
+
       if (this.movieId) {
-        this.movieService.getSingleMovie(this.movieId).subscribe(movie => 
+        this.movieService.getSingleMovie(this.movieId).subscribe(movie =>
           {this.movie = movie
           localStorage.setItem('singleMovie', JSON.stringify(this.movie))
           console.log(this.movie)
           });
-        
+
       }
       else {
-       
+
         this.movie = JSON.parse(localStorage.getItem('singleMovie') ?? "")
         console.log(this.movie)
       }

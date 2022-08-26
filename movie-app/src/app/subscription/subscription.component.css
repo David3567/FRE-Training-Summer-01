@@ -6,7 +6,11 @@ h1.title{
 }
 
 .subscriptions_container{
-  color:rgb(180, 180, 180);
+  top:0;
+  left: 60px;
+  position: fixed;
+  background: #fff;
+  color:rgb(123, 123, 123);
   width: 100vw;
   height: 100vh;
 }
