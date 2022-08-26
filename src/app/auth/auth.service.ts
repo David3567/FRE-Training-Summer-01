@@ -73,7 +73,6 @@ export class AuthService {
     this.user$.next(jwt_decode(token));
     this.signedin$.next(true);
     this.refreshToken();
-    console.log('refreshed', this.user$.value)
   }
 
   //* refreshes token on a set time

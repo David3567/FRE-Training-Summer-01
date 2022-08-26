@@ -27,7 +27,6 @@ export class MovieItemGuard implements CanActivate {
     | UrlTree {
     this.authService.user.subscribe(user => this.userRole = user?.role)
 
-    console.log('at movie item guard', this.userRole);
     if (this.userRole === 'ADMIN' || this.userRole === 'SUPER') {
       return true;
     } else {
