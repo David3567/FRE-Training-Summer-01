@@ -4,6 +4,7 @@ import { HomepageComponent } from '../home-page/components/homepage/homepage.com
 import { MovieBrowseResolverResolver } from '../movie-browse/resolver/movie-browse-resolver.resolver';
 import { AuthGuard } from 'src/app/shared/services/guards/auth.guard';
 import { RoleGuard } from 'src/app/shared/services/guards/role.guard';
+import { RedundantGuard } from 'src/app/shared/services/guards/redundant.guard';
 
 const routes: Routes = [
   {
@@ -12,10 +13,12 @@ const routes: Routes = [
   },
   {
     path: "register",
+    canActivate:[RedundantGuard],
     loadChildren: () => import('../registration-page/registration-page.module').then(m => m.RegistrationPageModule)
   },
   {
     path: "login",
+    canActivate:[RedundantGuard],
     loadChildren: () => import('../login-page/login-page.module').then(m => m.LoginPageModule)
   },
   {

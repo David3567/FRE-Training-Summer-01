@@ -7,7 +7,7 @@
             <option value="SUPERUSER">Strikes +</option>
             <option value="ADMIN">Strikes Platinum</option>
             </select>
-      <input type="text" placeholder="Password" formControlName="password" />
+      <input type="password" placeholder="Password" formControlName="password" />
       <div *ngIf="!password?.valid && (password?.dirty ||password?.touched)">
         <div><p>Password is required!</p></div>
         <div [hidden]="!password?.errors?.['minlength']"><p>Password must have minimum length of 4</p></div>
