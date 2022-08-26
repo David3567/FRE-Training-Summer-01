@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   signinForm!: FormGroup;
   invalidCredentials: boolean = false;
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
+  constructor(private fb: FormBuilder, private authService: AuthService) {
     this.routingPages = RoutingPages;
   }
 
@@ -28,8 +28,11 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.signinForm = this.fb.group({
-      email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
-      password: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(10)]],
+      email: ['', [
+        Validators.required, 
+        Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"),
+      ]],
+      password: ['', [Validators.required]],
     })
   }
 
