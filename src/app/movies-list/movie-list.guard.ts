@@ -23,11 +23,9 @@ export class MovieListGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    console.log('movie list guard works!');
-    this.authService.signedin$.subscribe((ifSignedIn) => {
+    this.authService.isSignedIn.subscribe((ifSignedIn) => {
       this.signedIn = ifSignedIn;
     });
-    console.log(this.signedIn);
-    return this.authService.signedin$;
+    return this.authService.isSignedIn;
   }
 }

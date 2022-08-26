@@ -28,3 +28,12 @@ export interface UserInfo {
   exp?: number;
   jwt_token?: string;
 }
+
+export interface User {
+  id: string;
+  username: string;
+  email: string;
+  role: string;
+  tmdb_key: string;
+  exp: number;
+}
