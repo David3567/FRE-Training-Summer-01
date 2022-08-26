@@ -22,6 +22,7 @@ import { MovieDetailsComponent } from './components/movie-details/movie-details.
 import { UserUpdateComponent } from './components/user-update/user-update.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { MovieCardComponent } from './components/movie-card/movie-card.component';
+import { CommonModule } from '@angular/common';
 
 
 // const appRoutes: Routes = [
