@@ -9,7 +9,7 @@ import { RegisterPageComponent } from "../register-page.component";
       {
         path: "register", component: RegisterPageComponent,
         loadChildren: () => import("./register.module").then(m => m.RegisterModule),
-        canDeactivate: [NotAuthorizedUserGuard],
+        // canDeactivate: [NotAuthorizedUserGuard],
       },
     ])
   ],

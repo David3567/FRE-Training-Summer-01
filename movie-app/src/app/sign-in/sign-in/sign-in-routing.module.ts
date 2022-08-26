@@ -9,7 +9,7 @@ import { NotAuthorizedUserGuard } from '../../guards/not-authorized-user.guard';
     RouterModule.forChild([{
       path: "sign-in",
       component: SignInComponent,
-      canDeactivate: [NotAuthorizedUserGuard],
+      // canDeactivate: [NotAuthorizedUserGuard],
       loadChildren: () => import("./sign-in.module").then(m => m.SignInModule),
     }]),
   ],

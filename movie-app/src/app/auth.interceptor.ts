@@ -14,7 +14,7 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  currentUser!: User;
+  // currentUser!: User;
   constructor(
     public helper: HelperService,
     private userService: UserService,
@@ -22,10 +22,10 @@ export class AuthInterceptor implements HttpInterceptor {
     @Inject(BASRURL) private baseApiURL: string,
     @Inject(movieApiUrl) private moviesApiURL: string
   ) {
-    userService.generateToken(localStorage.getItem('currentUser')!)
-    this.userService.currentUser$.subscribe(user => {
-      this.currentUser = user;
-    })
+    // userService.generateToken(localStorage.getItem('currentUser')!)
+    // this.userService.currentUser$.subscribe(user => {
+    //   this.currentUser = user;
+    // })
   }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
@@ -40,7 +40,7 @@ export class AuthInterceptor implements HttpInterceptor {
     const token = currentUser?.jwt_token;
 
     console.log(token)
-    console.log(this.currentUser)
+    // console.log(this.currentUser)
 
     if (token ) {
       if (request.url.startsWith(`${this.baseApiURL}/auth/refresh-token`)

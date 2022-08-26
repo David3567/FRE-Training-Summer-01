@@ -20,6 +20,9 @@
             <span>
               <fa-icon [icon]="['fas', 'clapperboard']"></fa-icon>
             </span>
+            <span>
+              {{currentUser.username}}
+            </span>
             <span
               title="Logout"
               (click)="logOut()">
@@ -126,7 +129,7 @@
             </section>
           </main>
           <section *ngIf="!searchHidden">
-            <app-discover-list></app-discover-list>
+            <app-discover-list [apiKey]="'7979b0e432796fe7fa957d6fbbeb0835'"></app-discover-list>
           </section>
         </section>
         <aside aria-label="Application title" class="project__title">
@@ -146,6 +149,6 @@
   <app-subscription
   [(userRole)]="currentUserRole"
   [(showMembership)]="showMembership"></app-subscription>
-  {{currentUserRole}}
+  <!-- {{currentUserRole}} -->
 </ng-template>
 

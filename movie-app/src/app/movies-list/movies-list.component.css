@@ -25,11 +25,12 @@ p{
 .sidebar__control--btn{
   flex-direction: column;
   justify-content: space-evenly;
-  height: 200px;
+  height: 300px;
 }
 .sidebar__control--btn > *{
   text-align: center;
   cursor: pointer;
+
 }
 
 .sidebar__control--btn > *:hover{
