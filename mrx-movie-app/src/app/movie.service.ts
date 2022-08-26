@@ -4,12 +4,14 @@ import { BehaviorSubject, Subject } from 'rxjs';
 import { map, take, tap } from 'rxjs/operators';
 import { Movie, RootObject } from './interface/movie.interface'
 import { Videos, TrailerVideos } from "./interface/videos.interface";
+import { AuthService } from './services/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MovieService {
-  private apiKey = '5fa0925a4c1bf9781d30e90efd4e99ee';
+  // private apiKey = '5fa0925a4c1bf9781d30e90efd4e99ee';
+  private apiKey = this.auth.getApiKey();
   private baseUrl = `https://api.themoviedb.org/3/movie/now_playing?api_key=${this.apiKey}`;
   private baseUrlScroll = `https://api.themoviedb.org/3/movie/top_rated?api_key=${this.apiKey}&language=en-US&page=`;
 
@@ -17,7 +19,7 @@ export class MovieService {
   private moviesSubject$ = new BehaviorSubject(this.movies);
   movies$ = this.moviesSubject$.asObservable();
   
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private auth: AuthService) { }
 
   getMovies(){
     return this.http.get(this.baseUrl).pipe(

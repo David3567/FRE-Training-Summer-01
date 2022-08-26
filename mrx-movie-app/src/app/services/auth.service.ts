@@ -88,6 +88,21 @@ export class AuthService {
     return this.userAuthInfo.role;
   }
 
+  getApiKey(): string {
+
+    if (
+      localStorage.getItem('token') === null ||
+      localStorage.getItem('token') === undefined
+    ) {
+      return '';
+    } else {
+      let jwtoken = localStorage.getItem('token') as string;
+      const { tmdb_key }: UserInfo = jwt_decode(jwtoken);
+      
+      return tmdb_key  + '';
+    }
+  }
+
   logout() {
     this.loginStatus.next(false);
     localStorage.clear();
