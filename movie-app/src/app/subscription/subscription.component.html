@@ -1,0 +1,67 @@
+<div class="subscriptions_container flex__wrapper">
+  <header class="header">
+    <section>
+      <h1 class="title">
+        Choose a plan that's right for you
+      </h1>
+      <p>
+        Downgrade or upgrade at any time
+      </p>
+    </section>
+  </header>
+
+  <main class="main__content flex__wrapper">
+    <ul class="sidebar flex__wrapper">
+      <li></li>
+      <li *ngFor="let feature of features">
+        {{feature}}
+      </li>
+    </ul>
+    <ul class="subscriptions__list">
+      <li
+        class="flex__wrapper"
+        [class.selected_subscription]="selectedMembership === sub.name"
+        *ngFor="let sub of subscriptions">
+        <button
+          class="--btn__update__role"
+          (click)="onRoleUpdate(sub.name)"
+          title="Update your subscription">
+          {{sub.name}}
+        </button>
+        <section class="user__subscriptions flex__wrapper">
+          <span>{{sub.price}}</span>
+          <span>
+            {{sub.screenToWatchTotalCount}}
+          </span>
+          <ng-container *ngFor="let item of [sub.isHD, sub.isUltaHD, sub.isHDR, sub.allDevicesAllowed, sub.isUnlimitedWatch, sub.canCancelAnytime, sub.isFirstMonthFree]">
+            <span>
+              <ng-container *ngIf="item; else elseTemplate">
+                <fa-icon [icon]="['fas', 'check']"></fa-icon>
+              </ng-container>
+              <ng-template #elseTemplate>
+                <fa-icon [icon]="['fas', 'times']"></fa-icon>
+              </ng-template>
+            </span>
+          </ng-container>
+        </section>
+      </li>
+    </ul>
+  </main>
+
+  <div
+    class="confirm__membership__modal"
+    [style.display]="!hasSelected ? 'none': ''">
+    <div class="space__between">
+      <button
+        class="confirm__membership"
+        (click)="onConfirm()">
+        Subscribe Now
+      </button>
+      <button
+         (click)="hideModal()"
+         class="cancel__membership">
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>

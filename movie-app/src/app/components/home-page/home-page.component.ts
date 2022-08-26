@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-home-page',
@@ -7,9 +8,13 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
   @ViewChild('emailRegis') emailRegis?: ElementRef;
-  constructor() {}
+  constructor(
+    private userService: UserService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // this.userService.navigateToMovies()
+  }
 
   onClickGTR(recall: any) {
     console.log('regis');

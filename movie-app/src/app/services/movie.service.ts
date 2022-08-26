@@ -33,6 +33,7 @@ export class MovieService {
     private helper: HelperService
   ) {}
 
+
   ngOnInint() {}
 
   getApi(apikey: string) {
@@ -41,6 +42,7 @@ export class MovieService {
 
   getData() {
     throw new Error('Method not implemented.');
+
   }
 
   searchMovies(movieName: string) {
@@ -49,18 +51,18 @@ export class MovieService {
     );
   }
 
-  getMoviesList(): Observable<any> {
+  getMoviesList(_apiKey: any): Observable<any> {
     let id =
       this.defaultId > 0 ? this.defaultId : Math.floor(Math.random() * 500);
-    let url = `https://api.themoviedb.org/3/list/${id}?api_key=${this.apiKeys}`;
+    let url = `https://api.themoviedb.org/3/list/5?api_key=${_apiKey}`;
 
     return this.http.get<RootObject>(url, this.helper.httpOptions).pipe(
       debounceTime(100),
       map(({ items }: any) => {
-        console.log('Successfully retrieved movies here\n', items);
+        console.log('Successfully retrieved movies here\n');
         if (items.length === 0) {
           this.defaultId = 5;
-          this.getMoviesList();
+          this.getMoviesList(_apiKey);
         }
         return items;
       }),
@@ -68,15 +70,14 @@ export class MovieService {
     );
   }
 
-  getTrendingMovies() {
-    let url = `https://api.themoviedb.org/3/trending/all/day?api_key=${this.apiKeys}`;
+  getTrendingMovies(_apiKey: any) {
+    let url = `https://api.themoviedb.org/3/trending/all/day?api_key=${_apiKey}`;
 
     return this.http.get<RootObject>(url).pipe(
       debounceTime(50),
-      map(({ results }: any) => {
-        // console.log('Successfully retrieved trending movies here\n', results);
-        return results;
-      }),
+
+      map(({ results }: any) => results),
+
       catchError(this.helper.errorHandler<any>('getTrendingMovies'))
     );
   }
@@ -86,8 +87,9 @@ export class MovieService {
 
     return this.http.get(url, this.helper.httpOptions).pipe(
       map(({ results }: any) => {
-        console.log('movie video successfully retrieved');
-        console.log(results);
+
+        console.log("movie video successfully retrieved")
+
         return results.map((result: any) => {
           return {
             id: result.id,

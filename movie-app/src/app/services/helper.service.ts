@@ -1,12 +1,19 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
-
+import jwt_decode from 'jwt-decode';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
 export class HelperService {
 
+  constructor(private router: Router) {
+  }
+
+  navigateTo(path: string) {
+    this.router.navigate([path]);
+  }
 
   errorHandler<T>(operation = "Failed Operation Name", result?: T) {
     return (err: Error) => {

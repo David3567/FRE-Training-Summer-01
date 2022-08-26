@@ -1,4 +1,19 @@
  <div class="single_movie_page">
+  <div class="sidebar">
+    <div class="sidebar__control--btn flex__wrapper">
+      <span >
+        <fa-icon [icon]="['fas', 'search']"></fa-icon>
+      </span>
+      <span>  <fa-icon [icon]="['fas', 'home']"></fa-icon> </span>
+      <span>  <fa-icon [icon]="['fas', 'calendar']"></fa-icon> </span>
+      <span>  <fa-icon [icon]="['fas', 'clapperboard']"></fa-icon> </span>
+      <span>{{ authData.username }}</span>
+      <span (click)="logOut()"> Logout </span>
+      <span> + </span>
+    </div>
+  </div>
+  
+  
   <div *ngIf="showMovie" class="movie__video__trailer">
     <iframe
       [title]="selectedMovieVideo.name"
@@ -59,9 +74,17 @@
     </div>
     
   </section>
-  <section classes="recomended-movies">
-
-  </section>
+  <ng-container *ngIf="seeYou"
+  >
+  
+  <div class="seeYou">
+    <h1>KCBFLEX</h1>
+    <p>We are sorry you are leaving us!</p>
+    <p>Goodbye...</p>
+  </div>
+  
+  
+  </ng-container>
 
 </div>
 

@@ -5,6 +5,7 @@ import { MovieService } from '../services/movie.service';
 import { UserService } from '../services/user.service';
 import jwt_decode from 'jwt-decode';
 import { ActivatedRoute } from '@angular/router';
+import { User } from '../interfaces/user.interface';
 
 @Component({
   selector: 'app-movies-list',
@@ -16,6 +17,7 @@ export class MoviesListComponent implements OnInit {
   bannerMovie!: any;
   selectedMovieVideo!: Video;
   showMovie: boolean = false;
+  seeYou:boolean=false;
   constructor(
     private activatedRoute: ActivatedRoute,
     public sanitize: DomSanitizer,
@@ -24,6 +26,10 @@ export class MoviesListComponent implements OnInit {
   ) {}
   trending: any[] = [];
   searchHidden: boolean = true;
+  currentUser!: User;
+  currentUserRole: "USER" | "ADMIN" | "SUPERUSER" | "GUEST" = "GUEST";
+  showMembership: boolean = false;
+  isMember: boolean = false;
 
   // Api key and other information from localStorage
   apiKey?: any;
@@ -46,16 +52,15 @@ export class MoviesListComponent implements OnInit {
     } else {
       console.log(false);
     }
+    let user = JSON.parse(localStorage.getItem("currentUserInfo")!)
+    // this.userService.currentUser$.subscribe((user:User) => {
+      this.movieService.getApi(user.tmdb_key!)
+      this.currentUser = user;
+      this.currentUserRole = user.role!;
+    // })
 
-    this.movieService.getMoviesList().subscribe((movies: any) => {
-      // console.log(movies);
-      this.bannerMovie = movies[0];
-      this.movies = movies.filter((m: any, i: number) => i > 0);
-    });
-
-    this.movieService.getTrendingMovies().subscribe((movies: any) => {
-      this.trending = movies;
-    });
+    console.log("Movies list\n", user)
+    
 
     // resolver
     console.log(
@@ -77,26 +82,42 @@ export class MoviesListComponent implements OnInit {
     // this.movieService.getTrendingMovies().subscribe((movies: any) => {
     //   this.trending = movies;
     // });
-  }
 
+    // this.userService.generateToken();
+
+    this.userService.currentUser$.subscribe(user => {
+      console.log(user);
+       this.currentUser = user;
+   })
+
+  
+}
   onWatchTrailer(id: number): void {
     this.showMovie = true;
     this.movieService.getVideoById(id).subscribe((trailer: Video[]) => {
-      // console.log('Watching trailer now...');
-      // console.dir(trailer);
+
+
       this.selectedMovieVideo = trailer[0];
     });
   }
 
+  //REVIEW: Check it it's needed, otherwise delete it
   searchTab() {
+
     if (!this.searchHidden) {
       this.searchHidden = !this.searchHidden;
     } else {
       this.searchHidden = !this.searchHidden;
     }
+
   }
 
   logOut() {
+    this.seeYou=true
     this.userService.signOut();
+  }
+  onshowMembership() {
+    this.showMembership = true
+    console.log(this.showMembership, "this one")
   }
 }

@@ -1,0 +1,117 @@
+button{
+  border-radius: 3px;
+}
+h1.title{
+  font-size: 1.5vmax;
+}
+
+.subscriptions_container{
+  color:rgb(180, 180, 180);
+  width: 100vw;
+  height: 100vh;
+}
+
+.subscriptions_container > *{
+  width: 100%;
+}
+
+.subscriptions_container > header.header{
+  height: 20%;
+  padding: 1%;
+}
+
+.subscriptions_container > header.header section *{
+  margin: 2%;
+}
+.subscriptions_container > main.main__content{
+  height: 80%;
+}
+
+.main__content > * {
+  height: 100%;
+}
+
+.main__content > ul.sidebar{
+  width: 30%;
+  background: blue;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.sidebar > *{
+  padding: 3%;
+}
+
+.main__content > ul.subscriptions__list{
+  width: 70%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.main__content > ul.subscriptions__list > *{
+  width: 100%;
+  margin: 1%;
+  box-shadow: 0 0 1px gray;
+  display: flex;
+}
+
+.user__subscriptions{
+  flex-direction: column;
+  height: 90%;
+  width: 100%;
+}
+
+.--btn__update__role{
+  height: 10%;
+  padding: 22px;
+  cursor: pointer;
+  background: red;
+  margin: 1%;
+  width: 100%;
+  height: 10%;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.user__subscriptions > *{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 11%;
+}
+
+.selected_subscription *{
+  color: rgb(255, 255, 255);
+}
+
+
+.confirm__membership__modal{
+  position: fixed;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.905);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.confirm__membership__modal > div{
+  position: inherit;
+  bottom: 5%;
+  width: 200px;
+}
+
+.confirm__membership__modal button{
+  padding: 14px 43px;
+  font-size: 18px;
+  margin: 2%;
+  color: #fff;
+}
+button.confirm__membership{
+  background: red;
+}
+
+button.cancel__membership{
+  background: rgb(120, 120, 120);
+}
+

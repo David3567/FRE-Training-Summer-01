@@ -1,7 +1,9 @@
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { User } from '../interfaces/user.interface';
 import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-register-page',
   templateUrl: './register-page.component.html',
@@ -11,19 +13,25 @@ export class RegisterPageComponent implements OnInit {
   currentUsers: User[] = [];
   signUpForm!: FormGroup;//
   emailExists: boolean = false;
+  signUpClicked: boolean = false;
+  
 
   constructor(
     private userService: UserService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.signUpForm = this.formBuilder.group({
-      email: ['', [Validators.required]],
-      password: ['', [Validators.required]],
-      repeatPassword: ['', [Validators.required]],
-      username: ['', [Validators.maxLength(10), Validators.minLength(4)]]
+      email: ['', {validators:[Validators.email,Validators.required],updateOn: 'blur'}],
+      password: ['', {validators:[Validators.required,Validators.pattern("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$")],updateOn: 'blur'}],
+      repeatPassword: ['', {validators:[Validators.required],updateOn: 'blur'}],
+      username: ['', {validators:[Validators.maxLength(10), Validators.minLength(4)],updateOn: 'blur'}]
+    },{
+      validators: [this.checkPasswords],
     })
+   
   }
 
   get email() {
@@ -45,19 +53,32 @@ export class RegisterPageComponent implements OnInit {
   checkEmail() {
     this.userService.checkEmail(this.email?.value).subscribe(e => {
       this.emailExists = e;
+     
     })
   }
 
-  onSignUp(): void {
-    this.checkEmail();
-
-    console.log(this.emailExists)
-    if (this.emailExists) {
-      alert("Email already exists");
-      return;
+  checkPasswords(group: FormGroup): ValidationErrors | null {
+    const password1=group.get("password")?.value
+    const password2=group.get("repeatPassword")?.value
+    if (password1 !==password2){
+      return {nomatch:true}
     }
+    return null
+  }
+  navigateToSignIn() :void{
+    this.router.navigate(['sign-in']);
+  }
+  onSignUp(): void {
+    if(!this.signUpForm.valid){
+      this.signUpForm.markAllAsTouched
+     
+    }
+    this.signUpClicked=true;
+    this.checkEmail();
+    
 
-    if (this.password?.value === this.repeatPassword?.value) {
+    if (this.signUpForm.valid) {
+      this.signUpClicked=false;
       let userInfo: User =
       {
         username:  this.username?.value,

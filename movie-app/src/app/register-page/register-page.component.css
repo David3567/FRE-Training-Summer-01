@@ -1,5 +1,12 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:100,regular,italic,500,700);
-
+.backgroundImage{
+    background-image: url("./../images/netflix_background_movies_thumbnail.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-clip: border-box;
+  height:100vh;
+  width:100vw;
+}
 .form-group{
     position: absolute;
     left: 50%;
@@ -94,6 +101,14 @@ input:valid ~ .floating-label {
     background-color: #e50914;
 }
 a{
-    text-decoration: none;
+   text-decoration:none;
+   color:purple;
+   cursor: pointer;
 }
 
+.errorMsg{
+    color: #e50914;
+    font-size: 0.9rem;
+    width: 25rem;
+    
+}
