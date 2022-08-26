@@ -29,8 +29,8 @@ export class MovieListComponent implements OnInit {
       }
     ),
     this.movieService.getMorePages(this.Number).subscribe((movieData) => {
-      this.movie.push(...this.movieData)
-      console.log(this.movieData);
+      this.movie = movieData
+      console.log(this.movie);
     })
   }
 
@@ -40,15 +40,17 @@ export class MovieListComponent implements OnInit {
 
   getMovies(Number: number){
     this.Number++
-    return (`https://api.themoviedb.org/3/discover/movie?api_key=3b12cfa2e8e41ce85be82944f8b7e697&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${Number}`)
+    // return (`https://api.themoviedb.org/3/discover/movie?api_key=3b12cfa2e8e41ce85be82944f8b7e697&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${Number}`)
+    return (`https://api.themoviedb.org/3/list/${Number}?api_key=3b12cfa2e8e41ce85be82944f8b7e697`)
   }
 
   onScroll(){
     // let moviePage = 'https://api.themoviedb.org/3/movie?api_key=3b12cfa2e8e41ce85be82944f8b7e697'
     // console.log(moviePage);
-    this.movieData
-    console.log(this.movie.page++);
+    this.movie.page++
+    console.log(this.movie);
 
+    // .subscribe(data => this.metadata = data)
   }
 }
 
