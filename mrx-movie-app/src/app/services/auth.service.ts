@@ -10,7 +10,9 @@ import { UserRegister } from '../interface/registerInfo.interface';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private userAuthInfo: UserInfo = {};
+  // private userAuthInfo: UserInfo = {};
+  private userAuthInfo: UserInfo = localStorage.getItem('token') ? 
+                          jwt_decode(localStorage.getItem('token') as string) as UserInfo : {};
   private userAuth$ = new BehaviorSubject<UserInfo>(this.userAuthInfo);
   userAuthObs$ = this.userAuth$.asObservable();
 
@@ -47,6 +49,8 @@ export class AuthService {
           localStorage.setItem('username', this.userAuthInfo.username!);
           alert(this.userAuthInfo.username + ' successfully logged in');
           this.router.navigate(['movie-list']);
+          console.log(jwt_decode(accessToken));
+          
         }),
         catchError((err) => {
           console.log(err);
@@ -67,6 +71,9 @@ export class AuthService {
         localStorage.getItem('token') === undefined
       ) {
         return false;
+        
+      } else {
+          return true;
       }
     }
     return false;
@@ -101,6 +108,71 @@ export class AuthService {
       
       return tmdb_key  + '';
     }
+  }
+
+  getUserInfo(): UserInfo{
+    if (
+      localStorage.getItem('token') === null ||
+      localStorage.getItem('token') === undefined
+    ) {
+      // no token
+      return {};
+    } else {
+      let jwtoken = localStorage.getItem('token') as string;
+      const userAuth = jwt_decode(jwtoken) as UserInfo;
+      console.log('user info', userAuth);
+      
+      return userAuth;
+    }
+  }
+
+  refreshToken(){
+    console.log(this.getUserInfo());
+    
+    const { username, id, email, role, tmdb_key } = this.getUserInfo() as UserInfo;
+
+    let newObj = {
+      username: username, 
+      id: id, 
+      email: email, 
+      role: role, 
+      tmdb_key: tmdb_key,
+    }
+    
+    return this.http.post(`${this.baseUrl}/auth/refresh-token`,newObj).pipe(
+      tap((data) => {
+
+        const {accessToken} = <any>data;
+
+        const { username, id, email, role, tmdb_key, exp }: UserInfo =
+            jwt_decode(accessToken);
+          console.log(jwt_decode(accessToken));
+          this.userAuthInfo = {
+            username,
+            id,
+            email,
+            role,
+            tmdb_key,
+            exp,
+            jwt_token: accessToken,
+          };
+
+        this.userAuth$.next(this.userAuthInfo);
+          this.loginStatus.next(true);
+          localStorage.setItem('loginStatus', '1');
+          localStorage.setItem(
+            'token',
+            JSON.stringify(this.userAuthInfo.jwt_token)
+          );
+          localStorage.setItem(
+            'username',
+            JSON.stringify(this.userAuthInfo.username)
+          );
+        
+        console.log("refresh",data);
+        
+      })
+    )
   }
 
   logout() {
