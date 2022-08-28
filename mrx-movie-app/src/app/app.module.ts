@@ -7,12 +7,13 @@ import { AppComponent } from './app.component';
 // import { RegisterpageComponent } from './registerpage/registerpage.component';
 // import { LoginpageComponent } from './loginpage/loginpage.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NavbarComponent } from './navbar/navbar.component';
 // import { MovieListComponent } from './movie-list/movie-list.component';
 // import { TrimStringPipe } from './trim-string.pipe';
 import { AuthGuard } from './services/auth.guard';
 import { UpgradeComponent } from './upgrade/upgrade.component';
+import { AuthInterceptor } from './services/auth.interceptor';
 
 export const BASRURL = new InjectionToken<string>('');
 @NgModule({
@@ -37,6 +38,7 @@ export const BASRURL = new InjectionToken<string>('');
     AuthService,
     { provide: BASRURL, useValue: 'http://localhost:4231' },
     AuthGuard,
+    {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}
   ],
   bootstrap: [AppComponent],
 })
