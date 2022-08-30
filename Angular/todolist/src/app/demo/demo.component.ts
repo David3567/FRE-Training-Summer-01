@@ -7,7 +7,7 @@ import { TodoService } from '../services/todo.service';
   styleUrls: ['./demo.component.scss'],
 })
 export class DemoComponent implements OnInit {
-  todolist = [];
+  todolist: any = [];
 
   constructor(private todoService: TodoService) {}
 
