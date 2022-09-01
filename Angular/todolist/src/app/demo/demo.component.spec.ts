@@ -2,15 +2,21 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TodoService } from '../services/todo.service';
 
 import { DemoComponent } from './demo.component';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, of } from 'rxjs';
 
 describe('DemoComponent', () => {
   let component: DemoComponent;
   let fixture: ComponentFixture<DemoComponent>;
 
+  const mocktodolist: any = [{ id: 1234 }];
+  class MockTodoService {
+    todolist$ = of(mocktodolist);
+  }
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [DemoComponent],
+      providers: [{ provide: TodoService, useClass: MockTodoService }],
     }).compileComponents();
   });
 
@@ -20,7 +26,10 @@ describe('DemoComponent', () => {
     fixture.detectChanges();
   });
 
-  xit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
+  });
+  it('should transfer data to the todolist', () => {
+    expect(component.todolist).toEqual([{ id: 1234 }]);
   });
 });

@@ -6,8 +6,8 @@ import { Todo } from '../interfaces/todo.interface';
 
 @Injectable()
 export class TodoService {
-  private baseUrl: string = 'https://jsonplaceholder.typicode.com';
-  private todoPath: string = 'todos';
+  baseUrl: string = 'https://jsonplaceholder.typicode.com';
+  todoPath: string = 'todos';
 
   private todolist: Todo[] = [];
   todolist$ = new BehaviorSubject(this.todolist);
