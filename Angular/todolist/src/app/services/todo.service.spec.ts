@@ -5,6 +5,7 @@ import {
 } from '@angular/common/http/testing';
 import { TodoService } from './todo.service';
 import { of } from 'rxjs';
+import { provideAutoSpy } from 'jasmine-auto-spies';
 import { Todo } from '../interfaces/todo.interface';
 
 describe('TodoService', () => {
@@ -13,7 +14,7 @@ describe('TodoService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [TodoService],
+      providers: [provideAutoSpy(TodoService)],
       imports: [HttpClientTestingModule],
     });
     service = TestBed.inject(TodoService);
