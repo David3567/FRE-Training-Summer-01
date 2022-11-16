@@ -5,11 +5,12 @@ import {
 } from '@angular/common/http/testing';
 import { TodoService } from './todo.service';
 import { of } from 'rxjs';
-import { provideAutoSpy } from 'jasmine-auto-spies';
+import { provideAutoSpy, Spy } from 'jasmine-auto-spies';
 import { Todo } from '../interfaces/todo.interface';
 
 describe('TodoService', () => {
-  let service: TodoService;
+  // let service: TodoService;
+  let service: Spy<TodoService>;
   let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
